@@ -1,6 +1,8 @@
 # TBD
 IMD 4
 
+[Travis](https://travis-ci.org/cs373gc-fall-2016/TBD)
+
 ### Setup 
 Pretty much follows [this](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) tutorial.
 
