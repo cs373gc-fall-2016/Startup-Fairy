@@ -1,6 +1,7 @@
 # TBD
 IMD 4
 
+[Apiary Docs](http://docs.sweetjobs.apiary.io/)
 [Travis](https://travis-ci.org/cs373gc-fall-2016/TBD)
 
 ### Setup 
