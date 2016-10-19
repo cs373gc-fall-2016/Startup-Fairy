@@ -1,0 +1,22 @@
+{
+  "name": "startup-fairy",
+  "description": "IMD 4",
+  "main": "",
+  "authors": [
+    "Addy Kim <addysgkim@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/cs373gc-fall-2016/TBD",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^15.3.2",
+    "bootstrap": "^3.3.7"
+  }
+}
