@@ -10,6 +10,7 @@
         <title>Startup Fairy</title>
     {% endif %}
     <link rel="stylesheet" href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
 
     <script src="{{ url_for('static', filename='bower_components/react/react.js') }}"></script>
     <script src="{{ url_for('static', filename='bower_components/react/react-dom.js') }}"></script>
@@ -40,7 +41,7 @@
               <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
-                <li><a href="/table">Table</a></li>
+                <li><a href="/category">Category</a></li>
               </ul>
              <!--  <form class="navbar-form navbar-left">
                 <div class="form-group">

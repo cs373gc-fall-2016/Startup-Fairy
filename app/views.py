@@ -11,7 +11,16 @@ def index():
 def about():
 	return render_template('about.html', title='about')
 
-@app.route('/table')
-def table():
+@app.route('/category')
+def category():
 	"""Render table template"""
-	return render_template('table.html',title='table')
+	return render_template('category.html',title='Category')
+
+@app.route('/details/<entity>')
+def show_user_profile(entity):
+    return render_template('details.html', 
+    	title=entity,
+    	name=entity,
+    	tagline='Meow meow meow meow. I eat tuna',
+    	twitter='discoverdowning',
+    	image='http://i.imgur.com/IpZGW1j.jpg')
