@@ -1,8 +1,8 @@
-# TBD
+# StartupFairy
 IMD 4
 
-[Apiary Docs](http://docs.sweetjobs.apiary.io/)
-[Travis](https://travis-ci.org/cs373gc-fall-2016/TBD)
+[Apiary Docs](http://docs.startupfairy.apiary.io/)
+[Travis](https://travis-ci.org/cs373gc-fall-2016/Startup-Fairy)
 
 ### Setup 
 Pretty much follows [this](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) tutorial.
