@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!--
 <title>About</title>
+-->
 
 <!-- About -->
-<section class="success" id="about">
+<section class="success" id="About">
     <div class="container">
 
         <!-- Title -->
@@ -40,44 +42,48 @@
         </div>
 
         <!-- Team Members -->
-        <div class="row">
-            <div class="col-sm-4">
+        <div class="row" id="first">
+            <div class="col-sm-3">
                 <img src="https://github.com/addykim.png" class="img-responsive" alt="">
                 <h3>Addy Kim</h3>
                 I'm a cat loving Computer Science major at the University of Texas. In my free time I enjoy doing wushu and crafts.
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <img src="https://github.com/marktheperson.png" class="img-responsive" alt="">
                 <h3>Marcus Cruz</h3>
                 Hey y’all, my name is Marcus Cruz, but I also go by Mark. I’m a student at the University of Texas at Austin studying computer science. My hobbies are photography, video games, hiking, and listening to music.
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <img src="https://github.com/ilinum.png" class="img-responsive" alt="">
                 <h3>Svyatoslav Ilinskiy</h3>
                 Hi, my name is Svyatoslav but I go by Stas. I study CS at UT Austin. previously, I have interned at JetBrains, working on Scala plugin for IntelliJ. I like hiking and having fun
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <img src="https://avatars0.githubusercontent.com/u/8815436?v=3&s=460" class="img-responsive" alt="">
                 <h3>Cameron Reynoldson</h3>
                 I love all things fat cats, competitive programming and infrastructure. I'm currently a CS major at UT Austin and worked at Dropbox this past summer on rebuilding their feature gating system in Go.
             </div>
+        </div>
 
-            <div class="col-sm-4">
+        <br><br>
+
+        <div class="row" id="second">
+            <div class="col-sm-3">
                 <img src="https://raw.githubusercontent.com/summergirl21/swe-blog/master/images/Headshot.jpg" class="img-responsive" alt="">
                 <h3>Madeline Stager</h3>
                 Hi, I'm a Computer Science student at UT Austin. In my free time I like hiking, camping and playing frisbee.
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <img src="https://avatars.githubusercontent.com/ajrator" class="img-responsive" alt="">
                 <h3>Ajmal Khan</h3>
                 I am currently studying Computer Science at The University of Texas at Austin and have interned with Dell and MD Anderson. I love fiddling with Python and playing the guitar.
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <img src="https://avatars.githubusercontent.com/eugenern" class="img-responsive" alt="">
                 <h3>Eugene Ng</h3>
                 A small bio.
@@ -108,7 +114,7 @@
 </section>
 
 <!-- Tools -->
-<section class="success" id="Data">
+<section class="success" id="Tools">
     <div class="container">
 
         <!-- Title -->
@@ -130,7 +136,7 @@
 
 
 <!-- Stats -->
-<section class="success" id="Data">
+<section class="success" id="Statistics">
     <div class="container">
 
         <!-- Title -->
@@ -150,25 +156,25 @@
 
         <!-- Links to Repo/Wiki/Apiary/Issues -->
         <div class="row">
-          <div class="col-sm-5 text-center">
+          <div class="col-sm-6 text-center">
               <a href="https://github.com/cs373gc-fall-2016/Startup-Fairy" class="btn btn-lg btn-outline">
                   Github Repo
               </a>
           </div>
 
-          <div class="col-sm-5 text-center">
-              <a href="https://github.com/cs373gc-fall-2016/Startup-Fairy" class="btn btn-lg btn-outline">
+          <div class="col-sm-6 text-center">
+              <a href="https://app.apiary.io/startupfairy/" class="btn btn-lg btn-outline">
                   Apiary API
               </a>
           </div>
 
-          <div class="col-sm-5 text-center">
+          <div class="col-sm-6 text-center">
               <a href="https://github.com/cs373gc-fall-2016/Startup-Fairy/issues" class="btn btn-lg btn-outline">
                   Issues Tracker
               </a>
           </div>
 
-          <div class="col-sm-5 text-center">
+          <div class="col-sm-6 text-center">
               <a href="https://github.com/cs373gc-fall-2016/Startup-Fairy/wiki" class="btn btn-lg btn-outline">
                   WikiDoc
               </a>
