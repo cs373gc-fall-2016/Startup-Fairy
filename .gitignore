@@ -2,3 +2,5 @@
 node_modules
 flaskapp
 bower_components
+
+.DS_Store
