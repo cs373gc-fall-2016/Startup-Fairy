@@ -35,20 +35,20 @@ Run `python run.py`, you will be able to see the site at `localhost:5000`
   * Twitter
   * Website
  
- * People
-   * Name
-   * Bio
-   * Location
-   * Company
-   * Role
-   * Twitter
+* People
+  * Name
+  * Bio
+  * Location
+  * Company
+  * Role
+  * Twitter
  
- * City
-   * Name
-   * State
-   * Country 
-   * Companies
-   * Financial Orgs
-   * People
+* City
+  * Name
+  * State
+  * Country 
+  * Companies
+  * Financial Orgs
+  * People
    
   
