@@ -19,6 +19,6 @@ def category(category):
 @app.route('/<category>/<entity>')
 def details(category, entity):
 	filename = "static/data/%s/%s.json" % (category, entity)
-	with app.open_resource(filename) as json_data:
+	with open (filename, 'r') as json_data:
 		data = json.load(json_data)
 	return render_template('details.html', data=data)
