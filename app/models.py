@@ -25,6 +25,20 @@ class Company(db.Model):
         self.twitter = twitter
         self.website = website
 
+    def __repr__(self):
+        return '<Company %r>' % self.name
+
+    def dictionary(self):
+        dictRep = {}
+        dictRep['name'] = self.name
+        dictRep['summary'] = self.summary
+        dictRep['employees'] = self.employees
+        dictRep['city'] = self.city
+        dictRep['investors'] = self.investors
+        dictRep['twitter'] = self.twitter
+        dictRep['website'] = self.website
+        return dictRep
+
 class FinancialOrg(db.Model):
     __tablename__ = "financial_org"
     # set the column types
@@ -42,6 +56,19 @@ class FinancialOrg(db.Model):
         self.companies = companies
         self.twitter = twitter
         self.website = website
+
+    def __repr__(self):
+        return '<FinancialOrg %r>' % self.name
+
+    def dictionary(self):
+        dictRep = {}
+        dictRep['name'] = self.name
+        dictRep['summary'] = self.summary
+        dictRep['city'] = self.city
+        dictRep['companies'] = self.companies
+        dictRep['twitter'] = self.twitter
+        dictRep['website'] = self.website
+        return dictRep
 
 class Person(db.Model):
     __tablename__ = "person"
@@ -61,6 +88,19 @@ class Person(db.Model):
         self.role = role
         self.twitter = twitter
 
+    def __repr__(self):
+        return '<Person %r>' % self.name
+
+    def dictionary(self):
+        dictRep = {}
+        dictRep['name'] = self.name
+        dictRep['bio'] = self.bio
+        dictRep['location'] = self.location
+        dictRep['company'] = self.company
+        dictRep['role'] = self.role
+        dictRep['twitter'] = self.twitter
+        return dictRep
+        
 class City(db.Model):
     __tablename__ = "city"
     # set the column types
@@ -78,3 +118,17 @@ class City(db.Model):
         self.companies = companies
         self.financial_orgs = financial_orgs
         self.people = people
+
+    def __repr__(self):
+        return '<City %r>' % self.name
+
+    def dictionary(self):
+        dictRep = {}
+        dictRep['name'] = self.name
+        dictRep['state'] = self.state
+        dictRep['country'] = self.country
+        dictRep['companies'] = self.companies
+        dictRep['financial_orgs'] = self.financial_orgs
+        dictRep['people'] = self.people
+        return dictRep
+        
