@@ -1,21 +1,30 @@
 import json
 from flask import render_template
 from app import app
+from os import listdir
+
 
 @app.route('/')
 @app.route('/index')
 def index():
 	return render_template('index.html')
 
+
 @app.route('/about')
 def about():
 	return render_template('about.html', title='about')
 
+
 @app.route('/<category>')
 def category(category):
 	"""Render table template"""
-  # TODO uppercase Cateogry's first letter
-	return render_template('category.html',title=category)
+	filepath = "static/data/%s" % (category)
+	data = []
+	for file in listdir(filepath):
+		with open ("%s/%s" % (filepath, file), 'r') as json_data:
+			category_obj = json.load(json_data)
+			data.append(category_obj)
+	return render_template('category.html', title=category, data=data)
 
 @app.route('/<category>/<entity>')
 def details(category, entity):

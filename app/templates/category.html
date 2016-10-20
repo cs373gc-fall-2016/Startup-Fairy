@@ -5,7 +5,14 @@
     {% if title %}<h1>{{ title }}</h1>{% else %}<h1>Model</h1>{% endif %}
     <div id='table-content'></div>
     <script type="text/javascript" src="{{url_for('static', filename='bower_components/griddle-react/build/Griddle.js')}}"></script>
-    <script type="text/babel" src="{{url_for('static', filename='js/table.js')}}"></script>
+    <!-- <script type="text/babel" src="{{url_for('static', filename='js/table.js')}}"></script> -->
+     <script type="text/babel">
+      var data = {{ data|tojson }};
+      var columns = ["name", "city", "company", "role"];
+      ReactDOM.render(
+        <Griddle results={data} columns={columns}/>,
+        document.getElementById('table-content')
+      );
+     </script>
 	</div>
 {% endblock %}
-
