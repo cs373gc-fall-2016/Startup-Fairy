@@ -2,26 +2,25 @@
 {% block content %}
   <div class="col-md-8 col-md-offset-2">
     <div class="photo-right">
-      {% if image %}
-        <img src="{{ image }}" class="user-photo"/>
+      {% if data.image %}
+        <img src="{{ data.image }}" class="user-photo"/>
       {% else %}
         <img src="https://cdn2.iconfinder.com/data/icons/metro-ui-dock/512/User_No-Frame.png" class="user-photo" />
       {% endif %}
     </div>
     <div>
-      {% if name %}
-        <h1>{{ name }}</h1>
+      {% if data.name %}
+        <h1>{{ data.name }}</h1>
       {% else %}
         <h1>Model</h1>
       {% endif %}
       {% if tagline %}<p>{{ tagline }}</p>{% endif %}
-      {%if location %}<p>Location: {{ location }}</p>{% endif %}
-      {%if company %}<p>Company: {{ company }}</p>{% endif %}
-      <p>Number of Useres: {{ number_of_users }}</p>
-      {%if website %}<p>Website: {{ website }}</p>{% endif %}
+      {% if data.location %}<p>Location: {{ data.city }}</p>{% endif %}
+      {% if data.company %}<p>Company: {{ data.company }}</p>{% endif %}
+      {% if data.summary %}<p>{{data.summary}}</p>{% endif %}
     </div>
-  {% if twitter %}
-      <a class="twitter-timeline" href="https://twitter.com/{{twitter}}">Tweets by {{twitter}}</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  {% if data.twitter %}
+      <a class="twitter-timeline" href="https://twitter.com/{{data.twitter}}">Tweets by {{data.twitter}}</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   {% endif %}
   </div>
 {% endblock %}
