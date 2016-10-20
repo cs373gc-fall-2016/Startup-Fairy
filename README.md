@@ -15,7 +15,12 @@ Pretty much follows [this](https://blog.miguelgrinberg.com/post/the-flask-mega-t
 6. `bower install`
 
 ### Development
-Run `python run.py`, you will be able to see the site at `localhost:5000`
+Run `python run.py`, you will be able to see the site at `localhost:5000`.
+
+### Deployment
+In order to avoid a socket error in development, we will use environment variables to tell Flask we are on a production environment and therefore the correct port to run on.
+
+`export PRODUCTION=True`
 
 ### Models
 * Company
