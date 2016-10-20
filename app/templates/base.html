@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% if title %}
-        <title>{{ title }} | Startup Fairy</title>
+    {% if alt_title %}
+        <title>{{ alt_title }} | Startup Fairy</title>
     {% else %}
         <title>Startup Fairy</title>
     {% endif %}
@@ -44,7 +44,7 @@
                     ('/about', 'about', 'About'),
                     ('/cities', 'cities', 'Cities'),
                     ('/companies', 'companies', 'Companies'),
-                    ('/organizations', 'organizations', 'Organizations'),
+                    ('/financialorgs', 'financialorgs', 'Financial Organizations'),
                     ('/people', 'people', 'People')
                 ] -%}
                 {% set active_page = active_page|default('index') -%}

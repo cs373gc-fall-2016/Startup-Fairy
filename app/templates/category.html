@@ -2,15 +2,42 @@
 {% set active_page = title %}
 {% block content %}
   <div class="col-md-8 col-md-offset-2">
-    {% if title %}<h1>{{ title }}</h1>{% else %}<h1>Model</h1>{% endif %}
+    <h1 id="category-header">
+    {% if alt_title %}{{ alt_title.capitalize() }}{% else %}{{ title.capitalize()}} {% endif %}</h1>
     <div id='table-content'></div>
     <script type="text/javascript" src="{{url_for('static', filename='bower_components/griddle-react/build/Griddle.js')}}"></script>
     <!-- <script type="text/babel" src="{{url_for('static', filename='js/table.js')}}"></script> -->
      <script type="text/babel">
       var data = {{ data|tojson }};
-      var columns = ["name", "city", "company", "role"];
+      var category = document.getElementById('category-header').innerHTML.toLowerCase();
+      var columns;
+      switch(category) {
+          case 'people':
+            columns = ["name", "city", "company", "role"];
+            break;
+          case 'companies':
+            columns = ["name", "city", "employees", "investors"];
+            break;
+          case 'financialorgs':
+            columns = ["name", "city", "companies_invested"];
+            break
+          case 'cities':
+          // TODO try to combine name and state
+            columns = ["name", "state", "companies", "financial_orgs", "people"];
+            break;
+          default:
+            // if we hit this case, we need to create a new list
+            columns = undefined;
+      }
+
+      function redirectToDetails() {
+        var name = this.data.name.replace(/\s+/, "");
+        var url = location.href + '/' + name;
+        location.href = url;
+      };
+
       ReactDOM.render(
-        <Griddle results={data} columns={columns}/>,
+        <Griddle results={data} columns={columns} onRowClick={redirectToDetails}/>,
         document.getElementById('table-content')
       );
      </script>
