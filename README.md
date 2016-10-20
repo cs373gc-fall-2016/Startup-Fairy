@@ -16,3 +16,39 @@ Pretty much follows [this](https://blog.miguelgrinberg.com/post/the-flask-mega-t
 
 ### Development
 Run `python run.py`, you will be able to see the site at `localhost:5000`
+
+### Models
+* Company
+  * Name
+  * Summary
+  * Employees
+  * City
+  * Investors
+  * Twitter
+  * Website
+  
+* Financial Org
+  * Name
+  * Summary
+  * City
+  * Companies invested in
+  * Twitter
+  * Website
+ 
+ * People
+   * Name
+   * Bio
+   * Location
+   * Company
+   * Role
+   * Twitter
+ 
+ * City
+   * Name
+   * State
+   * Country 
+   * Companies
+   * Financial Orgs
+   * People
+   
+  
