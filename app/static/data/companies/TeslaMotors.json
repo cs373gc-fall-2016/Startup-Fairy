@@ -1,0 +1,9 @@
+{
+  "name": "Tesla Motors",
+  "summary": "Tesla Motors, founded by Elon Musk, Marc Tarpenning and Martin Eberhard,  is a company that produces a high-performance electric sports car, and is backed by a number of high-profile investors. Introduced in June 2006 to the public complete with a test drive by California Governor Arnold Schwarzenegger, the Tesla Roadster is able to go from 0 to 60 in less than 4 seconds (competitive with Porsche and Lamborghini models), while also delivering 100 miles per gallon (double the efficiency of the Toyota Prius). The car's base price is around $100,000, and can be ordered online. Tesla's investors include Silicon Valley luminaries like Paypal founder Elon Musk and Google co-founders Larry Page and Sergey Brin.",
+  "employees":["Elon Musk"],
+  "city": "Palo Alto",
+  "investors": ["Goldman Sachs"],
+  "twitter_username": "TeslaMotors",
+  "website": "http://www.teslamotors.com"
+}
