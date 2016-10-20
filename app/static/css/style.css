@@ -8,8 +8,30 @@
   object-fit: cover;
 }
 
-body {
+.navbar-default {
   background-color: #e7e7e7;
+}
+
+.navbar-header {
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.navbar-collapse {
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.navbar-default .navbar-nav li.active a {
+  color: white;
+  background: #ff2792;
+}
+
+.item {
+  max-width:100%;
+  max-height:500px;
 }
 
 footer {
@@ -23,4 +45,7 @@ footer .footer-col {
 footer .footer-below {
   padding: 25px 0;
   background-color: #343434;
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  font-weight: 300;
 }
