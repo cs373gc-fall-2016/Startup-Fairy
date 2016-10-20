@@ -14,7 +14,8 @@ def about():
 @app.route('/<category>')
 def category(category):
 	"""Render table template"""
-	return render_template('category.html',title='Category')
+  # TODO uppercase Cateogry's first letter
+	return render_template('category.html',title=category)
 
 @app.route('/<category>/<entity>')
 def details(category, entity):
