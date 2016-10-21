@@ -69,6 +69,10 @@ hr.divider{
   margin: 0 auto;
 }
 
+.team-member h3 {
+  text-align: center;
+}
+
 .nova {
   font-family: proxima-nova, sans-serif;
   font-style: normal;
