@@ -43,7 +43,7 @@ In order to avoid a socket error in development, we will use environment variabl
 * People
   * Name
   * Bio
-  * Location
+  * City
   * Company
   * Role
   * Twitter
@@ -55,5 +55,9 @@ In order to avoid a socket error in development, we will use environment variabl
   * Companies
   * Financial Orgs
   * People
+
+### UML Diagram
+
+
    
   
