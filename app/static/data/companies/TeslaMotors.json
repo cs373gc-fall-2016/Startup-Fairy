@@ -4,6 +4,6 @@
   "employees":["Elon Musk"],
   "city": "Palo Alto",
   "investors": ["Goldman Sachs"],
-  "twitter_username": "TeslaMotors",
+  "twitter": "TeslaMotors",
   "website": "http://www.teslamotors.com"
 }

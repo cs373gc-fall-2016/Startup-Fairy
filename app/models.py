@@ -29,6 +29,7 @@ class Company(db.Model):
         return '<Company %r>' % self.name
 
     def dictionary(self):
+        """Returns a dictionary representation of the class data"""
         dictRep = {}
         dictRep['name'] = self.name
         dictRep['summary'] = self.summary
@@ -61,6 +62,7 @@ class FinancialOrg(db.Model):
         return '<FinancialOrg %r>' % self.name
 
     def dictionary(self):
+        """Returns a dictionary representation of the class data"""
         dictRep = {}
         dictRep['name'] = self.name
         dictRep['summary'] = self.summary
@@ -74,16 +76,16 @@ class Person(db.Model):
     __tablename__ = "person"
     # set the column types
     name = db.Column(db.String, unique=True, primary_key=True)
-    bio = db.Column(db.String, unique=True)
-    location = db.Column(db.String)
+    summary = db.Column(db.String, unique=True)
+    city = db.Column(db.String)
     company = db.Column(db.String)
     role = db.Column(db.String)
     twitter = db.Column(db.String)
     # set the column values in constructor
-    def __init__(name, bio, location, company, role, twitter):
+    def __init__(name, summary, city, company, role, twitter):
         self.name = name
-        self.bio = bio
-        self.location = location
+        self.summary = summary
+        self.city = city
         self.company = company
         self.role = role
         self.twitter = twitter
@@ -92,10 +94,11 @@ class Person(db.Model):
         return '<Person %r>' % self.name
 
     def dictionary(self):
+        """Returns a dictionary representation of the class data"""
         dictRep = {}
         dictRep['name'] = self.name
-        dictRep['bio'] = self.bio
-        dictRep['location'] = self.location
+        dictRep['summary'] = self.summary
+        dictRep['city'] = self.city
         dictRep['company'] = self.company
         dictRep['role'] = self.role
         dictRep['twitter'] = self.twitter
@@ -123,6 +126,7 @@ class City(db.Model):
         return '<City %r>' % self.name
 
     def dictionary(self):
+        """Returns a dictionary representation of the class data"""
         dictRep = {}
         dictRep['name'] = self.name
         dictRep['state'] = self.state

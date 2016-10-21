@@ -4,6 +4,6 @@
   "employees":[],
   "city": "San Francisco",
   "investors": ["Youniversity Ventures"],
-  "twitter_username": "airbnb",
+  "twitter": "airbnb",
   "website": "http://airbnb.com"
 }

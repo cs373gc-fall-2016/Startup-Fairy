@@ -2,7 +2,7 @@
   "name": "Founders Fund",
   "summary": "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
   "city": "San Francisco",
-  "companies_invested": ["Space Exploration Technologies"],
+  "companies": ["Space Exploration Technologies"],
   "twitter": "foundersfund",
   "website": "http://www.foundersfund.com"
 }
