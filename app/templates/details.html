@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set active_page = category %}
 {% block content %}
   <div class="col-md-8 col-md-offset-2">
     <div class="photo-right">
@@ -14,10 +15,33 @@
       {% else %}
         <h1>Model</h1>
       {% endif %}
-      {% if tagline %}<p>{{ tagline }}</p>{% endif %}
-      {% if data.location %}<p>Location: {{ data.city }}</p>{% endif %}
-      {% if data.company %}<p>Company: {{ data.company }}</p>{% endif %}
-      {% if data.summary %}<p>{{data.summary}}</p>{% endif %}
+      {% if data.website %}<a href="{{ data.website }}">{{ data.website }}</a>{% endif %}
+      {% if data.city %}<p><i>{{ data.city }}</i></p>{% endif %}
+      {% if data.summary %}<p>{{ data.summary }}</p>{% endif %}
+      {% if data.company %}
+        <p>Companies: 
+          <ul>  
+          {% for company in data.company %}
+              <li>{{ company }}</li>
+          {% endfor %}
+          </ul>
+        </p>{% endif %}
+      {% if data.companies_invested %}
+        <p>Companies Invested: 
+          <ul>  
+          {% for company in data.companies_invested %}
+              <li>{{ company }}</li>
+          {% endfor %}
+          </ul>
+        </p>{% endif %}
+      {% if data.investors %}
+        <p>Investors:
+        <ul>
+          {% for investor in data.investors %}
+            <li>{{ investor }}</li>
+          {% endfor %}
+        </p>
+      {% endif %}
     </div>
   {% if data.twitter %}
       <a class="twitter-timeline" href="https://twitter.com/{{data.twitter}}">Tweets by {{data.twitter}}</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>

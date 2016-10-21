@@ -38,4 +38,4 @@ def details(category, entity):
 	filename = "static/data/%s/%s.json" % (category, entity)
 	with open (filename, 'r') as json_data:
 		data = json.load(json_data)
-	return render_template('details.html', data=data)
+	return render_template('details.html', data=data, category=category)

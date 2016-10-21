@@ -8,48 +8,65 @@
     <script type="text/javascript" src="{{url_for('static', filename='bower_components/griddle-react/build/Griddle.js')}}"></script>
     <!-- <script type="text/babel" src="{{url_for('static', filename='js/table.js')}}"></script> -->
      <script type="text/babel">
-      var LinkComponent = React.createClass({
+
+      var data = {{ data|tojson }};
+      var category = document.getElementById('category-header').innerHTML.toLowerCase().trim();
+      var columns, columnMetadata;
+
+
+      var WebsiteLink = React.createClass({
         render: function(){
           return <a href={this.props.data}>{this.props.data}</a>
         }
       });
 
-
-      var data = {{ data|tojson }};
-      var category = document.getElementById('category-header').innerHTML.toLowerCase().trim();
-      var columns, columnMetadata;
+      var EntityLink = React.createClass({
+        render: function(){
+          var name = this.props.data;
+          if (name.length > 0 && name instanceof Array) {
+            name = name[0]
+          }
+          name = name.toString().split(" ").join("");
+          var url = this.props.metadata.customHeaderComponentProps.link + name;
+          return <a href={url}>{this.props.data}</a>
+        }
+      });
       switch(category) {
           case 'people':
             columns = ["name", "city", "role", "company"];
-            columnMetadata = [
-              {
-                "columnName": "name",
-                "order": 1,
-                "locked": true,
-                "displayName": "Name"
-              }, {
-                "columnName": "city",
-                "order": 2,
-                "locked": false,
-                "displayName": "City"
-              }, {
-                "columnName": "company",
-                "order": 3,
-                "locked": false,
-                "displayName": "Company"
-              }, {
-                "columnName": "role",
-                "order": 4,
-                "locked": false,
-                "displayName": "Roles"
-              }, {
-                "columnName": "summary",
-                "visible": false
-              }, {
-                "columnName": "twitter",
-                "visible": false,
-              }
-            ];
+            columnMetadata = [{
+              "columnName": "name",
+              "order": 1,
+              "locked": true,
+              "displayName": "Name",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'people/' }
+            }, {
+              "columnName": "city",
+              "order": 2,
+              "locked": false,
+              "displayName": "City",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'cities/' }
+            }, {
+              "columnName": "company",
+              "order": 3,
+              "locked": false,
+              "displayName": "Company",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'companies/' }
+            }, {
+              "columnName": "role",
+              "order": 4,
+              "locked": false,
+              "displayName": "Roles"
+            }, {
+              "columnName": "summary",
+              "visible": false
+            }, {
+              "columnName": "twitter",
+              "visible": false,
+            }];
             break;
           case 'companies':
             columns = ["name", "website", "city", "investors", "employees"];
@@ -57,26 +74,34 @@
             {
               "columnName": "name",
               "order": 1, 
-              "displayName": "Name"
+              "displayName": "Name",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'companies/' }
             }, {
               "columnName": "city",
               "visible": true,
               "order": 2,
-              "displayName": "City"
+              "displayName": "City",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'cities/' }
             }, {
               "columnName": "investors",
               "order": 4,
-              "displayName": "Investors"
+              "displayName": "Investors",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'financialorgs/' }
             }, {
               "columnName": "employees", 
               "visible": true,
               "order": 3,
-              "displayName": "Employees"
+              "displayName": "Employees",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'people/' }
             }, {
               "columnName": "website",
               "order": 1,
               "displayName": "Website",
-              "customComponent": LinkComponent
+              "customComponent": WebsiteLink
             }, {
               "columnName": "twitter_username",
               "visible": false
@@ -88,17 +113,23 @@
             columnMetadata = [{
               "columnName": "name",
               "locked": true,
-              "displayName": "Name"
+              "displayName": "Name",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'financialorgs/' }
             }, {
               "columnName": "city",
-              "displayName": "Location"
+              "displayName": "Location",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'cities/' }
             }, {
               "columnName": "companies_invested",
-              "displayName": "Companies Invested"
+              "displayName": "Companies Invested",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'companies/' }
             }, {
               "columnName": "website",
               "displayName": "Website",
-              "customComponent": LinkComponent
+              "customComponent": WebsiteLink
             }, {
               "columnName": "twitter",
               "visible": false
@@ -112,32 +143,34 @@
             columnMetadata = [{
               "columnName": "name",
               "order": 2,
-              "displayName": "Name"
+              "displayName": "Name",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'cities/' }
             }, {
               "columnName": "state",
               "order": 3,
               "displayName": "State"
             }, {
               "columnName": "companies",
-              "displayName": "Companies"
+              "displayName": "Companies",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'companies/' }
             }, {
               "columnName": "financial_orgs",
-              "displayName": "Financial Organizations"
+              "displayName": "Financial Organizations",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'financialorgs/' }
             }, {
               "columnName": "people",
-              "displayName": "People"
+              "displayName": "People",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'people/' }
             }];
             break;
           default:
             // if we hit this case, we need to create a new list
             columns = undefined;
       }
-
-      function redirectToDetails() {
-        var name = this.data.name.replace(/\s+/, "");
-        var url = location.href + '/' + name;
-        location.href = url;
-      };
 
       ReactDOM.render(
         <Griddle results={data} showSettings={false} columns={columns} columnMetadata={columnMetadata}/>,
