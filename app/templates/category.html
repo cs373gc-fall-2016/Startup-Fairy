@@ -8,6 +8,13 @@
     <script type="text/javascript" src="{{url_for('static', filename='bower_components/griddle-react/build/Griddle.js')}}"></script>
     <!-- <script type="text/babel" src="{{url_for('static', filename='js/table.js')}}"></script> -->
      <script type="text/babel">
+      var LinkComponent = React.createClass({
+        render: function(){
+          return <a href={this.props.data}>{this.props.data}</a>
+        }
+      });
+
+
       var data = {{ data|tojson }};
       var category = document.getElementById('category-header').innerHTML.toLowerCase().trim();
       var columns, columnMetadata;
@@ -68,7 +75,8 @@
             }, {
               "columnName": "website",
               "order": 1,
-              "displayName": "Website"
+              "displayName": "Website",
+              "customComponent": LinkComponent
             }, {
               "columnName": "twitter_username",
               "visible": false
@@ -89,7 +97,8 @@
               "displayName": "Companies Invested"
             }, {
               "columnName": "website",
-              "displayName": "Website"
+              "displayName": "Website",
+              "customComponent": LinkComponent
             }, {
               "columnName": "twitter",
               "visible": false
