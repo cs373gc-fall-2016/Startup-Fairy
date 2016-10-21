@@ -33,7 +33,7 @@
       });
       switch(category) {
           case 'people':
-            columns = ["name", "city", "role", "company"];
+            columns = ["name", "city", "role"];
             columnMetadata = [{
               "columnName": "name",
               "order": 1,
@@ -49,13 +49,6 @@
               "customComponent": EntityLink,
               "customHeaderComponentProps": { link: 'cities/' }
             }, {
-              "columnName": "company",
-              "order": 3,
-              "locked": false,
-              "displayName": "Company",
-              "customComponent": EntityLink,
-              "customHeaderComponentProps": { link: 'companies/' }
-            }, {
               "columnName": "role",
               "order": 4,
               "locked": false,
@@ -69,7 +62,7 @@
             }];
             break;
           case 'companies':
-            columns = ["name", "website", "city", "investors", "employees"];
+            columns = ["name", "website", "city"];
             columnMetadata = [
             {
               "columnName": "name",
@@ -109,7 +102,7 @@
             break;
           case 'financial organizations':
           case 'financialorgs':
-            columns = ["name", "city", "companies_invested", "website"];
+            columns = ["name", "city", "website"];
             columnMetadata = [{
               "columnName": "name",
               "locked": true,
@@ -121,11 +114,6 @@
               "displayName": "Location",
               "customComponent": EntityLink,
               "customHeaderComponentProps": { link: 'cities/' }
-            }, {
-              "columnName": "companies_invested",
-              "displayName": "Companies Invested",
-              "customComponent": EntityLink,
-              "customHeaderComponentProps": { link: 'companies/' }
             }, {
               "columnName": "website",
               "displayName": "Website",
