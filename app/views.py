@@ -3,6 +3,13 @@ from flask import render_template
 from app import app
 from os import listdir
 
+ALT_NAMES = {
+	'financialorgs': 'Financial Organizations',
+	'companies': 'Companies',
+	'cities': 'Cities',
+	'people': 'People'
+
+}
 
 @app.route('/')
 @app.route('/index')
@@ -24,7 +31,7 @@ def category(category):
 		with open ("%s/%s" % (filepath, file), 'r') as json_data:
 			category_obj = json.load(json_data)
 			data.append(category_obj)
-	return render_template('category.html', title=category, data=data)
+	return render_template('category.html', alt_title=ALT_NAMES.get(category, None), title=category, data=data)
 
 @app.route('/<category>/<entity>')
 def details(category, entity):
