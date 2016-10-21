@@ -3,27 +3,121 @@
 {% block content %}
   <div class="col-md-8 col-md-offset-2">
     <h1 id="category-header">
-    {% if alt_title %}{{ alt_title.capitalize() }}{% else %}{{ title.capitalize()}} {% endif %}</h1>
+    {% if alt_title %}{{ alt_title }}{% else %}{{ title.capitalize()}} {% endif %}</h1>
     <div id='table-content'></div>
     <script type="text/javascript" src="{{url_for('static', filename='bower_components/griddle-react/build/Griddle.js')}}"></script>
     <!-- <script type="text/babel" src="{{url_for('static', filename='js/table.js')}}"></script> -->
      <script type="text/babel">
       var data = {{ data|tojson }};
-      var category = document.getElementById('category-header').innerHTML.toLowerCase();
-      var columns;
+      var category = document.getElementById('category-header').innerHTML.toLowerCase().trim();
+      var columns, columnMetadata;
       switch(category) {
           case 'people':
-            columns = ["name", "city", "company", "role"];
+            columns = ["name", "city", "role", "company"];
+            columnMetadata = [
+              {
+                "columnName": "name",
+                "order": 1,
+                "locked": true,
+                "displayName": "Name"
+              }, {
+                "columnName": "city",
+                "order": 2,
+                "locked": false,
+                "displayName": "City"
+              }, {
+                "columnName": "company",
+                "order": 3,
+                "locked": false,
+                "displayName": "Company"
+              }, {
+                "columnName": "role",
+                "order": 4,
+                "locked": false,
+                "displayName": "Roles"
+              }, {
+                "columnName": "summary",
+                "visible": false
+              }, {
+                "columnName": "twitter",
+                "visible": false,
+              }
+            ];
             break;
           case 'companies':
-            columns = ["name", "city", "employees", "investors"];
+            columns = ["name", "website", "city", "investors", "employees"];
+            columnMetadata = [
+            {
+              "columnName": "name",
+              "order": 1, 
+              "displayName": "Name"
+            }, {
+              "columnName": "city",
+              "visible": true,
+              "order": 2,
+              "displayName": "City"
+            }, {
+              "columnName": "investors",
+              "order": 4,
+              "displayName": "Investors"
+            }, {
+              "columnName": "employees", 
+              "visible": true,
+              "order": 3,
+              "displayName": "Employees"
+            }, {
+              "columnName": "website",
+              "order": 1,
+              "displayName": "Website"
+            }, {
+              "columnName": "twitter_username",
+              "visible": false
+            }];
             break;
+          case 'financial organizations':
           case 'financialorgs':
-            columns = ["name", "city", "companies_invested"];
-            break
+            columns = ["name", "city", "companies_invested", "website"];
+            columnMetadata = [{
+              "columnName": "name",
+              "locked": true,
+              "displayName": "Name"
+            }, {
+              "columnName": "city",
+              "displayName": "Location"
+            }, {
+              "columnName": "companies_invested",
+              "displayName": "Companies Invested"
+            }, {
+              "columnName": "website",
+              "displayName": "Website"
+            }, {
+              "columnName": "twitter",
+              "visible": false
+            }, {
+              "columnName": "summary",
+              "visible": false
+            }];
+            break;
           case 'cities':
-          // TODO try to combine name and state
             columns = ["name", "state", "companies", "financial_orgs", "people"];
+            columnMetadata = [{
+              "columnName": "name",
+              "order": 2,
+              "displayName": "Name"
+            }, {
+              "columnName": "state",
+              "order": 3,
+              "displayName": "State"
+            }, {
+              "columnName": "companies",
+              "displayName": "Companies"
+            }, {
+              "columnName": "financial_orgs",
+              "displayName": "Financial Organizations"
+            }, {
+              "columnName": "people",
+              "displayName": "People"
+            }];
             break;
           default:
             // if we hit this case, we need to create a new list
@@ -37,7 +131,7 @@
       };
 
       ReactDOM.render(
-        <Griddle results={data} columns={columns} onRowClick={redirectToDetails}/>,
+        <Griddle results={data} showSettings={false} columns={columns} columnMetadata={columnMetadata}/>,
         document.getElementById('table-content')
       );
      </script>
