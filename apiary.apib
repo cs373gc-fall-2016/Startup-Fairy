@@ -7,7 +7,20 @@ An API that allows you to access company informations
 
 ## Companies [/companies]
 
+_name_ (string) is the name of the company
+
+_summary_ (string) is a long overview of the company with its history
+
+_employees_ (array of strings) names of employees that are in our database
+
+_city_ (string) the city where the company is located
+
+_investors_ (array of strings) financial organizations that have invested into this firm
+
+_twitter_ (string) twitter handle of the company twitter
+
 ### List All Companies [GET /companies]
+
 
 + Response 200 (application/json)
 
@@ -42,6 +55,18 @@ An API that allows you to access company informations
         }
 ## Cities [/cities]
 
+_name_ (string) is the name of the city
+
+_state_ (string) is the state where the city is located
+on
+_country_ (string) the country where the city is located
+
+_companies_ (array of strings) companies that are located in the city
+
+_financial_orgs_ (array of strings) financial organizations that are located in the city
+
+_people_ (array of strings) people that live in the city
+
 ### List All Cities [GET /cities]
 
 + Response 200 (application/json)
@@ -75,6 +100,19 @@ An API that allows you to access company informations
         }
 
 ## Financial Organizations [/financialorgs]
+
+_name_ (string) is the name of the company
+
+_summary_ (string) is a long overview of the company with its history
+
+_city_ (string) the city where the organization is located
+
+_companies_ (array of strings) companies that this financial org invested in 
+
+_twitter_ (string) twitter handle of the company twitter
+
+_website_ (string) website of the financial org
+
 
 ### List All Financial Organizations [GET /financialorgs]
 
@@ -111,6 +149,19 @@ An API that allows you to access company informations
 
 ## People [/people]
 
+_name_ (string) is the name of the person
+
+_summary_ (string) is a long overview of the person
+
+_city_ (string) the city where the person is located
+
+_companies_ (array of strings) companies that this person works in
+
+_role_ (array of strings) roles the person is in the companies
+
+_twitter_ (string) twitter handle of the person
+
+
 ### List All People [GET /people]
 
 + Response 200 (application/json)
@@ -142,4 +193,3 @@ An API that allows you to access company informations
             "role": ["Marketeer Extraordinaire"],
             "twitter": "lukezic"
         }
-
