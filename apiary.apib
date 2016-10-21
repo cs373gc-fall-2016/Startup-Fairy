@@ -1,0 +1,195 @@
+FORMAT: 1A
+HOST: http://startupfairy.com/
+
+# Startup Fairy
+
+An API that allows you to access company informations
+
+## Companies [/companies]
+
+_name_ (string) is the name of the company
+
+_summary_ (string) is a long overview of the company with its history
+
+_employees_ (array of strings) names of employees that are in our database
+
+_city_ (string) the city where the company is located
+
+_investors_ (array of strings) financial organizations that have invested into this firm
+
+_twitter_ (string) twitter handle of the company twitter
+
+### List All Companies [GET /companies]
+
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "Airbnb",
+                "summary": "Founded in August 2008 and based in San Francisco, California, Airbnb is a trusted community marketplace for people to list, discover, and book unique spaces around the world - online or from a mobile phone. Whether an apartment for a night, a castle for a week, or a villa for month, Airbnb connects people to unique travel experiences, at any price point, in more than 26,000 cities and 192 countries. And with world-class customer service and a growing community of users, Airbnb is the easiest way for people to monetize their extra space and showcase it to an audience of millions.",
+                "employees":[],
+                "city": "San Francisco",
+                "investors": ["Youniversity Ventures"],
+                "twitter": "airbnb",
+                "website": "http://airbnb.com"
+            }
+        ]
+
+### Get One Company Info [GET /companies/{company_name}]
+
++ Parameters
+
+    + company_name (string) - Name of the company you are looking for
+    
++ Response 200 (application/json)
+
+        {
+            "name": "Airbnb",
+            "summary": "Founded in August 2008 and based in San Francisco, California, Airbnb is a trusted community marketplace for people to list, discover, and book unique spaces around the world - online or from a mobile phone. Whether an apartment for a night, a castle for a week, or a villa for month, Airbnb connects people to unique travel experiences, at any price point, in more than 26,000 cities and 192 countries. And with world-class customer service and a growing community of users, Airbnb is the easiest way for people to monetize their extra space and showcase it to an audience of millions.",
+            "employees":[],
+            "city": "San Francisco",
+            "investors": ["Youniversity Ventures"],
+            "twitter": "airbnb",
+            "website": "http://airbnb.com"
+        }
+## Cities [/cities]
+
+_name_ (string) is the name of the city
+
+_state_ (string) is the state where the city is located
+on
+_country_ (string) the country where the city is located
+
+_companies_ (array of strings) companies that are located in the city
+
+_financial_orgs_ (array of strings) financial organizations that are located in the city
+
+_people_ (array of strings) people that live in the city
+
+### List All Cities [GET /cities]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "Los Angeles",
+                "state": "CA",
+                "country": "USA",
+                "companies": ["Space Exploration Technologies"],
+                "financial_orgs": [],
+                "people": ["Elon Musk"]
+            }
+        ]
+
+### Get One City Info [GET /companies/{city_name}]
+
++ Parameters
+
+    + city_name (string) - Name of the city you are looking for
+    
++ Response 200 (application/json)
+
+        {
+            "name": "Los Angeles",
+            "state": "CA",
+            "country": "USA",
+            "companies": ["Space Exploration Technologies"],
+            "financial_orgs": [],
+            "people": ["Elon Musk"]
+        }
+
+## Financial Organizations [/financialorgs]
+
+_name_ (string) is the name of the company
+
+_summary_ (string) is a long overview of the company with its history
+
+_city_ (string) the city where the organization is located
+
+_companies_ (array of strings) companies that this financial org invested in 
+
+_twitter_ (string) twitter handle of the company twitter
+
+_website_ (string) website of the financial org
+
+
+### List All Financial Organizations [GET /financialorgs]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "Founders Fund",
+                "summary": "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
+                "city": "San Francisco",
+                "companies": ["Space Exploration Technologies"],
+                "twitter": "foundersfund",
+                "website": "http://www.foundersfund.com"
+            }
+        ]
+
+### Get One Financial Organization Info [GET /financialorgs/{financial_org_name}]
+
++ Parameters
+
+    + financial_org_name (string) - Name of the financial organization you are looking for
+    
++ Response 200 (application/json)
+
+        {
+            "name": "Founders Fund",
+            "summary": "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
+            "city": "San Francisco",
+            "companies": ["Space Exploration Technologies"],
+            "twitter": "foundersfund",
+            "website": "http://www.foundersfund.com"
+        }
+
+
+## People [/people]
+
+_name_ (string) is the name of the person
+
+_summary_ (string) is a long overview of the person
+
+_city_ (string) the city where the person is located
+
+_companies_ (array of strings) companies that this person works in
+
+_role_ (array of strings) roles the person is in the companies
+
+_twitter_ (string) twitter handle of the person
+
+
+### List All People [GET /people]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "Christopher Lukezic",
+                "summary": "Christopher joined Airbnb in September 2009 as one of the first employees of the company. He is currently the Head of Communications-EMEA for Airbnb where he oversees the brand marketing and communications strategies for the company's emerging markets. Previously he was based at the company's headquarters in San Francisco as the Director of Communications for Airbnb. During the summer of 2009 Christopher retired from a career as a world class professional runner to join Airbnb. As a runner he competed primarily in the 1500m distance where he is the 9th fastest American ever at that distance (3:33.28). He represented various brands both on and off the track, conducting numerous public speaking engagements and appearances on behalf of Reebok, First Endurance and Nissan. Christopher graduated from the Georgetown University McDonough School of Business in 2006 where he studied Operations and Information Management with an applied focus on the use of decision theory in supply chain logistics.",
+                "city": "",
+                "company": ["Airbnb"],
+                "role": ["Marketeer Extraordinaire"],
+                "twitter": "lukezic"
+            }
+        ]
+
+### Get One Person Info [GET /people/{person_name}]
+
++ Parameters
+
+    + person_name (string) - Name of the person you are looking for
+    
++ Response 200 (application/json)
+
+        {
+            "name": "Christopher Lukezic",
+            "summary": "Christopher joined Airbnb in September 2009 as one of the first employees of the company. He is currently the Head of Communications-EMEA for Airbnb where he oversees the brand marketing and communications strategies for the company's emerging markets. Previously he was based at the company's headquarters in San Francisco as the Director of Communications for Airbnb. During the summer of 2009 Christopher retired from a career as a world class professional runner to join Airbnb. As a runner he competed primarily in the 1500m distance where he is the 9th fastest American ever at that distance (3:33.28). He represented various brands both on and off the track, conducting numerous public speaking engagements and appearances on behalf of Reebok, First Endurance and Nissan. Christopher graduated from the Georgetown University McDonough School of Business in 2006 where he studied Operations and Information Management with an applied focus on the use of decision theory in supply chain logistics.",
+            "city": "",
+            "company": ["Airbnb"],
+            "role": ["Marketeer Extraordinaire"],
+            "twitter": "lukezic"
+        }

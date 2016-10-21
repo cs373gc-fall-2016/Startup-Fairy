@@ -1,0 +1,21 @@
+{
+  "name": "startup-fairy",
+  "version": "1.0.0",
+  "description": "IMD 4",
+  "dependencies": {
+    "bower": "^1.7.9"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cs373gc-fall-2016/TBD.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cs373gc-fall-2016/TBD/issues"
+  },
+  "homepage": "https://github.com/cs373gc-fall-2016/TBD#readme"
+}
