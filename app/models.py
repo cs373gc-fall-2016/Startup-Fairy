@@ -5,6 +5,7 @@ from __init__ import app
 # initialize database object
 db = SQLAlchemy(app)
 
+
 class Company(db.Model):
     __tablename__ = "company"
     # set column types
@@ -15,6 +16,7 @@ class Company(db.Model):
     financial_orgs = db.Column(db.String)
     twitter = db.Column(db.String)
     website = db.Column(db.String)
+
     # set column values in constructor
     def __init__(name, summary, people, city, financial_orgs, twitter, website):
         self.name = name
@@ -40,6 +42,7 @@ class Company(db.Model):
         dictRep['website'] = self.website
         return dictRep
 
+
 class FinancialOrg(db.Model):
     __tablename__ = "financial_org"
     # set the column types
@@ -49,6 +52,7 @@ class FinancialOrg(db.Model):
     companies = db.Column(db.String)
     twitter = db.Column(db.String)
     website = db.Column(db.String)
+
     # set the column values in constructor
     def __init__(name, summary, city, companies, twitter, website):
         self.name = name
@@ -72,6 +76,7 @@ class FinancialOrg(db.Model):
         dictRep['website'] = self.website
         return dictRep
 
+
 class Person(db.Model):
     __tablename__ = "person"
     # set the column types
@@ -81,6 +86,7 @@ class Person(db.Model):
     companies = db.Column(db.String)
     role = db.Column(db.String)
     twitter = db.Column(db.String)
+
     # set the column values in constructor
     def __init__(name, summary, city, companies, role, twitter):
         self.name = name
@@ -103,7 +109,8 @@ class Person(db.Model):
         dictRep['role'] = self.role
         dictRep['twitter'] = self.twitter
         return dictRep
-        
+
+
 class City(db.Model):
     __tablename__ = "city"
     # set the column types
@@ -113,6 +120,7 @@ class City(db.Model):
     companies = db.Column(db.String)
     financial_orgs = db.Column(db.String)
     people = db.Column(db.String)
+
     # set the column values in constructor
     def __init__(name, state, country, companies, financial_orgs, people):
         self.name = name
@@ -135,4 +143,3 @@ class City(db.Model):
         dictRep['financial_orgs'] = self.financial_orgs
         dictRep['people'] = self.people
         return dictRep
-        
