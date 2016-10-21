@@ -15,8 +15,15 @@
       {% else %}
         <h1>Model</h1>
       {% endif %}
-      {% if data.website %}<a href="{{ data.website }}">{{ data.website }}</a>{% endif %}
       {% if data.city %}<p><i>{{ data.city }}</i></p>{% endif %}
+      {% if data.website %}<a href="{{ data.website }}">{{ data.website }}</a>{% endif %}
+      {% if data.companies %}<p>Companies:</p>
+        <ul>
+        {% for company in data.companies %}
+          <li>{{ company }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
       {% if data.summary %}<p>{{ data.summary }}</p>{% endif %}
       {% if data.company %}
         <p>Companies: 
@@ -35,12 +42,18 @@
           </ul>
         </p>{% endif %}
       {% if data.investors %}
-        <p>Investors:
+        <p>Investors:</p>
         <ul>
           {% for investor in data.investors %}
             <li>{{ investor }}</li>
           {% endfor %}
-        </p>
+        </ul>
+      {% endif %}
+      {% if data.financial_orgs %}
+        <p>Investors: </p>
+          {% for investor in financial_orgs %}
+            <li>{{ investor }}</li>
+          {% endfor %}
       {% endif %}
     </div>
   {% if data.twitter %}
