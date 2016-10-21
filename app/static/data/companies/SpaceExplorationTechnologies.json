@@ -4,6 +4,6 @@
   "employees":["Elon Musk"],
   "city": "Los Angeles",
   "investors": ["Founders Fund"],
-  "twitter_username": "SpaceX",
+  "twitter": "SpaceX",
   "website": "http://www.spacex.com"
 }
