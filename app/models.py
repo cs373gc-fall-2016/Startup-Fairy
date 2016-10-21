@@ -10,18 +10,18 @@ class Company(db.Model):
     # set column types
     name = db.Column(db.String, unique=True, primary_key=True)
     summary = db.Column(db.String, unique=True)
-    employees = db.Column(db.String)
+    people = db.Column(db.String)
     city = db.Column(db.String)
-    investors = db.Column(db.String)
+    financial_orgs = db.Column(db.String)
     twitter = db.Column(db.String)
     website = db.Column(db.String)
     # set column values in constructor
-    def __init__(name, summary, employees, city, investors, twitter, website):
+    def __init__(name, summary, people, city, financial_orgs, twitter, website):
         self.name = name
         self.summary = summary
-        self.employees = employees
+        self.people = people
         self.city = city
-        self.investors = investors
+        self.financial_orgs = financial_orgs
         self.twitter = twitter
         self.website = website
 
@@ -33,9 +33,9 @@ class Company(db.Model):
         dictRep = {}
         dictRep['name'] = self.name
         dictRep['summary'] = self.summary
-        dictRep['employees'] = self.employees
+        dictRep['people'] = self.people
         dictRep['city'] = self.city
-        dictRep['investors'] = self.investors
+        dictRep['financial_orgs'] = self.financial_orgs
         dictRep['twitter'] = self.twitter
         dictRep['website'] = self.website
         return dictRep
@@ -78,15 +78,15 @@ class Person(db.Model):
     name = db.Column(db.String, unique=True, primary_key=True)
     summary = db.Column(db.String, unique=True)
     city = db.Column(db.String)
-    company = db.Column(db.String)
+    companies = db.Column(db.String)
     role = db.Column(db.String)
     twitter = db.Column(db.String)
     # set the column values in constructor
-    def __init__(name, summary, city, company, role, twitter):
+    def __init__(name, summary, city, companies, role, twitter):
         self.name = name
         self.summary = summary
         self.city = city
-        self.company = company
+        self.companies = companies
         self.role = role
         self.twitter = twitter
 
@@ -99,7 +99,7 @@ class Person(db.Model):
         dictRep['name'] = self.name
         dictRep['summary'] = self.summary
         dictRep['city'] = self.city
-        dictRep['company'] = self.company
+        dictRep['companies'] = self.companies
         dictRep['role'] = self.role
         dictRep['twitter'] = self.twitter
         return dictRep
