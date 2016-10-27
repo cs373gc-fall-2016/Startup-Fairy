@@ -43,10 +43,10 @@
                 {% set navigation_bar = [
                     ('/', 'index', 'Home'),
                     ('/about', 'about', 'About'),
-                    ('/cities', 'cities', 'Cities'),
                     ('/companies', 'companies', 'Companies'),
-                    ('/financialorgs', 'financialorgs', 'Financial Organizations'),
-                    ('/people', 'people', 'People')
+                    ('/financialorgs', 'financialorgs', 'Organizations'),
+                    ('/people', 'people', 'People'),
+                    ('/cities', 'cities', 'Cities')
                 ] -%}
                 {% set active_page = active_page|default('index') -%}
                 {% for href, id, caption in navigation_bar %}
