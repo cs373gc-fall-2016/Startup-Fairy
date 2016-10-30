@@ -11,12 +11,15 @@ You'll need
 
 Run `docker-compose up -d`. 
 
+If you need to set up a password for postgres, make sure you `export POSTGRES_PASSWORD=<your password>`.
+
+
 ### Development
-You'll see the app at `localhost`
+You'll see the app at `localhost`. There is parity between the content on your local machine and the content inside the docker container.
 
 ### Deployment
 
-In order to run all the nifty tools inside . With the container running, run `docker exec -it startupfairy_app_1`
+Same steps as development.
 
 ### Models
 * Company
