@@ -8,6 +8,11 @@
   object-fit: cover;
 }
 
+.tool-logo {
+  height:100px;
+  width: 100px;
+}
+
 .navbar-default {
   background-color: #e7e7e7;
 }
@@ -93,6 +98,24 @@ hr.divider{
   font-weight: 800;
 }
 
+a:hover {
+  color: #289eff;
+  text-decoration: none;
+}
+
+a {
+  color: #000000;
+}
+
+
 .altback {
   background-color: #e8e8e8;
+}
+
+.altback h4 {
+  text-align: center;
+}
+
+.altback2 {
+  background-color: #289eff;
 }

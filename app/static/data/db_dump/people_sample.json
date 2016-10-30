@@ -1,0 +1,52 @@
+[
+  {
+    "city": null,
+    "name": "Ben Elowitz",
+    "twitter": "elowitz",
+    "companies": [
+      {
+        "role": "Co-Founder\/CEO\/Board of Directors",
+        "name": "Wetpaint",
+        "id": "c:1"
+      },
+      {
+        "role": "Co-founder & VP",
+        "name": "Blue Nile",
+        "id": "c:4993"
+      },
+      {
+        "role": "Business Development",
+        "name": "Fatbrain.com",
+        "id": "c:233024"
+      },
+      {
+        "role": "Limited Partner",
+        "name": "Founder's Co-op",
+        "id": "f:1017"
+      },
+      {
+        "role": "Consultant",
+        "name": "Bain & Company",
+        "id": "c:18661"
+      },
+      {
+        "role": "Consultant",
+        "name": "eHarmony",
+        "id": "c:537"
+      },
+      {
+        "role": "Consultant",
+        "name": "Betfair",
+        "id": "c:2361"
+      },
+      {
+        "role": "Consultant",
+        "name": "Flutter.com",
+        "id": "c:268504"
+      }
+    ],
+    "summary": "Ben Elowitz is co-founder and CEO of [Wetpaint](http:\/\/www.wetpaint-inc.com) a technology platform company that uses its expertise in social media to build and monetize audiences.  Wetpaint works with major media companies to implement the Wetpaint Social Distribution System, which optimizes content, timing and packaging of content to drive massive reach, engagement and monetizeable actions. Wetpaint has more than 15 million unique visitors monthly on its own [_Wetpaint Entertainment_](http:\/\/www.wetpaint.com) media property.\r\n \r\nBen is also a thought leader on the subject of next-generation digital media publishing and the author of Digital Quarters, www.digitalquarters.net, a blog about the future of digital media and the steps the publishing industry must take to become profitable. In addition,  he writes Media Success, a bold and forthright newsletter for digital media thought leaders. His work has been featured in Fortune, Forbes, TechCrunch, All Things D, The Huffington Post, Business Insider, paidContent, and CNBC.com, among others. In addition, he has presented at Web 2.0 Expo, Seattle Interactive, WOMMA, Montgomery Technology Conference, SxSW Interactive, Adweek NexTech, and Fortune Brainstorm TECH.  \r\n\r\nBen offers fresh, thoughtful and often provocative insights on the digital publishing industry from an executive and consumer perspective, covering a range of sectors and industries including business, media, technology, marketing, and advertising.  He provides well-researched analysis of emerging and long-term trends, as well as timely commentary on breaking news. \r\n\r\nBen is also well-known as co-founder and former vice-president of Blue Nile Inc., the leading online retailer of certified diamonds and fine jewelry. He oversaw the company's front-end operations, which included product management, technology, and creative services from 1999 to 2001. Blue Nile, a publicly traded company (NILE?), is widely recognized as the first and most successful online luxury goods retail site.\r\n\r\nPrior to founding Wetpaint, Ben worked at Precor USA Inc., one of the country's most successful fitness equipment brands. From 2002 to 2005, he helped Precor in its transition to a customer-driven, growth-oriented company. At Precor,  Ben led product management, marketing, and new product development efforts for commercial equipment lines.\r\n\r\nIn 2002, Ben consulted for eHarmony.com, a web service that matches marriage-minded singles. While there, he re-engineered the company's positioning and website to improve branding, messaging, and conversion.\r\n\r\nPrior to Blue Nile, Ben was an early employee and senior leader at the online professional, technical, and business bookstore Fatbrain.com, which was acquired by Barnes & Noble. As the Director of Business Development, Ben looked after product management, marketing programs, and business development from 1996 to 1999. He created the company's strategic partners and corporate bookstore programs which were cornerstones of the company's business-to-business revenue line.\r\n\r\nBen holds a B.S. in Electrical Engineering and Computer Science, and a B.A. in Applied Mathematics from the University of California, Berkeley.  After graduation, Ben worked at the global business consulting firm Bain & Company. As a management consultant, he specialized in providing business strategies to the high-tech industry.",
+    "logo_url": "http:\/\/s3.amazonaws.com\/crunchbase_prod_assets\/assets\/images\/resized\/0001\/8470\/18470v3-max-250x250.jpg",
+    "id": "p:2"
+  }
+]
