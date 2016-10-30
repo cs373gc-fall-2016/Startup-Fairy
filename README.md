@@ -5,22 +5,18 @@ IMD 4
 [Travis](https://travis-ci.org/cs373gc-fall-2016/Startup-Fairy)
 
 ### Setup 
-Pretty much follows [this](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) tutorial.
+You'll need
+- [Docker]()
+- [Docker-compose](https://docs.docker.com/compose/install/)
 
-1. `pip install virtualenv` - install virtualenv
-2. `virtualenv flaskapp` - create your virtualenv
-3. `source flaskapp/bin/activate` - you are now inside your virtualenv
-4. `pip install flask flask-login flask-sqlalchemy sqlalchemy-migrate flask-whooshalchemy flask-wtf flask-babel guess_language flipflop coverage pylint autopep8` - installs stuff needed to run flask
-5. `npm install`
-6. `bower install`
+Run `docker-compose up -d`. 
 
 ### Development
-Run `python3 run.py`, you will be able to see the site at `localhost:80`.
+You'll see the app at `localhost`
 
 ### Deployment
-In order to avoid a socket error in development, we will use environment variables to tell Flask we are on a production environment and therefore the correct port to run on.
 
-`export PRODUCTION=True`
+In order to run all the nifty tools inside . With the container running, run `docker exec -it startupfairy_app_1`
 
 ### Models
 * Company
