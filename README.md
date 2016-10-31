@@ -6,7 +6,7 @@ IMD 4
 
 ### Setup 
 You'll need
-- [Docker]()
+- [Docker](https://docs.docker.com/engine/installation/mac/)
 - [Docker-compose](https://docs.docker.com/compose/install/)
 
 Run `docker-compose up -d`. 
