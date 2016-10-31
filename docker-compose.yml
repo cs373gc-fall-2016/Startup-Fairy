@@ -1,9 +1,11 @@
 postgres:
+  container_name: postgres
   image: postgres
   environment:
     - POSTGRES_PASSWORD="${POSTGRES_PASSWORD}"
 
 app:
+  container_name: startupfairy
   image: addykim/startupfairy
   command: python3 /home/run.py
   volumes: 
