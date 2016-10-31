@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from __init__ import app
+from app.__init__ import app
 
 # initialize database object
 db = SQLAlchemy(app)
@@ -18,7 +18,7 @@ class Company(db.Model):
     website = db.Column(db.String)
 
     # set column values in constructor
-    def __init__(name, summary, people, city, financial_orgs, twitter, website):
+    def __init__(self, name, summary, people, city, financial_orgs, twitter, website):
         self.name = name
         self.summary = summary
         self.people = people
@@ -32,15 +32,15 @@ class Company(db.Model):
 
     def dictionary(self):
         """Returns a dictionary representation of the class data"""
-        dictRep = {}
-        dictRep['name'] = self.name
-        dictRep['summary'] = self.summary
-        dictRep['people'] = self.people
-        dictRep['city'] = self.city
-        dictRep['financial_orgs'] = self.financial_orgs
-        dictRep['twitter'] = self.twitter
-        dictRep['website'] = self.website
-        return dictRep
+        dict_rep = {}
+        dict_rep['name'] = self.name
+        dict_rep['summary'] = self.summary
+        dict_rep['people'] = self.people
+        dict_rep['city'] = self.city
+        dict_rep['financial_orgs'] = self.financial_orgs
+        dict_rep['twitter'] = self.twitter
+        dict_rep['website'] = self.website
+        return dict_rep
 
 
 class FinancialOrg(db.Model):
@@ -54,7 +54,7 @@ class FinancialOrg(db.Model):
     website = db.Column(db.String)
 
     # set the column values in constructor
-    def __init__(name, summary, city, companies, twitter, website):
+    def __init__(self, name, summary, city, companies, twitter, website):
         self.name = name
         self.summary = summary
         self.city = city
@@ -67,14 +67,14 @@ class FinancialOrg(db.Model):
 
     def dictionary(self):
         """Returns a dictionary representation of the class data"""
-        dictRep = {}
-        dictRep['name'] = self.name
-        dictRep['summary'] = self.summary
-        dictRep['city'] = self.city
-        dictRep['companies'] = self.companies
-        dictRep['twitter'] = self.twitter
-        dictRep['website'] = self.website
-        return dictRep
+        dict_rep = {}
+        dict_rep['name'] = self.name
+        dict_rep['summary'] = self.summary
+        dict_rep['city'] = self.city
+        dict_rep['companies'] = self.companies
+        dict_rep['twitter'] = self.twitter
+        dict_rep['website'] = self.website
+        return dict_rep
 
 
 class Person(db.Model):
@@ -88,7 +88,7 @@ class Person(db.Model):
     twitter = db.Column(db.String)
 
     # set the column values in constructor
-    def __init__(name, summary, city, companies, role, twitter):
+    def __init__(self, name, summary, city, companies, role, twitter):
         self.name = name
         self.summary = summary
         self.city = city
@@ -101,14 +101,14 @@ class Person(db.Model):
 
     def dictionary(self):
         """Returns a dictionary representation of the class data"""
-        dictRep = {}
-        dictRep['name'] = self.name
-        dictRep['summary'] = self.summary
-        dictRep['city'] = self.city
-        dictRep['companies'] = self.companies
-        dictRep['role'] = self.role
-        dictRep['twitter'] = self.twitter
-        return dictRep
+        dict_rep = {}
+        dict_rep['name'] = self.name
+        dict_rep['summary'] = self.summary
+        dict_rep['city'] = self.city
+        dict_rep['companies'] = self.companies
+        dict_rep['role'] = self.role
+        dict_rep['twitter'] = self.twitter
+        return dict_rep
 
 
 class City(db.Model):
@@ -122,7 +122,7 @@ class City(db.Model):
     people = db.Column(db.String)
 
     # set the column values in constructor
-    def __init__(name, state, country, companies, financial_orgs, people):
+    def __init__(self, name, state, country, companies, financial_orgs, people):
         self.name = name
         self.state = state
         self.country = country
@@ -135,11 +135,11 @@ class City(db.Model):
 
     def dictionary(self):
         """Returns a dictionary representation of the class data"""
-        dictRep = {}
-        dictRep['name'] = self.name
-        dictRep['state'] = self.state
-        dictRep['country'] = self.country
-        dictRep['companies'] = self.companies
-        dictRep['financial_orgs'] = self.financial_orgs
-        dictRep['people'] = self.people
-        return dictRep
+        dict_rep = {}
+        dict_rep['name'] = self.name
+        dict_rep['state'] = self.state
+        dict_rep['country'] = self.country
+        dict_rep['companies'] = self.companies
+        dict_rep['financial_orgs'] = self.financial_orgs
+        dict_rep['people'] = self.people
+        return dict_rep
