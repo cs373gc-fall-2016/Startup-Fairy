@@ -17,6 +17,8 @@ If you need to set up a password for postgres, make sure you `export POSTGRES_PA
 ### Development
 You'll see the app at `localhost`. There is parity between the content on your local machine and the content inside the docker container.
 
+If you shut down your computer/Docker machine, the next time you boot up docker, you will need to run `docker-compose start` in order to start up all the services (postgres and app) again.
+
 ### Deployment
 
 Same steps as development.
