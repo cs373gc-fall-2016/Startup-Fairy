@@ -3,7 +3,7 @@
 # -------
 
 from unittest import main, TestCase
-from app.models import Company, FinancialOrg, Person, City
+from models import Company, FinancialOrg, Person, City
 
 from flask_sqlalchemy import SQLAlchemy
 from __init__ import app
