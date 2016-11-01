@@ -3,10 +3,10 @@
 # -------
 
 from unittest import main, TestCase
+from app import app
 from models import Company, FinancialOrg, Person, City
 
 from flask_sqlalchemy import SQLAlchemy
-from __init__ import app
 
 # initialize database object
 db = SQLAlchemy(app)
@@ -21,10 +21,10 @@ class TestCompany(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUp():
+    def setUp(self):
         db.create_all()
 
-    def tearDown():
+    def tearDown(self):
         db.session.close()
         db.drop_all()
 
@@ -60,10 +60,10 @@ class TestFinancialOrg(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUp():
+    def setUp(self):
         db.create_all()
 
-    def tearDown():
+    def tearDown(self):
         db.session.close()
         db.drop_all()
 
@@ -101,10 +101,10 @@ class TestPerson(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUp():
+    def setUp(self):
         db.create_all()
 
-    def tearDown():
+    def tearDown(self):
         db.session.close()
         db.drop_all()
 
@@ -140,10 +140,10 @@ class TestCity(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUp():
+    def setUp(self):
         db.create_all()
 
-    def tearDown():
+    def tearDown(self):
         db.session.close()
         db.drop_all()
 
@@ -177,10 +177,10 @@ class TestAbout(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUp():
+    def setUp(self):
         db.create_all()
 
-    def tearDown():
+    def tearDown(self):
         db.session.close()
         db.drop_all()
 
