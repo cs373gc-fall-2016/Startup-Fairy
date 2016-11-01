@@ -7,23 +7,23 @@ db = SQLAlchemy(app)
 
 # helper tables for many-to-many relationships
 companies = db.Table('companies',
-    db.Column('person_id', db.String, db.ForeignKey('company.id')),
-    db.Column('company_id', db.String, db.ForeignKey('person.id'))
+    db.Column('person_id', db.String, db.ForeignKey('person.person_id')),
+    db.Column('company_id', db.String, db.ForeignKey('company.company_id'))
 )
 
 financial_orgs = db.Table('financial_orgs',
-    db.Column('company_id', db.String, db.ForeignKey('financial_org_id')),
-    db.Column('financial_org_id', db.String, db.ForeignKey('company.id'))
+    db.Column('company_id', db.String, db.ForeignKey('company.company_id')),
+    db.Column('financial_org_id', db.String, db.ForeignKey('financial_org.financial_org_id'))
 )
 
 class Company(db.Model):
     __tablename__ = "company"
     # set column types
-    id = db.Column(db.String, primary_key=True)
+    company_id = db.Column(db.String, primary_key=True)
     name = db.Column(db.String, unique=True)
     summary = db.Column(db.String, unique=True)
     #people = db.Column(db.String)
-    city_id = db.Column(db.String, db.ForeignKey('city.id'))
+    city_id = db.Column(db.String, db.ForeignKey('city.city_id'))
     financial_orgs = db.relationship('FinancialOrg', secondary=financial_orgs, backref=db.backref('companies', lazy='dynamic'))
     twitter = db.Column(db.String)
     website = db.Column(db.String)
@@ -47,7 +47,7 @@ class Company(db.Model):
     def dictionary(self):
         """Returns a dictionary representation of the class data"""
         dict_rep = {}
-        dict_rep['id'] = self.id
+        dict_rep['company_id'] = self.company_id
         dict_rep['name'] = self.name
         dict_rep['summary'] = self.summary
         #dict_rep['people'] = self.people
@@ -62,10 +62,10 @@ class Company(db.Model):
 class FinancialOrg(db.Model):
     __tablename__ = "financial_org"
     # set the column types
-    id = db.Column(db.String, primary_key=True)
+    financial_org_id = db.Column(db.String, primary_key=True)
     name = db.Column(db.String, unique=True)
     summary = db.Column(db.String, unique=True)
-    city_id = db.Column(db.String, db.ForeignKey('city.id'))
+    city_id = db.Column(db.String, db.ForeignKey('city.city_id'))
     #companies = db.Column(db.String)
     twitter = db.Column(db.String)
     website = db.Column(db.String)
@@ -88,7 +88,7 @@ class FinancialOrg(db.Model):
     def dictionary(self):
         """Returns a dictionary representation of the class data"""
         dict_rep = {}
-        dict_rep['id'] = self.id
+        dict_rep['financial_org_id'] = self.financial_org_id
         dict_rep['name'] = self.name
         dict_rep['summary'] = self.summary
         #dict_rep['city'] = self.city
@@ -102,10 +102,10 @@ class FinancialOrg(db.Model):
 class Person(db.Model):
     __tablename__ = "person"
     # set the column types
-    id = db.Column(db.String, primary_key=True)
+    person_id = db.Column(db.String, primary_key=True)
     name = db.Column(db.String, unique=True)
     summary = db.Column(db.String, unique=True)
-    city_id = db.Column(db.String, db.ForeignKey('city.id'))
+    city_id = db.Column(db.String, db.ForeignKey('city.city_id'))
     companies = db.relationship('Company', secondary=companies, backref=db.backref('people', lazy='dynamic'))
     role = db.Column(db.String) # a person has a different role for each company; not sure how to implement this yet
     twitter = db.Column(db.String)
@@ -127,7 +127,7 @@ class Person(db.Model):
     def dictionary(self):
         """Returns a dictionary representation of the class data"""
         dict_rep = {}
-        dict_rep['id'] = self.id
+        dict_rep['person_id'] = self.person_id
         dict_rep['name'] = self.name
         dict_rep['summary'] = self.summary
         #dict_rep['city'] = self.city
@@ -141,7 +141,7 @@ class Person(db.Model):
 class City(db.Model):
     __tablename__ = "city"
     # set the column types
-    id = db.Column(db.String, primary_key=True)
+    city_id = db.Column(db.String, primary_key=True)
     name = db.Column(db.String, unique=True)
     state = db.Column(db.String)
     region = db.Column(db.String)
@@ -164,7 +164,7 @@ class City(db.Model):
     def dictionary(self):
         """Returns a dictionary representation of the class data"""
         dict_rep = {}
-        dict_rep['id'] = self.id
+        dict_rep['city_id'] = self.city_id
         dict_rep['name'] = self.name
         dict_rep['state'] = self.state
         dict_rep['region'] = self.region
