@@ -12,7 +12,7 @@ You'll need
 1. Run `docker-compose up -d`. 
 2. Do `docker-compose ps` to see all your availble containers and the status of them.
 3. Once `startupfairy` the app is up and running, run `docker exec -it startupfairy bash`. You'll be inside the `startupfairy` container.
-4. Run `bower install`
+4. Run `bower install --allow-root`
 
 You will only need to do steps 3 & 4 if you are creating the containers for the first time or if you're missing the `app/static/bower_components` directory.
 
