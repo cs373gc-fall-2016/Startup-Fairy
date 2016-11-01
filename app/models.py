@@ -31,7 +31,8 @@ class Company(db.Model):
 
     # set column values in constructor
     #def __init__(self, name, summary, people, city, financial_orgs, twitter, website, logo_url):
-    def __init__(self, name, summary, financial_orgs, twitter, website, logo_url):
+    def __init__(self, company_id, name, summary, financial_orgs, twitter, website, logo_url):
+        self.company_id = company_id
         self.name = name
         self.summary = summary
         #self.people = people
@@ -113,7 +114,8 @@ class Person(db.Model):
     logo_url = db.Column(db.String)
 
     # set the column values in constructor
-    def __init__(self, name, summary, companies, role, twitter, logo_url):
+    def __init__(self, person_id, name, summary, companies, role, twitter, logo_url):
+        self.person_id = person_id
         self.name = name
         self.summary = summary
         #self.city = city
@@ -151,7 +153,8 @@ class City(db.Model):
     people = db.relationship('Person', backref='city', lazy='dynamic')
 
     # set the column values in constructor
-    def __init__(self, name, state, region, companies, financial_orgs, people):
+    def __init__(self, city_id, name, state, region, companies, financial_orgs, people):
+        self.city_id = city_id
         self.name = name
         self.state = state
         self.region = region
