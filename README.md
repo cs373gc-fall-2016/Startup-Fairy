@@ -9,10 +9,14 @@ You'll need
 - [Docker](https://docs.docker.com/engine/installation/mac/)
 - [Docker-compose](https://docs.docker.com/compose/install/)
 
-Run `docker-compose up -d`. 
+1. Run `docker-compose up -d`. 
+2. Do `docker-compose ps` to see all your availble containers and the status of them.
+3. Once `startupfairy` the app is up and running, run `docker exec -it startupfairy bash`. You'll be inside the `startupfairy` container.
+4. Run `bower install --allow-root`
+
+You will only need to do steps 3 & 4 if you are creating the containers for the first time or if you're missing the `app/static/bower_components` directory.
 
 If you need to set up a password for postgres, make sure you `export POSTGRES_PASSWORD=<your password>`.
-
 
 ### Development
 You'll see the app at `localhost`. There is parity between the content on your local machine and the content inside the docker container.

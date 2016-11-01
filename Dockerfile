@@ -1,4 +1,6 @@
 FROM gpdowning/python
+MAINTAINER Addy Kim <addyskim@gmail.com>
+
 
 # Everything up to WORKDIR is directly from NodeJS 
 # gpg keys listed at https://github.com/nodejs/node
