@@ -36,8 +36,8 @@ class TestCompany(TestCase):
         """
         Test retrieval of a single company entity
         """
-        example = Company("Airbnb",
-                          "Founded in August 2008 and based in San Francisco, California, Airbnb is a trusted community marketplace for people to list, discover, and book unique spaces around the world - online or from a mobile phone. Whether an apartment for a night, a castle for a week, or a villa for month, Airbnb connects people to unique travel experiences, at any price point, in more than 26,000 cities and 192 countries. And with world-class customer service and a growing community of users, Airbnb is the easiest way for people to monetize their extra space and showcase it to an audience of millions.",
+        example = Company("Wetpaint",
+                          "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
                           [], "San Francisco", ["Youniversity Ventures"], "airbnb", "http://airbnb.com")
 
         self.assertEqual(example.city, "San Francisco")
@@ -155,11 +155,11 @@ class TestCity(TestCase):
         """
         Test retrival of a single city entity
         """
-        example = City("Los Angeles", "CA", "USA", [
+        example = City("Los Angeles", "CA", "Los Angeles", [
                        "Space Exploration Technologies"], [], ["Elon Musk"])
 
         self.assertEqual(example.state, "CA")
-        self.assertEqual(example.country, "USA")
+        self.assertEqual(example.region, "Los Angeles")
 
         db.session.add(example)
         db.session.commit()
@@ -193,10 +193,10 @@ class TestAbout(TestCase):
         """
         Test about page
         """
-        example = City("Los Angeles", "CA", "USA", ["Space Exploration Technologies"], [], ["Elon Musk"])
+        example = City("Los Angeles", "CA", "Los Angeles", ["Space Exploration Technologies"], [], ["Elon Musk"])
 
         self.assertEqual(example.state, "CA")
-        self.assertEqual(example.country, "USA")
+        self.assertEqual(example.region, "Los Angeles")
 
         db.session.add(example)
         db.session.commit()

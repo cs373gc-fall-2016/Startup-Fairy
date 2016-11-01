@@ -73,7 +73,8 @@ class FinancialOrg(db.Model):
 
     # set the column values in constructor
     #def __init__(self, name, summary, city, companies, twitter, website, logo_url):
-    def __init__(self, name, summary, twitter, website, logo_url):
+    def __init__(self, financial_org_id, name, summary, twitter, website, logo_url):
+        self.financial_org_id = financial_org_id
         self.name = name
         self.summary = summary
         #self.city = city
