@@ -178,33 +178,39 @@ class TestAbout(TestCase):
     # ------------------
 
     def setUp(self):
-        db.create_all()
+        """
+        About tests have no db component
+        """
+
 
     def tearDown(self):
-        db.session.close()
-        db.drop_all()
+
 
     # ----
     # About
     # ----
 
-    def test_about(self):
+    def test_about_from_index(self):
+        """
+        Test traveling index to about page
+        """
+        with app.test_request_context('/'):
+        assert flask.request.path == '/'
+        # TODO assert some thigns on index
+        self.assertEqual()
+
+    def test_about_from_category(self):
+        """
+        Test traveling from a category page to about page
+        """
         # TODO
+
+    def test_about_content(self):
         """
-        Test about page
+        Test for specific content of about page
         """
-        example = City("Los Angeles", "CA", "Los Angeles", ["Space Exploration Technologies"], [], ["Elon Musk"])
-
-        self.assertEqual(example.state, "CA")
-        self.assertEqual(example.region, "Los Angeles")
-
-        db.session.add(example)
-        db.session.commit()
-        cities = City.query.all()
-
-        self.assertEqual(len(cities), 1)
-        self.assertEqual(example.dictionary(), cities[1].dictionary)
-
+        # TODO
+        # section with id "team" contain 7 h3 tags
 
 # ----
 # main
