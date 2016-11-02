@@ -4,7 +4,7 @@ Serves all the routes for the application
 import json
 from os import listdir
 from flask import render_template
-from app.app import app
+from __init__ import app
 
 ALT_NAMES = {
     'financialorgs': 'Financial Organizations',
