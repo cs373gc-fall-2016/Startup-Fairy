@@ -4,7 +4,7 @@ postgres:
   environment:
     - POSTGRES_PASSWORD="${POSTGRES_PASSWORD}"
 
-app:
+startupfairy:
   container_name: startupfairy
   image: addykim/startupfairy
   command: python3 /home/run.py
