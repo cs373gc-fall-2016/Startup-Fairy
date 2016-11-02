@@ -5,38 +5,27 @@ from app import app
 # initialize database object
 db = SQLAlchemy(app)
 
-# helper tables for many-to-many relationships
-companies = db.Table('companies',
-    db.Column('person_id', db.String, db.ForeignKey('person.person_id')),
-    db.Column('company_id', db.String, db.ForeignKey('company.company_id'))
-)
-
-financial_orgs = db.Table('financial_orgs',
-    db.Column('company_id', db.String, db.ForeignKey('company.company_id')),
-    db.Column('financial_org_id', db.String, db.ForeignKey('financial_org.financial_org_id'))
-)
-
 class Company(db.Model):
     __tablename__ = "company"
     # set column types
     company_id = db.Column(db.String, primary_key=True)
     name = db.Column(db.String, unique=True)
     summary = db.Column(db.String, unique=True)
-    #people = db.Column(db.String)
-    city_id = db.Column(db.String, db.ForeignKey('city.city_id'))
-    financial_orgs = db.relationship('FinancialOrg', secondary=financial_orgs, backref=db.backref('companies', lazy='dynamic'))
+    people = db.Column(db.String)
+    city = db.Column(db.String)
+    financial_orgs = db.Column(db.String)
     twitter = db.Column(db.String)
     website = db.Column(db.String)
     logo_url = db.Column(db.String)
 
     # set column values in constructor
     #def __init__(self, name, summary, people, city, financial_orgs, twitter, website, logo_url):
-    def __init__(self, company_id, name, summary, financial_orgs, twitter, website, logo_url):
+    def __init__(self, company_id, name, summary, people, city, financial_orgs, twitter, website, logo_url):
         self.company_id = company_id
         self.name = name
         self.summary = summary
-        #self.people = people
-        #self.city = city
+        self.people = people
+        self.city = city
         self.financial_orgs = financial_orgs
         self.twitter = twitter
         self.website = website
@@ -51,8 +40,8 @@ class Company(db.Model):
         dict_rep['company_id'] = self.company_id
         dict_rep['name'] = self.name
         dict_rep['summary'] = self.summary
-        #dict_rep['people'] = self.people
-        #dict_rep['city'] = self.city
+        dict_rep['people'] = self.people
+        dict_rep['city'] = self.city
         dict_rep['financial_orgs'] = self.financial_orgs
         dict_rep['twitter'] = self.twitter
         dict_rep['website'] = self.website
@@ -66,20 +55,20 @@ class FinancialOrg(db.Model):
     financial_org_id = db.Column(db.String, primary_key=True)
     name = db.Column(db.String, unique=True)
     summary = db.Column(db.String, unique=True)
-    city_id = db.Column(db.String, db.ForeignKey('city.city_id'))
-    #companies = db.Column(db.String)
+    city = db.Column(db.String)
+    companies = db.Column(db.String)
     twitter = db.Column(db.String)
     website = db.Column(db.String)
     logo_url = db.Column(db.String)
 
     # set the column values in constructor
     #def __init__(self, name, summary, city, companies, twitter, website, logo_url):
-    def __init__(self, financial_org_id, name, summary, twitter, website, logo_url):
+    def __init__(self, financial_org_id, name, summary, city, companies, twitter, website, logo_url):
         self.financial_org_id = financial_org_id
         self.name = name
         self.summary = summary
-        #self.city = city
-        #self.companies = companies
+        self.city = city
+        self.companies = companies
         self.twitter = twitter
         self.website = website
         self.logo_url = logo_url
@@ -93,8 +82,8 @@ class FinancialOrg(db.Model):
         dict_rep['financial_org_id'] = self.financial_org_id
         dict_rep['name'] = self.name
         dict_rep['summary'] = self.summary
-        #dict_rep['city'] = self.city
-        #dict_rep['companies'] = self.companies
+        dict_rep['city'] = self.city
+        dict_rep['companies'] = self.companies
         dict_rep['twitter'] = self.twitter
         dict_rep['website'] = self.website
         dict_rep['logo_url'] = self.logo_url
@@ -107,18 +96,18 @@ class Person(db.Model):
     person_id = db.Column(db.String, primary_key=True)
     name = db.Column(db.String, unique=True)
     summary = db.Column(db.String, unique=True)
-    city_id = db.Column(db.String, db.ForeignKey('city.city_id'))
-    companies = db.relationship('Company', secondary=companies, backref=db.backref('people', lazy='dynamic'))
-    role = db.Column(db.String) # a person has a different role for each company; not sure how to implement this yet
+    city = db.Column(db.String)
+    companies = db.Column(db.String)
+    role = db.Column(db.String)
     twitter = db.Column(db.String)
     logo_url = db.Column(db.String)
 
     # set the column values in constructor
-    def __init__(self, person_id, name, summary, companies, role, twitter, logo_url):
+    def __init__(self, person_id, name, summary, city, companies, role, twitter, logo_url):
         self.person_id = person_id
         self.name = name
         self.summary = summary
-        #self.city = city
+        self.city = city
         self.companies = companies
         self.role = role
         self.twitter = twitter
@@ -133,7 +122,7 @@ class Person(db.Model):
         dict_rep['person_id'] = self.person_id
         dict_rep['name'] = self.name
         dict_rep['summary'] = self.summary
-        #dict_rep['city'] = self.city
+        dict_rep['city'] = self.city
         dict_rep['companies'] = self.companies
         dict_rep['role'] = self.role
         dict_rep['twitter'] = self.twitter
@@ -148,9 +137,9 @@ class City(db.Model):
     name = db.Column(db.String, unique=True)
     state = db.Column(db.String)
     region = db.Column(db.String)
-    companies = db.relationship('Company', backref='city', lazy='dynamic')
-    financial_orgs = db.relationship('FinancialOrg', backref='city', lazy='dynamic')
-    people = db.relationship('Person', backref='city', lazy='dynamic')
+    companies = db.Column(db.String)
+    financial_orgs = db.Column(db.String)
+    people = db.Column(db.String)
 
     # set the column values in constructor
     def __init__(self, city_id, name, state, region, companies, financial_orgs, people):
