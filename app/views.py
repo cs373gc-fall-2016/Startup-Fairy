@@ -32,7 +32,7 @@ def about():
     return render_template('about.html', title='About')
 
 
-@app.route('/<category>')
+@app.route('/<category>', methods=['GET'])
 def category(app_category):
     """Render table template"""
     filepath = "static/data/%s" % (app_category)
@@ -46,7 +46,7 @@ def category(app_category):
                            title=category, data=data)
 
 
-@app.route('/<category>/<entity>')
+@app.route('/<category>/<entity>', methods=['GET'])
 def details(app_category, entity):
     """
     Serve the an entity's page
