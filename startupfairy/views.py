@@ -64,21 +64,21 @@ def details(app_category, entity):
 @public_views.route('/api/people', methods=['GET'])
 def api_people():
     data = db.session.query(Person).all()
-    return json.dumps(data)
+    return json.dumps(list(map(lambda d: d.dictionary(), data)))
 
 @public_views.route('/api/companies', methods=['GET'])
 def api_companies():
     data = db.session.query(Company).all()
-    return json.dumps(data)
+    return json.dumps(list(map(lambda d: d.dictionary(), data)))
 
 
 @public_views.route('/api/cities', methods=['GET'])
 def api_cities():
     data = db.session.query(City).all()
-    return json.dumps(data)
+    return json.dumps(list(map(lambda d: d.dictionary(), data)))
 
 
 @public_views.route('/api/financialorgs', methods=['GET'])
 def api_financialorgs():
     data = db.session.query(FinancialOrg).all()
-    return json.dumps(data)
+    return json.dumps(list(map(lambda d: d.dictionary(), data)))
