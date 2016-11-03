@@ -1,7 +1,6 @@
 .DEFAULT_GOAL := test
 
 #TODO uncoment file checks
-#startupfairy/tests.out		\
 #IDB2.pdf					\
 
 FILES :=						\
@@ -9,6 +8,7 @@ FILES :=						\
 	IDB2.log					\
 	startupfairy/models.py		\
 	startupfairy/tests.py 		\
+	startupfairy/tests.out		\
 	.gitignore					\
 	.travis.yml					\
 	makefile					\
@@ -94,17 +94,17 @@ status:
 	git status
 
 # TODO test output? coverage??
-#$(COVERAGE) run    --branch test.py >  test.tmp 2>&1
-#$(COVERAGE) report -m                      >> test.tmp
-#cat test.tmp
-TestApp:
-	$(PYTHON) startupfairy/tests.py
+TestApp:	startupfairy/tests.py
+	#$(PYTHON) startupfairy/tests.py
+	$(COVERAGE) run    --branch startupfairy/tests.py >  startupfairy/tests.out 2>&1
+	$(COVERAGE) report -m                      >> startupfairy/tests.out
+	cat startupfairy/tests.out
 
 IDB2.log:
 	git log > IDB2.log
 
 IDB2.html:
-	PYDOC startupfairy/views.py >> IDB2.html
+	$(PYDOC) startupfairy/views.py >> IDB2.html
 
 #__init__.py removed?
 pylint: .pylintrc 
