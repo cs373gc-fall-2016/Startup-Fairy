@@ -1,11 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from run import app
-
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@localhost/startupfairydb3"
+# from run import app
 
 # initialize database object
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 
 
 class Company(db.Model):

@@ -5,6 +5,8 @@ import json
 from os import listdir
 from flask import render_template
 from flask import render_template, Blueprint
+from flask import request
+from models import *
 
 public_views = Blueprint('public_views', __name__)
 
@@ -57,3 +59,26 @@ def details(app_category, entity):
     # with open(filename, 'r') as json_data:
     # data = json.load(json_data)
     return render_template('details.html', data=data, category=app_category)
+
+
+@public_views.route('/api/people', methods=['GET'])
+def api_people():
+    data = db.session.query(Person).all()
+    return json.dumps(list(map(lambda d: d.dictionary(), data)))
+
+@public_views.route('/api/companies', methods=['GET'])
+def api_companies():
+    data = db.session.query(Company).all()
+    return json.dumps(list(map(lambda d: d.dictionary(), data)))
+
+
+@public_views.route('/api/cities', methods=['GET'])
+def api_cities():
+    data = db.session.query(City).all()
+    return json.dumps(list(map(lambda d: d.dictionary(), data)))
+
+
+@public_views.route('/api/financialorgs', methods=['GET'])
+def api_financialorgs():
+    data = db.session.query(FinancialOrg).all()
+    return json.dumps(list(map(lambda d: d.dictionary(), data)))
