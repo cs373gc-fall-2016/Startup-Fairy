@@ -1,3 +1,4 @@
+requests
 httpretty
 flask
 flask-login
@@ -11,3 +12,4 @@ flipflop
 coverage
 pylint
 autopep8
+psycopg2
