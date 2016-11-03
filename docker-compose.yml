@@ -7,7 +7,7 @@ postgres:
 startupfairy:
   container_name: startupfairy
   image: addykim/startupfairy
-  command: python3 /home/run.py
+  command: python3 /home/startupfairy/run.py
   volumes: 
     - .:/home
   links:
