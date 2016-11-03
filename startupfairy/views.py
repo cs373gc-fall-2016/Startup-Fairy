@@ -4,6 +4,9 @@ Serves all the routes for the application
 import json
 from os import listdir
 from flask import render_template
+from flask import render_template, Blueprint
+
+public_views = Blueprint('public_views', __name__)
 
 ALT_NAMES = {
     'financialorgs': 'Financial Organizations',
@@ -14,8 +17,8 @@ ALT_NAMES = {
 }
 
 
-@app.route('/')
-@app.route('/index')
+@public_views.route('/')
+@public_views.route('/index')
 def index():
     """
     Serve the home/index page
@@ -23,7 +26,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/about')
+@public_views.route('/about')
 def about():
     """
     Serve the about page
@@ -31,7 +34,7 @@ def about():
     return render_template('about.html', alt_title='About')
 
 
-@app.route('/<category>', methods=['GET'])
+@public_views.route('/<category>', methods=['GET'])
 def category(app_category):
     """Render table template"""
     filepath = "static/data/%s" % (app_category)
@@ -45,7 +48,7 @@ def category(app_category):
                            title=category, data=data)
 
 
-@app.route('/<category>/<entity>', methods=['GET'])
+@public_views.route('/<category>/<entity>', methods=['GET'])
 def details(app_category, entity):
     """
     Serve the an entity's page
