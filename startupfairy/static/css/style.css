@@ -116,7 +116,7 @@ hr.divider{
 }
 
 .team-stats .caption .caption-content {
-  position: absolute;
+  position: relative;
   width: 100%;
   text-align: center;
   top: 25%;
