@@ -26,7 +26,8 @@ class TestCompany(TestCase):
     # ------------------
 
     def setUp(self):
-        db.create_all()
+        with run.app.test_request_context():
+            db.create_all()
 
     def tearDown(self):
         db.session.close()
@@ -53,7 +54,7 @@ class TestCompany(TestCase):
 
         #self.assertEqual(len(companies), 1)
         #self.assertEqual(example.dictionary(), companies[1].dictionary)
-        run.create_app().app_context().push()
+        run.create_app().test_request_context().push()
         example = Company("id", "name", "summary", "people", "city", "finorgs", "twitter", "wobsite", "logo")
         self.assertEqual(example.city, "city")
         db.session.add(example)
@@ -71,7 +72,8 @@ class TestFinancialOrg(TestCase):
     # ------------------
 
     def setUp(self):
-        db.create_all()
+        with run.app.test_request_context():
+            db.create_all()
 
     def tearDown(self):
         db.session.close()
@@ -113,7 +115,8 @@ class TestPerson(TestCase):
     # ------------------
 
     def setUp(self):
-        db.create_all()
+        with run.app.test_request_context():
+            db.create_all()
 
     def tearDown(self):
         db.session.close()
@@ -153,7 +156,8 @@ class TestCity(TestCase):
     # ------------------
 
     def setUp(self):
-        db.create_all()
+        with run.app.test_request_context():
+            db.create_all()
 
     def tearDown(self):
         db.session.close()
