@@ -108,7 +108,7 @@ docs:
 pylint: .pylintrc 
 	-$(PYLINT) startupfairy/models.py
 	-$(PYLINT) startupfairy/run.py
-	-$(PYLINT) startupfairy/test.py
+	-$(PYLINT) startupfairy/tests.py
 	-$(PYLINT) startupfairy/views.py
 
 
