@@ -4,7 +4,6 @@ Serves all the routes for the application
 import json
 from os import listdir
 from flask import render_template
-from __init__ import app
 
 ALT_NAMES = {
     'financialorgs': 'Financial Organizations',
@@ -29,7 +28,7 @@ def about():
     """
     Serve the about page
     """
-    return render_template('about.html', title='About')
+    return render_template('about.html', alt_title='About')
 
 
 @app.route('/<category>', methods=['GET'])
