@@ -33,7 +33,4 @@ WORKDIR /home
 
 COPY requirements.txt /home
 RUN pip install -r requirements.txt
-COPY package.json /home
 RUN npm install -g bower
-COPY bower.json /home
-RUN bower install --allow-root
