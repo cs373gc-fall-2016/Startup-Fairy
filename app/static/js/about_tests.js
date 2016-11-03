@@ -6,7 +6,8 @@ var LinkComponent = React.createClass({
 });
 
 
-// this is what the example thing does...
+// this is what the example run tests does,
+// i'll need to modify it to work in React...
 .factory('unitTestService', function($http) {
   return {
     runUnitTests : function() {
@@ -16,3 +17,14 @@ var LinkComponent = React.createClass({
     }
   }
 }
+
+
+//this was in a python file and is what the thing up there is calling
+# ---------
+# run_tests
+# ---------
+
+@app.route('/run_tests')
+def run_tests():
+    output = subprocess.getoutput("python tests.py")
+    return json.dumps({'output': str(output)})
