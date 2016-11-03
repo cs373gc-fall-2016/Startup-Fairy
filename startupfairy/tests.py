@@ -24,6 +24,7 @@ class TestCompany(TestCase):
     # ------------------
 
     def setUp(self):
+        db.drop_all()
         db.create_all()
 
     def tearDown(self):
@@ -63,6 +64,7 @@ class TestFinancialOrg(TestCase):
     # ------------------
 
     def setUp(self):
+        db.drop_all()
         db.create_all()
 
     def tearDown(self):
@@ -104,6 +106,7 @@ class TestPerson(TestCase):
     # ------------------
 
     def setUp(self):
+        db.drop_all()
         db.create_all()
 
     def tearDown(self):
@@ -143,6 +146,7 @@ class TestCity(TestCase):
     # ------------------
 
     def setUp(self):
+        db.drop_all()
         db.create_all()
 
     def tearDown(self):
