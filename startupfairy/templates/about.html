@@ -279,10 +279,15 @@
     <!-- Test Section -->
 
     <!-- Test Results -->
-    <div class="test-results"><h3>[Test Results Here 😎]</h3></div>
+    <!-- <div class="testPanel"><h3>[Test Results Here 😎]</h3></div> -->
 
-      <!-- Run Button -->
-    <button type="button" class="btn nova test-btn img-responsive" style="width: 100%;"><h3>Run Tests!</h3></button>
+    <!-- Run Button -->
+    <!-- <button type="button" class="btn nova testButton img-responsive" style="width: 100%;"><h3>Run Tests!</h3></button> -->
+
+
+    <script type="text/javascript" src="{{url_for('static', filename='js/run_button.js')}}"></script>
+    <script type="text/babel" src="{{url_for('static', filename='js/run_button.babel')}}"></script>
+    <div id="testSection" class="nova"></div>
 
   </div>
 </section>

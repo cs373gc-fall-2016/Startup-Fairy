@@ -157,14 +157,14 @@ hr.divider{
   font-weight: 800;
 }
 
-.test-results {
+.testPanel {
   background-color: #e8e8e8;
   color: #343434;
   height: 500px;
   font-family: "Courier New", Courier, monospace;
 }
 
-.test-btn {
+.testButton {
   background-color: #289eff;
   color: #FFFFFF;
   transition: all ease 0.3s;
@@ -172,7 +172,7 @@ hr.divider{
   -moz-transition: all ease 0.3s;
 }
 
-.test-btn:hover {
+.testButton:hover {
   color: #FFFFFF;
   background-color: #1eb949;
 }

@@ -1,0 +1,60 @@
+class testButton extends React.Component {
+  getInitialState() {
+    return {
+      isLoading: false
+    };
+  }
+
+  render() {
+    let isLoading = this.state.isLoading;
+    return (
+      <button
+      className="testButton"
+      onClick={!isLoading ? this.handleClick : null}>
+      {isLoading ? 'Running...' : 'Run Tests!'}
+      </button>
+    );
+  }
+
+  handleClick() {
+    this.setState({isLoading: true});
+
+    // This probably where you would have an `ajax` call
+    setTimeout(() => {
+      // Completed of async action, set loading state back
+      this.setState({isLoading: false});
+    }, 2000);
+  }
+}
+
+class testPanel extends React.Component {
+  render() {
+    const results = '[Test Results Here 😎]';
+    return (
+      <div>
+        <div className="test-results"><h3>{results}</h3></div>
+      </div>
+    );
+  }
+}
+
+class Tester extends React.Component {
+  render() {
+    return (
+      <div>
+        <testPanel />
+        <testButton />
+      </div>
+    );
+  }
+}
+
+// ========================================
+
+ReactDOM.render(
+  <Tester />,
+  document.getElementById('test-section')
+);
+
+function runTests() {
+}

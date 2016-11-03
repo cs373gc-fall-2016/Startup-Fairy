@@ -1,0 +1,56 @@
+class RunButton extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      value: false,
+    };
+  }
+
+  render() {
+    return (
+      <button className="testButton" onClick={() => this.handleClick()}>
+        <h3>{this.state.value ? 'Running...' : 'Run Tests!'}</h3>
+      </button>
+    );
+  }
+
+  handleClick() {
+    this.setState({value: true});
+
+    // This probably where you would have an `ajax` call
+    setTimeout(
+    //() => {this.setState({isLoading: false});},
+    this.setState({isLoading: false}),
+    2000);
+  }
+}
+
+class TestResults extends React.Component {
+  render() {
+    const results = '[Test Results Here]';
+    return (
+      <div>
+        <div className="testPanel">{results}</div>
+      </div>
+    );
+  }
+}
+
+class Tester extends React.Component {
+  render() {
+    return (
+      <div>
+        <TestResults />
+
+        <RunButton />
+      </div>
+    );
+  }
+}
+
+// ========================================
+
+ReactDOM.render(
+  <Tester />,
+  document.getElementById('testSection')
+);
