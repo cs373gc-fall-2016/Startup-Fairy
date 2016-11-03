@@ -74,8 +74,6 @@ clean:
 	rm -f .coverage
 	rm -f .pylintrc
 	rm -f *.pyc
-	rm -f IDB2.html
-	rm -f IDB2.log
 	rm -r startupfairy/__pycache__
 
 #$(AUTOPEP8) -i startup/__init__.py
@@ -100,10 +98,10 @@ TestApp:	startupfairy/tests.py
 	$(COVERAGE) report -m                      >> startupfairy/tests.out
 	cat startupfairy/tests.out
 
-IDB2.log:
+log:
 	git log > IDB2.log
 
-IDB2.html:
+docs:
 	$(PYDOC) startupfairy/views.py >> IDB2.html
 
 #__init__.py removed?
@@ -115,7 +113,7 @@ pylint: .pylintrc
 
 
 #TODO add make check back in and make TestApp
-test:	IDB2.log IDB2.html check pylint TestApp
+test:	log docs check pylint TestApp
 	
 
 

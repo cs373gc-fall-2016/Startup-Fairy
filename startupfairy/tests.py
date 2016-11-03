@@ -41,21 +41,22 @@ class TestCompany(TestCase):
         """
         Test retrieval of a single company entity
         """
-        #example = Company("Wetpaint",
-                          # "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
-                          # [], "San Francisco", ["Youniversity Ventures"], "airbnb", "http://airbnb.com")
+        # example = Company("Wetpaint",
+        # "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
+        # [], "San Francisco", ["Youniversity Ventures"], "airbnb", "http://airbnb.com")
 
         #self.assertEqual(example.city, "San Francisco")
         #self.assertEqual(example.twitter, "airbnb")
 
-        #db.session.add(example)
-        #db.session.commit()
+        # db.session.add(example)
+        # db.session.commit()
         #companies = Company.query.all()
 
         #self.assertEqual(len(companies), 1)
         #self.assertEqual(example.dictionary(), companies[1].dictionary)
         run.create_app().test_request_context().push()
-        example = Company("id", "name", "summary", "people", "city", "finorgs", "twitter", "wobsite", "logo")
+        example = Company("id", "name", "summary", "people",
+                          "city", "finorgs", "twitter", "wobsite", "logo")
         self.assertEqual(example.city, "city")
         db.session.add(example)
         db.session.delete(example)
@@ -87,17 +88,17 @@ class TestFinancialOrg(TestCase):
         """
         Test retrieval of a financial organization entity
         """
-        #example = FinancialOrg("Founders Fund",
-                               # "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
-                               # "San Francisco", [
-                               #     "Space Exploration Technologies"], "foundersfund",
-                               # "http://www.foundersfund.com")
+        # example = FinancialOrg("Founders Fund",
+        # "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
+        # "San Francisco", [
+        #     "Space Exploration Technologies"], "foundersfund",
+        # "http://www.foundersfund.com")
 
         #self.assertEqual(example.city, "San Francisco")
         #self.assertEqual(example.twitter, "foundersfund")
 
-        #db.session.add(example)
-        #db.session.commit()
+        # db.session.add(example)
+        # db.session.commit()
         #financial_orgs = FinancialOrg.query.all()
 
         #self.assertEqual(len(financial_orgs), 1)
@@ -138,7 +139,7 @@ class TestPerson(TestCase):
         # self.assertEqual(example.twitter, "bchesky")
 
         # db.session.add(example)
-        #db.session.commit()
+        # db.session.commit()
         # people = Person.query.all()
 
         # self.assertEqual(len(people), 1)
@@ -178,7 +179,7 @@ class TestCity(TestCase):
         # self.assertEqual(example.region, "Los Angeles")
 
         # db.session.add(example)
-        #db.session.commit()
+        # db.session.commit()
         # cities = City.query.all()
 
         # self.assertEqual(len(cities), 1)
@@ -248,7 +249,7 @@ class TestCity(TestCase):
 #         self.assertIn('Cameron', httpretty.last_request().body)
 #         self.assertIn('Ajmal Khan', httpretty.last_request().body)
 #         self.assertIn('Eugene Ng', httpretty.last_request().body)
-        
+
 
 # ----
 # main

@@ -67,10 +67,12 @@ def api_people():
             data = db.session.query(Person).all()
             return json.dumps(list(map(lambda d: d.dictionary(), data)))
         else:
-            data = db.session.query(Person).filter_by(person_id = person_id).one()
+            data = db.session.query(Person).filter_by(
+                person_id=person_id).one()
             return json.dumps(data.dictionary())
     except:
         abort(404)
+
 
 @public_views.route('/api/companies', methods=['GET'])
 def api_companies():
@@ -80,7 +82,8 @@ def api_companies():
             data = db.session.query(Company).all()
             return json.dumps(list(map(lambda d: d.dictionary(), data)))
         else:
-            data = db.session.query(Company).filter_by(company_id = company_id).one()
+            data = db.session.query(Company).filter_by(
+                company_id=company_id).one()
             return json.dumps(data.dictionary())
     except:
         abort(404)
@@ -94,7 +97,8 @@ def api_financialorgs():
             data = db.session.query(FinancialOrg).all()
             return json.dumps(list(map(lambda d: d.dictionary(), data)))
         else:
-            data = db.session.query(FinancialOrg).filter_by(financial_org_id = finorg_id).one()
+            data = db.session.query(FinancialOrg).filter_by(
+                financial_org_id=finorg_id).one()
             return json.dumps(data.dictionary())
     except:
         abort(404)
@@ -108,8 +112,7 @@ def api_cities():
             data = db.session.query(City).all()
             return json.dumps(list(map(lambda d: d.dictionary(), data)))
         else:
-            data = db.session.query(City).filter_by(city_id = city_id).one()
+            data = db.session.query(City).filter_by(city_id=city_id).one()
             return json.dumps(data.dictionary())
     except:
         abort(404)
-

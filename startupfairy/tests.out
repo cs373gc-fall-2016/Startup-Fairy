@@ -1,11 +1,95 @@
-....
+/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py:800: UserWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.
+  warnings.warn('SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.')
+EEEE
+======================================================================
+ERROR: test_city (__main__.TestCity)
 ----------------------------------------------------------------------
-Ran 4 tests in 0.010s
+Traceback (most recent call last):
+  File "startupfairy/tests.py", line 161, in setUp
+    db.create_all()
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 972, in create_all
+    self._execute_for_all_tables(app, bind, 'create_all')
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 964, in _execute_for_all_tables
+    op(bind=self.get_engine(app, bind), **extra)
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 910, in get_engine
+    return connector.get_engine()
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 545, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/__init__.py", line 387, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/strategies.py", line 80, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 580, in dbapi
+    import psycopg2
+ImportError: No module named 'psycopg2'
 
-OK
-Name                     Stmts   Miss Branch BrPart  Cover   Missing
---------------------------------------------------------------------
-startupfairy/models.py     131     76      0      0    42%   26-34, 37, 41-51, 70-77, 80, 84-93, 110-117, 120, 124-133, 149-155, 158, 162-170
-startupfairy/tests.py       33     12      2      1    63%   27, 30-31, 66, 69-70, 107, 110-111, 146, 149-150, 242->exit
---------------------------------------------------------------------
-TOTAL                      164     88      2      1    46%
+======================================================================
+ERROR: test_company (__main__.TestCompany)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "startupfairy/tests.py", line 30, in setUp
+    db.create_all()
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 972, in create_all
+    self._execute_for_all_tables(app, bind, 'create_all')
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 964, in _execute_for_all_tables
+    op(bind=self.get_engine(app, bind), **extra)
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 910, in get_engine
+    return connector.get_engine()
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 545, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/__init__.py", line 387, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/strategies.py", line 80, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 580, in dbapi
+    import psycopg2
+ImportError: No module named 'psycopg2'
+
+======================================================================
+ERROR: test_financial_org (__main__.TestFinancialOrg)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "startupfairy/tests.py", line 77, in setUp
+    db.create_all()
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 972, in create_all
+    self._execute_for_all_tables(app, bind, 'create_all')
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 964, in _execute_for_all_tables
+    op(bind=self.get_engine(app, bind), **extra)
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 910, in get_engine
+    return connector.get_engine()
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 545, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/__init__.py", line 387, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/strategies.py", line 80, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 580, in dbapi
+    import psycopg2
+ImportError: No module named 'psycopg2'
+
+======================================================================
+ERROR: test_person (__main__.TestPerson)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "startupfairy/tests.py", line 120, in setUp
+    db.create_all()
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 972, in create_all
+    self._execute_for_all_tables(app, bind, 'create_all')
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 964, in _execute_for_all_tables
+    op(bind=self.get_engine(app, bind), **extra)
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 910, in get_engine
+    return connector.get_engine()
+  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 545, in get_engine
+    self._engine = rv = sqlalchemy.create_engine(info, **options)
+  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/__init__.py", line 387, in create_engine
+    return strategy.create(*args, **kwargs)
+  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/strategies.py", line 80, in create
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 580, in dbapi
+    import psycopg2
+ImportError: No module named 'psycopg2'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.203s
+
+FAILED (errors=4)

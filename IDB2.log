@@ -1,3 +1,189 @@
+commit c9936be8716aa2d15b06af00a8a9b336d384e7c4
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Nov 3 16:21:56 2016 -0500
+
+    updated stats
+
+commit ae12f2220268af4e0cca4402d268db49da21ef20
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Nov 3 14:14:18 2016 -0500
+
+    about page updates
+    
+    - updated look and feel
+    - need to update github stats before final commit
+    - need to add info on how our data was scraped
+    - need to finish the run tests button
+
+commit efe11694cfecb68b7743cfe42e089a3f0a33ada9
+Merge: 246970d d8fca21
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Nov 3 01:27:11 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 246970dacf1c9786eed8f38083794e95c1f994e4
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Nov 3 01:26:57 2016 -0500
+
+    do db methods within app context
+
+commit d8fca218105a75638e8c2914ce8fc64545e10917
+Merge: b7acd29 8e3ecf0
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 00:54:53 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit b7acd29ffc5b51676cb2d19603ac935a610efe85
+Merge: e8040dd f0add28
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 00:54:36 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 8e3ecf03af3a07f7daf3767d65d617299498e1ff
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Nov 3 00:52:21 2016 -0500
+
+    setUpBeforeClass and tearDownAfterClass is not a thing in python
+
+commit e8040ddfc5e4f34293d16f8ce3da1d948acb9a74
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 00:45:43 2016 -0500
+
+    added coverage to make TestApp target
+
+commit 2ea2e946b65d04fffc3a31cec9c815317f29be92
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 00:44:22 2016 -0500
+
+    removed things so tests run sucessfully
+
+commit f0add280281f1a850a3e3a0aa001078c4dad28bb
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Nov 3 00:34:09 2016 -0500
+
+    changed tests.py to do almost nothing
+
+commit 6b8c1f269b935dd2005788b41db69997e5d2edd2
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Thu Nov 3 00:14:29 2016 -0500
+
+    Update API on Apiary Fixes #39
+
+commit 75226d6aef25f44d24269bf3909f87176a6294de
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 23:54:36 2016 -0500
+
+    remove drop table before creat
+
+commit 75bb7a61342a4d1518a6b0d5e0f27099479efd9c
+Merge: 86805f9 80868fa
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 23:48:59 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 86805f99b9a10e47b08820c0435112e485c5ac89
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 23:48:49 2016 -0500
+
+    try droping data base before creating
+
+commit 80868fa1d69c05a0686ce9c431491f01b760f1de
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Wed Nov 2 23:35:18 2016 -0500
+
+    Rename file
+
+commit 67de0c5946d578194be88ca8461bf5bd31f56485
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 23:31:00 2016 -0500
+
+    changed docker command
+
+commit 2c760af881b193e985e5998fe9ffbf9edb29da27
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 23:14:08 2016 -0500
+
+    trying to fix travis.yml again
+
+commit 6a47adb785f97a01a2a0a766d75e83de1b1ec56c
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 23:05:08 2016 -0500
+
+    trying to get docker to work on travis
+
+commit cd97d7181aa7828fc847958e9bc31e55946bdb12
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 22:59:02 2016 -0500
+
+    trying to fix travis.yml for docker
+
+commit 6bbb02ea49e2139495b61f087a686c7744d41780
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 22:49:17 2016 -0500
+
+    update .travis.yml
+
+commit 48c32ca62c34ea661d6fc11056f5c1cb26189814
+Merge: 7edea75 be66bb8
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 22:44:20 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 7edea75c789f5876588a7de60221a25abf027b5e
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 22:43:59 2016 -0500
+
+    changes to make file and test app so will run on travis
+
+commit be66bb819b77327b8c1f5a2ecfdc2b76ec477d10
+Merge: 7baaf64 3f18a2e
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Nov 3 03:30:52 2016 +0000
+
+    Merge branch 'api-dev' into dev
+
+commit 3f18a2e456b94a61246fef35eb3bebad69b6e889
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Nov 3 03:29:51 2016 +0000
+
+    Implement apis to accept parameters
+
+commit 7baaf64e71941b8ed0461d618bb78038e1b99718
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 22:09:33 2016 -0500
+
+    added notes to make file
+
+commit ae87c0365fe8bf9bcb3746130a3d578931355fbc
+Merge: 9c2b509 4e76c59
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 22:00:32 2016 -0500
+
+    merge changes
+
+commit 9c2b50985d479548c538ed9b253be9100fdc9714
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 21:52:51 2016 -0500
+
+    added preliminary versions of git log and pydoc documentation
+
+commit 4e76c59cd27f1a6606f00bf2bbd100eb8bb85ba9
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Nov 3 02:50:28 2016 +0000
+
+    fix circular imports
+
+commit cd92f7d58372c25e27f44a082d42255466cc9fca
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Nov 3 02:49:33 2016 +0000
+
+    Serialize dics into json objects correctly
+
 commit 0c26f65306f9b5c6901210bcb5ca582edd092a4e
 Merge: b3bbcb6 c8c249c
 Author: summergirl21 <summergirl21@users.noreply.github.com>
@@ -5,11 +191,24 @@ Date:   Wed Nov 2 21:47:18 2016 -0500
 
     Merge branch 'dev' of https://github.com/cs373gc-fall-2016/Startup-Fairy into dev
 
+commit fd2bfa4313560f5d0291e5e183fa1ddaa29c99a4
+Merge: c8c249c edfd93d
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Nov 3 02:22:10 2016 +0000
+
+    Merge branch 'api-dev' of https://github.com/cs373gc-fall-2016/Startup-Fairy into api-dev
+
 commit b3bbcb6c6ca52baa9531176b313a3e85518a81b0
 Author: summergirl21 <summergirl21@users.noreply.github.com>
 Date:   Wed Nov 2 21:46:36 2016 -0500
 
     more updates to make file #20
+
+commit edfd93d3fcde6bdbad325886dd097777500199cb
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Wed Nov 2 21:19:52 2016 -0500
+
+    Add public APIs to get all
 
 commit c8c249c09c1da6972496741570cd25f5a4997ef9
 Merge: ad6346e f269b12
