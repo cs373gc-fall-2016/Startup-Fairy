@@ -13,7 +13,7 @@ before_install:
 #   - pip install --upgrade pip 
   - docker-compose up -d
   - docker-compose ps
-  - docker exec -it startupfairy bash
+  # - docker exec -it startupfairy bash
 
 # install:
 #   - pip install autopep8
@@ -28,8 +28,8 @@ before_install:
 
 script:
   # - docker-compose up -dg
-  # - docker exec -it startupfairy bash
-  - make test
+   - docker exec -it startupfairy make test
+  # - make test
 
 notifications:
   email: false
