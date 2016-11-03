@@ -1,95 +1,15 @@
 /usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py:800: UserWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.
   warnings.warn('SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.')
-EEEE
-======================================================================
-ERROR: test_city (__main__.TestCity)
+.............
 ----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "startupfairy/tests.py", line 161, in setUp
-    db.create_all()
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 972, in create_all
-    self._execute_for_all_tables(app, bind, 'create_all')
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 964, in _execute_for_all_tables
-    op(bind=self.get_engine(app, bind), **extra)
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 910, in get_engine
-    return connector.get_engine()
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 545, in get_engine
-    self._engine = rv = sqlalchemy.create_engine(info, **options)
-  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/__init__.py", line 387, in create_engine
-    return strategy.create(*args, **kwargs)
-  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/strategies.py", line 80, in create
-    dbapi = dialect_cls.dbapi(**dbapi_args)
-  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 580, in dbapi
-    import psycopg2
-ImportError: No module named 'psycopg2'
+Ran 13 tests in 0.063s
 
-======================================================================
-ERROR: test_company (__main__.TestCompany)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "startupfairy/tests.py", line 30, in setUp
-    db.create_all()
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 972, in create_all
-    self._execute_for_all_tables(app, bind, 'create_all')
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 964, in _execute_for_all_tables
-    op(bind=self.get_engine(app, bind), **extra)
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 910, in get_engine
-    return connector.get_engine()
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 545, in get_engine
-    self._engine = rv = sqlalchemy.create_engine(info, **options)
-  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/__init__.py", line 387, in create_engine
-    return strategy.create(*args, **kwargs)
-  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/strategies.py", line 80, in create
-    dbapi = dialect_cls.dbapi(**dbapi_args)
-  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 580, in dbapi
-    import psycopg2
-ImportError: No module named 'psycopg2'
-
-======================================================================
-ERROR: test_financial_org (__main__.TestFinancialOrg)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "startupfairy/tests.py", line 77, in setUp
-    db.create_all()
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 972, in create_all
-    self._execute_for_all_tables(app, bind, 'create_all')
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 964, in _execute_for_all_tables
-    op(bind=self.get_engine(app, bind), **extra)
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 910, in get_engine
-    return connector.get_engine()
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 545, in get_engine
-    self._engine = rv = sqlalchemy.create_engine(info, **options)
-  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/__init__.py", line 387, in create_engine
-    return strategy.create(*args, **kwargs)
-  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/strategies.py", line 80, in create
-    dbapi = dialect_cls.dbapi(**dbapi_args)
-  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 580, in dbapi
-    import psycopg2
-ImportError: No module named 'psycopg2'
-
-======================================================================
-ERROR: test_person (__main__.TestPerson)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "startupfairy/tests.py", line 120, in setUp
-    db.create_all()
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 972, in create_all
-    self._execute_for_all_tables(app, bind, 'create_all')
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 964, in _execute_for_all_tables
-    op(bind=self.get_engine(app, bind), **extra)
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 910, in get_engine
-    return connector.get_engine()
-  File "/usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py", line 545, in get_engine
-    self._engine = rv = sqlalchemy.create_engine(info, **options)
-  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/__init__.py", line 387, in create_engine
-    return strategy.create(*args, **kwargs)
-  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/engine/strategies.py", line 80, in create
-    dbapi = dialect_cls.dbapi(**dbapi_args)
-  File "/usr/local/lib/python3.5/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 580, in dbapi
-    import psycopg2
-ImportError: No module named 'psycopg2'
-
-----------------------------------------------------------------------
-Ran 4 tests in 0.203s
-
-FAILED (errors=4)
+OK
+Name                     Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------
+startupfairy/models.py     131     47      0      0    64%   80, 84-93, 110-117, 120, 124-133, 149-155, 158, 162-170
+startupfairy/run.py         12      1      2      1    86%   18, 17->18
+startupfairy/tests.py       84      0      2      1    99%   380->exit
+startupfairy/views.py       57     42     16      0    21%   26, 34, 40-46, 59, 64-74, 79-89, 94-104, 109-118
+--------------------------------------------------------------------
+TOTAL                      284     90     20      2    64%

@@ -24,43 +24,156 @@ class TestCompany(TestCase):
     # ------------------
     # Setup and Teardown
     # ------------------
+    
+    # def setUp(self):
+        
 
-    def setUp(self):
-        with run.app.test_request_context():
-            db.create_all()
+        
 
-    def tearDown(self):
-        db.session.close()
-        db.drop_all()
-
+    # def tearDown(self):
+    #     db.session.close()
+    
     # -------
     # Company
     # -------
 
-    def test_company(self):
+    def test_company_constructor_1(self):
         """
-        Test retrieval of a single company entity
+        Test construction of a new company instance
         """
-        # example = Company("Wetpaint",
-        # "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
-        # [], "San Francisco", ["Youniversity Ventures"], "airbnb", "http://airbnb.com")
 
-        #self.assertEqual(example.city, "San Francisco")
-        #self.assertEqual(example.twitter, "airbnb")
+        example1 = Company("id", "name", "summary", "people",
+            "city", "finorgs", "twitter", "wobsite", "logo")
 
-        # db.session.add(example)
-        # db.session.commit()
-        #companies = Company.query.all()
+        self.assertEqual(example1.company_id, "id")
+        self.assertEqual(example1.name, "name")
+        self.assertEqual(example1.summary, "summary")
+        self.assertEqual(example1.people, "people")
+        self.assertEqual(example1.city, "city")
 
-        #self.assertEqual(len(companies), 1)
-        #self.assertEqual(example.dictionary(), companies[1].dictionary)
-        run.create_app().test_request_context().push()
-        example = Company("id", "name", "summary", "people",
-                          "city", "finorgs", "twitter", "wobsite", "logo")
-        self.assertEqual(example.city, "city")
-        db.session.add(example)
-        db.session.delete(example)
-        self.assertEqual(1, 1)
+    def test_company_constructor_2(self):
+        """
+        Test construction of a new company instance
+        """
+        example1 = Company("id", "name", "summary", "people",
+            "city", "finorgs", "twitter", "wobsite", "logo")
+
+        self.assertEqual(example1.financial_orgs, "finorgs")
+        self.assertEqual(example1.twitter, "twitter")
+        self.assertEqual(example1.website, "wobsite")
+        self.assertEqual(example1.logo_url, "logo")
+
+    def test_company_constructor_3(self):
+        """
+        Test construction of a new company instance
+        """
+
+        example2 = Company("id1", "Wetpaint",
+        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
+        "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
+
+        self.assertEqual(example2.company_id, "id1")
+        self.assertEqual(example2.name, "Wetpaint")
+        self.assertEqual(example2.summary, "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.")
+        self.assertEqual(example2.people, "person1")
+        self.assertEqual(example2.city, "San Francisco")
+
+    def test_company_constructor_4(self):
+        """
+        Test construction of a new company instance
+        """
+
+        example2 = Company("id1", "Wetpaint",
+        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
+        "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
+
+        self.assertEqual(example2.financial_orgs, "Youniversity Ventures")
+        self.assertEqual(example2.twitter, "wetpaint")
+        self.assertEqual(example2.website, "http://wetpaint.com")
+        self.assertEqual(example2.logo_url, "logo_url")
+
+    def test_company_repr_1(self):
+        """
+        Test __repr__ methond of company class
+        """
+
+        example1 = Company("id", "name", "summary", "people",
+            "city", "finorgs", "twitter", "wobsite", "logo")
+
+        self.assertEqual(example1.__repr__(), "<Company 'name'>")
+
+
+    def test_company_repr_2(self):
+        """
+        Test __repr__ methond of company class
+        """
+
+        example2 = Company("id1", "Wetpaint",
+        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
+        "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
+
+        self.assertEqual(example2.__repr__(), "<Company 'Wetpaint'>")
+
+
+    def test_company_dictionary_1(self):
+        """
+        Test dictionary method of company class
+        """
+
+        example1 = Company("id", "name", "summary", "people",
+            "city", "finorgs", "twitter", "wobsite", "logo")
+        dict_rep = example1.dictionary()
+
+        self.assertEqual(dict_rep['company_id'], "id")
+        self.assertEqual(dict_rep['name'], "name")
+        self.assertEqual(dict_rep['summary'], "summary")
+        self.assertEqual(dict_rep['people'], "people")
+        self.assertEqual(dict_rep['city'], "city") 
+
+    def test_company_dictionary_2(self):
+        """
+        Test dictionary method of company class
+        """
+
+        example1 = Company("id", "name", "summary", "people",
+            "city", "finorgs", "twitter", "wobsite", "logo")
+        dict_rep = example1.dictionary()
+
+        self.assertEqual(dict_rep['financial_orgs'], "finorgs")
+        self.assertEqual(dict_rep['twitter'], "twitter")
+        self.assertEqual(dict_rep['website'], "wobsite")
+        self.assertEqual(dict_rep['logo_url'], "logo")
+
+    def test_company_dictionary_3(self):
+        """
+        Test dictionary method of company class
+        """
+
+        example2 = Company("id1", "Wetpaint",
+        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
+        "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
+        dict_rep = example2.dictionary()
+
+        self.assertEqual(dict_rep['company_id'], "id1")
+        self.assertEqual(dict_rep['name'], "Wetpaint")
+        self.assertEqual(dict_rep['summary'], "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.")
+        self.assertEqual(dict_rep['people'], "person1")
+        self.assertEqual(dict_rep['city'], "San Francisco") 
+
+    def test_company_dictionary_4(self):
+        """
+        Test dictionary method of company class
+        """
+
+        example2 = Company("id1", "Wetpaint",
+        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
+        "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
+        dict_rep = example2.dictionary()
+
+        self.assertEqual(dict_rep['financial_orgs'], "Youniversity Ventures")
+        self.assertEqual(dict_rep['twitter'], "wetpaint")
+        self.assertEqual(dict_rep['website'], "http://wetpaint.com")
+        self.assertEqual(dict_rep['logo_url'], "logo_url")
 
 
 # ----------------
@@ -72,13 +185,13 @@ class TestFinancialOrg(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUp(self):
-        with run.app.test_request_context():
-            db.create_all()
+    # def setUp(self):
+    #     with run.app.test_request_context():
+    #         db.create_all()
 
-    def tearDown(self):
-        db.session.close()
-        db.drop_all()
+    # def tearDown(self):
+    #     db.session.close()
+    #     db.drop_all()
 
     # ------------
     # FinancialOrg
@@ -103,6 +216,15 @@ class TestFinancialOrg(TestCase):
 
         #self.assertEqual(len(financial_orgs), 1)
         #self.assertEqual(example.dictionary(), financial_orgs[1].dictionary)
+
+        example = FinancialOrg("id", "name", "summary", "city", ["company0", "company1"], "twitter",
+        "website", "logo")
+
+        self.assertEqual(example.financial_org_id, "id")
+        self.assertEqual(example.name, "name")
+        self.assertEqual(example.summary, "summary")
+        self.assertEqual(example.city, "city")
+        self.assertEqual(example.companies[0], "company0") #??? seams like companies should be a string not a list
         self.assertEqual(1, 1)
 
 
@@ -115,13 +237,13 @@ class TestPerson(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUp(self):
-        with run.app.test_request_context():
-            db.create_all()
+    # def setUp(self):
+    #     with run.app.test_request_context():
+    #         db.create_all()
 
-    def tearDown(self):
-        db.session.close()
-        db.drop_all()
+    # def tearDown(self):
+    #     db.session.close()
+    #     db.drop_all()
 
     # ------
     # Person
@@ -156,13 +278,13 @@ class TestCity(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUp(self):
-        with run.app.test_request_context():
-            db.create_all()
+    # def setUp(self):
+    #     with run.app.test_request_context():
+    #         db.create_all()
 
-    def tearDown(self):
-        db.session.close()
-        db.drop_all()
+    # def tearDown(self):
+    #     db.session.close()
+    #     db.drop_all()
 
     # ----
     # City
