@@ -1,8 +1,8 @@
 .DEFAULT_GOAL := test
 
 FILES :=						\
-	# IDB1.html					\
-	IDB1.log					
+	# IDB2.html					\
+	IDB2.log					
 
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python3.5
@@ -86,15 +86,15 @@ TestApp:
 	python3.5 app/tests.py
 
 IDB1.log:
-	git log > IDB1.log
+	git log > IDB2.log
 
 # FIXME ImportError: No module named 'flask'
 IDB1.html:
 	pydoc3.5 app/views.py
 
-test: IDB1.log check
+test: IDB2.log check
 # TODO add reference to test
-# test: IDB1.html IDB1.log check
+# test: IDB2.html IDB2.log check
 
 versions:
 	which make
