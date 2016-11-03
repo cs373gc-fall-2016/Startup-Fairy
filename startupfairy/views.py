@@ -3,9 +3,7 @@ Serves all the routes for the application
 """
 import json
 from os import listdir
-from flask import render_template
-from flask import render_template, Blueprint
-from flask import request
+from flask import render_template, Blueprint, abort, request
 from models import *
 
 public_views = Blueprint('public_views', __name__)
@@ -63,22 +61,55 @@ def details(app_category, entity):
 
 @public_views.route('/api/people', methods=['GET'])
 def api_people():
-    data = db.session.query(Person).all()
-    return json.dumps(list(map(lambda d: d.dictionary(), data)))
+    try:
+        person_id = request.args.get('id')
+        if person_id is None:
+            data = db.session.query(Person).all()
+            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+        else:
+            data = db.session.query(Person).filter_by(person_id = person_id).one()
+            return json.dumps(data.dictionary())
+    except:
+        abort(404)
 
 @public_views.route('/api/companies', methods=['GET'])
 def api_companies():
-    data = db.session.query(Company).all()
-    return json.dumps(list(map(lambda d: d.dictionary(), data)))
-
-
-@public_views.route('/api/cities', methods=['GET'])
-def api_cities():
-    data = db.session.query(City).all()
-    return json.dumps(list(map(lambda d: d.dictionary(), data)))
+    try:
+        company_id = request.args.get('id')
+        if company_id is None:
+            data = db.session.query(Company).all()
+            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+        else:
+            data = db.session.query(Company).filter_by(company_id = company_id).one()
+            return json.dumps(data.dictionary())
+    except:
+        abort(404)
 
 
 @public_views.route('/api/financialorgs', methods=['GET'])
 def api_financialorgs():
-    data = db.session.query(FinancialOrg).all()
-    return json.dumps(list(map(lambda d: d.dictionary(), data)))
+    try:
+        finorg_id = request.args.get('id')
+        if finorg_id is None:
+            data = db.session.query(FinancialOrg).all()
+            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+        else:
+            data = db.session.query(FinancialOrg).filter_by(financial_org_id = finorg_id).one()
+            return json.dumps(data.dictionary())
+    except:
+        abort(404)
+
+
+@public_views.route('/api/cities', methods=['GET'])
+def api_cities():
+    try:
+        city_id = request.args.get('id')
+        if city_id is None:
+            data = db.session.query(City).all()
+            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+        else:
+            data = db.session.query(City).filter_by(city_id = city_id).one()
+            return json.dumps(data.dictionary())
+    except:
+        abort(404)
+
