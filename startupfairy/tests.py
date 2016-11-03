@@ -23,10 +23,10 @@ class TestCompany(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUp(self):
+    def setUpBeforeClass(self):
         db.create_all()
 
-    def tearDown(self):
+    def tearDownAfterClass(self):
         db.session.close()
         db.drop_all()
 
@@ -37,7 +37,7 @@ class TestCompany(TestCase):
     def test_company(self):
         """
         Test retrieval of a single company entity
-        """
+        
         example = Company("Wetpaint",
                           "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
                           [], "San Francisco", ["Youniversity Ventures"], "airbnb", "http://airbnb.com")
@@ -51,7 +51,7 @@ class TestCompany(TestCase):
 
         self.assertEqual(len(companies), 1)
         self.assertEqual(example.dictionary(), companies[1].dictionary)
-
+"""
 
 # ----------------
 # TestFinancialOrg
@@ -62,10 +62,10 @@ class TestFinancialOrg(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUp(self):
+    def setUpBeforeClass(self):
         db.create_all()
 
-    def tearDown(self):
+    def tearDownAfterClass(self):
         db.session.close()
         db.drop_all()
 
@@ -76,7 +76,7 @@ class TestFinancialOrg(TestCase):
     def test_financial_org(self):
         """
         Test retrival of a financial organization entity
-        """
+        
         example = FinancialOrg("Founders Fund",
                                "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
                                "San Francisco", [
@@ -92,7 +92,7 @@ class TestFinancialOrg(TestCase):
 
         self.assertEqual(len(financial_orgs), 1)
         self.assertEqual(example.dictionary(), financial_orgs[1].dictionary)
-
+"""
 
 # ----------
 # TestPerson
@@ -103,10 +103,10 @@ class TestPerson(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUp(self):
+    def setUpBeforeClass(self):
         db.create_all()
 
-    def tearDown(self):
+    def tearDownAfterClass(self):
         db.session.close()
         db.drop_all()
 
@@ -117,7 +117,7 @@ class TestPerson(TestCase):
     def test_Person(self):
         """
         Test retrival of single person organization
-        """
+        
         example = Person("Brian Chesky",
                          "Brian drives Airbnb's vision, strategy and growth. Always pushing the status quo, Brian aims to disrupt the industry with ideas that change the way people live. To grasp the full impact and experience of Airbnb, Brian rid himself of an apartment and has been living in the homes of the Airbnb community since June of 2010. He is committed to assembling a passionate, top tier team to deliver on this promise. Before Airbnb, Brian ran an industrial design shop in Los Angeles; even these days he is rarely seen without a drafting pen and sketch book in hand. Brian holds a Bachelor of Fine Arts in industrial design from the Rhode Island School of Design. He believes that what sets the company apart is the access to space that would otherwise be off limits, and haunted or not, he would be honored to someday stay in the Lincoln Bedroom through the site.",
                          "", ["Airbnb"], ["Co-founder & CEO"], "bchesky")
@@ -131,7 +131,7 @@ class TestPerson(TestCase):
 
         self.assertEqual(len(people), 1)
         self.assertEqual(example.dictionary(), people[1].dictionary)
-
+"""
 
 # --------
 # TestCity
@@ -142,10 +142,10 @@ class TestCity(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUp(self):
+    def setUpBeforeClass(self):
         db.create_all()
 
-    def tearDown(self):
+    def tearDownAfterClass(self):
         db.session.close()
         db.drop_all()
 
@@ -156,7 +156,7 @@ class TestCity(TestCase):
     def test_city(self):
         """
         Test retrival of a single city entity
-        """
+        
         example = City("Los Angeles", "CA", "Los Angeles", [
                        "Space Exploration Technologies"], [], ["Elon Musk"])
 
@@ -169,7 +169,7 @@ class TestCity(TestCase):
 
         self.assertEqual(len(cities), 1)
         self.assertEqual(example.dictionary(), cities[1].dictionary)
-
+"""
 # # ----
 # # About
 # # ----
