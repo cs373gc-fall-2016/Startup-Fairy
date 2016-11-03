@@ -164,12 +164,18 @@ hr.divider{
   font-family: "Courier New", Courier, monospace;
 }
 
+.testPanel h3 {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 100;
+}
+
 .testButton {
   background-color: #289eff;
   color: #FFFFFF;
   transition: all ease 0.3s;
   -webkit-transition: all ease 0.3s;
   -moz-transition: all ease 0.3s;
+  width: 100%;
 }
 
 .testButton:hover {
@@ -185,6 +191,10 @@ hr.divider{
 .btn-red {
   background-color: #ff3b28;
   color: #FFFFFF;
+}
+
+.carousel-img {
+  width: 100%;
 }
 
 .btn-green {

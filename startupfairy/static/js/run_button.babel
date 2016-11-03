@@ -8,31 +8,37 @@ class RunButton extends React.Component {
 
   render() {
     return (
-      <button className="testButton" onClick={() => this.handleClick()}>
+      <div class="nova">
+      <button className="btn testButton" onClick={() => this.handleClick()}>
         <h3>{this.state.value ? 'Running...' : 'Run Tests!'}</h3>
-      </button>
+      </button></div>
     );
   }
 
   handleClick() {
     this.setState({value: true});
-
-    // This probably where you would have an `ajax` call
-    setTimeout(
-    //() => {this.setState({isLoading: false});},
-    this.setState({isLoading: false}),
-    2000);
+    setTimeout( () => {this.setState({value: false});} , 2000);
   }
 }
 
 class TestResults extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      results: '[Test Results Here]',
+    };
+  }
+
   render() {
-    const results = '[Test Results Here]';
     return (
       <div>
-        <div className="testPanel">{results}</div>
+        <div className="testPanel" class="testPanel"><h3>{this.state.results}</h3></div>
       </div>
     );
+  }
+
+  runTests() {
+    this.setState({results: 'You just ran a test!'});
   }
 }
 
