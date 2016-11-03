@@ -1,12 +1,14 @@
 .DEFAULT_GOAL := test
 
+#TODO uncoment file checks
+#startupfairy/tests.out		\
+#IDB2.pdf					\
+
 FILES :=						\
 	IDB2.html					\
 	IDB2.log					\
 	startupfairy/models.py		\
 	startupfairy/tests.py 		\
-	startupfairy/tests.out		\
-	IDB2.pdf					\
 	.gitignore					\
 	.travis.yml					\
 	makefile					\
@@ -96,7 +98,7 @@ status:
 #$(COVERAGE) report -m                      >> test.tmp
 #cat test.tmp
 TestApp:
-	PYTHON startupfairy/tests.py
+	$(PYTHON) startupfairy/tests.py
 
 IDB2.log:
 	git log > IDB2.log
