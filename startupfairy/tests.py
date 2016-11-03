@@ -174,6 +174,7 @@ class TestCity(TestCase):
 # About
 # ----
 
+
 class TestAbout(TestCase):
     # ------------------
     # Setup and Teardown
@@ -185,12 +186,13 @@ class TestAbout(TestCase):
         """
         httpretty.enable()  # enable HTTPretty so that it will monkey patch the socket module
         httpretty.register_uri(httpretty.GET, "http://yipit.com/",
-                           body="Find the best daily deals")
-
+                               body="Find the best daily deals")
 
     def tearDown(self):
-        httpretty.disable()  # disable afterwards, so that you will have no problems in code that uses that socket module
-        httpretty.reset()  
+        # disable afterwards, so that you will have no problems in code that
+        # uses that socket module
+        httpretty.disable()
+        httpretty.reset()
 
     # ----
     # About
@@ -213,15 +215,14 @@ class TestAbout(TestCase):
         response = requests.get(link)
         self.assertEqual(200, response.status_code)
 
-
     def test_about_content(self):
         """
         Test for specific content of about page
         """
         link = 'localhost'
         httpretty.register_uri(httpretty.GET, link,
-                           body='[{"title": "About | Startup Fairy"}]',
-                           content_type="application/json")
+                               body='[{"title": "About | Startup Fairy"}]',
+                               content_type="application/json")
 
         response = requests.get(link)
 

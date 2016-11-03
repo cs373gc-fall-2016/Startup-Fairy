@@ -3,9 +3,9 @@
 FILES :=						\
 	IDB2.html					\
 	IDB2.log					\
-	app/models.py				\
-	app/tests.py 				\
-	app/tests.out				\
+	startupfairy/models.py		\
+	startupfairy/tests.py 		\
+	startupfairy/tests.out		\
 	IDB2.pdf					\
 	.gitignore					\
 	.travis.yml					\
@@ -67,20 +67,22 @@ check:
     fi;                                           \
     echo "success";
 
+#TODO where will __pycache__ be ??
 clean:
 	rm -f .coverage
 	rm -f .pylintrc
 	rm -f *.pyc
-	rm -f IMDB2.html
-	rm -f IMDB2.log
+	rm -f IDB2.html
+	rm -f IDB2.log
 	rm -r startupfairy/__pycache__
 
+#$(AUTOPEP8) -i startup/__init__.py
 format:
-	$(AUTOPEP8) -i startup/run.py
-	$(AUTOPEP8) -i startup/models.py
-	$(AUTOPEP8) -i tartup/tests.py
-	$(AUTOPEP8) -i startup/views.py
-	$(AUTOPEP8) -i startup/__init__.py
+	$(AUTOPEP8) -i startupfairy/run.py
+	$(AUTOPEP8) -i startupfairy/models.py
+	$(AUTOPEP8) -i startupfairy/tests.py
+	$(AUTOPEP8) -i startupfairy/views.py
+	
 
 status:
 	make clean
@@ -99,7 +101,18 @@ IDB2.log:
 IDB2.html:
 	PYDOC startupfairy/views.py >> IDB2.html
 
-test:	IDB2.log IDB2.html check TestApp
+#__init__.py removed?
+pylint: .pylintrc 
+	-$(PYLINT) startupfairy/models.py
+	-$(PYLINT) startupfairy/run.py
+	-$(PYLINT) startupfairy/test.py
+	-$(PYLINT) startupfairy/views.py
+
+
+#TODO add make check back in and make TestApp
+test:	IDB2.log IDB2.html check pylint TestApp
+	
+
 
 versions:
 	which make
@@ -112,7 +125,7 @@ versions:
 	$(PYTHON) --version
 	@echo
 	which $(PIP)
-	$(PIP) --version
+	$(PIP) --versio
 	@echo
 	which $(PYLINT)
 	$(PYLINT) --version

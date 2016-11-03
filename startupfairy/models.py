@@ -5,6 +5,7 @@ from run import app
 # initialize database object
 db = SQLAlchemy(app)
 
+
 class Company(db.Model):
     __tablename__ = "company"
     # set column types
@@ -19,7 +20,8 @@ class Company(db.Model):
     logo_url = db.Column(db.String)
 
     # set column values in constructor
-    #def __init__(self, name, summary, people, city, financial_orgs, twitter, website, logo_url):
+    # def __init__(self, name, summary, people, city, financial_orgs, twitter,
+    # website, logo_url):
     def __init__(self, company_id, name, summary, people, city, financial_orgs, twitter, website, logo_url):
         self.company_id = company_id
         self.name = name
@@ -62,7 +64,8 @@ class FinancialOrg(db.Model):
     logo_url = db.Column(db.String)
 
     # set the column values in constructor
-    #def __init__(self, name, summary, city, companies, twitter, website, logo_url):
+    # def __init__(self, name, summary, city, companies, twitter, website,
+    # logo_url):
     def __init__(self, financial_org_id, name, summary, city, companies, twitter, website, logo_url):
         self.financial_org_id = financial_org_id
         self.name = name
