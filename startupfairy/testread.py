@@ -1,7 +1,7 @@
 from sqlalchemy.types import String
 from sqlalchemy import create_engine
-from startupfairy.run import app
-from startupfairy import models
+import models
+from models import db
 import json
 
 # engine = create_engine('postgresql://localhost/startup_fairy')
@@ -12,7 +12,7 @@ import json
 JSON_DUMP_DIR = "static/data/db_dump/"
 COMPANIES_FILENAME = "companies.json"
 PEOPLE_FILENAME = "people.json"
-FINORGS_FILENAME = "finorg.json"
+FINORGS_FILENAME = "finorgs.json"
 CITIES_FILENAME = "cities.json"
 
 
@@ -92,8 +92,19 @@ def parse_cities():
     return cities_list
 
 def main():
-    print(list(map(lambda f: f.dictionary(), parse_companies())))
-
+    people = parse_people()
+    companies = parse_companies()
+    cities = parse_cities()
+    finorgs = parse_finorgs()
+    for person in people:
+        db.session.add(person)
+    for company in companies:
+        db.session.add(company)
+    for city in cities:
+        db.session.add(city)
+    for finorg in finorgs:
+        db.session.add(finorg)
+    db.session.commit()
 
 if __name__ == '__main__':
     main()

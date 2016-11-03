@@ -2,6 +2,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from run import app
 
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@localhost/startupfairydb3"
+
 # initialize database object
 db = SQLAlchemy(app)
 
@@ -10,8 +12,8 @@ class Company(db.Model):
     __tablename__ = "company"
     # set column types
     company_id = db.Column(db.String, primary_key=True)
-    name = db.Column(db.String, unique=True)
-    summary = db.Column(db.String, unique=True)
+    name = db.Column(db.String)
+    summary = db.Column(db.String)
     people = db.Column(db.String)
     city = db.Column(db.String)
     financial_orgs = db.Column(db.String)
@@ -55,8 +57,8 @@ class FinancialOrg(db.Model):
     __tablename__ = "financial_org"
     # set the column types
     financial_org_id = db.Column(db.String, primary_key=True)
-    name = db.Column(db.String, unique=True)
-    summary = db.Column(db.String, unique=True)
+    name = db.Column(db.String)
+    summary = db.Column(db.String)
     city = db.Column(db.String)
     companies = db.Column(db.String)
     twitter = db.Column(db.String)
@@ -97,8 +99,8 @@ class Person(db.Model):
     __tablename__ = "person"
     # set the column types
     person_id = db.Column(db.String, primary_key=True)
-    name = db.Column(db.String, unique=True)
-    summary = db.Column(db.String, unique=True)
+    name = db.Column(db.String)
+    summary = db.Column(db.String)
     city = db.Column(db.String)
     companies = db.Column(db.String)
     role = db.Column(db.String)
@@ -137,7 +139,7 @@ class City(db.Model):
     __tablename__ = "city"
     # set the column types
     city_id = db.Column(db.String, primary_key=True)
-    name = db.Column(db.String, unique=True)
+    name = db.Column(db.String)
     state = db.Column(db.String)
     region = db.Column(db.String)
     companies = db.Column(db.String)
