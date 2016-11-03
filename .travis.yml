@@ -25,6 +25,7 @@ before_script:
 
 script:
   - docker-compose up -d
+  - docker exec -it startupfairy bash
   - make test
 
 notifications:
