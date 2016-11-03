@@ -91,7 +91,10 @@ status:
 	git remote -v
 	git status
 
-# TODO
+# TODO test output? coverage??
+#$(COVERAGE) run    --branch test.py >  test.tmp 2>&1
+#$(COVERAGE) report -m                      >> test.tmp
+#cat test.tmp
 TestApp:
 	PYTHON startupfairy/tests.py
 
