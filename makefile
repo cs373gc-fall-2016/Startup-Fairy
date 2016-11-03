@@ -2,7 +2,15 @@
 
 FILES :=						\
 	IDB2.html					\
-	IDB2.log					
+	IDB2.log					\
+	app/models.py				\
+	app/tests.py 				\
+	app/tests.out				\
+	IDB2.pdf					\
+	.gitignore					\
+	.travis.yml					\
+	makefile					\
+	README.md 										
 
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python3.5
@@ -65,7 +73,7 @@ clean:
 	rm -f *.pyc
 	rm -f IMDB2.html
 	rm -f IMDB2.log
-	rm -r __pycache__
+	rm -r startupfairy/__pycache__
 
 format:
 	$(AUTOPEP8) -i startup/run.py
@@ -85,17 +93,13 @@ status:
 TestApp:
 	PYTHON startupfairy/tests.py
 
-log:
+IDB2.log:
 	git log > IDB2.log
 
-html:
+IDB2.html:
 	PYDOC startupfairy/views.py >> IDB2.html
 
-test: 
-	log
-	html
-	check
-	TestApp
+test:	IDB2.log IDB2.html check TestApp
 
 versions:
 	which make
