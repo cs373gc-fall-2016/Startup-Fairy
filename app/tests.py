@@ -2,6 +2,8 @@
 # imports
 # -------
 
+import httpretty
+import requests
 from unittest import main, TestCase
 from app import app
 from models import Company, FinancialOrg, Person, City
@@ -181,10 +183,14 @@ class TestAbout(TestCase):
         """
         About tests have no db component
         """
+        httpretty.enable()  # enable HTTPretty so that it will monkey patch the socket module
+        httpretty.register_uri(httpretty.GET, "http://yipit.com/",
+                           body="Find the best daily deals")
 
 
     def tearDown(self):
-
+        httpretty.disable()  # disable afterwards, so that you will have no problems in code that uses that socket module
+        httpretty.reset()  
 
     # ----
     # About
@@ -194,23 +200,38 @@ class TestAbout(TestCase):
         """
         Test traveling index to about page
         """
-        with app.test_request_context('/'):
-        assert flask.request.path == '/'
-        # TODO assert some thigns on index
-        self.assertEqual()
+        link = 'localhost'
+        response = requests.get(link)
+        self.assertEqual(200, response.status_code)
+        # self.assertEqual('', httpretty.last_request().body())
 
     def test_about_from_category(self):
         """
         Test traveling from a category page to about page
         """
-        # TODO
+        link = 'localhost'
+        response = requests.get(link)
+        self.assertEqual(200, response.status_code)
+
 
     def test_about_content(self):
         """
         Test for specific content of about page
         """
-        # TODO
-        # section with id "team" contain 7 h3 tags
+        link = 'localhost'
+        httpretty.register_uri(httpretty.GET, link,
+                           body='[{"title": "About | Startup Fairy"}]',
+                           content_type="application/json")
+
+        response = requests.get(link)
+
+        self.assertIn('Svyatoslav Ilinskiy', httpretty.last_request().body)
+        self.assertIn('Madeline Stager', httpretty.last_request().body)
+        self.assertIn('Addy Kim', httpretty.last_request().body)
+        self.assertIn('Mark', httpretty.last_request().body)
+        self.assertIn('Cameron', httpretty.last_request().body)
+        self.assertIn('Ajmal Khan', httpretty.last_request().body)
+        self.assertIn('Eugene Ng', httpretty.last_request().body)
 
 # ----
 # main
