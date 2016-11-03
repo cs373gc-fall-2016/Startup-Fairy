@@ -25,10 +25,10 @@ class TestCompany(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUpBeforeClass(self):
+    def setUp(self):
         db.create_all()
 
-    def tearDownAfterClass(self):
+    def tearDown(self):
         db.session.close()
         db.drop_all()
 
@@ -70,10 +70,10 @@ class TestFinancialOrg(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUpBeforeClass(self):
+    def setUp(self):
         db.create_all()
 
-    def tearDownAfterClass(self):
+    def tearDown(self):
         db.session.close()
         db.drop_all()
 
@@ -112,10 +112,10 @@ class TestPerson(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUpBeforeClass(self):
+    def setUp(self):
         db.create_all()
 
-    def tearDownAfterClass(self):
+    def tearDown(self):
         db.session.close()
         db.drop_all()
 
@@ -152,10 +152,10 @@ class TestCity(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUpBeforeClass(self):
+    def setUp(self):
         db.create_all()
 
-    def tearDownAfterClass(self):
+    def tearDown(self):
         db.session.close()
         db.drop_all()
 

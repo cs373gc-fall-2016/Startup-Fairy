@@ -4,3 +4,4 @@ flaskapp
 bower_components
 .DS_Store
 .idea/
+.pylintrc
