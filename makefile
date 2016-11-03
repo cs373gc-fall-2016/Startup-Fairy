@@ -1,8 +1,16 @@
 .DEFAULT_GOAL := test
 
 FILES :=						\
-	# IDB2.html					\
-	IDB2.log					
+	IDB2.html					\
+	IDB2.log					\
+	app/models.py				\
+	app/tests.py 				\
+	app/tests.out				\
+	IDB2.pdf					\
+	.gitignore					\
+	.travis.yml					\
+	makefile					\
+	README.md 										
 
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python3.5
@@ -63,16 +71,16 @@ clean:
 	rm -f .coverage
 	rm -f .pylintrc
 	rm -f *.pyc
-	rm -f IMDB1.html
-	rm -f IMDB1.log
-	rm -r __pycache__
+	rm -f IMDB2.html
+	rm -f IMDB2.log
+	rm -r startupfairy/__pycache__
 
 format:
-	$(AUTOPEP8) -i run.py
-	$(AUTOPEP8) -i app/models.py
-	$(AUTOPEP8) -i app/tests.py
-	$(AUTOPEP8) -i app/views.py
-	$(AUTOPEP8) -i app/__init__.py
+	$(AUTOPEP8) -i startup/run.py
+	$(AUTOPEP8) -i startup/models.py
+	$(AUTOPEP8) -i tartup/tests.py
+	$(AUTOPEP8) -i startup/views.py
+	$(AUTOPEP8) -i startup/__init__.py
 
 status:
 	make clean
@@ -83,18 +91,15 @@ status:
 
 # TODO
 TestApp:
-	python3.5 app/tests.py
+	PYTHON startupfairy/tests.py
 
-IDB1.log:
+IDB2.log:
 	git log > IDB2.log
 
-# FIXME ImportError: No module named 'flask'
-IDB1.html:
-	pydoc3.5 app/views.py
+IDB2.html:
+	PYDOC startupfairy/views.py >> IDB2.html
 
-test: IDB2.log check
-# TODO add reference to test
-# test: IDB2.html IDB2.log check
+test:	IDB2.log IDB2.html check TestApp
 
 versions:
 	which make

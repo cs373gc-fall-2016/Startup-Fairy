@@ -2,6 +2,10 @@ section {
   padding: 100px 0;
 }
 
+.mtspecial {
+  padding: 20px 0;
+}
+
 .photo-right {
 	float:right;
 }
@@ -112,7 +116,33 @@ a {
 }
 
 .test-btn {
-  color: #289eff;
+  background-color: #289eff;
+  color: #FFFFFF;
+}
+
+.btn-gold {
+  background-color: #ddb423;
+  color: #FFFFFF;
+}
+
+.btn-red {
+  background-color: #ff3b28;
+  color: #FFFFFF;
+}
+
+.btn-green {
+  background-color: #1eb949;
+  color: #FFFFFF;
+}
+
+.btn-blue {
+  background-color: #289eff;
+  color: #FFFFFF;
+}
+
+.test-results {
+  background-color: #e8e8e8;
+  color: #343434;
 }
 
 .altback {
