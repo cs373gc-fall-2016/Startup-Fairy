@@ -115,6 +115,16 @@ class TestCompany(TestCase):
 
         self.assertEqual(example2.__repr__(), "<Company 'Wetpaint'>")
 
+    def test_company_repr_3(self):
+        """
+        Test __repr__ methond of company class
+        """
+
+        example3 = Company("id3", "name3", "summary3", "people3",
+            "city3", "finorgs3", "twitter3", "website3", "logo3")
+
+        self.assertEqual(example3.__repr__(), "<Company 'name3'>")
+
 
     def test_company_dictionary_1(self):
         """
@@ -267,6 +277,16 @@ class TestFinancialOrg(TestCase):
             "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
 
         self.assertEqual(example2.__repr__(), "<FinancialOrg 'Founders Fund'>")
+
+    def test_financial_org_repr_3(self):
+        """
+        Test __repr__ methond of company financial org
+        """
+
+        example3 = FinancialOrg("id3", "name3", "summary3", "city3", "companies3", "twitter3",
+        "website", "logo")
+
+        self.assertEqual(example3.__repr__(), "<FinancialOrg 'name3'>")
 
     def test_financial_org_dictionary_1(self):
         """
@@ -636,6 +656,24 @@ class TestAbout(TestCase):
         # self.assertIn('Cameron', httpretty.last_request().body)
         # self.assertIn('Ajmal Khan', httpretty.last_request().body)
         # self.assertIn('Eugene Ng', httpretty.last_request().body)
+
+# ---
+# Test Views.py methods
+# ---
+
+# class TestViews(TestCase):
+
+    # def test_index(self):
+    #     """
+    #     Test that index renders properly
+    #     """
+
+    #     result = views.index()
+
+    #     self.assertEqual(result is not none, true)
+
+    # def test_api_people(self):
+    #     self.assertEqual(views.api_people() is not None, true)
 
 
 # ----
