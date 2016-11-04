@@ -3,6 +3,7 @@ class RunButton extends React.Component {
     super();
     this.state = {
       value: false,
+      results: 'hello',
     };
   }
 
@@ -11,13 +12,15 @@ class RunButton extends React.Component {
       <div class="nova">
       <button className="btn testButton" onClick={() => this.handleClick()}>
         <h3>{this.state.value ? 'Running...' : 'Run Tests!'}</h3>
+        <h3>{this.state.results}</h3>
       </button></div>
     );
   }
 
   handleClick() {
     this.setState({value: true});
-    setTimeout( () => {this.setState({value: false});} , 2000);
+    this.setState({results: 'Awaiting test results...'})
+    setTimeout(() => {this.setState({value: false});} , 2000);
   }
 }
 
@@ -32,25 +35,29 @@ class TestResults extends React.Component {
   render() {
     return (
       <div>
-        <div className="testPanel" class="testPanel"><h3>{this.state.results}</h3></div>
+        <div className="testPanel testPanel" class="testPanel"><h3>{this.state.results}</h3></div>
       </div>
     );
-  }
-
-  runTests() {
-    this.setState({results: 'You just ran a test!'});
   }
 }
 
 class Tester extends React.Component {
+
   render() {
     return (
       <div>
-        <TestResults />
-
-        <RunButton />
+        {this.runTest(0)}
+        {this.renderButton(0)}
       </div>
     );
+  }
+
+  runTest(i) {
+    return <TestResults />;
+  }
+
+  renderButton(i) {
+    return <RunButton />;
   }
 }
 

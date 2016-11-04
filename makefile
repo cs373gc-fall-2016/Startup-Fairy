@@ -97,7 +97,8 @@ log:
 	git log > IDB2.log
 
 docs:
-	$(PYDOC) startupfairy/views.py >> IDB2.html
+	$(PYDOC) startupfairy/views.py > IDB2.html
+	$(PYDOC) startupfairy/models.py >> IDB2.html
 
 pylint: .pylintrc 
 	-$(PYLINT) startupfairy/models.py

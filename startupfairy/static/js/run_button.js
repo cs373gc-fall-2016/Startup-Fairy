@@ -14,43 +14,43 @@ var RunButton = function (_React$Component) {
   function RunButton() {
     _classCallCheck(this, RunButton);
 
-    return _possibleConstructorReturn(this, (RunButton.__proto__ || Object.getPrototypeOf(RunButton)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (RunButton.__proto__ || Object.getPrototypeOf(RunButton)).call(this));
+
+    _this.state = {
+      value: false
+    };
+    return _this;
   }
 
   _createClass(RunButton, [{
-    key: "getInitialState",
-    value: function getInitialState() {
-      return {
-        isLoading: false
-      };
-    }
-  }, {
     key: "render",
     value: function render() {
-      var isLoading = this.state.isLoading;
+      var _this2 = this;
+
       return React.createElement(
-        "button",
-        {
-          className: "testButton",
-          onClick: !isLoading ? this.handleClick : null },
+        "div",
+        { "class": "nova" },
         React.createElement(
-          "h3",
-          null,
-          "Run Tests!"
+          "button",
+          { className: "btn testButton", onClick: function onClick() {
+              return _this2.handleClick();
+            } },
+          React.createElement(
+            "h3",
+            null,
+            this.state.value ? 'Running...' : 'Run Tests!'
+          )
         )
       );
     }
   }, {
     key: "handleClick",
     value: function handleClick() {
-      var _this2 = this;
+      var _this3 = this;
 
-      this.setState({ isLoading: true });
-
-      // This probably where you would have an `ajax` call
+      this.setState({ value: true });
       setTimeout(function () {
-        // Completed of async action, set loading state back
-        _this2.setState({ isLoading: false });
+        _this3.setState({ value: false });
       }, 2000);
     }
   }]);
@@ -64,22 +64,35 @@ var TestResults = function (_React$Component2) {
   function TestResults() {
     _classCallCheck(this, TestResults);
 
-    return _possibleConstructorReturn(this, (TestResults.__proto__ || Object.getPrototypeOf(TestResults)).apply(this, arguments));
+    var _this4 = _possibleConstructorReturn(this, (TestResults.__proto__ || Object.getPrototypeOf(TestResults)).call(this));
+
+    _this4.state = {
+      results: '[Test Results Here]'
+    };
+    return _this4;
   }
 
   _createClass(TestResults, [{
     key: "render",
     value: function render() {
-      var results = '[Test Results Here]';
       return React.createElement(
         "div",
         null,
         React.createElement(
           "div",
-          { className: "testPanel" },
-          results
+          { className: "testPanel", "class": "testPanel" },
+          React.createElement(
+            "h3",
+            null,
+            this.state.results
+          )
         )
       );
+    }
+  }, {
+    key: "runTests",
+    value: function runTests() {
+      this.setState({ results: 'You just ran a test!' });
     }
   }]);
 
@@ -101,11 +114,7 @@ var Tester = function (_React$Component3) {
       return React.createElement(
         "div",
         null,
-        React.createElement(
-          "div",
-          { className: "testPanel" },
-          React.createElement(TestResults, null)
-        ),
+        React.createElement(TestResults, null),
         React.createElement(RunButton, null)
       );
     }
