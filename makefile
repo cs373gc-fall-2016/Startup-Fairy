@@ -1,7 +1,5 @@
 .DEFAULT_GOAL := test
 
-#TODO uncoment file checks
-
 
 FILES :=						\
 	IDB2.html					\
@@ -70,14 +68,12 @@ check:
     fi;                                           \
     echo "success";
 
-#TODO where will __pycache__ be ??
 clean:
 	rm -f .coverage
 	rm -f .pylintrc
 	rm -f *.pyc
 	rm -r startupfairy/__pycache__
 
-#$(AUTOPEP8) -i startup/__init__.py
 format:
 	$(AUTOPEP8) -i startupfairy/run.py
 	$(AUTOPEP8) -i startupfairy/models.py
@@ -92,9 +88,7 @@ status:
 	git remote -v
 	git status
 
-# TODO test output? coverage??
 TestApp:	startupfairy/tests.py
-	#$(PYTHON) startupfairy/tests.py
 	$(COVERAGE) run    --branch startupfairy/tests.py >  startupfairy/tests.out 2>&1
 	$(COVERAGE) report -m                      >> startupfairy/tests.out
 	cat startupfairy/tests.out
@@ -105,19 +99,14 @@ log:
 docs:
 	$(PYDOC) startupfairy/views.py >> IDB2.html
 
-#__init__.py removed?
 pylint: .pylintrc 
 	-$(PYLINT) startupfairy/models.py
 	-$(PYLINT) startupfairy/run.py
 	-$(PYLINT) startupfairy/tests.py
 	-$(PYLINT) startupfairy/views.py
 
-
-#TODO add make check back in and make TestApp
 test:	log docs check pylint TestApp
 	
-
-
 versions:
 	which make
 	make --version
