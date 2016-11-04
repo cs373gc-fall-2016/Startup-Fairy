@@ -2,7 +2,7 @@
   warnings.warn('SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.')
 ...........................................
 ----------------------------------------------------------------------
-Ran 43 tests in 0.242s
+Ran 43 tests in 0.291s
 
 OK
 Name                     Stmts   Miss Branch BrPart  Cover   Missing
@@ -10,6 +10,6 @@ Name                     Stmts   Miss Branch BrPart  Cover   Missing
 startupfairy/models.py     131      0      0      0   100%
 startupfairy/run.py         12      1      2      1    86%   18, 17->18
 startupfairy/tests.py      293      0      2      1    99%   683->exit
-startupfairy/views.py       57     42     16      0    21%   26, 34, 40-46, 59, 64-74, 79-89, 94-104, 109-118
+startupfairy/views.py       71     55     24      0    17%   27, 35, 41-52, 62-63, 68-79, 84-95, 100-111, 116-126
 --------------------------------------------------------------------
-TOTAL                      493     43     20      2    88%
+TOTAL                      507     56     28      2    85%

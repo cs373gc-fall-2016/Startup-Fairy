@@ -1,3 +1,175 @@
+commit 2bf2a06b767a1dc6f085b39e3a42e6937683334a
+Merge: 28a2f0c 0134c95
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 21:44:50 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 28a2f0c04cdf3a8bee8c3ed154ceae81be889232
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 21:44:40 2016 -0500
+
+    added more tests
+
+commit 0134c955a6cc14ada07bc824abd9d2b003e41ee8
+Merge: e46305f 489980c
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 21:43:02 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 489980cfffa9fa0426b627b12320dd220d21db1a
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Nov 3 21:41:01 2016 -0500
+
+    runtest
+    
+    it displays the output from our tests.out file
+
+commit e813271bf95d611710c7890630034fb0270b49c7
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 21:23:54 2016 -0500
+
+    updated pydocs
+
+commit 4be7dea0e8b51c30205af0f9c35793d5ab568755
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Nov 3 21:04:27 2016 -0500
+
+    lessen some of pylints wrath
+
+commit e46305fa9d3a0017b40c8ea286c241632ad66a68
+Merge: 420a5ef 34acdf3
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 20:23:37 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 34acdf357f70b4dcf5f2434e0ce149a5300617ed
+Merge: 97c649e 11772ab
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 20:22:29 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 97c649ebc51f16e89acce96385eee13613369300
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 20:18:48 2016 -0500
+
+    fixed margins on splash page fix #61
+
+commit 11772abac18782a5d4e34ba92528e5d187a3cb43
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Nov 3 20:17:43 2016 -0500
+
+    working on about tests
+
+commit 420a5ef72b480bc5a8b7698aa0d594eff4c2f133
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 20:01:40 2016 -0500
+
+    Update people page minus companies and roles column
+
+commit 5e45042a04931c1db0f2352fb86cb438aa2d87a3
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 19:56:09 2016 -0500
+
+    finished TODOs in makefile fix #20
+
+commit 56ce0b1b8b1293034a0e67cc9b33d631495a9578
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 19:53:09 2016 -0500
+
+    changed picture for companies #40
+
+commit dd85f25a60e99ebbadeb31abdfbf5b625e6059b2
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 19:39:02 2016 -0500
+
+    Query data from db, does not display properly
+
+commit e63a7dddb0e94fe00f14d94d1d29cc0fa09d3bad
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Nov 3 19:39:22 2016 -0500
+
+    wrote tests for Person and City
+
+commit 3492e91a1788b8ba1d4c9a52a2ef32355bf693cd
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 19:35:50 2016 -0500
+
+    wrote tests for finincial orgs model #45
+
+commit ad52559febe50750533f5de06414a5b5fa4cb491
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 19:13:55 2016 -0500
+
+    added check for IDB2.pdf in make check
+
+commit 6b2ec8468dd27b84a3cff26d75ccfc7a80cda479
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 18:54:44 2016 -0500
+
+    wrote tests for companies model #45
+
+commit b1e745da4551922055bb4221a67a402bea9c2694
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Nov 3 18:49:28 2016 -0500
+
+    about page updates
+
+commit 3b709241bf7077aa4f658cf4cbe3e14bb7c08859
+Author: ajrator <ajrator@gmail.com>
+Date:   Thu Nov 3 18:43:15 2016 -0500
+
+    added UML Diagram as pdf
+
+commit c04c16e190c05dcec2b83b341d4cacbfef744ff4
+Author: ajrator <ajrator@gmail.com>
+Date:   Thu Nov 3 18:39:22 2016 -0500
+
+    UPDATED UML Diagram
+
+commit 079a2cbb9f18bbbbd41b6e33750a7a795be8c9b3
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Nov 3 18:30:18 2016 -0500
+
+    testing section on about page
+    
+    -updated so it's interactive
+    -still doesn't actually run tests, sorry:(
+
+commit faf05090552f287e74502a86e7d1ccfb3874ca0d
+Merge: 62e987a 25f5674
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 17:27:48 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 62e987a54fd2401c636d94a0aee0a3fd3e7fad72
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 17:26:39 2016 -0500
+
+    fixed make pylint
+
+commit 25f56748b9467d4fa2a507aa012cf61d6aa180d5
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 17:25:09 2016 -0500
+
+    Update requirements file
+
+commit e3ef6c3f38cb2955715b486a0b6e98ac73c75852
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 17:22:12 2016 -0500
+
+    bower has to be done as separate step per readme
+
+commit 452b77c588f8ae44a73e557d5528ab3ef9c5e968
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 17:10:12 2016 -0500
+
+    ran autopep8 and updated makefile
+
 commit c9936be8716aa2d15b06af00a8a9b336d384e7c4
 Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Thu Nov 3 16:21:56 2016 -0500

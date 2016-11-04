@@ -47,7 +47,7 @@ def category(app_category):
     elif app_category == 'financialorgs':
         data = api_financialorgs()
     else:
-        print ("Category does not exist")
+        print("Category does not exist")
         data = []
     return render_template('category.html',
                            alt_title=ALT_NAMES.get(app_category, None),
@@ -75,7 +75,7 @@ def api_people():
                 person_id=person_id).one()
             return json.dumps(data.dictionary())
     except:
-        print ("Get people failed")
+        print("Get people failed")
         abort(404)
 
 
@@ -91,7 +91,7 @@ def api_companies():
                 company_id=company_id).one()
             return json.dumps(data.dictionary())
     except:
-        print ("Get companies failed")
+        print("Get companies failed")
         abort(404)
 
 
@@ -107,7 +107,7 @@ def api_financialorgs():
                 financial_org_id=finorg_id).one()
             return json.dumps(data.dictionary())
     except:
-        print ("Get financial orgs failed")
+        print("Get financial orgs failed")
         abort(404)
 
 
@@ -122,5 +122,5 @@ def api_cities():
             data = db.session.query(City).filter_by(city_id=city_id).one()
             return json.dumps(data.dictionary())
     except:
-        print ("Get cities failed")
+        print("Get cities failed")
         abort(404)
