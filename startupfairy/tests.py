@@ -26,12 +26,8 @@ class TestCompany(TestCase):
     # ------------------
     
     # def setUp(self):
-        
-
-        
 
     # def tearDown(self):
-    #     db.session.close()
     
     # -------
     # Company
@@ -43,7 +39,7 @@ class TestCompany(TestCase):
         """
 
         example1 = Company("id", "name", "summary", "people",
-            "city", "finorgs", "twitter", "wobsite", "logo")
+            "city", "finorgs", "twitter", "website", "logo")
 
         self.assertEqual(example1.company_id, "id")
         self.assertEqual(example1.name, "name")
@@ -56,11 +52,11 @@ class TestCompany(TestCase):
         Test construction of a new company instance
         """
         example1 = Company("id", "name", "summary", "people",
-            "city", "finorgs", "twitter", "wobsite", "logo")
+            "city", "finorgs", "twitter", "website", "logo")
 
         self.assertEqual(example1.financial_orgs, "finorgs")
         self.assertEqual(example1.twitter, "twitter")
-        self.assertEqual(example1.website, "wobsite")
+        self.assertEqual(example1.website, "website")
         self.assertEqual(example1.logo_url, "logo")
 
     def test_company_constructor_3(self):
@@ -98,7 +94,7 @@ class TestCompany(TestCase):
         """
 
         example1 = Company("id", "name", "summary", "people",
-            "city", "finorgs", "twitter", "wobsite", "logo")
+            "city", "finorgs", "twitter", "website", "logo")
 
         self.assertEqual(example1.__repr__(), "<Company 'name'>")
 
@@ -121,7 +117,7 @@ class TestCompany(TestCase):
         """
 
         example1 = Company("id", "name", "summary", "people",
-            "city", "finorgs", "twitter", "wobsite", "logo")
+            "city", "finorgs", "twitter", "website", "logo")
         dict_rep = example1.dictionary()
 
         self.assertEqual(dict_rep['company_id'], "id")
@@ -136,12 +132,12 @@ class TestCompany(TestCase):
         """
 
         example1 = Company("id", "name", "summary", "people",
-            "city", "finorgs", "twitter", "wobsite", "logo")
+            "city", "finorgs", "twitter", "website", "logo")
         dict_rep = example1.dictionary()
 
         self.assertEqual(dict_rep['financial_orgs'], "finorgs")
         self.assertEqual(dict_rep['twitter'], "twitter")
-        self.assertEqual(dict_rep['website'], "wobsite")
+        self.assertEqual(dict_rep['website'], "website")
         self.assertEqual(dict_rep['logo_url'], "logo")
 
     def test_company_dictionary_3(self):
@@ -197,35 +193,31 @@ class TestFinancialOrg(TestCase):
     # FinancialOrg
     # ------------
 
-    def test_financial_org(self):
+    def test_financial_org_constructor_1(self):
         """
-        Test retrieval of a financial organization entity
+        Test construction of a new company instance
         """
-        # example = FinancialOrg("Founders Fund",
-        # "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
-        # "San Francisco", [
-        #     "Space Exploration Technologies"], "foundersfund",
-        # "http://www.foundersfund.com")
 
-        #self.assertEqual(example.city, "San Francisco")
-        #self.assertEqual(example.twitter, "foundersfund")
-
-        # db.session.add(example)
-        # db.session.commit()
-        #financial_orgs = FinancialOrg.query.all()
-
-        #self.assertEqual(len(financial_orgs), 1)
-        #self.assertEqual(example.dictionary(), financial_orgs[1].dictionary)
-
-        example = FinancialOrg("id", "name", "summary", "city", ["company0", "company1"], "twitter",
+        example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
         "website", "logo")
 
-        self.assertEqual(example.financial_org_id, "id")
-        self.assertEqual(example.name, "name")
-        self.assertEqual(example.summary, "summary")
-        self.assertEqual(example.city, "city")
-        self.assertEqual(example.companies[0], "company0") #??? seams like companies should be a string not a list
-        self.assertEqual(1, 1)
+        self.assertEqual(example1.financial_org_id, "id")
+        self.assertEqual(example1.name, "name")
+        self.assertEqual(example1.summary, "summary")
+        self.assertEqual(example1.people, "people")
+        self.assertEqual(example1.city, "city")
+
+    def test_financial_org_constructor_2(self):
+        """
+        Test construction of a new company instance
+        """
+        example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
+        "website", "logo")
+
+        self.assertEqual(example1.companies, "companies")
+        self.assertEqual(example1.twitter, "twitter")
+        self.assertEqual(example1.website, "website")
+        self.assertEqual(example1.logo_url, "logo")
 
 
 # ----------
@@ -238,12 +230,8 @@ class TestPerson(TestCase):
     # ------------------
 
     # def setUp(self):
-    #     with run.app.test_request_context():
-    #         db.create_all()
 
     # def tearDown(self):
-    #     db.session.close()
-    #     db.drop_all()
 
     # ------
     # Person
@@ -279,12 +267,8 @@ class TestCity(TestCase):
     # ------------------
 
     # def setUp(self):
-    #     with run.app.test_request_context():
-    #         db.create_all()
 
     # def tearDown(self):
-    #     db.session.close()
-    #     db.drop_all()
 
     # ----
     # City

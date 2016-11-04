@@ -1,11 +1,12 @@
 .DEFAULT_GOAL := test
 
 #TODO uncoment file checks
-#IDB2.pdf					\
+
 
 FILES :=						\
 	IDB2.html					\
 	IDB2.log					\
+	IDB2.pdf					\
 	startupfairy/models.py		\
 	startupfairy/tests.py 		\
 	startupfairy/tests.out		\
