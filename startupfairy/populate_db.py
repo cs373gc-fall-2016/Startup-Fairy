@@ -11,7 +11,7 @@ import json
 
 JSON_DUMP_DIR = "static/data/db_dump/"
 COMPANIES_FILENAME = "companies.json"
-PEOPLE_FILENAME = "people.json"
+PEOPLE_FILENAME = "people_sample.json"
 FINORGS_FILENAME = "finorgs.json"
 CITIES_FILENAME = "cities.json"
 
@@ -52,7 +52,7 @@ def parse_people():
         for c in companies_and_roles:
             roles += [c['role']]
             companies += [[c['name'], c['id']]]
-        p = models.Person(person_id, name, summary, city, companies, roles, twitter, logo_url)
+        p = models.Person(person_id, name, summary, city, json.dumps(companies), json.dumps(roles), twitter, logo_url)
         people_list += [p]
     return people_list
 
@@ -93,18 +93,19 @@ def parse_cities():
 
 def main():
     people = parse_people()
-    companies = parse_companies()
-    cities = parse_cities()
-    finorgs = parse_finorgs()
-    for person in people:
-        db.session.add(person)
-    for company in companies:
-        db.session.add(company)
-    for city in cities:
-        db.session.add(city)
-    for finorg in finorgs:
-        db.session.add(finorg)
-    db.session.commit()
+
+    # companies = parse_companies()
+    # cities = parse_cities()
+    # finorgs = parse_finorgs()
+    # for person in people:
+    #     db.session.add(person)
+    # for company in companies:
+    #     db.session.add(company)
+    # for city in cities:
+    #     db.session.add(city)
+    # for finorg in finorgs:
+    #     db.session.add(finorg)
+    # db.session.commit()
 
 if __name__ == '__main__':
     main()

@@ -28,6 +28,10 @@ footer .footer-below {
   font-weight: 300;
 }
 
+.addpadd {
+   padding: 100px 0;
+}
+
 hr.divider{
   padding: 0;
   border: none;
