@@ -9,7 +9,7 @@
     <!-- <script type="text/babel" src="{{url_for('static', filename='js/table.js')}}"></script> -->
      <script type="text/babel">
 
-      var data = {{ data|tojson }};
+      var data = JSON.parse({{ data|tojson }});
       var category = document.getElementById('category-header').innerHTML.toLowerCase().trim();
       var columns, columnMetadata;
 
@@ -20,20 +20,37 @@
         }
       });
 
+      var TwitterLink = React.createClass({
+        render: function() {
+          var name = this.props.data;
+          if (name !== undefined && name != null) {
+            var url = "http://twitter.com/" + name;
+            return <a href={url}>@{name}</a>
+          } else {
+            return <p>No twitter</p>
+          }
+        }
+      });
+
       var EntityLink = React.createClass({
         render: function(){
           var name = this.props.data;
-          if (name.length > 0 && name instanceof Array) {
-            name = name[0]
+          if (name !== undefined && name != null) {
+            if (name.length > 0 && name instanceof Array) {
+              name = name[0]
+            }
+            name = name.toString().split(" ").join("");
+            var url = this.props.metadata.customHeaderComponentProps.link + name;
+            return <a href={url}>{this.props.data}</a>
+          } else {
+            return <p>No city listed</p>
           }
-          name = name.toString().split(" ").join("");
-          var url = this.props.metadata.customHeaderComponentProps.link + name;
-          return <a href={url}>{this.props.data}</a>
         }
       });
+
       switch(category) {
           case 'people':
-            columns = ["name", "city", "role"];
+            columns = ["name", "city", "companies", "role", "twitter"];
             columnMetadata = [{
               "columnName": "name",
               "order": 1,
@@ -49,6 +66,11 @@
               "customComponent": EntityLink,
               "customHeaderComponentProps": { link: 'cities/' }
             }, {
+              "columnName": "companies",
+              "order": 4,
+              "locked": false,
+              "displayName": "Companies"
+            }, {
               "columnName": "role",
               "order": 4,
               "locked": false,
@@ -58,7 +80,9 @@
               "visible": false
             }, {
               "columnName": "twitter",
-              "visible": false,
+              "visible": true,
+              "displayName": "Twitter",
+              "customComponent": TwitterLink
             }];
             break;
           case 'companies':

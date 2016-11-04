@@ -2,6 +2,7 @@
 Serves all the routes for the application
 """
 import json
+import requests
 from os import listdir
 from flask import render_template, Blueprint, abort, request
 from models import *
@@ -37,12 +38,17 @@ def about():
 @public_views.route('/<app_category>', methods=['GET'])
 def category(app_category):
     """Render table template"""
-    filepath = "static/data/%s" % (app_category)
-    data = []
-    # for filename in listdir(filepath):
-    # with open("%s/%s" % (filepath, filename), 'r') as json_data:
-    # category_obj = json.load(json_data)
-    # data.append(category_obj)
+    if app_category == 'people':
+        data = api_people()
+    elif app_category == 'cities':
+        data = api_cities()
+    elif app_category == 'companies':
+        data = api_companies()
+    elif app_category == 'financialorgs':
+        data = api_financialorgs()
+    else:
+        print ("Category does not exist")
+        data = []
     return render_template('category.html',
                            alt_title=ALT_NAMES.get(app_category, None),
                            title=app_category, data=data)
@@ -53,9 +59,7 @@ def details(app_category, entity):
     """
     Serve the an entity's page
     """
-    # filename = "static/data/%s/%s.json" % (app_category, entity)
-    # with open(filename, 'r') as json_data:
-    # data = json.load(json_data)
+    data = []
     return render_template('details.html', data=data, category=app_category)
 
 
@@ -71,6 +75,7 @@ def api_people():
                 person_id=person_id).one()
             return json.dumps(data.dictionary())
     except:
+        print ("Get people failed")
         abort(404)
 
 
@@ -86,6 +91,7 @@ def api_companies():
                 company_id=company_id).one()
             return json.dumps(data.dictionary())
     except:
+        print ("Get companies failed")
         abort(404)
 
 
@@ -101,6 +107,7 @@ def api_financialorgs():
                 financial_org_id=finorg_id).one()
             return json.dumps(data.dictionary())
     except:
+        print ("Get financial orgs failed")
         abort(404)
 
 
@@ -115,4 +122,5 @@ def api_cities():
             data = db.session.query(City).filter_by(city_id=city_id).one()
             return json.dumps(data.dictionary())
     except:
+        print ("Get cities failed")
         abort(404)
