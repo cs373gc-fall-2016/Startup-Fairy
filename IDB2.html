@@ -1,0 +1,328 @@
+problem in startupfairy/views.py - ImportError: No module named 'models'
+Help on module models:
+
+NAME
+    models - Implementation of models of startups and their attributes
+
+CLASSES
+    flask_sqlalchemy.Model(flask_sqlalchemy.Model)
+        City
+        Company
+        FinancialOrg
+        Person
+    
+    class City(flask_sqlalchemy.Model)
+     |  Baseclass for custom user models.
+     |  
+     |  Method resolution order:
+     |      City
+     |      flask_sqlalchemy.Model
+     |      flask_sqlalchemy.Model
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, city_id, name, state, region, companies, financial_orgs, people)
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  dictionary(self)
+     |      Returns a dictionary representation of the class data
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  city_id
+     |  
+     |  companies
+     |  
+     |  financial_orgs
+     |  
+     |  name
+     |  
+     |  people
+     |  
+     |  region
+     |  
+     |  state
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  __mapper__ = <Mapper at 0x7f5fac308e80; City>
+     |  
+     |  __table__ = Table('city', MetaData(bind=None), Column('city_...n('peop...
+     |  
+     |  __tablename__ = 'city'
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from flask_sqlalchemy.Model:
+     |  
+     |  query
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from flask_sqlalchemy.Model:
+     |  
+     |  metadata = MetaData(bind=None)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from flask_sqlalchemy.Model:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from flask_sqlalchemy.Model:
+     |  
+     |  query_class = <class 'flask_sqlalchemy.BaseQuery'>
+     |      The default query object used for models, and exposed as
+     |      :attr:`~SQLAlchemy.Query`. This can be subclassed and
+     |      replaced for individual models by setting the :attr:`~Model.query_class`
+     |      attribute.  This is a subclass of a standard SQLAlchemy
+     |      :class:`~sqlalchemy.orm.query.Query` class and has all the methods of a
+     |      standard query as well.
+    
+    class Company(flask_sqlalchemy.Model)
+     |  Baseclass for custom user models.
+     |  
+     |  Method resolution order:
+     |      Company
+     |      flask_sqlalchemy.Model
+     |      flask_sqlalchemy.Model
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, company_id, name, summary, people, city, financial_orgs, twitter, website, logo_url)
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  dictionary(self)
+     |      Returns a dictionary representation of the class data
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  city
+     |  
+     |  company_id
+     |  
+     |  financial_orgs
+     |  
+     |  logo_url
+     |  
+     |  name
+     |  
+     |  people
+     |  
+     |  summary
+     |  
+     |  twitter
+     |  
+     |  website
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  __mapper__ = <Mapper at 0x7f5fac2e9da0; Company>
+     |  
+     |  __table__ = Table('company', MetaData(bind=None), Column('co...go_url'...
+     |  
+     |  __tablename__ = 'company'
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from flask_sqlalchemy.Model:
+     |  
+     |  query
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from flask_sqlalchemy.Model:
+     |  
+     |  metadata = MetaData(bind=None)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from flask_sqlalchemy.Model:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from flask_sqlalchemy.Model:
+     |  
+     |  query_class = <class 'flask_sqlalchemy.BaseQuery'>
+     |      The default query object used for models, and exposed as
+     |      :attr:`~SQLAlchemy.Query`. This can be subclassed and
+     |      replaced for individual models by setting the :attr:`~Model.query_class`
+     |      attribute.  This is a subclass of a standard SQLAlchemy
+     |      :class:`~sqlalchemy.orm.query.Query` class and has all the methods of a
+     |      standard query as well.
+    
+    class FinancialOrg(flask_sqlalchemy.Model)
+     |  Baseclass for custom user models.
+     |  
+     |  Method resolution order:
+     |      FinancialOrg
+     |      flask_sqlalchemy.Model
+     |      flask_sqlalchemy.Model
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, financial_org_id, name, summary, city, companies, twitter, website, logo_url)
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  dictionary(self)
+     |      Returns a dictionary representation of the class data
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  city
+     |  
+     |  companies
+     |  
+     |  financial_org_id
+     |  
+     |  logo_url
+     |  
+     |  name
+     |  
+     |  summary
+     |  
+     |  twitter
+     |  
+     |  website
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  __mapper__ = <Mapper at 0x7f5fac308400; FinancialOrg>
+     |  
+     |  __table__ = Table('financial_org', MetaData(bind=None), Colu...', Stri...
+     |  
+     |  __tablename__ = 'financial_org'
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from flask_sqlalchemy.Model:
+     |  
+     |  query
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from flask_sqlalchemy.Model:
+     |  
+     |  metadata = MetaData(bind=None)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from flask_sqlalchemy.Model:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from flask_sqlalchemy.Model:
+     |  
+     |  query_class = <class 'flask_sqlalchemy.BaseQuery'>
+     |      The default query object used for models, and exposed as
+     |      :attr:`~SQLAlchemy.Query`. This can be subclassed and
+     |      replaced for individual models by setting the :attr:`~Model.query_class`
+     |      attribute.  This is a subclass of a standard SQLAlchemy
+     |      :class:`~sqlalchemy.orm.query.Query` class and has all the methods of a
+     |      standard query as well.
+    
+    class Person(flask_sqlalchemy.Model)
+     |  Baseclass for custom user models.
+     |  
+     |  Method resolution order:
+     |      Person
+     |      flask_sqlalchemy.Model
+     |      flask_sqlalchemy.Model
+     |      builtins.object
+     |  
+     |  Methods defined here:
+     |  
+     |  __init__(self, person_id, name, summary, city, companies, role, twitter, logo_url)
+     |  
+     |  __repr__(self)
+     |      Return repr(self).
+     |  
+     |  dictionary(self)
+     |      Returns a dictionary representation of the class data
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  city
+     |  
+     |  companies
+     |  
+     |  logo_url
+     |  
+     |  name
+     |  
+     |  person_id
+     |  
+     |  role
+     |  
+     |  summary
+     |  
+     |  twitter
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  __mapper__ = <Mapper at 0x7f5fac308940; Person>
+     |  
+     |  __table__ = Table('person', MetaData(bind=None), Column('per...ogo_url...
+     |  
+     |  __tablename__ = 'person'
+     |  
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from flask_sqlalchemy.Model:
+     |  
+     |  query
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from flask_sqlalchemy.Model:
+     |  
+     |  metadata = MetaData(bind=None)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from flask_sqlalchemy.Model:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from flask_sqlalchemy.Model:
+     |  
+     |  query_class = <class 'flask_sqlalchemy.BaseQuery'>
+     |      The default query object used for models, and exposed as
+     |      :attr:`~SQLAlchemy.Query`. This can be subclassed and
+     |      replaced for individual models by setting the :attr:`~Model.query_class`
+     |      attribute.  This is a subclass of a standard SQLAlchemy
+     |      :class:`~sqlalchemy.orm.query.Query` class and has all the methods of a
+     |      standard query as well.
+
+DATA
+    db = <SQLAlchemy engine=None>
+
+FILE
+    /home/startupfairy/models.py
+
+

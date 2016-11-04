@@ -5,101 +5,121 @@ HOST: http://startupfairy.com/
 
 An API that allows you to access company informations
 
-## Companies [/companies]
+## Companies [/api/companies]
 
 _name_ (string) is the name of the company
 
 _summary_ (string) is a long overview of the company with its history
 
-_employees_ (array of strings) names of employees that are in our database
-
 _city_ (string) the city where the company is located
 
-_investors_ (array of strings) financial organizations that have invested into this firm
+_website_ (string) the city where the company is located
+
+_financial_orgs_ (string) financial organizations that have invested into this firm. 
+A string representation of an array of arrays. Each inner list's first element is name of the organization, second is its id.
+
+_people_ (string) employees of the company. 
+A string representation of an array of arrays. Each inner list's first element is name of the person, second is their id.
+
+_logo_url_ (string) a url to a logo of the company 
+
+_id_ (string) the id of the company. All company ids start with "c:" 
 
 _twitter_ (string) twitter handle of the company twitter
 
-### List All Companies [GET /companies]
-
+### List All Companies [GET /api/companies]
 
 + Response 200 (application/json)
 
         [
             {
-                "name": "Airbnb",
-                "summary": "Founded in August 2008 and based in San Francisco, California, Airbnb is a trusted community marketplace for people to list, discover, and book unique spaces around the world - online or from a mobile phone. Whether an apartment for a night, a castle for a week, or a villa for month, Airbnb connects people to unique travel experiences, at any price point, in more than 26,000 cities and 192 countries. And with world-class customer service and a growing community of users, Airbnb is the easiest way for people to monetize their extra space and showcase it to an audience of millions.",
-                "employees":[],
-                "city": "San Francisco",
-                "investors": ["Youniversity Ventures"],
-                "twitter": "airbnb",
-                "website": "http://airbnb.com"
+                "twitter": "facebook",
+                "people": "[[\"Brent Goldman\", \"p:225713\"]]",
+                "financial_orgs": "[[\"Mark Pincus\", \"p:2603\"]]",
+                "logo_url": "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0000/4552/4552v2-max-250x250.jpg",
+                "company_id": "c:5",
+                "website": "http://facebook.com",
+                "summary": "Facebook is the world's largest social network, with over [1.15 billion monthly active users](http://techcrunch.com/2013/07/24/facebook-growth-2/).\r\n\r\nFacebook was founded by [Mark Zuckerberg](http://www.crunchbase.com/person/mark-zuckerberg) in February 2004, initially as an exclusive network for Harvard students. It was a huge hit: in 2 weeks, half of the schools in the Boston area began demanding a Facebook network. Zuckerberg immediately recruited his friends [Dustin Moskovitz](http://www.crunchbase.com/person/dustin-moskovitz), [Chris Hughes](/person/chris-hughes), and [Eduardo Saverin](/person/eduardo-saverin) to help build Facebook, and within four months, Facebook added 30 more college networks. \r\n\r\nThe original idea for the term Facebook came from Zuckerberg's high school (Phillips Exeter Academy). The Exeter Face Book was passed around to every student as a way for students to get to know their classmates for the following year. It was a physical paper book until Zuckerberg brought it to the internet.\r\n\r\nWith this success, Zuckerberg, Moskowitz and Hughes moved out to [Palo Alto](/maps/city/Palo%2520Alto) for the summer and rented a sublet. A few weeks later, Zuckerberg ran into the former cofounder of [Napster](/company/napster), [Sean Parker](/person/sean-parker). Parker soon moved in to Zuckerberg's apartment and they began working together. Parker provided the introduction to their first investor, [Peter Thiel](/person/peter-thiel), cofounder of [PayPal](/company/paypal) and managing partner of [The Founders Fund](http://www.crunchbase.com/financial-organization/founders-fund). Thiel invested $500,000 into Facebook. \r\n\r\nWith millions more users, [Friendster](/company/friendster) [attempted](http://www.techcrunch.com/2006/12/12/yahoos-project-fraternity-docs-leaked/) to acquire the company for $10 million in mid 2004. Facebook turned down the offer and subsequently received $12.7 million in funding from [Accel Partners](http://www.crunchbase.com/financial-organization/accel-partners), at a valuation of [around $100 million](http://www.techcrunch.com/2005/09/07/85-of-college-students-use-facebook/). Facebook continued to grow, opening up to high school students in September 2005 and adding an immensely popular photo sharing feature the next month. The next spring, Facebook received $25 million in funding from [Greylock Partners](http://www.crunchbase.com/financial-organization/greylock) and [Meritech Capital](http://www.crunchbase.com/financial-organization/meritech-capital-partners), as well as previous investors Accel Partners and Peter Thiel. The pre-money valuation for this deal was about $525 million. Facebook subsequently [opened](http://www.techcrunch.com/2006/04/26/facebook-goes-beyond-college-high-school-markets/) up to work networks, eventually amassing over 20,000 work networks. Finally in September 2006, Facebook [opened](http://www.techcrunch.com/2006/09/26/facebook-just-launched-open-registrations/) to anyone with an email address. \r\n \r\nIn the summer of 2006, [Yahoo](/company/yahoo) [attempted to acquire](http://www.techcrunch.com/2006/09/21/facebook-and-yahoo-in-acquisition-talks-for-1-billion/) the company for $1 billion dollars. [Reports](http://www.wired.com/techbiz/startups/news/2007/09/ff_facebook) actually indicated that Zuckerberg made a verbal agreement to sell Facebook to Yahoo. A few days later when Yahoo's stock price took a dive, the offer was lowered to $800 million and Zuckerberg walked away from the deal. Yahoo later [offered](http://www.techcrunch.com/2006/12/12/yahoos-project-fraternity-docs-leaked/) $1 billion again, this time Zuckerberg turned Yahoo down and earned instant notoriety as the \"kid\" who turned down a billion. This was not the first time Zuckerberg turned down an acquisition offer; [Viacom](/company/viacom) had previously [unsuccessfully](http://www.techcrunch.com/2006/03/28/facebook-is-doing-the-skype-dance/) attempted to acquire the company for $750 million in March 2006. \r\n\r\nNot long after, in October 2007, [Microsoft invested](http://www.techcrunch.com/2007/10/24/facebook-takes-the-microsoft-money-and-runs/) $240 million into Facebook for 1.6 percent of the company in. This meant a valuation of over $15 billion, making Facebook the [5th most valuable US Internet company](http://www.techcrunch.com/2007/10/25/perspective-facebook-is-now-5th-most-valuable-us-internet-company/), yet with only $150 million in annual revenue. Many explained Microsoft's decision as being solely driven by the desire to outbid Google.\r\n\r\nFacebook continued to receive funding, most notably in January 2011 receiving a [$1.5 billion round](http://techcrunch.com/2011/01/21/facebook-raises-1-5-billion-at-50-billion-valuation/), valuing the company at $50 billion. A year later, in February 2012, Facebook [announced](http://techcrunch.com/2012/02/01/facebook-files-for-5-billion-ipo/) that it was filing for its long-anticipated initial public offering. The company went public on May 18, 2012, opening on the NASDAQ with shares trading at [$42.05](http://techcrunch.com/2012/05/18/facebook-share-open-10-5-higher-at-42/).\r\n\r\nOne sour note for Facebook has been the [controversy](http://www.techcrunch.com/2007/07/16/the-ghost-of-zuckerbergs-past-may-haunt-facebook-ipo/) with social network ConnectU. The founders of ConnectU, former classmates of Mark Zuckerberg at Harvard, allege that Zuckerberg stole their original source code for Facebook. The ordeal has [gone to court](http://www.techcrunch.com/2007/10/10/facebook-vs-connectu-facebook-makes-untrue-assertions-claims-connectu/), and has now been [resolved](http://techcrunch.com/2011/06/22/after-seven-years-the-winklevosses-give-up-on-battle-with-facebook/). \r\n\r\nNotwithstanding this lingering controversy, Facebook's growth has been staggering. Facebook announced [astonishing numbers](http://techcrunch.com/2012/02/01/facebooks-s-1-845-million-users-every-month-more-than-half-daily-and-nearly-half-mobile/) in February 2012 upon filing for its IPO. As of July 2013, over [1.15 billion](http://techcrunch.com/2013/07/24/facebook-growth-2/) users log into Facebook every month, and 669 million users log in daily. Mobile users now make up half of Facebook's user base, with 819 million monthly actives. Facebook has also announced that by the end of 2011 there had been 100 billion friend connections, and in recent months users had been registering 2.7 billion Likes and Comments per day. Facebook is one of the [most trafficked sites](http://techcrunch.com/2010/12/29/hitwise-facebook-overtakes-google-to-become-most-visited-website-in-2010/) in the US, and its international growth has been impressive. Additionally, Facebook is the top photo sharing site with 250 million photos uploaded per day.\r\n\r\nFacebook users' [passion](http://www.techcrunch.com/2007/11/13/i-just-cant-be-a-college-student-without-facebook/)?or [addiction](http://www.techcrunch.com/2007/03/09/career-advice-dont-choose-facebook-over-your-job/)?to the site is unparalleled: more than half use the product every single day and users spend an average of 19 minutes a day on Facebook. The site's popularity has garnered it pop culture fame, so much so that in 2010 a feature film entitled _The Social Network_ was released which chronicled Facebook's inception.\r\n\r\nIn its 2012 [IPO filing](http://techcrunch.com/2012/02/01/facebook-files-for-5-billion-ipo/), Facebook announced that it intends to grow in the near future by expanding its global user base, increasing engagement by developing new social tools, improving the mobile experience, and creating more value for advertisers and users.",
+                "city": "Menlo Park",
+                "name": "Facebook"
             }
         ]
-
-### Get One Company Info [GET /companies/{company_name}]
+        
+### Get One Company Info [GET /api/company?id={id}]
 
 + Parameters
 
-    + company_name (string) - Name of the company you are looking for
+    + id (required, string) - Id of the company you are looking for
     
 + Response 200 (application/json)
 
         {
-            "name": "Airbnb",
-            "summary": "Founded in August 2008 and based in San Francisco, California, Airbnb is a trusted community marketplace for people to list, discover, and book unique spaces around the world - online or from a mobile phone. Whether an apartment for a night, a castle for a week, or a villa for month, Airbnb connects people to unique travel experiences, at any price point, in more than 26,000 cities and 192 countries. And with world-class customer service and a growing community of users, Airbnb is the easiest way for people to monetize their extra space and showcase it to an audience of millions.",
-            "employees":[],
-            "city": "San Francisco",
-            "investors": ["Youniversity Ventures"],
-            "twitter": "airbnb",
-            "website": "http://airbnb.com"
+            "twitter": "facebook",
+            "people": "[[\"Brent Goldman\", \"p:225713\"]]",
+            "financial_orgs": "[[\"Mark Pincus\", \"p:2603\"]]",
+            "logo_url": "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0000/4552/4552v2-max-250x250.jpg",
+            "company_id": "c:5",
+            "website": "http://facebook.com",
+            "summary": "Facebook is the world's largest social network, with over [1.15 billion monthly active users](http://techcrunch.com/2013/07/24/facebook-growth-2/).\r\n\r\nFacebook was founded by [Mark Zuckerberg](http://www.crunchbase.com/person/mark-zuckerberg) in February 2004, initially as an exclusive network for Harvard students. It was a huge hit: in 2 weeks, half of the schools in the Boston area began demanding a Facebook network. Zuckerberg immediately recruited his friends [Dustin Moskovitz](http://www.crunchbase.com/person/dustin-moskovitz), [Chris Hughes](/person/chris-hughes), and [Eduardo Saverin](/person/eduardo-saverin) to help build Facebook, and within four months, Facebook added 30 more college networks. \r\n\r\nThe original idea for the term Facebook came from Zuckerberg's high school (Phillips Exeter Academy). The Exeter Face Book was passed around to every student as a way for students to get to know their classmates for the following year. It was a physical paper book until Zuckerberg brought it to the internet.\r\n\r\nWith this success, Zuckerberg, Moskowitz and Hughes moved out to [Palo Alto](/maps/city/Palo%2520Alto) for the summer and rented a sublet. A few weeks later, Zuckerberg ran into the former cofounder of [Napster](/company/napster), [Sean Parker](/person/sean-parker). Parker soon moved in to Zuckerberg's apartment and they began working together. Parker provided the introduction to their first investor, [Peter Thiel](/person/peter-thiel), cofounder of [PayPal](/company/paypal) and managing partner of [The Founders Fund](http://www.crunchbase.com/financial-organization/founders-fund). Thiel invested $500,000 into Facebook. \r\n\r\nWith millions more users, [Friendster](/company/friendster) [attempted](http://www.techcrunch.com/2006/12/12/yahoos-project-fraternity-docs-leaked/) to acquire the company for $10 million in mid 2004. Facebook turned down the offer and subsequently received $12.7 million in funding from [Accel Partners](http://www.crunchbase.com/financial-organization/accel-partners), at a valuation of [around $100 million](http://www.techcrunch.com/2005/09/07/85-of-college-students-use-facebook/). Facebook continued to grow, opening up to high school students in September 2005 and adding an immensely popular photo sharing feature the next month. The next spring, Facebook received $25 million in funding from [Greylock Partners](http://www.crunchbase.com/financial-organization/greylock) and [Meritech Capital](http://www.crunchbase.com/financial-organization/meritech-capital-partners), as well as previous investors Accel Partners and Peter Thiel. The pre-money valuation for this deal was about $525 million. Facebook subsequently [opened](http://www.techcrunch.com/2006/04/26/facebook-goes-beyond-college-high-school-markets/) up to work networks, eventually amassing over 20,000 work networks. Finally in September 2006, Facebook [opened](http://www.techcrunch.com/2006/09/26/facebook-just-launched-open-registrations/) to anyone with an email address. \r\n \r\nIn the summer of 2006, [Yahoo](/company/yahoo) [attempted to acquire](http://www.techcrunch.com/2006/09/21/facebook-and-yahoo-in-acquisition-talks-for-1-billion/) the company for $1 billion dollars. [Reports](http://www.wired.com/techbiz/startups/news/2007/09/ff_facebook) actually indicated that Zuckerberg made a verbal agreement to sell Facebook to Yahoo. A few days later when Yahoo's stock price took a dive, the offer was lowered to $800 million and Zuckerberg walked away from the deal. Yahoo later [offered](http://www.techcrunch.com/2006/12/12/yahoos-project-fraternity-docs-leaked/) $1 billion again, this time Zuckerberg turned Yahoo down and earned instant notoriety as the \"kid\" who turned down a billion. This was not the first time Zuckerberg turned down an acquisition offer; [Viacom](/company/viacom) had previously [unsuccessfully](http://www.techcrunch.com/2006/03/28/facebook-is-doing-the-skype-dance/) attempted to acquire the company for $750 million in March 2006. \r\n\r\nNot long after, in October 2007, [Microsoft invested](http://www.techcrunch.com/2007/10/24/facebook-takes-the-microsoft-money-and-runs/) $240 million into Facebook for 1.6 percent of the company in. This meant a valuation of over $15 billion, making Facebook the [5th most valuable US Internet company](http://www.techcrunch.com/2007/10/25/perspective-facebook-is-now-5th-most-valuable-us-internet-company/), yet with only $150 million in annual revenue. Many explained Microsoft's decision as being solely driven by the desire to outbid Google.\r\n\r\nFacebook continued to receive funding, most notably in January 2011 receiving a [$1.5 billion round](http://techcrunch.com/2011/01/21/facebook-raises-1-5-billion-at-50-billion-valuation/), valuing the company at $50 billion. A year later, in February 2012, Facebook [announced](http://techcrunch.com/2012/02/01/facebook-files-for-5-billion-ipo/) that it was filing for its long-anticipated initial public offering. The company went public on May 18, 2012, opening on the NASDAQ with shares trading at [$42.05](http://techcrunch.com/2012/05/18/facebook-share-open-10-5-higher-at-42/).\r\n\r\nOne sour note for Facebook has been the [controversy](http://www.techcrunch.com/2007/07/16/the-ghost-of-zuckerbergs-past-may-haunt-facebook-ipo/) with social network ConnectU. The founders of ConnectU, former classmates of Mark Zuckerberg at Harvard, allege that Zuckerberg stole their original source code for Facebook. The ordeal has [gone to court](http://www.techcrunch.com/2007/10/10/facebook-vs-connectu-facebook-makes-untrue-assertions-claims-connectu/), and has now been [resolved](http://techcrunch.com/2011/06/22/after-seven-years-the-winklevosses-give-up-on-battle-with-facebook/). \r\n\r\nNotwithstanding this lingering controversy, Facebook's growth has been staggering. Facebook announced [astonishing numbers](http://techcrunch.com/2012/02/01/facebooks-s-1-845-million-users-every-month-more-than-half-daily-and-nearly-half-mobile/) in February 2012 upon filing for its IPO. As of July 2013, over [1.15 billion](http://techcrunch.com/2013/07/24/facebook-growth-2/) users log into Facebook every month, and 669 million users log in daily. Mobile users now make up half of Facebook's user base, with 819 million monthly actives. Facebook has also announced that by the end of 2011 there had been 100 billion friend connections, and in recent months users had been registering 2.7 billion Likes and Comments per day. Facebook is one of the [most trafficked sites](http://techcrunch.com/2010/12/29/hitwise-facebook-overtakes-google-to-become-most-visited-website-in-2010/) in the US, and its international growth has been impressive. Additionally, Facebook is the top photo sharing site with 250 million photos uploaded per day.\r\n\r\nFacebook users' [passion](http://www.techcrunch.com/2007/11/13/i-just-cant-be-a-college-student-without-facebook/)?or [addiction](http://www.techcrunch.com/2007/03/09/career-advice-dont-choose-facebook-over-your-job/)?to the site is unparalleled: more than half use the product every single day and users spend an average of 19 minutes a day on Facebook. The site's popularity has garnered it pop culture fame, so much so that in 2010 a feature film entitled _The Social Network_ was released which chronicled Facebook's inception.\r\n\r\nIn its 2012 [IPO filing](http://techcrunch.com/2012/02/01/facebook-files-for-5-billion-ipo/), Facebook announced that it intends to grow in the near future by expanding its global user base, increasing engagement by developing new social tools, improving the mobile experience, and creating more value for advertisers and users.",
+            "city": "Menlo Park",
+            "name": "Facebook"
         }
-## Cities [/cities]
+
+## Cities [/api/cities]
+
+_id_ (string) the id of the city
 
 _name_ (string) is the name of the city
 
 _state_ (string) is the state where the city is located
 on
-_country_ (string) the country where the city is located
 
-_companies_ (array of strings) companies that are located in the city
+_region_ (string) is the region of the city
 
-_financial_orgs_ (array of strings) financial organizations that are located in the city
+_companies_ (strings) companies that are located in the city
+A string representation of an array of arrays. Each inner list's first element is name of the organization, second is its id.
 
-_people_ (array of strings) people that live in the city
+_financial_orgs_ (strings) financial organizations that are located in the city
+A string representation of an array of arrays. Each inner list's first element is name of the organization, second is its id.
 
-### List All Cities [GET /cities]
+_people_ (strings) people that live in the city. 
+A string representation of an array of arrays. Each inner list's first element is name of the person, second is their id.
+
+### List All Cities [GET /api/cities]
 
 + Response 200 (application/json)
 
         [
-            {
-                "name": "Los Angeles",
-                "state": "CA",
-                "country": "USA",
-                "companies": ["Space Exploration Technologies"],
-                "financial_orgs": [],
-                "people": ["Elon Musk"]
+            {  
+               "city_id":"4",
+               "people":"[]",
+               "name":"Santa Fe",
+               "state":"NM",
+               "companies":"[[\"Illuminated-Creations\", \"c:16506\"], [\"My Healing Kitchen\", \"c:54624\"], [\"Lead411\", \"c:8655\"], [\"SportXast\", \"c:273984\"], [\"Kyield\", \"c:34154\"], [\"Deep Web Technologies\", \"c:21119\"], [\"Strategic Analytics\", \"c:52776\"], [\"Chrysalis Salon and Beauty Store\", \"c:193695\"], [\"Figaro Systems\", \"c:231846\"], [\"Tres Amigas\", \"c:145579\"], [\"Vista Therapeutics\", \"c:283690\"], [\"JackRabbit Systems\", \"c:49368\"], [\"Hyperion Power Generation\", \"c:24352\"], [\"Wired Nation\", \"c:163231\"], [\"Outside Magazine\", \"c:163849\"], [\"dimension5 labs\", \"c:10009\"]]",
+               "region":"Santa Fe",
+               "financial_orgs":"[[\"Cottonwood Technology Fund\", \"f:6662\"], [\"Flywheel Ventures\", \"f:477\"], [\"Sun Mountain Capital\", \"f:4229\"], [\"Mesa Capital Partners\", \"f:5193\"]]"
             }
         ]
 
-### Get One City Info [GET /companies/{city_name}]
+### Get One City Info [GET /api/companies?id={id}]
 
 + Parameters
 
-    + city_name (string) - Name of the city you are looking for
+    + id (required, string) - Id of the city you are looking for
     
 + Response 200 (application/json)
 
-        {
-            "name": "Los Angeles",
-            "state": "CA",
-            "country": "USA",
-            "companies": ["Space Exploration Technologies"],
-            "financial_orgs": [],
-            "people": ["Elon Musk"]
+        {  
+           "city_id":"4",
+           "people":"[]",
+           "name":"Santa Fe",
+           "state":"NM",
+           "companies":"[[\"Illuminated-Creations\", \"c:16506\"], [\"My Healing Kitchen\", \"c:54624\"], [\"Lead411\", \"c:8655\"], [\"SportXast\", \"c:273984\"], [\"Kyield\", \"c:34154\"], [\"Deep Web Technologies\", \"c:21119\"], [\"Strategic Analytics\", \"c:52776\"], [\"Chrysalis Salon and Beauty Store\", \"c:193695\"], [\"Figaro Systems\", \"c:231846\"], [\"Tres Amigas\", \"c:145579\"], [\"Vista Therapeutics\", \"c:283690\"], [\"JackRabbit Systems\", \"c:49368\"], [\"Hyperion Power Generation\", \"c:24352\"], [\"Wired Nation\", \"c:163231\"], [\"Outside Magazine\", \"c:163849\"], [\"dimension5 labs\", \"c:10009\"]]",
+           "region":"Santa Fe",
+           "financial_orgs":"[[\"Cottonwood Technology Fund\", \"f:6662\"], [\"Flywheel Ventures\", \"f:477\"], [\"Sun Mountain Capital\", \"f:4229\"], [\"Mesa Capital Partners\", \"f:5193\"]]"
         }
 
-## Financial Organizations [/financialorgs]
+## Financial Organizations [/api/financialorgs]
 
 _name_ (string) is the name of the company
 
@@ -107,47 +127,56 @@ _summary_ (string) is a long overview of the company with its history
 
 _city_ (string) the city where the organization is located
 
-_companies_ (array of strings) companies that this financial org invested in 
+_companies_ (string) companies that this financial org invested in.
+A string representation of an array of arrays. Each inner list's first element is name of the company, second is its id.
 
 _twitter_ (string) twitter handle of the company twitter
 
 _website_ (string) website of the financial org
 
+_logo_url_ (string) the url of the logo
 
-### List All Financial Organizations [GET /financialorgs]
+_financial_org_id_ (string) id of the financial org
+
+
+### List All Financial Organizations [GET /api/financialorgs]
 
 + Response 200 (application/json)
 
         [
             {
-                "name": "Founders Fund",
-                "summary": "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
-                "city": "San Francisco",
-                "companies": ["Space Exploration Technologies"],
-                "twitter": "foundersfund",
-                "website": "http://www.foundersfund.com"
+                "twitter": null,
+                "website": "http://www.missionventures.com/index.php",
+                "financial_org_id": "f:10",
+                "logo_url": "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0002/9391/29391v1-max-250x250.jpg",
+                "companies": "[[\"Greenplum Software\", \"c:1853\"], [\"Vativ Technologies\", \"c:26440\"], [\"Kalon Semiconductor\", \"c:48436\"], [\"Slacker\", \"c:16\"], [\"ProQuo\", \"c:1840\"], [\"Transaction Wireless\", \"c:16697\"], [\"AccessSportsMedia.com\", \"c:13276\"], [\"Andigilog\", \"c:42062\"], [\"SodaHead\", \"c:91\"], [\"DevZuz\", \"c:1835\"], [\"ID Analytics\", \"c:16285\"], [\"Mochila\", \"c:2656\"], [\"VMIX Media\", \"c:416\"], [\"Alpine Data Labs\", \"c:75989\"], [\"LeisureLink\", \"c:44557\"], [\"Verimatrix\", \"c:1348\"], [\"RockeTalk\", \"c:17303\"], [\"MaxLinear\", \"c:23249\"], [\"Alignent Software\", \"c:58803\"], [\"Netseer\", \"c:22083\"], [\"Snapbridge Software\", \"c:59109\"], [\"Nirvanix\", \"c:365\"], [\"TelASIC Communications\", \"c:53471\"], [\"MarginPoint\", \"c:45484\"], [\"Eveo\", \"c:258614\"], [\"TeleCommunication Systems\", \"c:26802\"], [\"Ortiva Wireless\", \"c:38196\"], [\"RotoHog\", \"c:803\"], [\"Active Storage\", \"c:36066\"], [\"Logical Apps\", \"c:58124\"], [\"KidZui\", \"c:3347\"], [\"Networks in Motion\", \"c:20253\"], [\"Big Stage\", \"c:10480\"]]",
+                "summary": "Mission Ventures helps build successful enterprises in Southern California and creates superior returns on investment for its investors. This is accomplished by investing in the most promising early-stage companies in high growth, emerging markets, and providing significant assistance to those companies as they develop.\r\n\r\nThe Partnership brings value-added capital, experience, management talent, and guidance to the most outstanding and innovative ideas and entrepreneurs in the region.\r\n\r\nTheir investment strategy is twofold: 1) Invest in rapidly emerging markets that reflect and leverage their team's experience, and 2) Utilize their relationships with the Affiliate investors, their professional networks, and the substantial support from the local business communities in the region, both before and after investments are made.",
+                "city": "San Diego",
+                "name": "Mission Ventures"
             }
         ]
 
-### Get One Financial Organization Info [GET /financialorgs/{financial_org_name}]
+### Get One Financial Organization Info [GET /api/financialorgs?id={id}]
 
 + Parameters
 
-    + financial_org_name (string) - Name of the financial organization you are looking for
+    + id (required, string) - Id of the financial organization you are looking for
     
 + Response 200 (application/json)
 
         {
-            "name": "Founders Fund",
-            "summary": "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
-            "city": "San Francisco",
-            "companies": ["Space Exploration Technologies"],
-            "twitter": "foundersfund",
-            "website": "http://www.foundersfund.com"
+            "twitter": null,
+            "website": "http://www.missionventures.com/index.php",
+            "financial_org_id": "f:10",
+            "logo_url": "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0002/9391/29391v1-max-250x250.jpg",
+            "companies": "[[\"Greenplum Software\", \"c:1853\"], [\"Vativ Technologies\", \"c:26440\"], [\"Kalon Semiconductor\", \"c:48436\"], [\"Slacker\", \"c:16\"], [\"ProQuo\", \"c:1840\"], [\"Transaction Wireless\", \"c:16697\"], [\"AccessSportsMedia.com\", \"c:13276\"], [\"Andigilog\", \"c:42062\"], [\"SodaHead\", \"c:91\"], [\"DevZuz\", \"c:1835\"], [\"ID Analytics\", \"c:16285\"], [\"Mochila\", \"c:2656\"], [\"VMIX Media\", \"c:416\"], [\"Alpine Data Labs\", \"c:75989\"], [\"LeisureLink\", \"c:44557\"], [\"Verimatrix\", \"c:1348\"], [\"RockeTalk\", \"c:17303\"], [\"MaxLinear\", \"c:23249\"], [\"Alignent Software\", \"c:58803\"], [\"Netseer\", \"c:22083\"], [\"Snapbridge Software\", \"c:59109\"], [\"Nirvanix\", \"c:365\"], [\"TelASIC Communications\", \"c:53471\"], [\"MarginPoint\", \"c:45484\"], [\"Eveo\", \"c:258614\"], [\"TeleCommunication Systems\", \"c:26802\"], [\"Ortiva Wireless\", \"c:38196\"], [\"RotoHog\", \"c:803\"], [\"Active Storage\", \"c:36066\"], [\"Logical Apps\", \"c:58124\"], [\"KidZui\", \"c:3347\"], [\"Networks in Motion\", \"c:20253\"], [\"Big Stage\", \"c:10480\"]]",
+            "summary": "Mission Ventures helps build successful enterprises in Southern California and creates superior returns on investment for its investors. This is accomplished by investing in the most promising early-stage companies in high growth, emerging markets, and providing significant assistance to those companies as they develop.\r\n\r\nThe Partnership brings value-added capital, experience, management talent, and guidance to the most outstanding and innovative ideas and entrepreneurs in the region.\r\n\r\nTheir investment strategy is twofold: 1) Invest in rapidly emerging markets that reflect and leverage their team's experience, and 2) Utilize their relationships with the Affiliate investors, their professional networks, and the substantial support from the local business communities in the region, both before and after investments are made.",
+            "city": "San Diego",
+            "name": "Mission Ventures"
         }
 
 
-## People [/people]
+## People [/api/people]
 
 _name_ (string) is the name of the person
 
@@ -155,41 +184,51 @@ _summary_ (string) is a long overview of the person
 
 _city_ (string) the city where the person is located
 
-_companies_ (array of strings) companies that this person works in
+_companies_ (string) companies that this person works in
+A string represenation of the object. Each sub-object has two properties: first one is name of the company, second is id of the company.
 
-_role_ (array of strings) roles the person is in the companies
+_person_id_ (string) id of the person
+
+_role_ (strings) roles the person is in their companies
+An string representation of the object containing roles of the person
+
+_logo_url_ (string) the url of the person
 
 _twitter_ (string) twitter handle of the person
 
 
-### List All People [GET /people]
+### List All People [GET /api/people]
 
 + Response 200 (application/json)
 
         [
             {
-                "name": "Christopher Lukezic",
-                "summary": "Christopher joined Airbnb in September 2009 as one of the first employees of the company. He is currently the Head of Communications-EMEA for Airbnb where he oversees the brand marketing and communications strategies for the company's emerging markets. Previously he was based at the company's headquarters in San Francisco as the Director of Communications for Airbnb. During the summer of 2009 Christopher retired from a career as a world class professional runner to join Airbnb. As a runner he competed primarily in the 1500m distance where he is the 9th fastest American ever at that distance (3:33.28). He represented various brands both on and off the track, conducting numerous public speaking engagements and appearances on behalf of Reebok, First Endurance and Nissan. Christopher graduated from the Georgetown University McDonough School of Business in 2006 where he studied Operations and Information Management with an applied focus on the use of decision theory in supply chain logistics.",
-                "city": "",
-                "company": ["Airbnb"],
-                "role": ["Marketeer Extraordinaire"],
-                "twitter": "lukezic"
+                "twitter": null,
+                "role": "{\"Founder and CEO, Board Of Directors\",Founder}",
+                "person_id": "p:10",
+                "logo_url": "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0001/0688/10688v39-max-250x250.jpg",
+                "companies": "{{Facebook,c:5},{Startup:Education,f:14241}}",
+                "summary": "Mark Zuckerberg is the founder and CEO of [Facebook](http://www.crunchbase.com/company/facebook), which he started in his college dorm room in 2004 with roomates [Dustin Moskovitz](http://www.crunchbase.com/person/dustin-moskovitz) and [Chris Hughes](http://www.crunchbase.com/person/chris-hughes). \r\n\r\nZuckerberg is responsible for setting the overall direction and product strategy for the company. He leads the design of Facebook's service and development of its core technology and infrastructure. Mark studied computer science at Harvard University before moving the company to Palo Alto, California.\r\n\r\nEarlier in life, Zuckerberg developed a music recommendation system called Synapse and a peer-to-peer client called Wirehog. However, he abandoned both to pursue new projects.\r\n\r\nZuckerberg attended Harvard University and studied computer science before founding Facebook.\r\n\r\nWhile at Harvard, Zuckerberg created Facemash, a website that compared students' dorm photos side-by-side in a fashion similar to [HOT or NOT](http://www.crunchbase.com/company/hotornot). Harvard administration was not amused, and Zuckerberg faced subsequent disciplinary action. Less than three months later, he launched Facebook.\r\n\r\nIn September 2010, Zuckerberg donated $100 million to the Newark Public School System to help renovate and revamp the system.\r\n\r\nZuckerberg won the 2007 Crunchie Award for 'Best Startup CEO.' He was the Time Magazine 2010 Person Of The Year. He also won the 2012 Crunchie Award for CEO of the year. ",
+                "city": null,
+                "name": "Mark Zuckerberg"
             }
         ]
 
-### Get One Person Info [GET /people/{person_name}]
+### Get One Person Info [GET /api/people?id={id}]
 
 + Parameters
 
-    + person_name (string) - Name of the person you are looking for
+    + id (required, string) - Id of the person you are looking for
     
 + Response 200 (application/json)
 
         {
-            "name": "Christopher Lukezic",
-            "summary": "Christopher joined Airbnb in September 2009 as one of the first employees of the company. He is currently the Head of Communications-EMEA for Airbnb where he oversees the brand marketing and communications strategies for the company's emerging markets. Previously he was based at the company's headquarters in San Francisco as the Director of Communications for Airbnb. During the summer of 2009 Christopher retired from a career as a world class professional runner to join Airbnb. As a runner he competed primarily in the 1500m distance where he is the 9th fastest American ever at that distance (3:33.28). He represented various brands both on and off the track, conducting numerous public speaking engagements and appearances on behalf of Reebok, First Endurance and Nissan. Christopher graduated from the Georgetown University McDonough School of Business in 2006 where he studied Operations and Information Management with an applied focus on the use of decision theory in supply chain logistics.",
-            "city": "",
-            "company": ["Airbnb"],
-            "role": ["Marketeer Extraordinaire"],
-            "twitter": "lukezic"
+            "twitter": null,
+            "role": "{\"Founder and CEO, Board Of Directors\",Founder}",
+            "person_id": "p:10",
+            "logo_url": "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0001/0688/10688v39-max-250x250.jpg",
+            "companies": "{{Facebook,c:5},{Startup:Education,f:14241}}",
+            "summary": "Mark Zuckerberg is the founder and CEO of [Facebook](http://www.crunchbase.com/company/facebook), which he started in his college dorm room in 2004 with roomates [Dustin Moskovitz](http://www.crunchbase.com/person/dustin-moskovitz) and [Chris Hughes](http://www.crunchbase.com/person/chris-hughes). \r\n\r\nZuckerberg is responsible for setting the overall direction and product strategy for the company. He leads the design of Facebook's service and development of its core technology and infrastructure. Mark studied computer science at Harvard University before moving the company to Palo Alto, California.\r\n\r\nEarlier in life, Zuckerberg developed a music recommendation system called Synapse and a peer-to-peer client called Wirehog. However, he abandoned both to pursue new projects.\r\n\r\nZuckerberg attended Harvard University and studied computer science before founding Facebook.\r\n\r\nWhile at Harvard, Zuckerberg created Facemash, a website that compared students' dorm photos side-by-side in a fashion similar to [HOT or NOT](http://www.crunchbase.com/company/hotornot). Harvard administration was not amused, and Zuckerberg faced subsequent disciplinary action. Less than three months later, he launched Facebook.\r\n\r\nIn September 2010, Zuckerberg donated $100 million to the Newark Public School System to help renovate and revamp the system.\r\n\r\nZuckerberg won the 2007 Crunchie Award for 'Best Startup CEO.' He was the Time Magazine 2010 Person Of The Year. He also won the 2012 Crunchie Award for CEO of the year. ",
+            "city": null,
+            "name": "Mark Zuckerberg"
         }

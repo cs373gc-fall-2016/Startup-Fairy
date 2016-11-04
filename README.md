@@ -5,22 +5,27 @@ IMD 4
 [Travis](https://travis-ci.org/cs373gc-fall-2016/Startup-Fairy)
 
 ### Setup 
-Pretty much follows [this](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) tutorial.
+You'll need
+- [Docker](https://docs.docker.com/engine/installation/mac/)
+- [Docker-compose](https://docs.docker.com/compose/install/)
 
-1. `pip install virtualenv` - install virtualenv
-2. `virtualenv flaskapp` - create your virtualenv
-3. `source flaskapp/bin/activate` - you are now inside your virtualenv
-4. `pip install flask flask-login flask-sqlalchemy sqlalchemy-migrate flask-whooshalchemy flask-wtf flask-babel guess_language flipflop coverage pylint autopep8` - installs stuff needed to run flask
-5. `npm install`
-6. `bower install`
+1. Run `docker-compose up -d`. 
+2. Do `docker-compose ps` to see all your availble containers and the status of them.
+3. Once `startupfairy` the app is up and running, run `docker exec -it startupfairy bash`. You'll be inside the `startupfairy` container.
+4. Run `bower install --allow-root`
+
+You will only need to do steps 3 & 4 if you are creating the containers for the first time or if you're missing the `app/static/bower_components` directory.
+
+If you need to set up a password for postgres, make sure you `export POSTGRES_PASSWORD=<your password>`.
 
 ### Development
-Run `python3 run.py`, you will be able to see the site at `localhost:80`.
+You'll see the app at `localhost`. There is parity between the content on your local machine and the content inside the docker container.
+
+If you shut down your computer/Docker machine, the next time you boot up docker, you will need to run `docker-compose start` in order to start up all the services (postgres and app) again.
 
 ### Deployment
-In order to avoid a socket error in development, we will use environment variables to tell Flask we are on a production environment and therefore the correct port to run on.
 
-`export PRODUCTION=True`
+Same steps as development.
 
 ### Models
 * Company
@@ -58,6 +63,6 @@ In order to avoid a socket error in development, we will use environment variabl
 
 ### UML Diagram
 
-http://yuml.me/83988bfb
+http://yuml.me/96b7f61e
    
   

@@ -1,0 +1,15 @@
+requests
+httpretty
+flask
+flask-login
+flask-sqlalchemy
+sqlalchemy-migrate
+flask-whooshalchemy
+flask-wtf
+flask-babel
+guess_language
+flipflop
+coverage
+pylint
+autopep8
+psycopg2

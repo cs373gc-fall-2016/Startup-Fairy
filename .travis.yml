@@ -1,2 +1,35 @@
+sudo: required
+dist: trusty
+
+language: python
+
+services: 
+  docker
+
+python:
+ - "3.5"
+
+before_install:
+#   - pip install --upgrade pip 
+  - docker-compose up -d
+  - docker-compose ps
+  # - docker exec -it startupfairy bash
+
+# install:
+#   - pip install autopep8
+#   - pip install coverage
+#   - pip install numpy
+#   - pip install pylint
+
+# before_script:
+#   - uname -a
+#   - printenv | sort
+#   - make versions
+
+script:
+  # - docker-compose up -dg
+   - docker exec -it startupfairy make test
+  # - make test
+
 notifications:
   email: false
