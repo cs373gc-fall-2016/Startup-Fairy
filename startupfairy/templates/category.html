@@ -41,10 +41,17 @@
             }
             name = name.toString().split(" ").join("");
             var url = this.props.metadata.customHeaderComponentProps.link + name;
-            return <a href={url}>{this.props.data}</a>
+            return <p>{this.props.data}</p>
           } else {
             return <p>No city listed</p>
           }
+        }
+      });
+
+      var SmallList = React.createClass({
+        render: function() {
+          var data = this.props.data;
+          return <p>{data}</p>
         }
       });
 
@@ -69,6 +76,7 @@
               "columnName": "companies",
               "order": 4,
               "locked": false,
+              "customComponent": SmallList,
               "displayName": "Companies"
             }, {
               "columnName": "role",
@@ -86,7 +94,7 @@
             }];
             break;
           case 'companies':
-            columns = ["name", "website", "city"];
+            columns = ["name", "website", "city", "people", "financial_orgs", "twitter"];
             columnMetadata = [
             {
               "columnName": "name",
@@ -102,17 +110,17 @@
               "customComponent": EntityLink,
               "customHeaderComponentProps": { link: 'cities/' }
             }, {
-              "columnName": "investors",
+              "columnName": "financial_orgs",
               "order": 4,
-              "displayName": "Investors",
+              "displayName": "Financial Organizations",
               "customComponent": EntityLink,
               "customHeaderComponentProps": { link: 'financialorgs/' }
             }, {
-              "columnName": "employees", 
+              "columnName": "people", 
               "visible": true,
               "order": 3,
-              "displayName": "Employees",
-              "customComponent": EntityLink,
+              "displayName": "Notable People",
+              "customComponent": SmallList,
               "customHeaderComponentProps": { link: 'people/' }
             }, {
               "columnName": "website",
@@ -120,13 +128,15 @@
               "displayName": "Website",
               "customComponent": WebsiteLink
             }, {
-              "columnName": "twitter_username",
-              "visible": false
+              "columnName": "twitter",
+              "visible": true,
+              "displayName": "Twitter",
+              "customComponent": TwitterLink
             }];
             break;
           case 'financial organizations':
           case 'financialorgs':
-            columns = ["name", "city", "website"];
+            columns = ["name", "city", "website", "companies", "twitter"];
             columnMetadata = [{
               "columnName": "name",
               "locked": true,
@@ -144,7 +154,13 @@
               "customComponent": WebsiteLink
             }, {
               "columnName": "twitter",
-              "visible": false
+              "visible": true,
+              "displayName": "Twitter",
+              "customComponent": TwitterLink
+            }, {
+              "columnName": "companies",
+              "visible": true,
+              "displayName": "Companies Invested In"
             }, {
               "columnName": "summary",
               "visible": false
@@ -162,6 +178,10 @@
               "columnName": "state",
               "order": 3,
               "displayName": "State"
+            }, {
+              "columnName": "region",
+              "order": 4,
+              "displayName": "Region"
             }, {
               "columnName": "companies",
               "displayName": "Companies",
