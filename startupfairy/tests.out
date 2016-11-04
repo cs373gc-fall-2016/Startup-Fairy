@@ -1,15 +1,15 @@
 /usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py:800: UserWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.
   warnings.warn('SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.')
-...........E..
-======================================================================
-ERROR: test_financial_org_constructor_1 (__main__.TestFinancialOrg)
+......................
 ----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "startupfairy/tests.py", line 207, in test_financial_org_constructor_1
-    self.assertEqual(example1.people, "people")
-AttributeError: 'FinancialOrg' object has no attribute 'people'
+Ran 22 tests in 0.071s
 
-----------------------------------------------------------------------
-Ran 14 tests in 0.071s
-
-FAILED (errors=1)
+OK
+Name                     Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------
+startupfairy/models.py     131     36      0      0    73%   110-117, 120, 124-133, 149-155, 158, 162-170
+startupfairy/run.py         12      1      2      1    86%   18, 17->18
+startupfairy/tests.py      134      0      2      1    99%   469->exit
+startupfairy/views.py       57     42     16      0    21%   26, 34, 40-46, 59, 64-74, 79-89, 94-104, 109-118
+--------------------------------------------------------------------
+TOTAL                      334     79     20      2    73%

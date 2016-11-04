@@ -182,12 +182,8 @@ class TestFinancialOrg(TestCase):
     # ------------------
 
     # def setUp(self):
-    #     with run.app.test_request_context():
-    #         db.create_all()
 
     # def tearDown(self):
-    #     db.session.close()
-    #     db.drop_all()
 
     # ------------
     # FinancialOrg
@@ -204,7 +200,6 @@ class TestFinancialOrg(TestCase):
         self.assertEqual(example1.financial_org_id, "id")
         self.assertEqual(example1.name, "name")
         self.assertEqual(example1.summary, "summary")
-        self.assertEqual(example1.people, "people")
         self.assertEqual(example1.city, "city")
 
     def test_financial_org_constructor_2(self):
@@ -218,6 +213,116 @@ class TestFinancialOrg(TestCase):
         self.assertEqual(example1.twitter, "twitter")
         self.assertEqual(example1.website, "website")
         self.assertEqual(example1.logo_url, "logo")
+
+    def test_financial_org_constructor_3(self):
+        """
+        Test construction of a new company instance
+        """
+
+        example2 = FinancialOrg("id1", "Founders Fund",
+            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
+            "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
+
+        self.assertEqual(example2.financial_org_id, "id1")
+        self.assertEqual(example2.name, "Founders Fund")
+        self.assertEqual(example2.summary, "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.")
+        self.assertEqual(example2.city, "San Francisco")
+
+    def test_financial_org_constructor_4(self):
+        """
+        Test construction of a new company instance
+        """
+        example2 = FinancialOrg("id1", "Founders Fund",
+            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
+            "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
+
+        self.assertEqual(example2.companies, "Space Exploration Technologies")
+        self.assertEqual(example2.twitter, "foundersfund")
+        self.assertEqual(example2.website, "http://www.foundersfund.com")
+        self.assertEqual(example2.logo_url, "logo_url")
+
+    def test_financial_org_repr_1(self):
+        """
+        Test __repr__ methond of company financial org
+        """
+
+        example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
+        "website", "logo")
+
+        self.assertEqual(example1.__repr__(), "<FinancialOrg 'name'>")
+
+
+    def test_financial_org_repr_2(self):
+        """
+        Test __repr__ methond of financial org class 
+        """
+
+        example2 = FinancialOrg("id1", "Founders Fund",
+            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
+            "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
+
+        self.assertEqual(example2.__repr__(), "<FinancialOrg 'Founders Fund'>")
+
+    def test_financial_org_dictionary_1(self):
+        """
+        Test dictionary method of financial org class
+        """
+
+        example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
+        "website", "logo")
+        dict_rep = example1.dictionary()
+
+        self.assertEqual(dict_rep['financial_org_id'], "id")
+        self.assertEqual(dict_rep['name'], "name")
+        self.assertEqual(dict_rep['summary'], "summary")
+        self.assertEqual(dict_rep['city'], "city")
+
+    def test_financial_org_dictionary_2(self):
+        """
+        Test dictionary method of company class
+        """
+
+        example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
+        "website", "logo")
+        dict_rep = example1.dictionary()
+
+        self.assertEqual(dict_rep['companies'], "companies")
+        self.assertEqual(dict_rep['twitter'], "twitter")
+        self.assertEqual(dict_rep['website'], "website")
+        self.assertEqual(dict_rep['logo_url'], "logo")
+
+    def test_financial_org_dictionary_3(self):
+        """
+        Test dictionary method of financial org class
+        """
+
+        example2 = FinancialOrg("id1", "Founders Fund",
+            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
+            "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
+        dict_rep = example2.dictionary()
+
+        self.assertEqual(dict_rep['financial_org_id'], "id1")
+        self.assertEqual(dict_rep['name'], "Founders Fund")
+        self.assertEqual(dict_rep['summary'], "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.")
+        self.assertEqual(dict_rep['city'], "San Francisco")
+
+    def test_financial_org_dictionary_4(self):
+        """
+        Test dictionary method of company class
+        """
+
+        example2 = FinancialOrg("id1", "Founders Fund",
+            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
+            "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
+        dict_rep = example2.dictionary()
+
+        self.assertEqual(dict_rep['companies'], "Space Exploration Technologies")
+        self.assertEqual(dict_rep['twitter'], "foundersfund")
+        self.assertEqual(dict_rep['website'], "http://www.foundersfund.com")
+        self.assertEqual(dict_rep['logo_url'], "logo_url")
+
+    
+
 
 
 # ----------
