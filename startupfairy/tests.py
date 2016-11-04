@@ -1,9 +1,11 @@
+"""
+Tests for methods in models.py, views.py and the About page
+"""
+
 # -------
 # imports
 # -------
 
-import httpretty
-import requests
 from unittest import main, TestCase
 #from app import app
 from models import Company, FinancialOrg, Person, City, db
@@ -11,6 +13,9 @@ from models import Company, FinancialOrg, Person, City, db
 import run
 
 from flask_sqlalchemy import SQLAlchemy
+
+import httpretty
+import requests
 
 # initialize database object
 # db = SQLAlchemy()
@@ -65,12 +70,12 @@ class TestCompany(TestCase):
         """
 
         example2 = Company("id1", "Wetpaint",
-        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
+        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers.",
         "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
 
         self.assertEqual(example2.company_id, "id1")
         self.assertEqual(example2.name, "Wetpaint")
-        self.assertEqual(example2.summary, "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.")
+        self.assertEqual(example2.summary, "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers.")
         self.assertEqual(example2.people, "person1")
         self.assertEqual(example2.city, "San Francisco")
 
@@ -80,7 +85,7 @@ class TestCompany(TestCase):
         """
 
         example2 = Company("id1", "Wetpaint",
-        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
+        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers.",
         "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
 
         self.assertEqual(example2.financial_orgs, "Youniversity Ventures")
@@ -105,7 +110,7 @@ class TestCompany(TestCase):
         """
 
         example2 = Company("id1", "Wetpaint",
-        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
+        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers.",
         "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
 
         self.assertEqual(example2.__repr__(), "<Company 'Wetpaint'>")
@@ -146,13 +151,13 @@ class TestCompany(TestCase):
         """
 
         example2 = Company("id1", "Wetpaint",
-        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
+        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers.",
         "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
         dict_rep = example2.dictionary()
 
         self.assertEqual(dict_rep['company_id'], "id1")
         self.assertEqual(dict_rep['name'], "Wetpaint")
-        self.assertEqual(dict_rep['summary'], "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.")
+        self.assertEqual(dict_rep['summary'], "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers.")
         self.assertEqual(dict_rep['people'], "person1")
         self.assertEqual(dict_rep['city'], "San Francisco") 
 
@@ -162,7 +167,7 @@ class TestCompany(TestCase):
         """
 
         example2 = Company("id1", "Wetpaint",
-        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers. Wetpaint?s own online property, Wetpaint Entertainment, an entertainment news site that attracts more than 12 million unique visitors monthly and has over 2 million Facebook fans, is a proof point to the company?s success in building and engaging audiences. Media companies can license Wetpaint?s platform which includes a dynamic playbook tailored to their individual needs and comprehensive training. Founded by Internet pioneer Ben Elowitz, and with offices in New York and Seattle, Wetpaint is backed by Accel Partners, the investors behind Facebook.",
+        "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers.",
         "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
         dict_rep = example2.dictionary()
 
@@ -189,7 +194,7 @@ class TestFinancialOrg(TestCase):
     # FinancialOrg
     # ------------
 
-    def test_financial_org_constructor_1(self):
+    def test_financial_org_init_1(self):
         """
         Test construction of a new company instance
         """
@@ -202,7 +207,7 @@ class TestFinancialOrg(TestCase):
         self.assertEqual(example1.summary, "summary")
         self.assertEqual(example1.city, "city")
 
-    def test_financial_org_constructor_2(self):
+    def test_financial_org_init_2(self):
         """
         Test construction of a new company instance
         """
@@ -214,26 +219,26 @@ class TestFinancialOrg(TestCase):
         self.assertEqual(example1.website, "website")
         self.assertEqual(example1.logo_url, "logo")
 
-    def test_financial_org_constructor_3(self):
+    def test_financial_org_init_3(self):
         """
         Test construction of a new company instance
         """
 
         example2 = FinancialOrg("id1", "Founders Fund",
-            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
+            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.",
             "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
 
         self.assertEqual(example2.financial_org_id, "id1")
         self.assertEqual(example2.name, "Founders Fund")
-        self.assertEqual(example2.summary, "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.")
+        self.assertEqual(example2.summary, "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.")
         self.assertEqual(example2.city, "San Francisco")
 
-    def test_financial_org_constructor_4(self):
+    def test_financial_org_init_4(self):
         """
         Test construction of a new company instance
         """
         example2 = FinancialOrg("id1", "Founders Fund",
-            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
+            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.",
             "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
 
         self.assertEqual(example2.companies, "Space Exploration Technologies")
@@ -258,7 +263,7 @@ class TestFinancialOrg(TestCase):
         """
 
         example2 = FinancialOrg("id1", "Founders Fund",
-            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
+            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.",
             "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
 
         self.assertEqual(example2.__repr__(), "<FinancialOrg 'Founders Fund'>")
@@ -297,13 +302,13 @@ class TestFinancialOrg(TestCase):
         """
 
         example2 = FinancialOrg("id1", "Founders Fund",
-            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
+            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.",
             "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
         dict_rep = example2.dictionary()
 
         self.assertEqual(dict_rep['financial_org_id'], "id1")
         self.assertEqual(dict_rep['name'], "Founders Fund")
-        self.assertEqual(dict_rep['summary'], "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.")
+        self.assertEqual(dict_rep['summary'], "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.")
         self.assertEqual(dict_rep['city'], "San Francisco")
 
     def test_financial_org_dictionary_4(self):
@@ -312,7 +317,7 @@ class TestFinancialOrg(TestCase):
         """
 
         example2 = FinancialOrg("id1", "Founders Fund",
-            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.  The firm's five partners, Peter Thiel, Sean Parker, Ken Howery, Luke Nosek, and Brian Singerman have been founders of or early investors in numerous well-known companies such as Facebook, PayPal, Napster, and Palantir Technologies. Founders Fund was formed in 2005 and has launched four funds to date with more than $1 billion in aggregate capital under management.",
+            "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.",
             "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
         dict_rep = example2.dictionary()
 
@@ -374,7 +379,8 @@ class TestPerson(TestCase):
         """
         Test construction of a Person with more realistic information
         """
-        person1 = Person("p:2", "Ben Elowitz", "Ben Elowitz is co-founder and CEO of Wetpaint.", "null", "Wetpaint", "CEO", "elowitz", "http:\/\/s3.amazonaws.com\/crunchbase_prod_assets\/assets\/images\/resized\/0001\/8470\/18470v3-max-250x250.jpg")
+        person1 = Person("p:2", "Ben Elowitz", "Ben Elowitz is co-founder and CEO of Wetpaint.",
+            "null", "Wetpaint", "CEO", "elowitz", "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0001/8470/18470v3-max-250x250.jpg")
 
         self.assertIsInstance(person1, Person)
         self.assertEqual(person1.person_id, "p:2")
@@ -384,7 +390,7 @@ class TestPerson(TestCase):
         self.assertEqual(person1.companies, "Wetpaint")
         self.assertEqual(person1.role, "CEO")
         self.assertEqual(person1.twitter, "elowitz")
-        self.assertEqual(person1.logo_url, "http:\/\/s3.amazonaws.com\/crunchbase_prod_assets\/assets\/images\/resized\/0001\/8470\/18470v3-max-250x250.jpg")
+        self.assertEqual(person1.logo_url, "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0001/8470/18470v3-max-250x250.jpg")
 
     def test_person_repr_1(self):
         person1 = Person("id1", "name1", "summary1", "city1", "companies1", "role1", "twitter1", "logo_url1")
@@ -395,7 +401,8 @@ class TestPerson(TestCase):
         self.assertEqual(person2.__repr__(), "<Person 'name1'>")
 
     def test_person_repr_3(self):
-        person1 = Person("p:2", "Ben Elowitz", "Ben Elowitz is co-founder and CEO of Wetpaint.", "null", "Wetpaint", "CEO", "elowitz", "http:\/\/s3.amazonaws.com\/crunchbase_prod_assets\/assets\/images\/resized\/0001\/8470\/18470v3-max-250x250.jpg")
+        person1 = Person("p:2", "Ben Elowitz", "Ben Elowitz is co-founder and CEO of Wetpaint.",
+            "null", "Wetpaint", "CEO", "elowitz", "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0001/8470/18470v3-max-250x250.jpg")
         self.assertEqual(person1.__repr__(), "<Person 'Ben Elowitz'>")
         
     def test_person_dict_1(self):
@@ -430,11 +437,13 @@ class TestPerson(TestCase):
         """
         Test dictionary of a Person with more realistic information
         """
-        person1 = Person("p:2", "Ben Elowitz", "Ben Elowitz is co-founder and CEO of Wetpaint.", "null", "Wetpaint", "CEO", "elowitz", "http:\/\/s3.amazonaws.com\/crunchbase_prod_assets\/assets\/images\/resized\/0001\/8470\/18470v3-max-250x250.jpg")
+        person1 = Person("p:2", "Ben Elowitz", "Ben Elowitz is co-founder and CEO of Wetpaint.",
+            "null", "Wetpaint", "CEO", "elowitz", "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0001/8470/18470v3-max-250x250.jpg")
         p1_dict = person1.dictionary()
 
         self.assertIsInstance(p1_dict, dict)
-        self.assertEqual(p1_dict, {"person_id" : "p:2", "name" : "Ben Elowitz", "summary" : "Ben Elowitz is co-founder and CEO of Wetpaint.", "city" : "null", "companies" : "Wetpaint", "role" : "CEO", "twitter" : "elowitz", "logo_url" : "http:\/\/s3.amazonaws.com\/crunchbase_prod_assets\/assets\/images\/resized\/0001\/8470\/18470v3-max-250x250.jpg"})
+        self.assertEqual(p1_dict, {"person_id" : "p:2", "name" : "Ben Elowitz", "summary" : "Ben Elowitz is co-founder and CEO of Wetpaint.",
+            "city" : "null", "companies" : "Wetpaint", "role" : "CEO", "twitter" : "elowitz", "logo_url" : "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0001/8470/18470v3-max-250x250.jpg"})
 
 
 # --------
@@ -619,7 +628,7 @@ class TestAbout(TestCase):
                                content_type="application/json")
 
         response = requests.get(link)
-        
+
         # self.assertIn('Svyatoslav Ilinskiy', httpretty.last_request().body)
         # self.assertIn('Madeline Stager', httpretty.last_request().body)
         # self.assertIn('Addy Kim', httpretty.last_request().body)
