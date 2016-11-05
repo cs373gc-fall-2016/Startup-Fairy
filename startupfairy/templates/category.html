@@ -41,17 +41,32 @@
             }
             name = name.toString().split(" ").join("");
             var url = this.props.metadata.customHeaderComponentProps.link + name;
-            return <p>{this.props.data}</p>
+            return <a href={url}>{this.props.data}</a>
           } else {
-            return <p>No city listed</p>
+            return <p>No {this.props.metadata.customHeaderComponentProps.category} listed</p>
           }
         }
       });
 
       var SmallList = React.createClass({
         render: function() {
-          var data = this.props.data;
-          return <p>{data}</p>
+          var data = JSON.parse(this.props.data);
+          if (data.length <= 0) {
+            return <p>No TODO</p>
+          }
+          var entityArray = [];
+          var max = data.length > 3 ? 3 : data.length;
+          for (var i = 0; i < max; i++) {
+            if (data[i] instanceof Array) {
+              entityArray.push(data[i][0]);            
+            } else {
+              entityArray.push(data[i]);
+            }
+          }
+           var listItems = entityArray.map((number) =>
+            <li>{number}</li>
+          );
+          return <ul>{listItems}</ul>
         }
       });
 
@@ -64,14 +79,14 @@
               "locked": true,
               "displayName": "Name",
               "customComponent": EntityLink,
-              "customHeaderComponentProps": { link: 'people/' }
+              "customHeaderComponentProps": { link: 'people/', category: 'people' }
             }, {
               "columnName": "city",
               "order": 2,
               "locked": false,
               "displayName": "City",
               "customComponent": EntityLink,
-              "customHeaderComponentProps": { link: 'cities/' }
+              "customHeaderComponentProps": { link: 'cities/', category: 'city' }
             }, {
               "columnName": "companies",
               "order": 4,
@@ -82,6 +97,7 @@
               "columnName": "role",
               "order": 4,
               "locked": false,
+              "customComponent": SmallList,
               "displayName": "Roles"
             }, {
               "columnName": "summary",
