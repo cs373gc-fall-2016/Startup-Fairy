@@ -80,15 +80,19 @@ def details(app_category, entity):
 
 
 @public_views.route('/api/people', methods=['GET'])
-def api_people():
+def api_people(entity=None):
     try:
         person_id = request.args.get('id')
-        if person_id is None:
+        if entity is None and person_id is None:
             data = db.session.query(Person).all()
             return json.dumps(list(map(lambda d: d.dictionary(), data)))
         else:
-            data = db.session.query(Person).filter_by(
-                person_id=person_id).one()
+            if entity is not None:
+                data = db.session.query(Person).filter_by(
+                    person_id=entity).one()
+            else:
+                data = db.session.query(Person).filter_by(
+                    person_id=person_id).one()
             return json.dumps(data.dictionary())
     except:
         print("Get people failed")
@@ -96,15 +100,18 @@ def api_people():
 
 
 @public_views.route('/api/companies', methods=['GET'])
-def api_companies():
+def api_companies(entity=None):
     try:
         company_id = request.args.get('id')
-        if company_id is None:
+        if entity is None and company_id is None:
             data = db.session.query(Company).all()
             return json.dumps(list(map(lambda d: d.dictionary(), data)))
         else:
-            data = db.session.query(Company).filter_by(
-                company_id=company_id).one()
+            if entity is not None:
+                data = db.session.query(Company).filter_by(company_id=entity).one()
+            else:
+                data = db.session.query(Company).filter_by(
+                    company_id=company_id).one()
             return json.dumps(data.dictionary())
     except:
         print("Get companies failed")
@@ -132,14 +139,17 @@ def api_financialorgs(entity=None):
 
 
 @public_views.route('/api/cities', methods=['GET'])
-def api_cities():
+def api_cities(entity=None):
     try:
         city_id = request.args.get('id')
-        if city_id is None:
+        if entity is None and city_id is None:
             data = db.session.query(City).all()
             return json.dumps(list(map(lambda d: d.dictionary(), data)))
         else:
-            data = db.session.query(City).filter_by(city_id=city_id).one()
+            if entity is not None:
+                data = db.session.query(City).filter_by(city_id=entity).one()
+            else:
+                data = db.session.query(City).filter_by(city_id=city_id).one()
             return json.dumps(data.dictionary())
     except:
         print("Get cities failed")
