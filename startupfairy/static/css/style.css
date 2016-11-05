@@ -42,6 +42,11 @@ hr.divider{
   margin: 25px auto 30px;
 }
 
+ul.no-indent {
+  list-style-position: inside; 
+  padding-left:0;
+}
+
 .mtspecial {
   padding: 20px 0;
 }
