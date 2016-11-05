@@ -98,8 +98,8 @@ log:
 
 docs:
 
-	cd startupfairy/ && $(PYDOC) -w views > IDB2.html
-	cd startupfairy/ && $(PYDOC) -w models >> IDB2.html
+	cd startupfairy/ && $(PYDOC) -w views > ../IDB2.html
+	cd startupfairy/ && $(PYDOC) -w models >> ../IDB2.html
 	cat startupfairy/views.html > IDB2.html
 	cat startupfairy/models.html >> IDB2.html
 	rm -f startupfairy/views.html
