@@ -90,7 +90,7 @@ status:
 
 TestApp:	startupfairy/tests.py
 	-$(COVERAGE) run    --branch startupfairy/tests.py >  startupfairy/tests.out 2>&1
-	$(COVERAGE) report -m                      >> startupfairy/tests.out
+	-$(COVERAGE) report -m                      >> startupfairy/tests.out
 	cat startupfairy/tests.out
 
 log:
