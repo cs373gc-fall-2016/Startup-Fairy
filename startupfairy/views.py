@@ -27,6 +27,10 @@ def index():
     """
     return render_template('index.html')
 
+@public_views.route('/favicon.ico')
+def favicon():
+    return "LOl"
+
 
 @public_views.route('/about')
 def about():
@@ -36,7 +40,7 @@ def about():
     return render_template('about.html', alt_title='About')
 
 
-@public_views.route('/<app_category>', methods=['GET'])
+@public_views.route('/category/<app_category>', methods=['GET'])
 def category(app_category):
     """Render table template"""
     if app_category == 'people':
@@ -55,13 +59,24 @@ def category(app_category):
                            title=app_category, data=data)
 
 
-@public_views.route('/<app_category>/<entity>', methods=['GET'])
+@public_views.route('/category/<app_category>/<entity>', methods=['GET'])
 def details(app_category, entity):
     """
     Serve the an entity's page
     """
-    data = []
-    return render_template('details.html', data=data, category=app_category)
+    if app_category == 'people':
+        data = api_people(entity)
+    elif app_category == 'cities':
+        data = api_cities()
+    elif app_category == 'companies':
+        data = api_companies()
+    elif app_category == 'financialorgs':
+        data = api_financialorgs(entity)
+    else:
+        print("Category does not exist")
+        # data = []
+    print (data)
+    return render_template('details.html', data=json.loads(data), category=app_category)
 
 
 @public_views.route('/api/people', methods=['GET'])
@@ -97,16 +112,20 @@ def api_companies():
 
 
 @public_views.route('/api/financialorgs', methods=['GET'])
-def api_financialorgs():
+def api_financialorgs(entity=None):
     try:
         finorg_id = request.args.get('id')
-        if finorg_id is None:
+        if entity is None and finorg_id is None:
             data = db.session.query(FinancialOrg).all()
             return json.dumps(list(map(lambda d: d.dictionary(), data)))
         else:
-            data = db.session.query(FinancialOrg).filter_by(
-                financial_org_id=finorg_id).one()
-            return json.dumps(data.dictionary())
+            if entity is not None:
+                data = db.session.query(FinancialOrg).filter_by(
+                    financial_org_id=entity).one()
+            else:
+                data = db.session.query(FinancialOrg).filter_by(
+                    financial_org_id=finorg_id).one()
+        return json.dumps(data.dictionary())
     except:
         print("Get financial orgs failed")
         abort(404)

@@ -56,8 +56,8 @@ ul.no-indent {
 }
 
 .user-photo {
-  height: 200px;
-  width: 200px;
+  max-height: 200px;
+  /*width: 200px;*/
   object-fit: cover;
 }
 
