@@ -18,6 +18,10 @@ from flask_sqlalchemy import SQLAlchemy
 import httpretty
 import requests
 
+import os
+import flask
+from views import *
+
 # initialize database object
 # db = SQLAlchemy()
 
@@ -604,9 +608,9 @@ class TestCity(TestCase):
         self.assertEqual(c1_dict, {"city_id": "1", "name": "Seattle", "state": "WA", "region": "Seattle",
                                    "companies": "Wetpaint", "financial_orgs": "Vulcan Capital", "people": "Mathias Klein"})
 
-# # ----
-# # About
-# # ----
+# ----
+# About
+# ----
 
 
 class TestAbout(TestCase):
@@ -688,20 +692,23 @@ class TestAbout(TestCase):
 # Test Views.py methods
 # ---
 
-# class TestViews(TestCase):
+class TestViews(TestCase):
 
-    # def test_index(self):
-    #     """
-    #     Test that index renders properly
-    #     """
+    def test_index_1(self):
+        """
+        Test that index renders properly
+        """
+        app = flask.Flask(__name__)
+        with app.test_request_context():
+            self.assertEqual(index() is not None, True)
 
-    #     result = views.index()
-
-    #     self.assertEqual(result is not none, true)
-
-    # def test_api_people(self):
-    #     self.assertEqual(views.api_people() is not None, true)
-
+    def test_about_1(self):
+        """
+        Test that about renders properly
+        """
+        app = flask.Flask(__name__)
+        with app.test_request_context():
+            self.assertEqual(about() is not None, True)
 
 # ----
 # main

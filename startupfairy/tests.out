@@ -1,15 +1,60 @@
 /usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py:800: UserWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.
   warnings.warn('SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.')
-...........................................
+test_about_content (__main__.TestAbout) ... ok
+test_about_from_category (__main__.TestAbout) ... ok
+test_about_from_index (__main__.TestAbout) ... ok
+test_city_dict_1 (__main__.TestCity) ... ok
+test_city_dict_2 (__main__.TestCity) ... ok
+test_city_dict_3 (__main__.TestCity) ... ok
+test_city_init_1 (__main__.TestCity) ... ok
+test_city_init_2 (__main__.TestCity) ... ok
+test_city_init_3 (__main__.TestCity) ... ok
+test_city_repr_1 (__main__.TestCity) ... ok
+test_city_repr_2 (__main__.TestCity) ... ok
+test_city_repr_3 (__main__.TestCity) ... ok
+test_company_constructor_1 (__main__.TestCompany) ... ok
+test_company_constructor_2 (__main__.TestCompany) ... ok
+test_company_constructor_3 (__main__.TestCompany) ... ok
+test_company_constructor_4 (__main__.TestCompany) ... ok
+test_company_dictionary_1 (__main__.TestCompany) ... ok
+test_company_dictionary_2 (__main__.TestCompany) ... ok
+test_company_dictionary_3 (__main__.TestCompany) ... ok
+test_company_dictionary_4 (__main__.TestCompany) ... ok
+test_company_repr_1 (__main__.TestCompany) ... ok
+test_company_repr_2 (__main__.TestCompany) ... ok
+test_company_repr_3 (__main__.TestCompany) ... ok
+test_financial_org_dictionary_1 (__main__.TestFinancialOrg) ... ok
+test_financial_org_dictionary_2 (__main__.TestFinancialOrg) ... ok
+test_financial_org_dictionary_3 (__main__.TestFinancialOrg) ... ok
+test_financial_org_dictionary_4 (__main__.TestFinancialOrg) ... ok
+test_financial_org_init_1 (__main__.TestFinancialOrg) ... ok
+test_financial_org_init_2 (__main__.TestFinancialOrg) ... ok
+test_financial_org_init_3 (__main__.TestFinancialOrg) ... ok
+test_financial_org_init_4 (__main__.TestFinancialOrg) ... ok
+test_financial_org_repr_1 (__main__.TestFinancialOrg) ... ok
+test_financial_org_repr_2 (__main__.TestFinancialOrg) ... ok
+test_financial_org_repr_3 (__main__.TestFinancialOrg) ... ok
+test_person_dict_1 (__main__.TestPerson) ... ok
+test_person_dict_2 (__main__.TestPerson) ... ok
+test_person_dict_3 (__main__.TestPerson) ... ok
+test_person_init_1 (__main__.TestPerson) ... ok
+test_person_init_2 (__main__.TestPerson) ... ok
+test_person_init_3 (__main__.TestPerson) ... ok
+test_person_repr_1 (__main__.TestPerson) ... ok
+test_person_repr_2 (__main__.TestPerson) ... ok
+test_person_repr_3 (__main__.TestPerson) ... ok
+test_about_1 (__main__.TestViews) ... ok
+test_index_1 (__main__.TestViews) ... ok
+
 ----------------------------------------------------------------------
-Ran 43 tests in 0.291s
+Ran 45 tests in 0.715s
 
 OK
-Name                     Stmts   Miss Branch BrPart  Cover   Missing
---------------------------------------------------------------------
-startupfairy/models.py     131      0      0      0   100%
-startupfairy/run.py         12      1      2      1    86%   18, 17->18
-startupfairy/tests.py      293      0      2      1    99%   683->exit
-startupfairy/views.py       71     55     24      0    17%   27, 35, 41-52, 62-63, 68-79, 84-95, 100-111, 116-126
---------------------------------------------------------------------
-TOTAL                      507     56     28      2    85%
+Name                                Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------------------
+startupfairy/models.py                131      0      0      0   100%
+startupfairy/run.py                    12      1      2      1    86%   18, 17->18
+startupfairy/tests.py                 306      0      2      1    99%   717->exit
+startupfairy/views.py                  97     73     40      0    18%   32, 46-57, 67-79, 84-99, 104-118, 123-138, 143-156, 160-161
+-------------------------------------------------------------------------------
+TOTAL                                 546     74     44      2    80%
