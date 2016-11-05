@@ -279,36 +279,21 @@
     <!-- Test Section -->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
     <script>
     $(document).ready(function(){
       $("button").click(function(){
         $.ajax({
-        url: "{{url_for('static', filename='js/tests.out')}}",
+        url: "/run_tests",
         async: true,
         cache: false,
         success:
         function(result){
-          $("mynewtestResults").html(result);
+          var obj = JSON.parse(result);
+          $("mynewtestResults").html(obj.output);
         }});
       });
     });
     </script>
-
-    <!-- <script>
-    $(document).ready(function(){
-      $("button").click(function(){
-        $.ajax({
-        url: "{{url_for('static', filename='js/run_tests')}}",
-        async: true,
-        cache: false,
-        success:
-        function(result){
-          $("mynewtestResults").html("hello");
-        }});
-      });
-    });
-    </script> -->
 
     <div class="panel panel-default">
       <div class="panel-heading">Test Results</div>
@@ -316,12 +301,11 @@
     </div>
 
     <!-- Run Button -->
-    <mega><button type="button" value="checkvalue" class="btn nova testButton img-responsive" style="width: 100%;" onclick="run_tests()"><h3>Run Tests!</h3></button></mega>
+    <mega><button type="button" value="checkvalue" class="btn nova testButton img-responsive" style="width: 100%;"><h3>Run Tests!</h3></button></mega>
 
     <!-- <script type="text/javascript" src="{{url_for('static', filename='js/run_button.js')}}"></script>
     <script type="text/babel" src="{{url_for('static', filename='js/run_button.babel')}}"></script>
     <div id="testSection" class="nova"></div>-->
-    <script type="text/javascript" src="{{url_for('static', filename='js/updater.js')}}"></script>
 
   </div>
 </section>

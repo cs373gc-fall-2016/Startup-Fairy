@@ -2,6 +2,7 @@
 Serves all the routes for the application
 """
 import json
+import subprocess
 import requests
 from os import listdir
 from flask import render_template, Blueprint, abort, request
@@ -124,3 +125,8 @@ def api_cities():
     except:
         print("Get cities failed")
         abort(404)
+
+@public_views.route('/run_tests')
+def run_tests():
+    output = subprocess.getoutput("python startupfairy/tests.py")
+    return json.dumps({'output': str(output)})
