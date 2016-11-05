@@ -268,7 +268,7 @@ class TestFinancialOrg(TestCase):
 
     def test_financial_org_repr_2(self):
         """
-        Test __repr__ methond of financial org class 
+        Test __repr__ methond of financial org class
         """
 
         example2 = FinancialOrg("id1", "Founders Fund",
@@ -707,4 +707,5 @@ class TestAbout(TestCase):
 # ----
 
 if __name__ == "__main__":
-    main()
+    unittest.main(verbosity = 2)
+    # main()
