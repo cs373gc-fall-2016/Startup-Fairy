@@ -1,3 +1,92 @@
+commit 97068784923534835eba03c2c9bacadda2e8d43e
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Sat Nov 5 14:13:31 2016 -0500
+
+    documentation now correct
+
+commit 72b80921018aad290422334cced8e553330a2568
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Sat Nov 5 09:21:37 2016 +0000
+
+    updated db
+
+commit b7d71b4ac2db8488b90585ea9a4337d8ee9eb4b6
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Fri Nov 4 19:42:43 2016 -0700
+
+    Use real json dump instead of sample
+
+commit 19b442a81c29124674bc734b91d6de5e0f99dfeb
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Fri Nov 4 20:23:40 2016 -0500
+
+    splash update
+    
+    close #60
+
+commit 3fecf8a5052778868d77dea91da87427fe87f3a2
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Fri Nov 4 19:54:22 2016 -0500
+
+    updated about
+    
+    - test panel is now rendered using react!
+    - still not formatted totally right lol
+
+commit 06fd66cee514d25ae138118f57e56bf2d720e620
+Merge: 72aa2da 56feb38
+Author: Mark Cruz <marktheperson@users.noreply.github.com>
+Date:   Fri Nov 4 19:09:30 2016 -0500
+
+    Merge pull request #66 from cs373gc-fall-2016/test-feature
+    
+    run tests works!
+
+commit 56feb3835720506ca04950de5910b64d6924ed3a
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Fri Nov 4 19:06:50 2016 -0500
+
+    run tests works!
+    
+    - it's basically the same thing they had on the example project so i'm
+    not sure if it's cool to just leave it like this or if i should somehow
+    change it. gonna leave it the way it is until i find a better way to do
+    it!
+
+commit 72aa2dadd1d9e68fd853285d50a1f3fcf19eb066
+Merge: 2da1512 dfb0964
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 21:56:08 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit dfb0964f9e12a5dce8ec55e97bb9bf8f8ffe94d9
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Thu Nov 3 21:56:06 2016 -0500
+
+    Fix json parsing for db
+
+commit 2da1512cedbbf4a5c563d3af03fbb2dd2125c78f
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 21:56:03 2016 -0500
+
+    Disable links
+
+commit d5161e5602c86febf1e56d406af1c7070b05f9d6
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Nov 3 21:54:32 2016 -0500
+
+    final changes to about page
+    
+    -updated data sources
+    -updated stuff
+
+commit a40a935f0769021c1f08ad89c34903591887e467
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 21:50:43 2016 -0500
+
+    ran autopep8
+
 commit 2bf2a06b767a1dc6f085b39e3a42e6937683334a
 Merge: 28a2f0c 0134c95
 Author: summergirl21 <summergirl21@users.noreply.github.com>
