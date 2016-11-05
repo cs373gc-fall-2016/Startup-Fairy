@@ -3,7 +3,6 @@ class RunButton extends React.Component {
     super();
     this.state = {
       value: false,
-      results: 'hello',
     };
   }
 
@@ -12,32 +11,32 @@ class RunButton extends React.Component {
       <div class="nova">
       <button className="btn testButton" onClick={() => this.handleClick()}>
         <h3>{this.state.value ? 'Running...' : 'Run Tests!'}</h3>
-        <h3>{this.state.results}</h3>
       </button></div>
     );
   }
 
   handleClick() {
     this.setState({value: true});
-    this.setState({results: 'Awaiting test results...'})
-    setTimeout(() => {this.setState({value: false});} , 2000);
-  }
-}
 
-class TestResults extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      results: '[Test Results Here]',
-    };
-  }
+    $.ajax({
+    cache: false,
+    async: true,
+    success:
+    function(result){
+      $("mynewtestResults").text("Awaiting test results...");
+    }});
 
-  render() {
-    return (
-      <div>
-        <div className="testPanel testPanel" class="testPanel"><h3>{this.state.results}</h3></div>
-      </div>
-    );
+    $.ajax({
+    url: "/run_tests",
+    async: true,
+    cache: false,
+    success:
+    function(result){
+      var obj = JSON.parse(result);
+      $("mynewtestResults").replaceWith(obj.test_results);
+    }});
+
+    setTimeout(() => {this.setState({value: false});} , 1000);
   }
 }
 
@@ -46,7 +45,6 @@ class Tester extends React.Component {
   render() {
     return (
       <div>
-        {this.runTest(0)}
         {this.renderButton(0)}
       </div>
     );

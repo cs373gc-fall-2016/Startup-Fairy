@@ -7,6 +7,7 @@ Tests for methods in models.py, views.py and the About page
 # -------
 
 from unittest import main, TestCase
+import unittest
 #from app import app
 from models import Company, FinancialOrg, Person, City, db
 #from populate_db import *

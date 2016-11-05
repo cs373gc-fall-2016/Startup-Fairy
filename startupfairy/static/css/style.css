@@ -163,13 +163,11 @@ hr.divider{
 }
 
 .testPanel {
-  background-color: #e8e8e8;
   color: #343434;
-  height: 500px;
   font-family: "Courier New", Courier, monospace;
 }
 
-.testPanel h3 {
+.testPanel h4 {
   font-family: "Courier New", Courier, monospace;
   font-weight: 100;
 }

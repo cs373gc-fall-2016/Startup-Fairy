@@ -15,7 +15,7 @@
     </div>
 
     <!-- Introduction -->
-    <div class="row">
+    <div class="container">
       <div class="col-lg-5 col-lg-offset-1">
         <p>Startup Fairy is a guide for people who want to learn more about startup culture and get acquainted with the major players in the industry. Startup Fairy allows the user to search for statistics for a plethora of startups as well as company demographics that will help in their search for place of employment. The use of this service will allow for an aggregate foundation for data provided for a respective startup all in one coherent location.</p>
       </div>
@@ -251,25 +251,27 @@
     </div>
 
     <!-- Content -->
-    <div class="col-lg-5 col-lg-offset-1">
-      <h3>Origin</h3>
-      <p>We sourced our data from <a href="https://www.crunchbase.com/#/home/index">Crunchbase</a>, a company that tracks data concerning startups and financial organizations. <br><br></p>
-      <h3>Collection</h3>
-      <p>To populate our database,first we got the data as input, then transformed it into JSON files. After that, we wrote a script that parsed our JSON files and inputted them into our database.<p>
-    </div>
+    <div class="container">
+      <div class="col-lg-5 col-lg-offset-1">
+        <h3>Origin</h3>
+        <p>We sourced our data from <a href="https://www.crunchbase.com/#/home/index">Crunchbase</a>, a company that tracks data concerning startups and financial organizations. <br><br></p>
+        <h3>Collection</h3>
+        <p>To populate our database,first we got the data as input, then transformed it into JSON files. After that, we wrote a script that parsed our JSON files and inputted them into our database.<p>
+      </div>
 
-    <div class="col-lg-5 text-center">
-      <img class="img-responsive" src="https://c1.staticflickr.com/9/8469/8409314268_15d14d5d5c_b.jpg">
+      <div class="col-lg-5 text-center">
+        <img class="img-responsive" src="https://c1.staticflickr.com/9/8469/8409314268_15d14d5d5c_b.jpg">
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Stats -->
 <section id="Tests">
-  <div class="container addpadd addpadd">
+  <div class="container addpadd">
 
     <!-- Title -->
-    <div class="row">
+    <div class="row nova">
       <div class="col-lg-12 text-center">
         <h2>Run Tests</h2>
         <hr class="divider">
@@ -279,9 +281,10 @@
     <!-- Test Section -->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script>
+
+    <!-- <script>
     $(document).ready(function(){
-      $("button").click(function(){
+      $("mega").click(function(){
         $.ajax({
         url: "/run_tests",
         async: true,
@@ -289,23 +292,24 @@
         success:
         function(result){
           var obj = JSON.parse(result);
-          $("mynewtestResults").html(obj.output);
+          $("mynewtestResults").replaceWith(obj.test_results);
         }});
       });
     });
-    </script>
+    </script> -->
 
-    <div class="panel panel-default">
-      <div class="panel-heading">Test Results</div>
-    <div class="panel-body"><mynewtestResults>[Run a test to see results.]</mynewtestResults></div>
+    <div class="container">
+
+      <div class="well">
+        <div class="testPanel">
+          <h4><mynewtestResults>[Run a test to see results.]</mynewtestResults></h4>
+        </div>
+      </div>
+
+      <!-- Run Button -->
+      <script type="text/babel" src="{{url_for('static', filename='js/run_button.babel')}}"></script>
+      <div id="testSection" class="nova"></div>
     </div>
-
-    <!-- Run Button -->
-    <mega><button type="button" value="checkvalue" class="btn nova testButton img-responsive" style="width: 100%;"><h3>Run Tests!</h3></button></mega>
-
-    <!-- <script type="text/javascript" src="{{url_for('static', filename='js/run_button.js')}}"></script>
-    <script type="text/babel" src="{{url_for('static', filename='js/run_button.babel')}}"></script>
-    <div id="testSection" class="nova"></div>-->
 
   </div>
 </section>
