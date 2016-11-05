@@ -7,7 +7,7 @@ def create_app():
     app = Flask(__name__)
     app.register_blueprint(public_views)
     app.config[
-        "SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@localhost/startupfairydb3"
+        "SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@localhost/startupfairydb5"
     db.init_app(app)
     return app
 
