@@ -11,7 +11,7 @@ import json
 
 JSON_DUMP_DIR = "static/data/db_dump/"
 COMPANIES_FILENAME = "companies.json"
-PEOPLE_FILENAME = "people_sample.json"
+PEOPLE_FILENAME = "people.json"
 FINORGS_FILENAME = "finorgs.json"
 CITIES_FILENAME = "cities.json"
 
@@ -93,19 +93,18 @@ def parse_cities():
 
 def main():
     people = parse_people()
-
-    # companies = parse_companies()
-    # cities = parse_cities()
-    # finorgs = parse_finorgs()
-    # for person in people:
-    #     db.session.add(person)
-    # for company in companies:
-    #     db.session.add(company)
-    # for city in cities:
-    #     db.session.add(city)
-    # for finorg in finorgs:
-    #     db.session.add(finorg)
-    # db.session.commit()
+    companies = parse_companies()
+    cities = parse_cities()
+    finorgs = parse_finorgs()
+    for person in people:
+        db.session.add(person)
+    for company in companies:
+        db.session.add(company)
+    for city in cities:
+        db.session.add(city)
+    for finorg in finorgs:
+        db.session.add(finorg)
+    db.session.commit()
 
 if __name__ == '__main__':
     main()
