@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.css') }}" type="text/css"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
 
+    <script src="{{ url_for('static', filename='bower_components/to-markdown/dist/to-markdown.js') }}"></script>
     <script src="{{ url_for('static', filename='bower_components/react/react.js') }}"></script>
     <script src="{{ url_for('static', filename='bower_components/react/react-dom.js') }}"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-with-addons.js'></script>
@@ -44,10 +45,10 @@
               <ul class="nav navbar-nav">
                 {% set navigation_bar = [
                     ('/', 'index', 'Home'),
-                    ('/companies', 'companies', 'Companies'),
-                    ('/financialorgs', 'financialorgs', 'Organizations'),
-                    ('/people', 'people', 'People'),
-                    ('/cities', 'cities', 'Cities')
+                    ('/category/companies', 'companies', 'Companies'),
+                    ('/category/financialorgs', 'financialorgs', 'Organizations'),
+                    ('/category/people', 'people', 'People'),
+                    ('/category/cities', 'cities', 'Cities')
                 ] -%}
                 {% set active_page = active_page|default('index') -%}
                 {% for href, id, caption in navigation_bar %}
