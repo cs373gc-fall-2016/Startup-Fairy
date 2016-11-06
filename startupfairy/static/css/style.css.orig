@@ -29,8 +29,12 @@ footer .footer-below {
 }
 
 .addpadd {
+<<<<<<< HEAD
    padding: 80px 0;
    padding-bottom: 100px;
+=======
+   padding: 100px 0;
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
 }
 
 hr.divider{
@@ -42,11 +46,14 @@ hr.divider{
   margin: 25px auto 30px;
 }
 
+<<<<<<< HEAD
 ul.no-indent {
   list-style-position: inside; 
   padding-left:0;
 }
 
+=======
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
 .mtspecial {
   padding: 20px 0;
 }
@@ -56,8 +63,13 @@ ul.no-indent {
 }
 
 .user-photo {
+<<<<<<< HEAD
   max-height: 200px;
   /*width: 200px;*/
+=======
+  height: 200px;
+  width: 200px;
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
   object-fit: cover;
 }
 
@@ -126,10 +138,13 @@ ul.no-indent {
   opacity: 1;
 }
 
+<<<<<<< HEAD
 .team-stats .caption:focus {
   opacity: 1;
 }
 
+=======
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
 .team-stats .caption .caption-content {
   position: relative;
   width: 100%;
@@ -152,6 +167,7 @@ ul.no-indent {
   font-size: 140%;
 }
 
+<<<<<<< HEAD
 .nova h1 {
   font-family: proxima-nova, sans-serif;
   font-style: normal;
@@ -160,6 +176,8 @@ ul.no-indent {
   width: 100%;
 }
 
+=======
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
 .nova h3 {
   font-family: proxima-nova, sans-serif;
   font-style: normal;
@@ -181,11 +199,21 @@ ul.no-indent {
 }
 
 .testPanel {
+<<<<<<< HEAD
   color: #343434;
   font-family: "Courier New", Courier, monospace;
 }
 
 .testPanel h4 {
+=======
+  background-color: #e8e8e8;
+  color: #343434;
+  height: 500px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.testPanel h3 {
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
   font-family: "Courier New", Courier, monospace;
   font-weight: 100;
 }

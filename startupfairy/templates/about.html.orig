@@ -15,7 +15,11 @@
     </div>
 
     <!-- Introduction -->
+<<<<<<< HEAD
     <div class="container">
+=======
+    <div class="row">
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
       <div class="col-lg-5 col-lg-offset-1">
         <p>Startup Fairy is a guide for people who want to learn more about startup culture and get acquainted with the major players in the industry. Startup Fairy allows the user to search for statistics for a plethora of startups as well as company demographics that will help in their search for place of employment. The use of this service will allow for an aggregate foundation for data provided for a respective startup all in one coherent location.</p>
       </div>
@@ -47,8 +51,13 @@
           <div class="caption">
             <div class="caption-content">
               <h3>Scoreboard:
+<<<<<<< HEAD
               <h4>Commits <span class="badge">58</span>
               <br>Tests <span class="badge">3</span>
+=======
+              <h4>Commits <span class="badge">47</span>
+              <br>Tests <span class="badge">4</span>
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
               <br>Issues <span class="badge">18</span></h4>
             </div>
           </div>
@@ -65,8 +74,13 @@
           <div class="caption">
             <div class="caption-content">
               <h3>Scoreboard:
+<<<<<<< HEAD
               <h4>Commits <span class="badge">32</span>
               <br>Tests <span class="badge">0</span>
+=======
+              <h4>Commits <span class="badge">22</span>
+              <br>Tests <span class="badge">4</span>
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
               <br>Issues <span class="badge">11</span></h4>
             </div>
           </div>
@@ -84,8 +98,13 @@
           <div class="caption">
             <div class="caption-content">
               <h3>Scoreboard:
+<<<<<<< HEAD
               <h4>Commits <span class="badge">24</span>
               <br>Tests <span class="badge">0</span>
+=======
+              <h4>Commits <span class="badge">22</span>
+              <br>Tests <span class="badge">4</span>
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
               <br>Issues <span class="badge">12</span></h4>
             </div>
           </div>
@@ -102,8 +121,13 @@
           <div class="caption">
             <div class="caption-content">
               <h3>Scoreboard:
+<<<<<<< HEAD
               <h4>Commits <span class="badge">18</span>
               <br>Tests <span class="badge">0</span>
+=======
+              <h4>Commits <span class="badge">17</span>
+              <br>Tests <span class="badge">4</span>
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
               <br>Issues <span class="badge">8</span></h4>
             </div>
           </div>
@@ -119,8 +143,13 @@
           <div class="caption">
             <div class="caption-content">
               <h3>Scoreboard:
+<<<<<<< HEAD
               <h4>Commits <span class="badge">35</span>
               <br>Tests <span class="badge">22</span>
+=======
+              <h4>Commits <span class="badge">17</span>
+              <br>Tests <span class="badge">4</span>
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
               <br>Issues <span class="badge">9</span></h4>
             </div>
           </div>
@@ -136,8 +165,13 @@
           <div class="caption">
             <div class="caption-content">
               <h3>Scoreboard:
+<<<<<<< HEAD
               <h4>Commits <span class="badge">11</span>
               <br>Tests <span class="badge">0</span>
+=======
+              <h4>Commits <span class="badge">9</span>
+              <br>Tests <span class="badge">4</span>
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
               <br>Issues <span class="badge">9</span></h4>
             </div>
           </div>
@@ -153,8 +187,13 @@
           <div class="caption">
             <div class="caption-content">
               <h3>Scoreboard:
+<<<<<<< HEAD
               <h4>Commits <span class="badge">29</span>
               <br>Tests <span class="badge">0</span>
+=======
+              <h4>Commits <span class="badge">25</span>
+              <br>Tests <span class="badge">4</span>
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
               <br>Issues <span class="badge">9</span></h4>
             </div>
           </div>
@@ -251,6 +290,7 @@
     </div>
 
     <!-- Content -->
+<<<<<<< HEAD
     <div class="container">
       <div class="col-lg-5 col-lg-offset-1">
         <h3>Origin</h3>
@@ -262,16 +302,34 @@
       <div class="col-lg-5 text-center">
         <img class="img-responsive" src="https://c1.staticflickr.com/9/8469/8409314268_15d14d5d5c_b.jpg">
       </div>
+=======
+    <div class="col-lg-5 col-lg-offset-1">
+      <h3>Origin</h3>
+      <p>We sourced our data from <a href="https://www.crunchbase.com/#/home/index">Crunchbase</a>, a company that tracks data concerning startups and financial organizations. <br><br></p>
+      <h3>Collection</h3>
+      <p>To populate our database,first we got the data as input, then transformed it into JSON files. After that, we wrote a script that parsed our JSON files and inputted them into our database.<p>
+    </div>
+
+    <div class="col-lg-5 text-center">
+      <img class="img-responsive" src="https://c1.staticflickr.com/9/8469/8409314268_15d14d5d5c_b.jpg">
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
     </div>
   </div>
 </section>
 
 <!-- Stats -->
 <section id="Tests">
+<<<<<<< HEAD
   <div class="container addpadd">
 
     <!-- Title -->
     <div class="row nova">
+=======
+  <div class="container addpadd addpadd">
+
+    <!-- Title -->
+    <div class="row">
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
       <div class="col-lg-12 text-center">
         <h2>Run Tests</h2>
         <hr class="divider">
@@ -280,6 +338,7 @@
 
     <!-- Test Section -->
 
+<<<<<<< HEAD
     <div class="container">
 
       <!-- Test Results -->
@@ -294,6 +353,52 @@
       <div id="testSection" class="nova"></div>
 
     </div>
+=======
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("button").click(function(){
+        $.ajax({
+        url: "{{url_for('static', filename='js/tests.out')}}",
+        async: true,
+        cache: false,
+        success:
+        function(result){
+          $("mynewtestResults").html(result);
+        }});
+      });
+    });
+    </script>
+
+    <!-- <script>
+    $(document).ready(function(){
+      $("button").click(function(){
+        $.ajax({
+        url: "{{url_for('static', filename='js/run_tests')}}",
+        async: true,
+        cache: false,
+        success:
+        function(result){
+          $("mynewtestResults").html("hello");
+        }});
+      });
+    });
+    </script> -->
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Test Results</div>
+    <div class="panel-body"><mynewtestResults>[Run a test to see results.]</mynewtestResults></div>
+    </div>
+
+    <!-- Run Button -->
+    <mega><button type="button" value="checkvalue" class="btn nova testButton img-responsive" style="width: 100%;" onclick="run_tests()"><h3>Run Tests!</h3></button></mega>
+
+    <!-- <script type="text/javascript" src="{{url_for('static', filename='js/run_button.js')}}"></script>
+    <script type="text/babel" src="{{url_for('static', filename='js/run_button.babel')}}"></script>
+    <div id="testSection" class="nova"></div>-->
+    <script type="text/javascript" src="{{url_for('static', filename='js/updater.js')}}"></script>
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
 
   </div>
 </section>

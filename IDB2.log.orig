@@ -21,7 +21,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Fri Nov 4 20:23:40 2016 -0500
 
     splash update
-    
+
     close #60
 
 commit 3fecf8a5052778868d77dea91da87427fe87f3a2
@@ -29,7 +29,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Fri Nov 4 19:54:22 2016 -0500
 
     updated about
-    
+
     - test panel is now rendered using react!
     - still not formatted totally right lol
 
@@ -39,7 +39,7 @@ Author: Mark Cruz <marktheperson@users.noreply.github.com>
 Date:   Fri Nov 4 19:09:30 2016 -0500
 
     Merge pull request #66 from cs373gc-fall-2016/test-feature
-    
+
     run tests works!
 
 commit 56feb3835720506ca04950de5910b64d6924ed3a
@@ -47,7 +47,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Fri Nov 4 19:06:50 2016 -0500
 
     run tests works!
-    
+
     - it's basically the same thing they had on the example project so i'm
     not sure if it's cool to just leave it like this or if i should somehow
     change it. gonna leave it the way it is until i find a better way to do
@@ -77,7 +77,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Thu Nov 3 21:54:32 2016 -0500
 
     final changes to about page
-    
+
     -updated data sources
     -updated stuff
 
@@ -112,7 +112,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Thu Nov 3 21:41:01 2016 -0500
 
     runtest
-    
+
     it displays the output from our tests.out file
 
 commit e813271bf95d611710c7890630034fb0270b49c7
@@ -224,7 +224,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Thu Nov 3 18:30:18 2016 -0500
 
     testing section on about page
-    
+
     -updated so it's interactive
     -still doesn't actually run tests, sorry:(
 
@@ -270,7 +270,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Thu Nov 3 14:14:18 2016 -0500
 
     about page updates
-    
+
     - updated look and feel
     - need to update github stats before final commit
     - need to add info on how our data was scraped
@@ -553,7 +553,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Wed Nov 2 19:34:42 2016 -0500
 
     about page changes
-    
+
     updated team member info
 
 commit 7d949ee4804f8b43790fa3a456ce63095d270310
@@ -591,7 +591,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Wed Nov 2 18:29:13 2016 -0500
 
     about page updates
-    
+
     added stub to run tests
     added alttext
     added test section
@@ -738,11 +738,11 @@ Author: Addy Kim <addykim@users.noreply.github.com>
 Date:   Mon Oct 31 20:15:52 2016 -0500
 
     Travis (#54)
-    
+
     * Test out travis
-    
+
     * Reorganize order of command execution
-    
+
     * Add standins for tests to run
 
 commit a7ada4a8a2af65c76eadb009fc06b2811487eb56
@@ -844,7 +844,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Wed Oct 26 20:03:14 2016 -0500
 
     updated about page!
-    
+
     to make it look prettier, and updated tools section
 
 commit e6c41fbaf390bac67476f1185303c58f47389939
@@ -980,7 +980,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Thu Oct 20 20:55:05 2016 -0500
 
     updated links
-    
+
     - home page links
     - made about page easier to read
 
@@ -1112,7 +1112,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Thu Oct 20 19:09:25 2016 -0500
 
     changed from pink
-    
+
     because stas thought it was too gender normative
 
 commit cce1bfda77fa3831051f5f2cafcbd22e910aa22b
@@ -1120,7 +1120,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Thu Oct 20 18:45:51 2016 -0500
 
     added some styles
-    
+
     - updated formatting for about page
     - updated splash carousel (partially)
 
@@ -1147,7 +1147,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Thu Oct 20 17:46:05 2016 -0500
 
     style changes
-    
+
     updated fonts and carousel
 
 commit cda668eeb2407c7131b30e5b9c2345210a3fb9a5
@@ -1155,7 +1155,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Thu Oct 20 16:49:13 2016 -0500
 
     small changes (again lol)
-    
+
     - removed useless code that i had added last commit
 
 commit 383797e50209072d31ad1379b7ac97aabf3b4a07
@@ -1176,7 +1176,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Thu Oct 20 16:28:01 2016 -0500
 
     small changes
-    
+
     - updated some style things to add contrast
     - added a footer (y'all can take this out if it looks ugly lol)
     - changed about title to uppercase
@@ -1297,7 +1297,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Wed Oct 19 17:47:04 2016 -0500
 
     about page updates
-    
+
     splash page updates and some index updates
 
 commit f8e14ce96d89788e28e45b90d58bcdc1c90ff6b6
@@ -1324,7 +1324,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Wed Oct 19 16:14:26 2016 -0500
 
     added bios and photos
-    
+
     to about page
 
 commit 6afb37df8f41c94cdecbe45e27d9f0d59dc967c0
@@ -1332,7 +1332,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Wed Oct 19 15:58:22 2016 -0500
 
     about page updates
-    
+
     updated about page with skeleton for sections, and some dummy text.
     added images. still need to add detailed descriptions for each section
     and make it nice looking.
@@ -1392,7 +1392,7 @@ Author: marktheperson <bizarremarktriangle@rocketmail.com>
 Date:   Wed Oct 19 14:41:18 2016 -0500
 
     added to gitignore
-    
+
     thumbnail thing for mac
 
 commit 28f22c15bf9f87f71ddabebccddbbeadfc7ee3d4

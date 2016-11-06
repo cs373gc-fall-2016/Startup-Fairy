@@ -7,7 +7,11 @@ def create_app():
     app = Flask(__name__)
     app.register_blueprint(public_views)
     app.config[
+<<<<<<< HEAD
         "SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@localhost/startupfairydb5"
+=======
+        "SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@localhost/startupfairydb3"
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
     db.init_app(app)
     return app
 

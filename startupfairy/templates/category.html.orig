@@ -36,10 +36,23 @@
         }
       });
 
+      var TwitterLink = React.createClass({
+        render: function() {
+          var name = this.props.data;
+          if (name !== undefined && name != null) {
+            var url = "http://twitter.com/" + name;
+            return <a href={url}>@{name}</a>
+          } else {
+            return <p>No twitter</p>
+          }
+        }
+      });
+
       var EntityLink = React.createClass({
         render: function(){
           var name = this.props.data;
           if (name !== undefined && name != null) {
+<<<<<<< HEAD:startupfairy/templates/category.html
             var url = this.props.metadata.customHeaderComponentProps.link + name;
             return <a href={url}>{this.props.data}</a>
           } else {
@@ -76,6 +89,27 @@
         }
       });
 
+=======
+            if (name.length > 0 && name instanceof Array) {
+              name = name[0]
+            }
+            name = name.toString().split(" ").join("");
+            var url = this.props.metadata.customHeaderComponentProps.link + name;
+            return <p>{this.props.data}</p>
+          } else {
+            return <p>No city listed</p>
+          }
+        }
+      });
+
+      var SmallList = React.createClass({
+        render: function() {
+          var data = this.props.data;
+          return <p>{data}</p>
+        }
+      });
+
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e:startupfairy/templates/category.html
       switch(category) {
           case 'people':
             columns = ["name", "city", "companies", "role", "twitter"];
@@ -93,6 +127,12 @@
               "displayName": "City",
               "customComponent": EntityLink,
               "customHeaderComponentProps": { link: 'cities/', category: 'city' }
+            }, {
+              "columnName": "companies",
+              "order": 4,
+              "locked": false,
+              "customComponent": SmallList,
+              "displayName": "Companies"
             }, {
               "columnName": "companies",
               "order": 4,
@@ -135,15 +175,24 @@
               "columnName": "financial_orgs",
               "order": 4,
               "displayName": "Financial Organizations",
+<<<<<<< HEAD:startupfairy/templates/category.html
               "customComponent": SmallList,
               "customHeaderComponentProps": { link: 'financialorgs/', category: 'financial organizations' }
+=======
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'financialorgs/' }
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e:startupfairy/templates/category.html
             }, {
               "columnName": "people", 
               "visible": true,
               "order": 3,
               "displayName": "Notable People",
               "customComponent": SmallList,
+<<<<<<< HEAD:startupfairy/templates/category.html
               "customHeaderComponentProps": { link: 'people/', category: 'people' }
+=======
+              "customHeaderComponentProps": { link: 'people/' }
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e:startupfairy/templates/category.html
             }, {
               "columnName": "website",
               "order": 1,
@@ -182,9 +231,13 @@
             }, {
               "columnName": "companies",
               "visible": true,
+<<<<<<< HEAD:startupfairy/templates/category.html
               "displayName": "Companies Invested In",
               "customComponent": SmallList,
               "customHeaderComponentProps": { category: 'companies'}
+=======
+              "displayName": "Companies Invested In"
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e:startupfairy/templates/category.html
             }, {
               "columnName": "summary",
               "visible": false

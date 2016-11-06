@@ -45,10 +45,17 @@
               <ul class="nav navbar-nav">
                 {% set navigation_bar = [
                     ('/', 'index', 'Home'),
+<<<<<<< HEAD:startupfairy/templates/base.html
                     ('/category/companies', 'companies', 'Companies'),
                     ('/category/financialorgs', 'financialorgs', 'Organizations'),
                     ('/category/people', 'people', 'People'),
                     ('/category/cities', 'cities', 'Cities')
+=======
+                    ('/companies', 'companies', 'Companies'),
+                    ('/financialorgs', 'financialorgs', 'Organizations'),
+                    ('/people', 'people', 'People'),
+                    ('/cities', 'cities', 'Cities')
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e:startupfairy/templates/base.html
                 ] -%}
                 {% set active_page = active_page|default('index') -%}
                 {% for href, id, caption in navigation_bar %}

@@ -11,10 +11,13 @@ db = SQLAlchemy()
 
 
 class Company(db.Model):
+<<<<<<< HEAD
     """
     Implementation of Company model and its attributes
     """
 
+=======
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
     __tablename__ = "company"
     # set column types
     company_id = db.Column(db.String, primary_key=True)
@@ -27,6 +30,7 @@ class Company(db.Model):
     website = db.Column(db.String)
     logo_url = db.Column(db.String)
 
+<<<<<<< HEAD
     # def __init__(self, name, summary, people, city, financial_orgs, twitter,
     # website, logo_url):
     def __init__(self, company_id, name, summary, people, city, financial_orgs, twitter, website, logo_url):
@@ -34,6 +38,12 @@ class Company(db.Model):
         Set column values
         """
 
+=======
+    # set column values in constructor
+    # def __init__(self, name, summary, people, city, financial_orgs, twitter,
+    # website, logo_url):
+    def __init__(self, company_id, name, summary, people, city, financial_orgs, twitter, website, logo_url):
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
         self.company_id = company_id
         self.name = name
         self.summary = summary
@@ -45,9 +55,12 @@ class Company(db.Model):
         self.logo_url = logo_url
 
     def __repr__(self):
+<<<<<<< HEAD
         """
         How an instance of a Company is represented
         """
+=======
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
         return '<Company %r>' % self.name
 
     def dictionary(self):
@@ -66,10 +79,13 @@ class Company(db.Model):
 
 
 class FinancialOrg(db.Model):
+<<<<<<< HEAD
     """
     Implementation of Financial Organization model and its attributes
     """
 
+=======
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
     __tablename__ = "financial_org"
     # set the column types
     financial_org_id = db.Column(db.String, primary_key=True)
@@ -81,12 +97,19 @@ class FinancialOrg(db.Model):
     website = db.Column(db.String)
     logo_url = db.Column(db.String)
 
+<<<<<<< HEAD
     # def __init__(self, name, summary, city, companies, twitter, website,
     # logo_url):
     def __init__(self, financial_org_id, name, summary, city, companies, twitter, website, logo_url):
         """
         Set column values
         """
+=======
+    # set the column values in constructor
+    # def __init__(self, name, summary, city, companies, twitter, website,
+    # logo_url):
+    def __init__(self, financial_org_id, name, summary, city, companies, twitter, website, logo_url):
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
         self.financial_org_id = financial_org_id
         self.name = name
         self.summary = summary
@@ -97,9 +120,12 @@ class FinancialOrg(db.Model):
         self.logo_url = logo_url
 
     def __repr__(self):
+<<<<<<< HEAD
         """
         How an instance of a Financial Organization is represented
         """
+=======
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
         return '<FinancialOrg %r>' % self.name
 
     def dictionary(self):
@@ -117,10 +143,13 @@ class FinancialOrg(db.Model):
 
 
 class Person(db.Model):
+<<<<<<< HEAD
     """
     Implementation of Person model and its attributes
     """
 
+=======
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
     __tablename__ = "person"
     # set the column types
     person_id = db.Column(db.String, primary_key=True)
@@ -132,10 +161,15 @@ class Person(db.Model):
     twitter = db.Column(db.String)
     logo_url = db.Column(db.String)
 
+<<<<<<< HEAD
     def __init__(self, person_id, name, summary, city, companies, role, twitter, logo_url):
         """
         Set column values
         """
+=======
+    # set the column values in constructor
+    def __init__(self, person_id, name, summary, city, companies, role, twitter, logo_url):
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
         self.person_id = person_id
         self.name = name
         self.summary = summary
@@ -146,9 +180,12 @@ class Person(db.Model):
         self.logo_url = logo_url
 
     def __repr__(self):
+<<<<<<< HEAD
         """
         How an instance of a Person is represented
         """
+=======
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
         return '<Person %r>' % self.name
 
     def dictionary(self):
@@ -166,10 +203,13 @@ class Person(db.Model):
 
 
 class City(db.Model):
+<<<<<<< HEAD
     """
     Implementation of City model and its attributes
     """
 
+=======
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
     __tablename__ = "city"
     # set the column types
     city_id = db.Column(db.String, primary_key=True)
@@ -180,10 +220,15 @@ class City(db.Model):
     financial_orgs = db.Column(db.String)
     people = db.Column(db.String)
 
+<<<<<<< HEAD
     def __init__(self, city_id, name, state, region, companies, financial_orgs, people):
         """
         Set column values
         """
+=======
+    # set the column values in constructor
+    def __init__(self, city_id, name, state, region, companies, financial_orgs, people):
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
         self.city_id = city_id
         self.name = name
         self.state = state
@@ -193,9 +238,12 @@ class City(db.Model):
         self.people = people
 
     def __repr__(self):
+<<<<<<< HEAD
         """
         How an instance of a City is represented
         """
+=======
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
         return '<City %r>' % self.name
 
     def dictionary(self):

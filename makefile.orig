@@ -89,14 +89,20 @@ status:
 	git status
 
 TestApp:	startupfairy/tests.py
+<<<<<<< HEAD
 	-$(COVERAGE) run    --branch startupfairy/tests.py >  startupfairy/tests.out 2>&1
 	-$(COVERAGE) report -m                      >> startupfairy/tests.out
+=======
+	$(COVERAGE) run    --branch startupfairy/tests.py >  startupfairy/tests.out 2>&1
+	$(COVERAGE) report -m                      >> startupfairy/tests.out
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
 	cat startupfairy/tests.out
 
 log:
 	git log > IDB2.log
 
 docs:
+<<<<<<< HEAD
 
 	cd startupfairy/ && $(PYDOC) -w views > ../IDB2.html
 	cd startupfairy/ && $(PYDOC) -w models >> ../IDB2.html
@@ -104,6 +110,10 @@ docs:
 	cat startupfairy/models.html >> IDB2.html
 	rm -f startupfairy/views.html
 	rm -f startupfairy/models.html
+=======
+	$(PYDOC) startupfairy/views.py > IDB2.html
+	$(PYDOC) startupfairy/models.py >> IDB2.html
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
 
 pylint: .pylintrc 
 	-$(PYLINT) startupfairy/models.py
