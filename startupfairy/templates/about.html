@@ -47,8 +47,8 @@
           <div class="caption">
             <div class="caption-content">
               <h3>Scoreboard:
-              <h4>Commits <span class="badge">47</span>
-              <br>Tests <span class="badge">4</span>
+              <h4>Commits <span class="badge">58</span>
+              <br>Tests <span class="badge">3</span>
               <br>Issues <span class="badge">18</span></h4>
             </div>
           </div>
@@ -65,8 +65,8 @@
           <div class="caption">
             <div class="caption-content">
               <h3>Scoreboard:
-              <h4>Commits <span class="badge">22</span>
-              <br>Tests <span class="badge">4</span>
+              <h4>Commits <span class="badge">32</span>
+              <br>Tests <span class="badge">0</span>
               <br>Issues <span class="badge">11</span></h4>
             </div>
           </div>
@@ -84,8 +84,8 @@
           <div class="caption">
             <div class="caption-content">
               <h3>Scoreboard:
-              <h4>Commits <span class="badge">22</span>
-              <br>Tests <span class="badge">4</span>
+              <h4>Commits <span class="badge">24</span>
+              <br>Tests <span class="badge">0</span>
               <br>Issues <span class="badge">12</span></h4>
             </div>
           </div>
@@ -102,8 +102,8 @@
           <div class="caption">
             <div class="caption-content">
               <h3>Scoreboard:
-              <h4>Commits <span class="badge">17</span>
-              <br>Tests <span class="badge">4</span>
+              <h4>Commits <span class="badge">18</span>
+              <br>Tests <span class="badge">0</span>
               <br>Issues <span class="badge">8</span></h4>
             </div>
           </div>
@@ -119,8 +119,8 @@
           <div class="caption">
             <div class="caption-content">
               <h3>Scoreboard:
-              <h4>Commits <span class="badge">17</span>
-              <br>Tests <span class="badge">4</span>
+              <h4>Commits <span class="badge">35</span>
+              <br>Tests <span class="badge">22</span>
               <br>Issues <span class="badge">9</span></h4>
             </div>
           </div>
@@ -136,8 +136,8 @@
           <div class="caption">
             <div class="caption-content">
               <h3>Scoreboard:
-              <h4>Commits <span class="badge">9</span>
-              <br>Tests <span class="badge">4</span>
+              <h4>Commits <span class="badge">11</span>
+              <br>Tests <span class="badge">0</span>
               <br>Issues <span class="badge">9</span></h4>
             </div>
           </div>
@@ -153,8 +153,8 @@
           <div class="caption">
             <div class="caption-content">
               <h3>Scoreboard:
-              <h4>Commits <span class="badge">25</span>
-              <br>Tests <span class="badge">4</span>
+              <h4>Commits <span class="badge">29</span>
+              <br>Tests <span class="badge">0</span>
               <br>Issues <span class="badge">9</span></h4>
             </div>
           </div>
@@ -280,26 +280,9 @@
 
     <!-- Test Section -->
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-
-    <!-- <script>
-    $(document).ready(function(){
-      $("mega").click(function(){
-        $.ajax({
-        url: "/run_tests",
-        async: true,
-        cache: false,
-        success:
-        function(result){
-          var obj = JSON.parse(result);
-          $("mynewtestResults").replaceWith(obj.test_results);
-        }});
-      });
-    });
-    </script> -->
-
     <div class="container">
 
+      <!-- Test Results -->
       <div class="well">
         <div class="testPanel">
           <h4><mynewtestResults>[Run a test to see results.]</mynewtestResults></h4>
@@ -307,8 +290,9 @@
       </div>
 
       <!-- Run Button -->
-      <script type="text/babel" src="{{url_for('static', filename='js/run_button.babel')}}"></script>
+      <script type="text/babel" src="{{url_for('static', filename='js/reactions.babel')}}"></script>
       <div id="testSection" class="nova"></div>
+
     </div>
 
   </div>

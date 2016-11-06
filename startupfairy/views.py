@@ -157,5 +157,5 @@ def api_cities(entity=None):
 
 @public_views.route('/run_tests')
 def run_tests():
-    output = subprocess.getoutput("python startupfairy/tests.py")
+    output = subprocess.getoutput("python startupfairy/tests_about.py")
     return json.dumps({'test_results': str(output)})
