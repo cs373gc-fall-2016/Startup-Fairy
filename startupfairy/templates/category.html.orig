@@ -1,0 +1,290 @@
+{% extends "base.html" %}
+{% set active_page = title %}
+{% block content %}
+  <div class="col-md-10 col-md-offset-1">
+    <h1 id="category-header">
+    {% if alt_title %}{{ alt_title }}{% else %}{{ title.capitalize()}} {% endif %}</h1>
+    <div id='table-content'></div>
+    <script type="text/javascript" src="{{url_for('static', filename='bower_components/griddle-react/build/Griddle.js')}}"></script>
+    <!-- <script type="text/babel" src="{{url_for('static', filename='js/table.js')}}"></script> -->
+     <script type="text/babel">
+
+      var data = JSON.parse({{ data|tojson }});
+      var category = document.getElementById('category-header').innerHTML.toLowerCase().trim();
+      var columns, columnMetadata;
+
+
+      var WebsiteLink = React.createClass({
+        render: function(){
+          if (this.props.data === undefined || this.props.data === null) {
+            return <p>No website</p>
+
+          }
+          return <a href={this.props.data}>{this.props.data}</a>  
+        }
+      });
+
+      var TwitterLink = React.createClass({
+        render: function() {
+          var name = this.props.data;
+          if (name !== undefined && name != null) {
+            var url = "http://twitter.com/" + name;
+            return <a href={url}>@{name}</a>
+          } else {
+            return <p>No twitter</p>
+          }
+        }
+      });
+
+      var TwitterLink = React.createClass({
+        render: function() {
+          var name = this.props.data;
+          if (name !== undefined && name != null) {
+            var url = "http://twitter.com/" + name;
+            return <a href={url}>@{name}</a>
+          } else {
+            return <p>No twitter</p>
+          }
+        }
+      });
+
+      var EntityLink = React.createClass({
+        render: function(){
+          var name = this.props.data;
+          if (name !== undefined && name != null) {
+<<<<<<< HEAD:startupfairy/templates/category.html
+            var url = this.props.metadata.customHeaderComponentProps.link + name;
+            return <a href={url}>{this.props.data}</a>
+          } else {
+            return <p>No {this.props.metadata.customHeaderComponentProps.category} listed</p>
+          }
+        }
+      });
+
+      var SmallList = React.createClass({
+        render: function() {
+          var data = JSON.parse(this.props.data);
+          var category = this.props.metadata.customHeaderComponentProps.category;
+          if (data.length <= 0) {
+            return <p>No {category}</p>
+          }
+          var entityArray = [];
+          var max = data.length > 3 ? 3 : data.length;
+          var listItems = [];
+          if (data[0] instanceof Array) {
+            var listItems = [];
+            var base_url = "http://startupfairy.com/category/" + category + "/";
+            for (var i = 0; i < data.length; i++) {
+              var url = base_url + data[i][1];
+              listItems.push(<li><a href={url}>{data[i][0]}</a></li>);
+            }
+            listItems.splice(max);
+          } else {
+            entityArray = data.splice(max);
+            var listItems = entityArray.map((number) =>
+              <li>{number}</li>
+            );
+          }
+          return <ul className="no-indent">{listItems}</ul>
+        }
+      });
+
+=======
+            if (name.length > 0 && name instanceof Array) {
+              name = name[0]
+            }
+            name = name.toString().split(" ").join("");
+            var url = this.props.metadata.customHeaderComponentProps.link + name;
+            return <p>{this.props.data}</p>
+          } else {
+            return <p>No city listed</p>
+          }
+        }
+      });
+
+      var SmallList = React.createClass({
+        render: function() {
+          var data = this.props.data;
+          return <p>{data}</p>
+        }
+      });
+
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e:startupfairy/templates/category.html
+      switch(category) {
+          case 'people':
+            columns = ["name", "city", "companies", "role", "twitter"];
+            columnMetadata = [{
+              "columnName": "name",
+              "order": 1,
+              "locked": true,
+              "displayName": "Name",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'people/', category: 'people' }
+            }, {
+              "columnName": "city",
+              "order": 2,
+              "locked": false,
+              "displayName": "City",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'cities/', category: 'city' }
+            }, {
+              "columnName": "companies",
+              "order": 4,
+              "locked": false,
+              "customComponent": SmallList,
+              "displayName": "Companies"
+            }, {
+              "columnName": "companies",
+              "order": 4,
+              "locked": false,
+              "customComponent": SmallList,
+              "displayName": "Companies"
+            }, {
+              "columnName": "role",
+              "order": 4,
+              "locked": false,
+              "customComponent": SmallList,
+              "displayName": "Roles"
+            }, {
+              "columnName": "summary",
+              "visible": false
+            }, {
+              "columnName": "twitter",
+              "visible": true,
+              "displayName": "Twitter",
+              "customComponent": TwitterLink
+            }];
+            break;
+          case 'companies':
+            columns = ["name", "website", "city", "people", "financial_orgs", "twitter"];
+            columnMetadata = [
+            {
+              "columnName": "name",
+              "order": 1, 
+              "displayName": "Name",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'companies/', category: 'companies' }
+            }, {
+              "columnName": "city",
+              "visible": true,
+              "order": 2,
+              "displayName": "City",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'cities/', category: 'city' }
+            }, {
+              "columnName": "financial_orgs",
+              "order": 4,
+              "displayName": "Financial Organizations",
+<<<<<<< HEAD:startupfairy/templates/category.html
+              "customComponent": SmallList,
+              "customHeaderComponentProps": { link: 'financialorgs/', category: 'financial organizations' }
+=======
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'financialorgs/' }
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e:startupfairy/templates/category.html
+            }, {
+              "columnName": "people", 
+              "visible": true,
+              "order": 3,
+              "displayName": "Notable People",
+              "customComponent": SmallList,
+<<<<<<< HEAD:startupfairy/templates/category.html
+              "customHeaderComponentProps": { link: 'people/', category: 'people' }
+=======
+              "customHeaderComponentProps": { link: 'people/' }
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e:startupfairy/templates/category.html
+            }, {
+              "columnName": "website",
+              "order": 1,
+              "displayName": "Website",
+              "customComponent": WebsiteLink
+            }, {
+              "columnName": "twitter",
+              "visible": true,
+              "displayName": "Twitter",
+              "customComponent": TwitterLink
+            }];
+            break;
+          case 'financial organizations':
+          case 'financialorgs':
+            columns = ["name", "city", "website", "companies", "twitter"];
+            columnMetadata = [{
+              "columnName": "name",
+              "locked": true,
+              "displayName": "Name",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'financialorgs/' }
+            }, {
+              "columnName": "city",
+              "displayName": "Location",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'cities/', category: 'city' }
+            }, {
+              "columnName": "website",
+              "displayName": "Website",
+              "customComponent": WebsiteLink
+            }, {
+              "columnName": "twitter",
+              "visible": true,
+              "displayName": "Twitter",
+              "customComponent": TwitterLink
+            }, {
+              "columnName": "companies",
+              "visible": true,
+<<<<<<< HEAD:startupfairy/templates/category.html
+              "displayName": "Companies Invested In",
+              "customComponent": SmallList,
+              "customHeaderComponentProps": { category: 'companies'}
+=======
+              "displayName": "Companies Invested In"
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e:startupfairy/templates/category.html
+            }, {
+              "columnName": "summary",
+              "visible": false
+            }];
+            break;
+          case 'cities':
+            columns = ["name", "state", "companies", "financial_orgs", "people"];
+            columnMetadata = [{
+              "columnName": "name",
+              "order": 2,
+              "displayName": "Name",
+              "customComponent": EntityLink,
+              "customHeaderComponentProps": { link: 'cities/' }
+            }, {
+              "columnName": "state",
+              "order": 3,
+              "displayName": "State"
+            }, {
+              "columnName": "region",
+              "order": 4,
+              "displayName": "Region"
+            }, {
+              "columnName": "companies",
+              "displayName": "Companies",
+              "customComponent": SmallList,
+              "customHeaderComponentProps": { link: 'companies/', category: 'companies' }
+            }, {
+              "columnName": "financial_orgs",
+              "displayName": "Financial Organizations",
+              "customComponent": SmallList,
+              "customHeaderComponentProps": { link: 'financialorgs/', category: 'financialorgs' }
+            }, {
+              "columnName": "people",
+              "displayName": "Notable People",
+              "customComponent": SmallList,
+              "customHeaderComponentProps": { link: 'people/', category: 'people' }
+            }];
+            break;
+          default:
+            // if we hit this case, we need to create a new list
+            columns = undefined;
+      }
+
+      ReactDOM.render(
+        <Griddle results={data} showSettings={false} columns={columns} columnMetadata={columnMetadata}/>,
+        document.getElementById('table-content')
+      );
+     </script>
+	</div>
+{% endblock %}
