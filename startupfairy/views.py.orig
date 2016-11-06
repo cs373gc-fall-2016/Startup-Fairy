@@ -1,0 +1,232 @@
+"""
+Serves all the routes for the application
+"""
+import json
+<<<<<<< HEAD
+import subprocess
+# import requests
+=======
+import requests
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
+from os import listdir
+from flask import render_template, Blueprint, abort, request
+from models import *
+
+public_views = Blueprint('public_views', __name__)
+
+ALT_NAMES = {
+    'financialorgs': 'Financial Organizations',
+    'companies': 'Companies',
+    'cities': 'Cities',
+    'people': 'People'
+
+}
+
+
+@public_views.route('/')
+@public_views.route('/index')
+def index():
+    """
+    Serve the home/index page
+    """
+    return render_template('index.html')
+
+<<<<<<< HEAD
+@public_views.route('/favicon.ico')
+def favicon():
+    return "LOl"
+
+=======
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
+
+@public_views.route('/about')
+def about():
+    """
+    Serve the about page
+    """
+    return render_template('about.html', alt_title='About')
+
+
+<<<<<<< HEAD
+@public_views.route('/category/<app_category>', methods=['GET'])
+=======
+@public_views.route('/<app_category>', methods=['GET'])
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
+def category(app_category):
+    """Render table template"""
+    if app_category == 'people':
+        data = api_people()
+    elif app_category == 'cities':
+        data = api_cities()
+    elif app_category == 'companies':
+        data = api_companies()
+    elif app_category == 'financialorgs':
+        data = api_financialorgs()
+    else:
+        print("Category does not exist")
+        data = []
+    return render_template('category.html',
+                           alt_title=ALT_NAMES.get(app_category, None),
+                           title=app_category, data=data)
+
+
+<<<<<<< HEAD
+@public_views.route('/category/<app_category>/<entity>', methods=['GET'])
+=======
+@public_views.route('/<app_category>/<entity>', methods=['GET'])
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
+def details(app_category, entity):
+    """
+    Serve the an entity's page
+    """
+<<<<<<< HEAD
+    if app_category == 'people':
+        data = api_people(entity)
+    elif app_category == 'cities':
+        data = api_cities()
+    elif app_category == 'companies':
+        data = api_companies()
+    elif app_category == 'financialorgs':
+        data = api_financialorgs(entity)
+    else:
+        print("Category does not exist")
+        # data = []
+    print (data)
+    return render_template('details.html', data=json.loads(data), category=app_category)
+
+
+@public_views.route('/api/people', methods=['GET'])
+def api_people(entity=None):
+    try:
+        person_id = request.args.get('id')
+        if entity is None and person_id is None:
+            data = db.session.query(Person).all()
+            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+        else:
+            if entity is not None:
+                data = db.session.query(Person).filter_by(
+                    person_id=entity).one()
+            else:
+                data = db.session.query(Person).filter_by(
+                    person_id=person_id).one()
+=======
+    data = []
+    return render_template('details.html', data=data, category=app_category)
+
+
+@public_views.route('/api/people', methods=['GET'])
+def api_people():
+    try:
+        person_id = request.args.get('id')
+        if person_id is None:
+            data = db.session.query(Person).all()
+            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+        else:
+            data = db.session.query(Person).filter_by(
+                person_id=person_id).one()
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
+            return json.dumps(data.dictionary())
+    except:
+        print("Get people failed")
+        abort(404)
+
+
+@public_views.route('/api/companies', methods=['GET'])
+<<<<<<< HEAD
+def api_companies(entity=None):
+    try:
+        company_id = request.args.get('id')
+        if entity is None and company_id is None:
+            data = db.session.query(Company).all()
+            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+        else:
+            if entity is not None:
+                data = db.session.query(Company).filter_by(company_id=entity).one()
+            else:
+                data = db.session.query(Company).filter_by(
+                    company_id=company_id).one()
+=======
+def api_companies():
+    try:
+        company_id = request.args.get('id')
+        if company_id is None:
+            data = db.session.query(Company).all()
+            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+        else:
+            data = db.session.query(Company).filter_by(
+                company_id=company_id).one()
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
+            return json.dumps(data.dictionary())
+    except:
+        print("Get companies failed")
+        abort(404)
+
+
+@public_views.route('/api/financialorgs', methods=['GET'])
+<<<<<<< HEAD
+def api_financialorgs(entity=None):
+    try:
+        finorg_id = request.args.get('id')
+        if entity is None and finorg_id is None:
+            data = db.session.query(FinancialOrg).all()
+            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+        else:
+            if entity is not None:
+                data = db.session.query(FinancialOrg).filter_by(
+                    financial_org_id=entity).one()
+            else:
+                data = db.session.query(FinancialOrg).filter_by(
+                    financial_org_id=finorg_id).one()
+        return json.dumps(data.dictionary())
+=======
+def api_financialorgs():
+    try:
+        finorg_id = request.args.get('id')
+        if finorg_id is None:
+            data = db.session.query(FinancialOrg).all()
+            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+        else:
+            data = db.session.query(FinancialOrg).filter_by(
+                financial_org_id=finorg_id).one()
+            return json.dumps(data.dictionary())
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
+    except:
+        print("Get financial orgs failed")
+        abort(404)
+
+
+@public_views.route('/api/cities', methods=['GET'])
+<<<<<<< HEAD
+def api_cities(entity=None):
+    try:
+        city_id = request.args.get('id')
+        if entity is None and city_id is None:
+            data = db.session.query(City).all()
+            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+        else:
+            if entity is not None:
+                data = db.session.query(City).filter_by(city_id=entity).one()
+            else:
+                data = db.session.query(City).filter_by(city_id=city_id).one()
+=======
+def api_cities():
+    try:
+        city_id = request.args.get('id')
+        if city_id is None:
+            data = db.session.query(City).all()
+            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+        else:
+            data = db.session.query(City).filter_by(city_id=city_id).one()
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
+            return json.dumps(data.dictionary())
+    except:
+        print("Get cities failed")
+        abort(404)
+<<<<<<< HEAD
+
+@public_views.route('/run_tests')
+def run_tests():
+    output = subprocess.getoutput("python startupfairy/tests_about.py")
+    return json.dumps({'test_results': str(output)})
+=======
+>>>>>>> 05c50d34e42154d57e44c40f6d16b4a7d269702e
