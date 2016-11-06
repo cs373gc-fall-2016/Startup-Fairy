@@ -2,62 +2,58 @@
 {% set active_page = category %}
 {% block content %}
   <div class="col-md-8 col-md-offset-2">
-    <div class="photo-right">
-      {% if data.image %}
-        <img src="{{ data.image }}" class="user-photo"/>
-      {% else %}
-        <img src="https://cdn2.iconfinder.com/data/icons/metro-ui-dock/512/User_No-Frame.png" class="user-photo" />
-      {% endif %}
-    </div>
     <div>
       {% if data.name %}
         <h1>{{ data.name }}</h1>
       {% else %}
         <h1>Model</h1>
       {% endif %}
+      <div>
+        {% if data.logo_url %}
+          <img src="{{ data.logo_url }}"/>
+        {% else %}
+          <img src="https://cdn2.iconfinder.com/data/icons/metro-ui-dock/512/User_No-Frame.png" class="user-photo" />
+        {% endif %}
+      </div>
       {% if data.city %}<p><i>{{ data.city }}</i></p>{% endif %}
       {% if data.website %}<a href="{{ data.website }}">{{ data.website }}</a>{% endif %}
-      {% if data.companies %}<p>Companies:</p>
-        <ul>
-        {% for company in data.companies %}
-          <li>{{ company }}</li>
-        {% endfor %}
-        </ul>
+      {% if data.summary %}
+        <h3>About</h3>
+        <p>{{data.summary}}</p>
       {% endif %}
-      {% if data.summary %}<p>{{ data.summary }}</p>{% endif %}
-      {% if data.company %}
-        <p>Companies: 
-          <ul>  
-          {% for company in data.company %}
-              <li>{{ company }}</li>
-          {% endfor %}
-          </ul>
-        </p>{% endif %}
-      {% if data.companies_invested %}
-        <p>Companies Invested: 
-          <ul>  
-          {% for company in data.companies_invested %}
-              <li>{{ company }}</li>
-          {% endfor %}
-          </ul>
-        </p>{% endif %}
-      {% if data.investors %}
-        <p>Investors:</p>
-        <ul>
-          {% for investor in data.investors %}
-            <li>{{ investor }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-      {% if data.financial_orgs %}
-        <p>Investors: </p>
-          {% for investor in financial_orgs %}
-            <li>{{ investor }}</li>
-          {% endfor %}
-      {% endif %}
+      {% if data.companies %}<h3>Companies</h3>{% endif %}
+      <div id="companies-list"></div>
+      <div id="investors-list"></div>
+      <div id="people-list"></div>
     </div>
   {% if data.twitter %}
       <a class="twitter-timeline" href="https://twitter.com/{{data.twitter}}">Tweets by {{data.twitter}}</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   {% endif %}
   </div>
+<script type="text/babel">
+  var json = {{data|tojson}};
+  console.log(json);
+  var SmallList = React.createClass({
+    render: function() {
+      var category = this.props.category;
+      if (json[category] !== undefined) {
+        var list = JSON.parse(json[category]);
+        var listItems = list.map(function(entity) {
+          if (entity instanceof Array) {
+            var url = 'http://startupfairy.com/category/' + category + '/' + entity[1];
+            return <li><a href={url}>{entity[0]}</a></li>
+          }
+          return <li>{entity}</li>
+        });
+      } else {
+        var listItems = undefined;
+      }
+      return <ul>{listItems}</ul>;
+    }
+  });
+
+  ReactDOM.render(<SmallList category={"companies"}/>,document.getElementById('companies-list'));
+  ReactDOM.render(<SmallList category={"financial_orgs"}/>,document.getElementById('investors-list'));
+  ReactDOM.render(<SmallList category={"people"}/>,document.getElementById('people-list'));
+</script>
 {% endblock %}
