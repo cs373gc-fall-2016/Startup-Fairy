@@ -40,10 +40,6 @@
         render: function(){
           var name = this.props.data;
           if (name !== undefined && name != null) {
-            if (name.length > 0 && name instanceof Array) {
-              name = name[0]
-            }
-            name = name.toString().split(" ").join("");
             var url = this.props.metadata.customHeaderComponentProps.link + name;
             return <a href={url}>{this.props.data}</a>
           } else {
@@ -55,22 +51,27 @@
       var SmallList = React.createClass({
         render: function() {
           var data = JSON.parse(this.props.data);
+          var category = this.props.metadata.customHeaderComponentProps.category;
           if (data.length <= 0) {
-            return <p>No {this.props.metadata.customHeaderComponentProps.category}</p>
+            return <p>No {category}</p>
           }
           var entityArray = [];
           var max = data.length > 3 ? 3 : data.length;
+          var listItems = [];
           if (data[0] instanceof Array) {
-            for (var i = 0; i < max; i++) {
-              entityArray.push(data[i][0]);            
+            var listItems = [];
+            var base_url = "http://startupfairy.com/category/" + category + "/";
+            for (var i = 0; i < data.length; i++) {
+              var url = base_url + data[i][1];
+              listItems.push(<li><a href={url}>{data[i][0]}</a></li>);
             }
+            listItems.splice(max);
           } else {
             entityArray = data.splice(max);
+            var listItems = entityArray.map((number) =>
+              <li>{number}</li>
+            );
           }
-          // ADD SEE MORE
-           var listItems = entityArray.map((number) =>
-            <li>{number}</li>
-          );
           return <ul className="no-indent">{listItems}</ul>
         }
       });
@@ -134,7 +135,7 @@
               "columnName": "financial_orgs",
               "order": 4,
               "displayName": "Financial Organizations",
-              "customComponent": EntityLink,
+              "customComponent": SmallList,
               "customHeaderComponentProps": { link: 'financialorgs/', category: 'financial organizations' }
             }, {
               "columnName": "people", 
@@ -142,7 +143,7 @@
               "order": 3,
               "displayName": "Notable People",
               "customComponent": SmallList,
-              "customHeaderComponentProps": { link: 'people/' }
+              "customHeaderComponentProps": { link: 'people/', category: 'people' }
             }, {
               "columnName": "website",
               "order": 1,
@@ -214,7 +215,7 @@
               "columnName": "financial_orgs",
               "displayName": "Financial Organizations",
               "customComponent": SmallList,
-              "customHeaderComponentProps": { link: 'financialorgs/', category: 'financial organizations' }
+              "customHeaderComponentProps": { link: 'financialorgs/', category: 'financialorgs' }
             }, {
               "columnName": "people",
               "displayName": "Notable People",
