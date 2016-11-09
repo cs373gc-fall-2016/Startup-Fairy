@@ -63,7 +63,9 @@
             var base_url = "http://startupfairy.com/category/" + category + "/";
             for (var i = 0; i < data.length; i++) {
               var url = base_url + data[i][1];
-              listItems.push(<li><a href={url}>{data[i][0]}</a></li>);
+              if (data[i][0]!== undefined && data[i][0] !== null) {
+                listItems.push(<li><a href={url}>{data[i][0]}</a></li>);
+              }
             }
             listItems.splice(max);
           } else {
