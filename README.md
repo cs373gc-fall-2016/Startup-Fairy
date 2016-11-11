@@ -16,7 +16,7 @@ You'll need
 
 You will only need to do steps 3 & 4 if you are creating the containers for the first time or if you're missing the `app/static/bower_components` directory.
 
-If you need to set up a password for postgres, make sure you `export POSTGRES_PASSWORD=<your password>`.
+If you need to set up a password for postgres, make sure you `export POSTGRES_PASSWORD=<your password>` and `export POSTGRES_USER=<your username>`.
 
 ### Development
 You'll see the app at `localhost`. There is parity between the content on your local machine and the content inside the docker container.
