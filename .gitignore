@@ -5,7 +5,4 @@ bower_components
 .DS_Store
 .idea/
 .pylintrc
-
-*.log
-
 *.orig

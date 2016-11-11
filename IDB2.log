@@ -1,0 +1,1884 @@
+commit 3420fdd6b0e778e822ca6093101451c2ee8d9691
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Sat Nov 5 20:55:13 2016 -0500
+
+    removed orig files
+
+commit f9a7528bd760812a70f6909f230db87ea41b4d0d
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Sat Nov 5 20:44:20 2016 -0500
+
+    Revert "Revert "resolved conflicts""
+
+    This reverts commit b1f74a73f5f4d59ca60a51f8884a1c09d322122c.
+
+commit 5774f4ca9d1aa8c7e5c4cabcb3cc206514d01225
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Sat Nov 5 20:41:11 2016 -0500
+
+    b
+
+commit b1f74a73f5f4d59ca60a51f8884a1c09d322122c
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Sat Nov 5 20:40:27 2016 -0500
+
+    Revert "resolved conflicts"
+
+    This reverts commit 59b1c7d2285712004bec0391b78e63fc1b39c62a, reversing
+    changes made to ea37eecc69d5294828ce6e45fcfdc409a424666d.
+
+commit 59b1c7d2285712004bec0391b78e63fc1b39c62a
+Merge: ea37eec 05c50d3
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Sat Nov 5 20:36:28 2016 -0500
+
+    resolved conflicts
+
+commit ea37eecc69d5294828ce6e45fcfdc409a424666d
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Sat Nov 5 20:03:23 2016 -0500
+
+    removed unnecessary files
+
+commit 3335ae9dd71cdc31a6ba1dada792a47319b4602e
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Sat Nov 5 19:31:16 2016 -0500
+
+    Add links to certain rows
+
+commit 6120f2822f6518cc9c078262cfec86ea7949bb85
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Sat Nov 5 18:03:13 2016 -0500
+
+    updated documentation
+
+commit 906901f071955f8f4bc953008024823d5dbb6ad5
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Sat Nov 5 17:56:30 2016 -0500
+
+    make TestApp now ignores errors and still prints the report
+
+commit a066084122c4c1bb38c2bf6952482dc15484e566
+Merge: 42d37b3 5add0f9
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Sat Nov 5 17:54:56 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 42d37b37d7ee2d46fbb2c322abba08a9270dc881
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Sat Nov 5 17:54:45 2016 -0500
+
+    added some test for views.py
+
+commit 5add0f95020604fdb62ab2ca39594cfb29059419
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Sat Nov 5 17:47:03 2016 -0500
+
+    docstrings models.py
+
+commit 1e0949c00d20ebe0950ac788f7fca12573fda09a
+Merge: b576cd2 b501ada
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Sat Nov 5 16:52:44 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit b576cd201086a2aeb5843e83450a42a741befc31
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Sat Nov 5 16:52:24 2016 -0500
+
+    Pass in details via id
+
+commit 9c226496415d874585f9fe4f4566e8c3e73806da
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Sat Nov 5 16:52:09 2016 -0500
+
+    Install markdown html converter
+
+commit 7834012c34810b556254e64428c546511ff2a0de
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Sat Nov 5 16:52:01 2016 -0500
+
+    Update directory structure
+
+commit e17cf312e886b4bcdad50ca0204773ae2024b80e
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Sat Nov 5 16:24:33 2016 -0500
+
+    Display details about companies
+
+commit b501adaea1fd6873a552e61b3812ab4a4439ca6b
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Sat Nov 5 14:51:32 2016 -0500
+
+    fixed make TestApp target so results print even if tests fail
+
+commit ac5eeedbbe562c2d01abdf23c0e14811c9e83424
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Sat Nov 5 14:33:51 2016 -0500
+
+    updated git log
+
+commit a7faa0a4a0136e4a7f2d1e446e6df338b45a0815
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Sat Nov 5 14:32:58 2016 -0500
+
+    fixed make docs target
+
+commit 97068784923534835eba03c2c9bacadda2e8d43e
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Sat Nov 5 14:13:31 2016 -0500
+
+    documentation now correct
+
+commit 9ee749db39269422a2cbef26668540ae64824e0c
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Sat Nov 5 13:13:43 2016 -0500
+
+    Display proper number of bullets per list item
+
+commit 5e05a3536a1d23c6b1b0ed147d49a83b80496837
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Sat Nov 5 12:57:22 2016 -0500
+
+    Display small lists without links on models pages
+
+commit 72b80921018aad290422334cced8e553330a2568
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Sat Nov 5 09:21:37 2016 +0000
+
+    updated db
+
+commit b7d71b4ac2db8488b90585ea9a4337d8ee9eb4b6
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Fri Nov 4 19:42:43 2016 -0700
+
+    Use real json dump instead of sample
+
+commit 19b442a81c29124674bc734b91d6de5e0f99dfeb
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Fri Nov 4 20:23:40 2016 -0500
+
+    splash update
+
+    close #60
+
+commit 3fecf8a5052778868d77dea91da87427fe87f3a2
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Fri Nov 4 19:54:22 2016 -0500
+
+    updated about
+
+    - test panel is now rendered using react!
+    - still not formatted totally right lol
+
+commit 06fd66cee514d25ae138118f57e56bf2d720e620
+Merge: 72aa2da 56feb38
+Author: Mark Cruz <marktheperson@users.noreply.github.com>
+Date:   Fri Nov 4 19:09:30 2016 -0500
+
+    Merge pull request #66 from cs373gc-fall-2016/test-feature
+
+    run tests works!
+
+commit 56feb3835720506ca04950de5910b64d6924ed3a
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Fri Nov 4 19:06:50 2016 -0500
+
+    run tests works!
+
+    - it's basically the same thing they had on the example project so i'm
+    not sure if it's cool to just leave it like this or if i should somehow
+    change it. gonna leave it the way it is until i find a better way to do
+    it!
+
+commit 05c50d34e42154d57e44c40f6d16b4a7d269702e
+Author: Addy Kim <addykim@users.noreply.github.com>
+Date:   Thu Nov 3 21:56:48 2016 -0500
+
+    Merge (#65)
+
+    * about page updates
+
+    * updated about page!
+
+    to make it look prettier, and updated tools section
+
+    * changed nav menu
+
+    * right justify about button #40
+
+    * made captions on pictures bigger #40
+
+    * add sample json dumps
+
+    * Add json dumps
+    1000 people, 1000 cities, 1000 finorgs, and 50 cities
+    Fixes #48
+
+    * Add dockerfile and compose file to make setup easier
+
+    * Add README info about docker file
+
+    * Add link to docker
+
+    * How to startup docker-compose again
+
+    * Fix pylint warnings and errors in models.py
+
+    * Containers will have easy to type names
+
+    * Fix up py files with autopep8 and pylint
+
+    * Add additioanl setup information for front-end to readme
+
+    * Travis (#54)
+
+    * Test out travis
+
+    * Reorganize order of command execution
+
+    * Add standins for tests to run
+
+    * Forgot a flag
+
+    * db.relationship in models.py
+
+    * hopefully corrected import paths in models.py and tests.py
+
+    * Fix import errors
+    Rename __init__.py to app.py
+
+    * changed ids in models
+
+    * testing file for loading json dump into postgres db
+
+    * changed FinancialOrg initializer
+
+    * db DOES require primary key of model to be initialized
+
+    * mods
+
+    * added app config
+
+    * issue with db URI scheme and app.config is NOT fixing it
+
+    * Change service name from app to startupfairy
+
+    * Add get method header to routes
+
+    * Create test skeleton for about page
+
+    * Fix import in app.py
+
+    * Fix imports that were causing a 404
+
+    * changed models to not use db.relationship
+
+    * fixed import error
+
+    * about page updates
+
+    added stub to run tests
+    added alttext
+    added test section
+
+    * Use IBD2 filenames for makefile
+
+    * Unverified httpretty tests
+
+    * Give alt title to about page
+
+    * import changes
+
+    * removed unnecessary files
+
+    * about page changes
+
+    updated team member info
+
+    * Update docker-compose to reflect dir changes
+
+    * Load page without data
+
+    * Update bowerrc to use startupfairy as root instead of app
+
+    * Add script to create db models from json
+    Fixes #49
+
+    * Replace filenames in makefile with IDB2
+
+    * about page enchancements
+
+    * added all files needed for make check and fixed make test
+
+    * added database stuff BAM
+
+    * Add public APIs to get all
+
+    * more updates to make file #20
+
+    * Serialize dics into json objects correctly
+
+    * fix circular imports
+
+    * added preliminary versions of git log and pydoc documentation
+
+    * added notes to make file
+
+    * Implement apis to accept parameters
+
+    * changes to make file and test app so will run on travis
+
+    * update .travis.yml
+
+    * trying to fix travis.yml for docker
+
+    * trying to get docker to work on travis
+
+    * trying to fix travis.yml again
+
+    * changed docker command
+
+    * Rename file
+
+    * try droping data base before creating
+
+    * remove drop table before creat
+
+    * Update API on Apiary Fixes #39
+
+    * changed tests.py to do almost nothing
+
+    * removed things so tests run sucessfully
+
+    * added coverage to make TestApp target
+
+    * setUpBeforeClass and tearDownAfterClass is not a thing in python
+
+    * do db methods within app context
+
+    * about page updates
+
+    - updated look and feel
+    - need to update github stats before final commit
+    - need to add info on how our data was scraped
+    - need to finish the run tests button
+
+    * updated stats
+
+    * ran autopep8 and updated makefile
+
+    * bower has to be done as separate step per readme
+
+    * Update requirements file
+
+    * fixed make pylint
+
+    * testing section on about page
+
+    -updated so it's interactive
+    -still doesn't actually run tests, sorry:(
+
+    * UPDATED UML Diagram
+
+    * added UML Diagram as pdf
+
+    * about page updates
+
+    * wrote tests for companies model #45
+
+    * added check for IDB2.pdf in make check
+
+    * wrote tests for finincial orgs model #45
+
+    * wrote tests for Person and City
+
+    * Query data from db, does not display properly
+
+    * changed picture for companies #40
+
+    * finished TODOs in makefile fix #20
+
+    * Update people page minus companies and roles column
+
+    * working on about tests
+
+    * fixed margins on splash page fix #61
+
+    * lessen some of pylints wrath
+
+    * updated pydocs
+
+    * runtest
+
+    it displays the output from our tests.out file
+
+    * added more tests
+
+    * ran autopep8
+
+    * final changes to about page
+
+    -updated data sources
+    -updated stuff
+
+    * Disable links
+
+    * Fix json parsing for db
+
+commit 72aa2dadd1d9e68fd853285d50a1f3fcf19eb066
+Merge: 2da1512 dfb0964
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 21:56:08 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit dfb0964f9e12a5dce8ec55e97bb9bf8f8ffe94d9
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Thu Nov 3 21:56:06 2016 -0500
+
+    Fix json parsing for db
+
+commit 2da1512cedbbf4a5c563d3af03fbb2dd2125c78f
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 21:56:03 2016 -0500
+
+    Disable links
+
+commit d5161e5602c86febf1e56d406af1c7070b05f9d6
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Nov 3 21:54:32 2016 -0500
+
+    final changes to about page
+
+    -updated data sources
+    -updated stuff
+
+commit a40a935f0769021c1f08ad89c34903591887e467
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 21:50:43 2016 -0500
+
+    ran autopep8
+
+commit 2bf2a06b767a1dc6f085b39e3a42e6937683334a
+Merge: 28a2f0c 0134c95
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 21:44:50 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 28a2f0c04cdf3a8bee8c3ed154ceae81be889232
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 21:44:40 2016 -0500
+
+    added more tests
+
+commit 0134c955a6cc14ada07bc824abd9d2b003e41ee8
+Merge: e46305f 489980c
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 21:43:02 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 489980cfffa9fa0426b627b12320dd220d21db1a
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Nov 3 21:41:01 2016 -0500
+
+    runtest
+
+    it displays the output from our tests.out file
+
+commit e813271bf95d611710c7890630034fb0270b49c7
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 21:23:54 2016 -0500
+
+    updated pydocs
+
+commit 4be7dea0e8b51c30205af0f9c35793d5ab568755
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Nov 3 21:04:27 2016 -0500
+
+    lessen some of pylints wrath
+
+commit e46305fa9d3a0017b40c8ea286c241632ad66a68
+Merge: 420a5ef 34acdf3
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 20:23:37 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 34acdf357f70b4dcf5f2434e0ce149a5300617ed
+Merge: 97c649e 11772ab
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 20:22:29 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 97c649ebc51f16e89acce96385eee13613369300
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 20:18:48 2016 -0500
+
+    fixed margins on splash page fix #61
+
+commit 11772abac18782a5d4e34ba92528e5d187a3cb43
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Nov 3 20:17:43 2016 -0500
+
+    working on about tests
+
+commit 420a5ef72b480bc5a8b7698aa0d594eff4c2f133
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 20:01:40 2016 -0500
+
+    Update people page minus companies and roles column
+
+commit 5e45042a04931c1db0f2352fb86cb438aa2d87a3
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 19:56:09 2016 -0500
+
+    finished TODOs in makefile fix #20
+
+commit 56ce0b1b8b1293034a0e67cc9b33d631495a9578
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 19:53:09 2016 -0500
+
+    changed picture for companies #40
+
+commit dd85f25a60e99ebbadeb31abdfbf5b625e6059b2
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 19:39:02 2016 -0500
+
+    Query data from db, does not display properly
+
+commit e63a7dddb0e94fe00f14d94d1d29cc0fa09d3bad
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Nov 3 19:39:22 2016 -0500
+
+    wrote tests for Person and City
+
+commit 3492e91a1788b8ba1d4c9a52a2ef32355bf693cd
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 19:35:50 2016 -0500
+
+    wrote tests for finincial orgs model #45
+
+commit ad52559febe50750533f5de06414a5b5fa4cb491
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 19:13:55 2016 -0500
+
+    added check for IDB2.pdf in make check
+
+commit 6b2ec8468dd27b84a3cff26d75ccfc7a80cda479
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 18:54:44 2016 -0500
+
+    wrote tests for companies model #45
+
+commit b1e745da4551922055bb4221a67a402bea9c2694
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Nov 3 18:49:28 2016 -0500
+
+    about page updates
+
+commit 3b709241bf7077aa4f658cf4cbe3e14bb7c08859
+Author: ajrator <ajrator@gmail.com>
+Date:   Thu Nov 3 18:43:15 2016 -0500
+
+    added UML Diagram as pdf
+
+commit c04c16e190c05dcec2b83b341d4cacbfef744ff4
+Author: ajrator <ajrator@gmail.com>
+Date:   Thu Nov 3 18:39:22 2016 -0500
+
+    UPDATED UML Diagram
+
+commit 079a2cbb9f18bbbbd41b6e33750a7a795be8c9b3
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Nov 3 18:30:18 2016 -0500
+
+    testing section on about page
+
+    -updated so it's interactive
+    -still doesn't actually run tests, sorry:(
+
+commit faf05090552f287e74502a86e7d1ccfb3874ca0d
+Merge: 62e987a 25f5674
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 17:27:48 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 62e987a54fd2401c636d94a0aee0a3fd3e7fad72
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 17:26:39 2016 -0500
+
+    fixed make pylint
+
+commit 25f56748b9467d4fa2a507aa012cf61d6aa180d5
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 17:25:09 2016 -0500
+
+    Update requirements file
+
+commit e3ef6c3f38cb2955715b486a0b6e98ac73c75852
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Nov 3 17:22:12 2016 -0500
+
+    bower has to be done as separate step per readme
+
+commit 452b77c588f8ae44a73e557d5528ab3ef9c5e968
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 17:10:12 2016 -0500
+
+    ran autopep8 and updated makefile
+
+commit c9936be8716aa2d15b06af00a8a9b336d384e7c4
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Nov 3 16:21:56 2016 -0500
+
+    updated stats
+
+commit ae12f2220268af4e0cca4402d268db49da21ef20
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Nov 3 14:14:18 2016 -0500
+
+    about page updates
+
+    - updated look and feel
+    - need to update github stats before final commit
+    - need to add info on how our data was scraped
+    - need to finish the run tests button
+
+commit efe11694cfecb68b7743cfe42e089a3f0a33ada9
+Merge: 246970d d8fca21
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Nov 3 01:27:11 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 246970dacf1c9786eed8f38083794e95c1f994e4
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Nov 3 01:26:57 2016 -0500
+
+    do db methods within app context
+
+commit d8fca218105a75638e8c2914ce8fc64545e10917
+Merge: b7acd29 8e3ecf0
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 00:54:53 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit b7acd29ffc5b51676cb2d19603ac935a610efe85
+Merge: e8040dd f0add28
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 00:54:36 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 8e3ecf03af3a07f7daf3767d65d617299498e1ff
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Nov 3 00:52:21 2016 -0500
+
+    setUpBeforeClass and tearDownAfterClass is not a thing in python
+
+commit e8040ddfc5e4f34293d16f8ce3da1d948acb9a74
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 00:45:43 2016 -0500
+
+    added coverage to make TestApp target
+
+commit 2ea2e946b65d04fffc3a31cec9c815317f29be92
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Thu Nov 3 00:44:22 2016 -0500
+
+    removed things so tests run sucessfully
+
+commit f0add280281f1a850a3e3a0aa001078c4dad28bb
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Nov 3 00:34:09 2016 -0500
+
+    changed tests.py to do almost nothing
+
+commit 6b8c1f269b935dd2005788b41db69997e5d2edd2
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Thu Nov 3 00:14:29 2016 -0500
+
+    Update API on Apiary Fixes #39
+
+commit 75226d6aef25f44d24269bf3909f87176a6294de
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 23:54:36 2016 -0500
+
+    remove drop table before creat
+
+commit 75bb7a61342a4d1518a6b0d5e0f27099479efd9c
+Merge: 86805f9 80868fa
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 23:48:59 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 86805f99b9a10e47b08820c0435112e485c5ac89
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 23:48:49 2016 -0500
+
+    try droping data base before creating
+
+commit 80868fa1d69c05a0686ce9c431491f01b760f1de
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Wed Nov 2 23:35:18 2016 -0500
+
+    Rename file
+
+commit 67de0c5946d578194be88ca8461bf5bd31f56485
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 23:31:00 2016 -0500
+
+    changed docker command
+
+commit 2c760af881b193e985e5998fe9ffbf9edb29da27
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 23:14:08 2016 -0500
+
+    trying to fix travis.yml again
+
+commit 6a47adb785f97a01a2a0a766d75e83de1b1ec56c
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 23:05:08 2016 -0500
+
+    trying to get docker to work on travis
+
+commit cd97d7181aa7828fc847958e9bc31e55946bdb12
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 22:59:02 2016 -0500
+
+    trying to fix travis.yml for docker
+
+commit 6bbb02ea49e2139495b61f087a686c7744d41780
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 22:49:17 2016 -0500
+
+    update .travis.yml
+
+commit 48c32ca62c34ea661d6fc11056f5c1cb26189814
+Merge: 7edea75 be66bb8
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 22:44:20 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 7edea75c789f5876588a7de60221a25abf027b5e
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 22:43:59 2016 -0500
+
+    changes to make file and test app so will run on travis
+
+commit be66bb819b77327b8c1f5a2ecfdc2b76ec477d10
+Merge: 7baaf64 3f18a2e
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Nov 3 03:30:52 2016 +0000
+
+    Merge branch 'api-dev' into dev
+
+commit 3f18a2e456b94a61246fef35eb3bebad69b6e889
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Nov 3 03:29:51 2016 +0000
+
+    Implement apis to accept parameters
+
+commit 7baaf64e71941b8ed0461d618bb78038e1b99718
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 22:09:33 2016 -0500
+
+    added notes to make file
+
+commit ae87c0365fe8bf9bcb3746130a3d578931355fbc
+Merge: 9c2b509 4e76c59
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 22:00:32 2016 -0500
+
+    merge changes
+
+commit 9c2b50985d479548c538ed9b253be9100fdc9714
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 21:52:51 2016 -0500
+
+    added preliminary versions of git log and pydoc documentation
+
+commit 4e76c59cd27f1a6606f00bf2bbd100eb8bb85ba9
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Nov 3 02:50:28 2016 +0000
+
+    fix circular imports
+
+commit cd92f7d58372c25e27f44a082d42255466cc9fca
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Nov 3 02:49:33 2016 +0000
+
+    Serialize dics into json objects correctly
+
+commit 0c26f65306f9b5c6901210bcb5ca582edd092a4e
+Merge: b3bbcb6 c8c249c
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 21:47:18 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/Startup-Fairy into dev
+
+commit fd2bfa4313560f5d0291e5e183fa1ddaa29c99a4
+Merge: c8c249c edfd93d
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Nov 3 02:22:10 2016 +0000
+
+    Merge branch 'api-dev' of https://github.com/cs373gc-fall-2016/Startup-Fairy into api-dev
+
+commit b3bbcb6c6ca52baa9531176b313a3e85518a81b0
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 21:46:36 2016 -0500
+
+    more updates to make file #20
+
+commit edfd93d3fcde6bdbad325886dd097777500199cb
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Wed Nov 2 21:19:52 2016 -0500
+
+    Add public APIs to get all
+
+commit c8c249c09c1da6972496741570cd25f5a4997ef9
+Merge: ad6346e f269b12
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Nov 3 01:53:23 2016 +0000
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/Startup-Fairy into dev
+
+commit ad6346eb3fa7eaa1fd4c06ca2c687c0d1772c482
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Nov 3 01:53:07 2016 +0000
+
+    added database stuff BAM
+
+commit f269b12974d3aa89c6da4b33abec2b4009e5a053
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Nov 2 20:51:09 2016 -0500
+
+    added all files needed for make check and fixed make test
+
+commit abe748b26e9cdd9dbd599afa9ee89d5d171c9bd0
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Wed Nov 2 20:35:30 2016 -0500
+
+    about page enchancements
+
+commit 955104486274957314daa30d2b8c233975e512d6
+Merge: 970c674 f78d960
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Nov 2 20:33:41 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 970c6746b02d95b1552cc08bd7057dc8c1d972d1
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Nov 2 20:33:24 2016 -0500
+
+    Replace filenames in makefile with IDB2
+
+commit f78d960257a00a60d710643691e342a616bdc261
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Wed Nov 2 20:29:17 2016 -0500
+
+    Add script to create db models from json
+    Fixes #49
+
+commit 34abadff1c03eae98019f3ebf2c055b05d3b51ae
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Nov 2 19:58:46 2016 -0500
+
+    Update bowerrc to use startupfairy as root instead of app
+
+commit 8079577a257476148e17038bca22a647c259bc8b
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Nov 2 19:50:58 2016 -0500
+
+    Load page without data
+
+commit b43cdc0cf6ee70f9edeb1b98bd0a492d35a63d9d
+Merge: 2fe2e6d cf07b38
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Nov 2 19:40:22 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 2fe2e6d773067e4b2390c984de630d99830b694b
+Merge: 364b681 0cfc602
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Nov 2 19:40:10 2016 -0500
+
+    Merge branch 'import_changes' into dev
+
+commit 0cfc602e39b8c4df122bca851b74111c0debef1e
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Nov 2 19:36:04 2016 -0500
+
+    Update docker-compose to reflect dir changes
+
+commit cf07b389e40f68b26a8a65116f2c330902b15a34
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Wed Nov 2 19:34:42 2016 -0500
+
+    about page changes
+
+    updated team member info
+
+commit 7d949ee4804f8b43790fa3a456ce63095d270310
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Nov 3 00:33:54 2016 +0000
+
+    removed unnecessary files
+
+commit 8466fe7dbd6e9e1bd7746463327f62f9cab62950
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Nov 3 00:29:46 2016 +0000
+
+    import changes
+
+commit 364b681994ba2996c7ea0ed2f7cf6cc2092e5dea
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Nov 2 19:22:21 2016 -0500
+
+    Give alt title to about page
+
+commit 4ce2defd7fd16f7acad1a7cb2239aafa0df95f98
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Nov 2 19:16:57 2016 -0500
+
+    Unverified httpretty tests
+
+commit 1046234c3d7640a20a8cd9327437d271522c60f1
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Nov 2 19:14:46 2016 -0500
+
+    Use IBD2 filenames for makefile
+
+commit 3bb928adf48458508e0df90b0fb69885c10c6d7a
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Wed Nov 2 18:29:13 2016 -0500
+
+    about page updates
+
+    added stub to run tests
+    added alttext
+    added test section
+
+commit a234c1d040bd282ba9ca60f5c417511e900f5171
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Wed Nov 2 23:21:32 2016 +0000
+
+    fixed import error
+
+commit fc6bafb4ee7d2ef5d4eba73f4116987e23590bad
+Author: Cameron Reynoldson <cameronreynoldson@utexas.edu>
+Date:   Wed Nov 2 18:04:59 2016 -0500
+
+    changed models to not use db.relationship
+
+commit e2c74c142b2ae3827146a5d33a73dd103e0ee5fb
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Wed Nov 2 17:38:32 2016 -0500
+
+    Fix imports that were causing a 404
+
+commit ade5fe12886278350774d56edd7cdb18c6fecd21
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Wed Nov 2 17:31:06 2016 -0500
+
+    Fix import in app.py
+
+commit 43e993510836ffe5b78093137d68adc6c7fd66ba
+Merge: da4c74e e1944b6
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Tue Nov 1 22:05:32 2016 -0500
+
+    Merge branch 'flask' into dev
+
+commit da4c74eba954560b1d4e2042f092ba29c466b128
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Tue Nov 1 22:05:23 2016 -0500
+
+    Create test skeleton for about page
+
+commit e1944b6c68bb659f7bd2e446860f17dc40403a02
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Tue Nov 1 21:35:59 2016 -0500
+
+    Add get method header to routes
+
+commit 88f428c89e39efdb1c656a4ba73314d95c1e8fb4
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Tue Nov 1 21:16:05 2016 -0500
+
+    Change service name from app to startupfairy
+
+commit b564b9e76453600750d1beab12b19bd620caa3d7
+Author: ajrator <ajrator@gmail.com>
+Date:   Tue Nov 1 01:33:42 2016 -0500
+
+    issue with db URI scheme and app.config is NOT fixing it
+
+commit e13ce7811295b5cb2ef985fefb53893fef7b721b
+Author: ajrator <ajrator@gmail.com>
+Date:   Tue Nov 1 01:31:38 2016 -0500
+
+    added app config
+
+commit 80cc40e1091c7b0713eaa6e3bc14795ffe3ca900
+Author: ajrator <ajrator@gmail.com>
+Date:   Tue Nov 1 01:16:25 2016 -0500
+
+    mods
+
+commit 43c176aae9be6cc73ab3808477aab98869042b79
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Mon Oct 31 23:19:16 2016 -0500
+
+    db DOES require primary key of model to be initialized
+
+commit 69ce2ebf610f4540437a9f48592709d3c709deb5
+Merge: e708a98 cc1f760
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Mon Oct 31 23:08:07 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/Startup-Fairy into dev
+
+commit e708a982827bcf94ddf6767ab7e3cf9bd7a7dedf
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Mon Oct 31 23:07:51 2016 -0500
+
+    changed FinancialOrg initializer
+
+commit cc1f760d16a73a8473e0ca2676f234e87eea1aa4
+Author: ajrator <ajrator@gmail.com>
+Date:   Mon Oct 31 22:09:49 2016 -0500
+
+    testing file for loading json dump into postgres db
+
+commit dbd1c8fa5da15ae6b1980e5c2eee6f57d998cfdd
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Mon Oct 31 21:53:16 2016 -0500
+
+    changed ids in models
+
+commit 5863923061971cc938354a789cceddc7a379b206
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Mon Oct 31 21:36:33 2016 -0500
+
+    Fix import errors
+    Rename __init__.py to app.py
+
+commit b3e84b231abdf7992f46cd0035db3842db31245a
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Mon Oct 31 20:49:56 2016 -0500
+
+    hopefully corrected import paths in models.py and tests.py
+
+commit d343111158b7a9c7d97d449db0126b0996cba923
+Merge: 30ef7da bb6f5ac
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Mon Oct 31 20:26:03 2016 -0500
+
+    Merge branch 'dev' of https://github.com/cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 30ef7dabaa1c845834a10a901ac4b23bcf0eddc8
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Mon Oct 31 20:25:33 2016 -0500
+
+    db.relationship in models.py
+
+commit bb6f5ac6c93ccdce60256c151e017f1fb7c35866
+Merge: 8b69c47 939cd62
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Mon Oct 31 20:23:40 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 8b69c47ef2e6acd1d8296a7d63397ca30e67f7c0
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Mon Oct 31 20:23:35 2016 -0500
+
+    Forgot a flag
+
+commit 939cd62a65f944a02eaf3e0c6e55909ccbddebfb
+Author: Addy Kim <addykim@users.noreply.github.com>
+Date:   Mon Oct 31 20:15:52 2016 -0500
+
+    Travis (#54)
+
+    * Test out travis
+
+    * Reorganize order of command execution
+
+    * Add standins for tests to run
+
+commit a7ada4a8a2af65c76eadb009fc06b2811487eb56
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Mon Oct 31 20:11:31 2016 -0500
+
+    Add additioanl setup information for front-end to readme
+
+commit 403e2bf20d1b22a3faffa17783e57142c69357f4
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Mon Oct 31 18:46:53 2016 -0500
+
+    Fix up py files with autopep8 and pylint
+
+commit 5b508460081fadb2a771b2270cefb481b89e4e80
+Merge: e915768 487acef
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Mon Oct 31 18:07:45 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit e915768855dbdc224ef480ca4cdbe59a6870b754
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Mon Oct 31 18:07:42 2016 -0500
+
+    Containers will have easy to type names
+
+commit 487acef612e747cff57ba8c7e626981da53fa31a
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Mon Oct 31 17:20:28 2016 -0500
+
+    Fix pylint warnings and errors in models.py
+
+commit acfb828295e76ff0d49535af281546b1d8559e36
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Mon Oct 31 17:11:50 2016 -0500
+
+    How to startup docker-compose again
+
+commit 8a3339f96ce71b072537011b7b2c92649c5b441c
+Author: Addy Kim <addykim@users.noreply.github.com>
+Date:   Sun Oct 30 20:10:40 2016 -0500
+
+    Add link to docker
+
+commit c36c94eab657279cba8df3a608f7daef0f148786
+Merge: 0fa4072 74e0c2f
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Sun Oct 30 14:56:53 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 0fa40720a9ce500716fa9db3f894031b7a463d62
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Sun Oct 30 14:56:48 2016 -0500
+
+    Add README info about docker file
+
+commit ddcdf0eedee81a5120d96b384803099907d49dd5
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Sun Oct 30 14:53:58 2016 -0500
+
+    Add dockerfile and compose file to make setup easier
+
+commit 74e0c2f2c6585bbab6e2da9b243bbce0080fbe85
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Thu Oct 27 00:01:34 2016 -0500
+
+    Add json dumps
+    1000 people, 1000 cities, 1000 finorgs, and 50 cities
+    Fixes #48
+
+commit 0110c070c94e370bc7e2e68ad977cb6b2948b4d1
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Wed Oct 26 23:53:29 2016 -0500
+
+    add sample json dumps
+
+commit cbc512ce1f7dba8802b4d42689b1a803ff8d23a0
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Oct 26 21:49:49 2016 -0500
+
+    made captions on pictures bigger #40
+
+commit 02b393a9dfe721c2a7cf2c85581df32003f673dd
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Oct 26 21:16:04 2016 -0500
+
+    right justify about button #40
+
+commit c35c71d9bdd536938fc64f1e7ed81a6f748f36be
+Author: summergirl21 <summergirl21@users.noreply.github.com>
+Date:   Wed Oct 26 20:57:54 2016 -0500
+
+    changed nav menu
+
+commit 4791d164957d178c3a849a34bc2ddd2a85ef624e
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Wed Oct 26 20:03:14 2016 -0500
+
+    updated about page!
+
+    to make it look prettier, and updated tools section
+
+commit e6c41fbaf390bac67476f1185303c58f47389939
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Oct 20 21:58:15 2016 -0500
+
+    about page updates
+
+commit 29d46effea862467d2916100be9aaf929649ccdb
+Merge: c702424 d6bc988
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Thu Oct 20 21:57:15 2016 -0500
+
+    Merge pull request #36 from cs373gc-fall-2016/dev
+
+    merge to master
+
+commit d6bc988c49cc7dc50cd26f402fb2993fcfa17534
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Oct 20 21:55:19 2016 -0500
+
+    stuff
+
+commit 67305859eed137209bb8f446859b20d37545e364
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Oct 20 21:52:39 2016 -0500
+
+    data stuff
+
+commit 487ec84b6ec32833d3585324bbe9e7dfed861c39
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Thu Oct 20 21:41:28 2016 -0500
+
+    Reformat code
+
+commit dc3279f48f9e744dd0a3dd2f096e24396fc76559
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Fri Oct 21 02:40:48 2016 +0000
+
+    removed unnecessary file
+
+commit c68669a6695f62cd32d7b0e8fb83df5d4e5cc65e
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Thu Oct 20 21:39:29 2016 -0500
+
+    Add makefile
+
+commit ddbbbef77aa42aec60457c8b18bc5a5fc47368ad
+Merge: b19ba4c 60edf1c
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 21:31:57 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit b19ba4ce25b6ff5ff8fcbc178b0cc098439946c4
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 21:31:52 2016 -0500
+
+    Clean up  last minute details
+
+commit 60edf1cf944fff7ea9c129a8c02b2d0bdb8726ab
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Thu Oct 20 21:31:44 2016 -0500
+
+    Add IDB1.log
+
+commit 31963a3412e33a85d39b3be7609d914d154eb572
+Merge: 1fd9d86 6d875a3
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 21:30:24 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 1fd9d862917776f6bbd4583155ea99749cb5bf7a
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 21:30:19 2016 -0500
+
+    Reduce number of columns to match models
+
+commit 6d875a35a4b8973d7698e27f9804168cd1684b99
+Author: ajrator <ajrator@gmail.com>
+Date:   Thu Oct 20 21:27:08 2016 -0500
+
+    added pdf
+
+commit 2de4da69308fee45550da91c69bd6a3d26e47527
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Oct 20 21:25:13 2016 -0500
+
+    removed footer stuff
+
+commit ef6b767abebe5d3a200f02ccc47519495d19ecf9
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Oct 20 21:10:50 2016 -0500
+
+    changed attr names to match other models
+
+commit d9ffd233dfbaf37bd72179bd2ab758284bdf1575
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Oct 20 21:10:26 2016 -0500
+
+    changed attr names to match other models
+
+commit 8eea33c15584cf66b286908ff0de998fc535053b
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Oct 20 21:10:05 2016 -0500
+
+    changed attr names to match other models
+
+commit 8d6363696875f6ee5e406f94dce094304bc1ebf2
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Oct 20 21:08:38 2016 -0500
+
+    changed attr name to companies
+
+commit 9cded45934943f5fc4640370431c20dbdb1666ca
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Oct 20 21:08:22 2016 -0500
+
+    changed attr name to companies
+
+commit 15ddd3c7dff53b69280c06bd7e68ab3932fb3feb
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Oct 20 21:08:04 2016 -0500
+
+    changed attr name to companies
+
+commit 5915660e9c8812b40c4cce2e2bf1120f56824ef4
+Author: Eugene Ng <eugenen@cs.utexas.edu>
+Date:   Thu Oct 20 21:06:46 2016 -0500
+
+    changed attr names in models according to multiplicities
+
+commit f5febf2ac295144fccf52fd925a47d3010f6e5f8
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Thu Oct 20 20:55:42 2016 -0500
+
+    Add descriptions of values on apiary
+
+commit 6bd3eb640b8a9b08a6c8205f7ae8b845b980f49c
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Oct 20 20:55:05 2016 -0500
+
+    updated links
+
+    - home page links
+    - made about page easier to read
+
+commit 03fe11f0cbd406a778904c841a663b093f342563
+Merge: bdf524c 8f4cd00
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 20:52:13 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit bdf524c4bc667cc499ddfaf30abf4791d7ba61b1
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 20:41:05 2016 -0500
+
+    Each has link to its details page
+
+commit 8f4cd006d69dc39c7fc462f39a3f773b65153fa9
+Author: Eugene Ng <eugenen@cs.utexas.edu>
+Date:   Thu Oct 20 20:44:49 2016 -0500
+
+    split tests into classes according to models
+
+commit 59e3d8fdadeb7660d1e0826f09d09ebcb7529d7c
+Author: ajrator <ajrator@gmail.com>
+Date:   Thu Oct 20 20:24:12 2016 -0500
+
+    updated UML
+
+commit b92e418c494ebe283d400ff69f036597c61c92c1
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Thu Oct 20 20:18:02 2016 -0500
+
+    [Apiary] Capitalize Startup Fairy
+
+commit 225883cd6ba4eec84d80c0fb41aaad71ef287b18
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Thu Oct 20 20:15:13 2016 -0500
+
+    Add API description for Apiary
+
+commit 4e681b211a629cedc639aaa6c3aaebeeb71ef04a
+Author: Eugene Ng <eugenen@cs.utexas.edu>
+Date:   Thu Oct 20 19:58:23 2016 -0500
+
+    changed some attr names in models to match jsons
+
+commit 78f694551d828515e4c21fde54053cfbfe357d99
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Oct 20 19:48:33 2016 -0500
+
+    changed name of twitter attr
+
+commit 894dbbc8e5f54e28e11891f8ee3b8d9d11d276ea
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Oct 20 19:48:21 2016 -0500
+
+    changed name of twitter attr
+
+commit 6474298894b11df5c8e21a18fa7956430d7e3fc1
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Oct 20 19:48:07 2016 -0500
+
+    changed name of twitter attr
+
+commit 30c26ea151bd13d1d385009f25e1139025013c60
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Oct 20 19:47:27 2016 -0500
+
+    changed name of companies attr
+
+commit ca97f0cc42f29ed1379c64f5445e229330db16a0
+Author: ajrator <ajrator@gmail.com>
+Date:   Thu Oct 20 19:46:34 2016 -0500
+
+    added pdf of UML Diagram to repo
+
+commit b10323c53f4445d6cea1b3be65846a7b2f450adf
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Oct 20 19:45:44 2016 -0500
+
+    changed name of companies attr
+
+commit b9faa7ccc292d0eab2b6e6b8c31fd2d5b962a913
+Author: Eugene Ng <eugenen@utexas.edu>
+Date:   Thu Oct 20 19:44:49 2016 -0500
+
+    changed name of companies attribute
+
+commit 8808dc987a86d023c1cb8040033b0af72cf09db5
+Author: ajrator <ajrator@gmail.com>
+Date:   Thu Oct 20 19:44:38 2016 -0500
+
+    link to UML
+
+commit c7a45922c572ce854ec66058432e38b42bbe3ba0
+Merge: 57eede7 5e15070
+Author: ajrator <ajrator@gmail.com>
+Date:   Thu Oct 20 19:43:32 2016 -0500
+
+    changes to README
+
+commit 57eede7be753b09245b11c5d163840bce43a5f21
+Author: ajrator <ajrator@gmail.com>
+Date:   Thu Oct 20 19:37:26 2016 -0500
+
+    preparing for UML diagram post
+
+commit 5e15070581f1a40491ce787aed963d7bb42713c3
+Merge: 6bd623e 4cc62e8
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 19:37:20 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 6bd623e0c133be4d2e3bf7086cbb78a6d52ea9f5
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 19:37:17 2016 -0500
+
+    Have links to external websites
+
+commit fbebbf3d98cd8440aebcbe7bdd2308314802e402
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 19:03:33 2016 -0500
+
+    Customize column data, Closes #32
+
+commit 4cc62e8c6c6396f7ea79e6c2c2a00917bbff64b9
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Oct 20 19:09:25 2016 -0500
+
+    changed from pink
+
+    because stas thought it was too gender normative
+
+commit cce1bfda77fa3831051f5f2cafcbd22e910aa22b
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Oct 20 18:45:51 2016 -0500
+
+    added some styles
+
+    - updated formatting for about page
+    - updated splash carousel (partially)
+
+commit 1278b41b6c8cb4e516daf4aa1e3ce39e1b2bfe2c
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Oct 20 23:35:22 2016 +0000
+
+    remove routes.py file
+
+commit 722dd0a90a1b57faee7538a95b63d1b6555c59d5
+Author: Eugene Ng <eugenen@cs.utexas.edu>
+Date:   Thu Oct 20 18:17:32 2016 -0500
+
+    added repr and dictionary methods to models
+
+commit 33ab6c8b71252c0b9eb35f10ce38b59f3fc7b40c
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 18:15:52 2016 -0500
+
+    Present alternative/displayable names for title and category page
+
+commit 70713ca44b773425f7862ed161cbd329190ae575
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Oct 20 17:46:05 2016 -0500
+
+    style changes
+
+    updated fonts and carousel
+
+commit cda668eeb2407c7131b30e5b9c2345210a3fb9a5
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Oct 20 16:49:13 2016 -0500
+
+    small changes (again lol)
+
+    - removed useless code that i had added last commit
+
+commit 383797e50209072d31ad1379b7ac97aabf3b4a07
+Merge: 53ef506 613a18b
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 16:40:54 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 53ef50602c2620f28bd167ab1e110d89453d46d3
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 16:40:49 2016 -0500
+
+    Display table content per category
+
+commit 613a18b0122938615e5609af0ca8bc9cbf590e0a
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Oct 20 16:28:01 2016 -0500
+
+    small changes
+
+    - updated some style things to add contrast
+    - added a footer (y'all can take this out if it looks ugly lol)
+    - changed about title to uppercase
+
+commit a333af43d855d5e4caa2c138bbb97b3e9086768c
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Oct 20 20:40:23 2016 +0000
+
+    updated readme
+
+commit 0fc026e1ddf20d375f6f7ee1c1318c7e1ffd0b3e
+Merge: db1e4e5 9fa975f
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 15:23:48 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 9fa975fe99bd5b6b35b228d2a0bc945c05065a9b
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Oct 20 20:20:42 2016 +0000
+
+    fixed 404 error
+
+commit db1e4e5d5a03b1600b2990cd436d08a394523ce4
+Merge: 8b1ab2b 624dabb
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 14:41:05 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 624dabb2e9addd5980c2bebcaec02c8162d94a9f
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Oct 20 19:38:52 2016 +0000
+
+    added models, closed #29
+
+commit 8b1ab2b52c563a50216be22318f0f23dc37802c1
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 14:34:20 2016 -0500
+
+    Update title of category pages
+
+commit 2216f91d8c37e651f3ca4f6fb6135b318ed6b136
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Oct 20 19:08:11 2016 +0000
+
+    fixed file opening issue
+
+commit 9d5d76a6198203d934ce71dc0d0032b954ac92bc
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Oct 20 18:52:23 2016 +0000
+
+    removed environment variable
+
+commit a4c92fb07e39ab66262e409168b5a5b13155cb5f
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Thu Oct 20 13:03:12 2016 -0500
+
+    updated links
+
+commit 585315c6b4551fb719c44f646de2a2c2f23d8193
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 12:47:58 2016 -0500
+
+    Import json in views
+
+commit 7055ed9dd3b8d0c1c1fcd31e281dfdea2a535ddc
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 12:46:24 2016 -0500
+
+    Make use of json files
+
+commit 587aedbb5ecdbdcdefabccca1b20e4a48ddc7fc8
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Thu Oct 20 09:41:37 2016 -0500
+
+    Cannot run app locally due to port 80, use env var to determine prod/dev environment
+
+commit 1825d8fcca19f88162c67cba14ecef0bcf14dd42
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Thu Oct 20 07:52:03 2016 +0000
+
+    changed port number so that we can see website online
+
+commit e0a5997a3bf010de658033d175af58c25ed2b4fb
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Wed Oct 19 21:03:08 2016 -0500
+
+    Add hardcoded json files for phase 1
+
+commit 128aac05ee09baf695766ae20c7616dfb63593c3
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Wed Oct 19 19:47:02 2016 -0500
+
+    Fix bullet points in README
+
+commit f74d96eaa0c1453807c3e487d786c4421dbd58e8
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Wed Oct 19 19:46:07 2016 -0500
+
+    Add models to README
+
+commit c3266870851ecc1f89e6c6597c7423a71e43f109
+Merge: 0a237a1 6079f57
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Oct 19 17:49:26 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit 0a237a1ce10ed327fdda7ffc5852b7e784e000be
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Oct 19 17:49:18 2016 -0500
+
+    Fix the active nav button, Closes #27
+
+commit 6079f5710180d0b25f517ba7b6d5484e3afb556f
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Wed Oct 19 17:47:04 2016 -0500
+
+    about page updates
+
+    splash page updates and some index updates
+
+commit f8e14ce96d89788e28e45b90d58bcdc1c90ff6b6
+Merge: ed7fdde 8ea2550
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Oct 19 17:20:35 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/Startup-Fairy into dev
+
+commit ed7fdded2d4af54cc2f3fdebdaf34453b0dab9e7
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Oct 19 17:20:30 2016 -0500
+
+    Create dummy/placeholder pages + template
+
+commit 8ea2550b81fe233d6712cdf19d15b11be02ea278
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Wed Oct 19 16:52:58 2016 -0500
+
+    little stuff
+
+commit 77eecac99cb9d4c7e7f362d9a91a14fbde8dd6fe
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Wed Oct 19 16:14:26 2016 -0500
+
+    added bios and photos
+
+    to about page
+
+commit 6afb37df8f41c94cdecbe45e27d9f0d59dc967c0
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Wed Oct 19 15:58:22 2016 -0500
+
+    about page updates
+
+    updated about page with skeleton for sections, and some dummy text.
+    added images. still need to add detailed descriptions for each section
+    and make it nice looking.
+
+commit 083a99b034a69b5b7f43effdb7e37c2a087a320f
+Merge: c467b0f ff51829
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Oct 19 15:16:44 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/TBD into dev
+
+commit c467b0f15ace8e61dfd3e69a97b1649d551148bf
+Merge: 7f5f62d dbaa34a
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Oct 19 15:16:12 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/TBD into dev
+
+commit ff518294c55c90ba183a22c20a9229a60478e883
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Wed Oct 19 15:15:06 2016 -0500
+
+    Fix links in README
+
+commit 7f5f62da3044f2f459e2d944d2d9e02e14f6999d
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Oct 19 15:14:17 2016 -0500
+
+    Dummy table skeleton
+
+commit 2331c836bfe2fddb329802e2a589c15b72ce3e64
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Oct 19 15:14:06 2016 -0500
+
+    Trim bower and npm dependencies
+
+commit dbaa34a4ce0f8bdcc9479dc2d9f568de9b9db990
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Wed Oct 19 15:08:25 2016 -0500
+
+    Add .idea to .gitignore
+
+commit 1da536555c0db622a88b00f10f6eb442967b6285
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Oct 19 15:02:51 2016 -0500
+
+    Fix hamburger button issues, Closes #25
+
+commit 4ac9817d468bfe65c13d8ab43b1aabeb12497493
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Wed Oct 19 14:57:05 2016 -0500
+
+    typekit stuff
+
+commit 29eab4ced46d38fa6b057ff496db6af58ffe6f4e
+Author: marktheperson <bizarremarktriangle@rocketmail.com>
+Date:   Wed Oct 19 14:41:18 2016 -0500
+
+    added to gitignore
+
+    thumbnail thing for mac
+
+commit 28f22c15bf9f87f71ddabebccddbbeadfc7ee3d4
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Oct 19 13:56:57 2016 -0500
+
+    Temporary splash page stand in
+
+commit d907ba1f0487ecb67378452d8a6a65d28c9ba43b
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Wed Oct 19 13:56:41 2016 -0500
+
+    Add bower and npm for front end dependencies
+
+commit 5026060d3b15883d6340a95454b4c19918b50bb0
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Tue Oct 18 20:46:43 2016 -0500
+
+    Add table.html to base
+
+commit 71a1583676b50bd03721bfa12936c668aeedbd1c
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Tue Oct 18 15:14:25 2016 -0500
+
+    Clean up template
+
+commit 23298f2fcb95c3a34ee0f64ff701a0497e5b6e25
+Author: Eugene Ng <eugenen@cs.utexas.edu>
+Date:   Mon Oct 17 19:49:22 2016 -0500
+
+    wrote a basic skeleton for unit tests based on unit testing from prev projs
+
+commit 06d18789aa933f7754d4e67cbe8d52e83a87e1d3
+Merge: 60c9624 2775498
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Mon Oct 17 18:42:16 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/TBD into dev
+
+commit 60c9624430a939585d666eb37b18477d358e2cdc
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Mon Oct 17 18:21:11 2016 -0500
+
+    Create base pages to display on app
+
+commit 277549885b698419e367cf3035b60f8e67136d05
+Author: cameronreynoldson <cameronreynoldson@utexas.edu>
+Date:   Mon Oct 17 23:16:46 2016 +0000
+
+    changed host port so that site is visible externally
+
+commit 90f98f237ef8a7e9597d4093089ed44edd304672
+Author: Svyatoslav Ilinskiy <ilinskiy.sv@gmail.com>
+Date:   Mon Oct 17 17:52:00 2016 -0500
+
+    Fix typo in readme
+
+commit c4f10857601862899a82d97a6cfe14e57af0368e
+Author: Addy Kim <addykim@users.noreply.github.com>
+Date:   Mon Oct 17 17:19:05 2016 -0500
+
+    Transferring API Description file from Apiary.io
+
+commit 9f40f0103eff1976aac37a62f490df22d73b0936
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Mon Oct 17 17:09:32 2016 -0500
+
+    Disable email notifications from travis
+
+commit 51f609c8e11c18d3163b83132c8557e1ca8fb7ed
+Merge: 24bdedb 3df83a1
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Mon Oct 17 13:02:46 2016 -0500
+
+    Merge branch 'dev' of github.com:cs373gc-fall-2016/TBD into dev
+
+commit 24bdedbd09aa2ce7ee87ede58861ff3c067bc6f0
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Mon Oct 17 13:02:13 2016 -0500
+
+    Remove *.pyc, add to gitignore
+
+commit 3df83a142142c3c0386091f3dbfaf73c05e3d46e
+Author: Addy Kim <addykim@users.noreply.github.com>
+Date:   Mon Oct 17 12:54:05 2016 -0500
+
+    Add link to Travis build
+
+commit 24b6b900b4159d8c014ae590aac6038febc6d56b
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Mon Oct 17 12:40:50 2016 -0500
+
+    Upload skeleton of what needs to be turned in
+
+commit 627032643672d690738a88f31624b5b8575a4abb
+Author: Addy Kim <soyaddyk@gmail.com>
+Date:   Mon Oct 17 12:40:40 2016 -0500
+
+    Add setup information
+
+commit c702424bd85d5469adf358664b3f2ac95f580a7b
+Author: Addy Kim <addykim@users.noreply.github.com>
+Date:   Mon Oct 17 10:41:46 2016 -0500
+
+    Initial commit
