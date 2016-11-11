@@ -209,3 +209,16 @@ class City(db.Model):
         dict_rep['financial_orgs'] = self.financial_orgs
         dict_rep['people'] = self.people
         return dict_rep
+
+class Index(db.Model):
+    '''
+        The Index model represents the mapping
+        from token to list of model IDs for search functionality.
+    '''
+    __tablename__ = "index"
+    token = db.Column(db.String, primary_key=True)
+    model_ids = db.Column(db.String)
+
+    def __init__(self, token, model_ids):
+        self.token = token
+        self.model_ids = model_ids
