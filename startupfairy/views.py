@@ -10,6 +10,7 @@ from flask import render_template, abort, request
 from flask_sqlalchemy import SQLAlchemy
 from models import *
 
+
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@postgres/startupfairydb5"
 
@@ -30,7 +31,6 @@ def index():
     """
     Serve the home/index page
     """
-    print ("INDEX")
     return render_template('index.html')
 
 @app.route('/favicon.ico')

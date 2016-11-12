@@ -1,6 +1,6 @@
 postgres:
   container_name: postgres
-  image: addykim/postgres:json
+  image: postgres
   environment:
     - POSTGRES_DB=startupfairydb5
     - POSTGRES_USER=sweteam
