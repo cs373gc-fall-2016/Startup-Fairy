@@ -2,13 +2,7 @@
 Implementation of models of startups and their attributes
 """
 
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-# from run import app
-
-# initialize database object
-db = SQLAlchemy()
-
+from views import db
 
 class Company(db.Model):
     """

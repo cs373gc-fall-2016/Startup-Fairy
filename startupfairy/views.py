@@ -5,34 +5,40 @@ import json
 import subprocess
 # import requests
 from os import listdir
-from flask import render_template, Blueprint, abort, request
+from flask import Blueprint, Flask
+from flask import render_template, abort, request
+from flask_sqlalchemy import SQLAlchemy
 from models import *
 
-public_views = Blueprint('public_views', __name__)
+app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@postgres/startupfairydb5"
+
+db = SQLAlchemy(app)
+db.init_app(app)
+
 
 ALT_NAMES = {
     'financialorgs': 'Financial Organizations',
     'companies': 'Companies',
     'cities': 'Cities',
     'people': 'People'
-
 }
 
-
-@public_views.route('/')
-@public_views.route('/index')
+@app.route('/')
+@app.route('/index')
 def index():
     """
     Serve the home/index page
     """
+    print ("INDEX")
     return render_template('index.html')
 
-@public_views.route('/favicon.ico')
+@app.route('/favicon.ico')
 def favicon():
     return "LOl"
 
 
-@public_views.route('/about')
+@app.route('/about')
 def about():
     """
     Serve the about page
@@ -40,7 +46,7 @@ def about():
     return render_template('about.html', alt_title='About')
 
 
-@public_views.route('/category/<app_category>', methods=['GET'])
+@app.route('/category/<app_category>', methods=['GET'])
 def category(app_category):
     """Render table template"""
     if app_category == 'people':
@@ -59,7 +65,7 @@ def category(app_category):
                            title=app_category, data=data)
 
 
-@public_views.route('/category/<app_category>/<entity>', methods=['GET'])
+@app.route('/category/<app_category>/<entity>', methods=['GET'])
 def details(app_category, entity):
     """
     Serve the an entity's page
@@ -79,7 +85,7 @@ def details(app_category, entity):
     return render_template('details.html', data=json.loads(data), category=app_category)
 
 
-@public_views.route('/api/people', methods=['GET'])
+@app.route('/api/people', methods=['GET'])
 def api_people(entity=None):
     try:
         person_id = request.args.get('id')
@@ -99,7 +105,7 @@ def api_people(entity=None):
         abort(404)
 
 
-@public_views.route('/api/companies', methods=['GET'])
+@app.route('/api/companies', methods=['GET'])
 def api_companies(entity=None):
     try:
         company_id = request.args.get('id')
@@ -118,7 +124,7 @@ def api_companies(entity=None):
         abort(404)
 
 
-@public_views.route('/api/financialorgs', methods=['GET'])
+@app.route('/api/financialorgs', methods=['GET'])
 def api_financialorgs(entity=None):
     try:
         finorg_id = request.args.get('id')
@@ -138,7 +144,7 @@ def api_financialorgs(entity=None):
         abort(404)
 
 
-@public_views.route('/api/cities', methods=['GET'])
+@app.route('/api/cities', methods=['GET'])
 def api_cities(entity=None):
     try:
         city_id = request.args.get('id')
@@ -155,7 +161,10 @@ def api_cities(entity=None):
         print("Get cities failed")
         abort(404)
 
-@public_views.route('/run_tests')
+@app.route('/run_tests')
 def run_tests():
     output = subprocess.getoutput("python startupfairy/tests_about.py")
     return json.dumps({'test_results': str(output)})
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=80)
