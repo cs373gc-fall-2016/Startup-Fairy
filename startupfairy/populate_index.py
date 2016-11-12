@@ -99,31 +99,44 @@ def main():
     finorgs = parse_finorgs()
     # inverted index
     # map <search token (word), list<model IDS>
-    index = defaultdict(set)
+    id_set = defaultdict(set)
+    index = defaultdict(list)
     for person in people:
         person_dict = person.dictionary()
+        person_id = person_dict["person_id"]
         for key, value in person_dict.items():
             if value is not None:
                 for word in value:
-                    index[word].add(person_dict["person_id"])
+                    if person_id not in id_set[word]:
+                        id_set[word].add(person_id)
+                        index[word].append({"model": "person", "id": person_id})
     for company in companies:
         company_dict = company.dictionary()
+        company_id = company_dict["company_id"]
         for key, value in company_dict.items():
             if value is not None:
                 for word in value:
-                    index[word].add(company_dict["company_id"])
+                    if company_id not in id_set[word]:
+                        id_set[word].add(company_id)
+                        index[word].append({"model": "company", "id": company_id})
     for city in cities:
         city_dict = city.dictionary()
+        city_id = city_dict["city_id"]
         for key, value in city_dict.items():
             if value is not None:
                 for word in value:
-                    index[word].add(city_dict["city_id"])
+                    if city_id not in id_set[word]:
+                        id_set[word].add(city_id)
+                        index[word].append({"model": "city", "id": city_id})
     for finorg in finorgs:
         finorg_dict = finorg.dictionary()
+        finorg_id = finorg_dict["financial_org_id"]
         for key, value in finorg_dict.items():
             if value is not None:
                 for word in value:
-                    index[word].add(finorg_dict["financial_org_id"])
+                    if finorg_id not in id_set[word]:
+                        id_set[word].add(finorg_id)
+                        index[word].append({"model": "financial_org", "id": finorg_id})
     for token, ids in index.items():
         new_index = models.Index(token, json.dumps(list(ids)))
         #db.session.add(new_index)
