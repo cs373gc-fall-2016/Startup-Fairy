@@ -146,9 +146,9 @@ def main():
                         id_set[word].add(finorg_id)
                         index[word].append({"model": "financial_org", "id": finorg_id})
     for token, ids in index.items():
-        #new_index = models.Index(token, json.dumps(list(ids)))
-        #db.session.add(new_index)
-        print(str(token))
-    #db.session.commit()
+        new_index = models.Index(token, json.dumps(list(ids)))
+        db.session.add(new_index)
+        #print(str(token))
+    db.session.commit()
 if __name__ == '__main__':
     main()
