@@ -111,7 +111,7 @@ def main():
         for key, value in person_dict.items():
             if value is not None:
                 parsed_value = remove_punctuation(value)
-                for word in parsed_value:
+                for word in parsed_value.split():
                     if person_id not in id_set[word]:
                         id_set[word].add(person_id)
                         index[word].append({"model": "person", "id": person_id})
@@ -121,7 +121,7 @@ def main():
         for key, value in company_dict.items():
             if value is not None:
                 parsed_value = remove_punctuation(value)
-                for word in parsed_value:
+                for word in parsed_value.split():
                     if company_id not in id_set[word]:
                         id_set[word].add(company_id)
                         index[word].append({"model": "company", "id": company_id})
@@ -131,7 +131,7 @@ def main():
         for key, value in city_dict.items():
             if value is not None:
                 parsed_value = remove_punctuation(value)
-                for word in parsed_value:
+                for word in parsed_value.split():
                     if city_id not in id_set[word]:
                         id_set[word].add(city_id)
                         index[word].append({"model": "city", "id": city_id})
@@ -141,14 +141,14 @@ def main():
         for key, value in finorg_dict.items():
             if value is not None:
                 parsed_value = remove_punctuation(value)
-                for word in parsed_value:
+                for word in parsed_value.split():
                     if finorg_id not in id_set[word]:
                         id_set[word].add(finorg_id)
                         index[word].append({"model": "financial_org", "id": finorg_id})
     for token, ids in index.items():
-        new_index = models.Index(token, json.dumps(list(ids)))
+        #new_index = models.Index(token, json.dumps(list(ids)))
         #db.session.add(new_index)
-        print(str(token)+" "+str(json.dumps(list(ids))))
+        print(str(token))
     #db.session.commit()
 if __name__ == '__main__':
     main()
