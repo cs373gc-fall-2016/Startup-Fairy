@@ -4,7 +4,7 @@ import models
 from models import db
 import json
 from collections import defaultdict
-
+import string
 # engine = create_engine('postgresql://localhost/startup_fairy')
 
 # NOTE: startup_fairy is a database created on my local computer
@@ -92,6 +92,10 @@ def parse_cities():
         cities_list += [city]
     return cities_list
 
+def remove_punctuation(value):
+    translator = str.maketrans({key: None for key in string.punctuation})
+    return value.translate(translator)
+
 def main():
     people = parse_people()
     companies = parse_companies()
@@ -106,7 +110,8 @@ def main():
         person_id = person_dict["person_id"]
         for key, value in person_dict.items():
             if value is not None:
-                for word in value:
+                parsed_value = remove_punctuation(value)
+                for word in parsed_value:
                     if person_id not in id_set[word]:
                         id_set[word].add(person_id)
                         index[word].append({"model": "person", "id": person_id})
@@ -115,7 +120,8 @@ def main():
         company_id = company_dict["company_id"]
         for key, value in company_dict.items():
             if value is not None:
-                for word in value:
+                parsed_value = remove_punctuation(value)
+                for word in parsed_value:
                     if company_id not in id_set[word]:
                         id_set[word].add(company_id)
                         index[word].append({"model": "company", "id": company_id})
@@ -124,7 +130,8 @@ def main():
         city_id = city_dict["city_id"]
         for key, value in city_dict.items():
             if value is not None:
-                for word in value:
+                parsed_value = remove_punctuation(value)
+                for word in parsed_value:
                     if city_id not in id_set[word]:
                         id_set[word].add(city_id)
                         index[word].append({"model": "city", "id": city_id})
@@ -133,7 +140,8 @@ def main():
         finorg_id = finorg_dict["financial_org_id"]
         for key, value in finorg_dict.items():
             if value is not None:
-                for word in value:
+                parsed_value = remove_punctuation(value)
+                for word in parsed_value:
                     if finorg_id not in id_set[word]:
                         id_set[word].add(finorg_id)
                         index[word].append({"model": "financial_org", "id": finorg_id})
