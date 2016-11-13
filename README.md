@@ -12,7 +12,7 @@ You'll need
 1. Run `docker-compose up -d`. 
 2. Do `docker-compose ps` to see all your availble containers and the status of them.
 3. Once `startupfairy` the app is up and running, run `docker exec -it startupfairy bash`. You'll be inside the `startupfairy` container.
-4. Run `bower install --allow-root`
+4. Run `bower install --allow-root` - installs your CSS. 
 5. `cd startupfairy`
 6. `python create_db.py`
 7. `python populate_database.py`
