@@ -2,15 +2,19 @@ postgres:
   container_name: postgres
   image: postgres
   environment:
-    - POSTGRES_PASSWORD="${POSTGRES_PASSWORD}"
+    - POSTGRES_DB=startupfairydb5
+    - POSTGRES_USER=sweteam
+    - POSTGRES_PASSWORD=sweteamajmal
 
 startupfairy:
   container_name: startupfairy
   image: addykim/startupfairy
-  command: python3 /home/startupfairy/run.py
+  command: python3 /home/startupfairy/views.py
   volumes: 
     - .:/home
   links:
     - postgres
   ports:
     - 80:80
+  environment:
+    - SQLALCHEMY_TRACK_MODIFICATIONS=True

@@ -13,10 +13,15 @@ You'll need
 2. Do `docker-compose ps` to see all your availble containers and the status of them.
 3. Once `startupfairy` the app is up and running, run `docker exec -it startupfairy bash`. You'll be inside the `startupfairy` container.
 4. Run `bower install --allow-root`
+5. `cd startupfairy`
+6. `python create_db.py`
+7. `python populate_database.py`
 
 You will only need to do steps 3 & 4 if you are creating the containers for the first time or if you're missing the `app/static/bower_components` directory.
 
-If you need to set up a password for postgres, make sure you `export POSTGRES_PASSWORD=<your password>`.
+Steps 5&6 must be done each time you recreate the containers.
+
+The database was intended to contain all the values already, but for some reason the values are not held despite commiting any changes made to the database. For now this is the necessary workaround in order to get the database working locally.
 
 ### Development
 You'll see the app at `localhost`. There is parity between the content on your local machine and the content inside the docker container.
