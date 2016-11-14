@@ -39,45 +39,68 @@
       var EntityLink = React.createClass({
         render: function(){
           var name = this.props.data;
-          if (name !== undefined && name != null) {
-            var url = this.props.metadata.customHeaderComponentProps.link + name;
-            return <a href={url}>{this.props.data}</a>
-          } else {
-            return <p>No {this.props.metadata.customHeaderComponentProps.category} listed</p>
+          console.log('name: ' + name);
+          var rowObject = this.props.rowData;
+          var url = this.props.metadata.customHeaderComponentProps.link;
+          if (rowObject.person_id) {
+            url = url + rowObject.person_id;
+            console.log("person id exists: " + rowObject.person_id);
           }
+          // console.log("company id exists");
+          // console.log("city id exists");
+          // console.log("finorg id exists");
+          // url ="speakers/" + this.props.rowData.state + "/" + this.props.data;
+          // return <a href={url}>{this.props.data}</a>
+          console.log(url);
+          return <a href={url}>{name}</a>
         }
+        // render: function(){
+        //   var name = this.props.data;
+        //   console.log(this.props);
+        //   if (name !== undefined && name != null) {
+        //     var url = this.props.metadata.customHeaderComponentProps.link + name;
+        //   } else {
+        //     return <p>No {this.props.metadata.customHeaderComponentProps.category} listed</p>
+        //   }
+        // }
       });
 
       var SmallList = React.createClass({
         render: function() {
           var data = JSON.parse(this.props.data);
-          var category = this.props.metadata.customHeaderComponentProps.category;
+          var customHeaderProps = this.props.metadata.customHeaderComponentProps;
+          if (customHeaderProps != undefined) {
+            var category = customHeaderProps.category;
+          }
           if (data.length <= 0) {
             return <p>No {category}</p>
           }
           var entityArray = [];
           var max = data.length > 3 ? 3 : data.length;
           var listItems = [];
-          if (data[0] instanceof Array) {
+          if (data[0] instanceof Array && category != undefined) {
             var listItems = [];
-            var base_url = "http://startupfairy.com/category/" + category + "/";
-            for (var i = 0; i < data.length; i++) {
+            // TODO change back to startupfairy.com when in prod
+            if (category == 'financial organizations') {
+              category = 'financialorgs';
+            }
+            var base_url = "http://localhost/category/" + category + "/";
+            for (var i = 0; i < max; i++) {
               var url = base_url + data[i][1];
-              if (data[i][0]!== undefined && data[i][0] !== null) {
+              if (data[i][0]!= undefined && data[i][0] != null) {
                 listItems.push(<li><a href={url}>{data[i][0]}</a></li>);
               }
             }
-            listItems.splice(max);
           } else {
-            entityArray = data.splice(max);
-            var listItems = entityArray.map((number) =>
-              <li>{number}</li>
-            );
+            for (var i = 0; i < max; i++) {
+              if (data[i] != undefined && data[i] != null) {
+                listItems.push(<li>{data[i]}</li>);
+              }
+            }
           }
           return <ul className="no-indent">{listItems}</ul>
         }
       });
-
       switch(category) {
           case 'people':
             columns = ["name", "city", "companies", "role", "twitter"];
@@ -96,12 +119,12 @@
               "customComponent": EntityLink,
               "customHeaderComponentProps": { link: 'cities/', category: 'city' }
             }, {
-              "columnName": "companies",
-              "order": 4,
-              "locked": false,
-              "customComponent": SmallList,
-              "displayName": "Companies"
-            }, {
+            //   "columnName": "companies",
+            //   "order": 4,
+            //   "locked": false,
+            //   "customComponent": SmallList,
+            //   "displayName": "Companies"
+            // }, {
               "columnName": "role",
               "order": 4,
               "locked": false,
@@ -149,6 +172,7 @@
             }, {
               "columnName": "website",
               "order": 1,
+              "cssClassName": "griddle-overflow",
               "displayName": "Website",
               "customComponent": WebsiteLink
             }, {
@@ -175,6 +199,7 @@
             }, {
               "columnName": "website",
               "displayName": "Website",
+              "cssClassName": "griddle-overflow",
               "customComponent": WebsiteLink
             }, {
               "columnName": "twitter",
@@ -229,7 +254,7 @@
             // if we hit this case, we need to create a new list
             columns = undefined;
       }
-
+      console.log(data);
       ReactDOM.render(
         <Griddle results={data} showSettings={false} columns={columns} columnMetadata={columnMetadata}/>,
         document.getElementById('table-content')
