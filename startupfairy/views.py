@@ -41,8 +41,9 @@ def format_query(query_string):
         parse the tokens easily. Here we replace the "+"
         characters with spaces, and remove all punctuation.
     '''
-    query_string.replace("+"," ")
+    query_string = query_string.replace("+"," ")
     translator = str.maketrans({key: None for key in string.punctuation})
+    print(query_string)
     return query_string.translate(translator)
 
 @app.route('/search/<query_string>')
@@ -58,8 +59,9 @@ def search(query_string):
     # <"type": "<model type>"
     # <"words">: "<words from our query that appear in this model>"
     for word in query_words:
+        print(word)
         word_index = db.session.query(Index).filter_by(token = word).one()
-        models = json.loads(word_index.model_ids)
+        models = json.loads(word_index.models)
         if models is not None:
             for model in models:
                 model_type = model["model"]

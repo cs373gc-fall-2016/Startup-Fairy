@@ -212,8 +212,8 @@ class Index(db.Model):
     '''
     __tablename__ = "index"
     token = db.Column(db.String, primary_key=True)
-    model_ids = db.Column(db.String)
+    models = db.Column(db.String)
 
-    def __init__(self, token, model_ids):
+    def __init__(self, token, models):
         self.token = token
-        self.model_ids = model_ids
+        self.models = models
