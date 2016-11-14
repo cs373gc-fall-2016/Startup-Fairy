@@ -79,8 +79,8 @@ def details(app_category, entity):
     elif app_category == 'financialorgs':
         data = api_financialorgs(entity)
     else:
-        print("Category does not exist")
-        # data = []
+        print("Entity %s does not exist", (entity, ))
+        data = ''
     print (data)
     return render_template('details.html', data=json.loads(data), category=app_category)
 
