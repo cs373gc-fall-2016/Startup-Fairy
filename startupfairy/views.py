@@ -44,7 +44,7 @@ def format_query(query_string):
         characters with spaces, and remove all punctuation.
     '''
     query_string.replace("+"," ")
-    translator = str.maketrans(key: None for key in string.punctuation)
+    translator = str.maketrans({key: None for key in string.punctuation})
     return query_string.translate(translator)
 
 @app.route('/search/<query_string>'):
