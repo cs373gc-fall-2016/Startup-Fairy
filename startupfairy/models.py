@@ -1,8 +1,9 @@
 """
 Implementation of models of startups and their attributes
 """
-
-from views import db
+#from views import db
+from flask_sqlalchemy import SQLAlchemy
+db = SQLAlchemy()
 
 class Company(db.Model):
     """

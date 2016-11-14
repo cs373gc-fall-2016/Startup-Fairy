@@ -14,9 +14,7 @@ import string
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@localhost/startupfairydb5"
-
-db = SQLAlchemy(app)
-
+db.init_app(app)
 
 ALT_NAMES = {
     'financialorgs': 'Financial Organizations',
