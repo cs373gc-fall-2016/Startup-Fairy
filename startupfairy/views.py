@@ -9,14 +9,12 @@ from flask import Blueprint, Flask
 from flask import render_template, abort, request
 from flask_sqlalchemy import SQLAlchemy
 from models import *
-
+from collections import defaultdict
+import string
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@postgres/startupfairydb5"
-
-db = SQLAlchemy(app)
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@localhost/startupfairydb5"
 db.init_app(app)
-
 
 ALT_NAMES = {
     'financialorgs': 'Financial Organizations',
@@ -37,6 +35,48 @@ def index():
 def favicon():
     return "LOl"
 
+def format_query(query_string):
+    '''
+        Format the query string for search so that we can
+        parse the tokens easily. Here we replace the "+"
+        characters with spaces, and remove all punctuation.
+    '''
+    query_string = query_string.replace("+"," ")
+    translator = str.maketrans({key: None for key in string.punctuation})
+    print(query_string)
+    return query_string.translate(translator)
+
+@app.route('/search/<query_string>')
+def search(query_string):
+    query_string = format_query(query_string)
+    query_words = set(query_string.split())
+    # For the "and" results.
+    and_model_to_words = defaultdict(lambda: defaultdict(set))
+    # For the "or" results.
+    or_model_to_words = defaultdict(lambda: defaultdict(set))
+    # Map of the following form:
+    # <model id, dictionary> where the dictionary is of the form:
+    # <"type": "<model type>"
+    # <"words">: "<words from our query that appear in this model>"
+    for word in query_words:
+        print(word)
+        word_index = db.session.query(Index).filter_by(token = word).one()
+        models = json.loads(word_index.models)
+        if models is not None:
+            for model in models:
+                model_type = model["model"]
+                model_id = model["id"]
+                or_model_to_words[model_id]["type"] = model_type
+                or_model_to_words[model_id]["words"].add(word_index.token)
+    for key, value in or_model_to_words.items():
+        # If this result contains ALL of the words in our search, add
+        # it to the AND results.
+        if query_words.issubset(value["words"]):
+            and_model_to_words[key] = value
+            # Cast words to list so that we can serialize with JSON.
+            and_model_to_words[key]["words"] = list(and_model_to_words[key]["words"])
+        value["words"] = list(value["words"])
+    return json.dumps([and_model_to_words, or_model_to_words])
 
 @app.route('/about')
 def about():
@@ -48,6 +88,7 @@ def about():
 
 @app.route('/category/<app_category>', methods=['GET'])
 def category(app_category):
+    print(app_category)
     """Render table template"""
     if app_category == 'people':
         data = api_people()
