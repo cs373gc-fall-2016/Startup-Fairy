@@ -47,7 +47,7 @@ def format_query(query_string):
     translator = str.maketrans({key: None for key in string.punctuation})
     return query_string.translate(translator)
 
-@app.route('/search/<query_string>'):
+@app.route('/search/<query_string>')
 def search(query_string):
     query_string = format_query(query_string)
     query_words = set(query_string.split())
