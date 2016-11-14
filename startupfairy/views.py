@@ -12,10 +12,9 @@ from models import *
 
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@postgres/startupfairydb5"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@localhost/startupfairydb5"
 
 db = SQLAlchemy(app)
-db.init_app(app)
 
 
 ALT_NAMES = {
@@ -48,6 +47,7 @@ def about():
 
 @app.route('/category/<app_category>', methods=['GET'])
 def category(app_category):
+    print(app_category)
     """Render table template"""
     if app_category == 'people':
         data = api_people()
