@@ -21,7 +21,7 @@ import flask
 from views import app, index, about
 
 # initialize database object
-db = SQLAlchemy()
+#db = SQLAlchemy()
 
 
 # -----------
@@ -37,7 +37,9 @@ class TestCompany(TestCase):
     # Setup and Teardown
     # ------------------
 
-    # def setUp(self):
+    def setUp(self):
+        with app.test_request_context():
+            db.create_all()
 
     # def tearDown(self):
 
@@ -395,7 +397,8 @@ class TestFinancialOrg(TestCase):
 
         dict_rep = example2.dictionary()
 
-        self.assertEqual(dict_rep['companies'], "Space Exploration Technologies")
+        self.assertEqual(dict_rep['companies'],
+                         "Space Exploration Technologies")
         self.assertEqual(dict_rep['twitter'], "foundersfund")
         self.assertEqual(dict_rep['website'], "http://www.foundersfund.com")
         self.assertEqual(dict_rep['logo_url'], "logo_url")
@@ -469,7 +472,8 @@ class TestPerson(TestCase):
         self.assertIsInstance(person1, Person)
         self.assertEqual(person1.person_id, "p:2")
         self.assertEqual(person1.name, "Ben Elowitz")
-        self.assertEqual(person1.summary, "Ben Elowitz is co-founder and CEO of Wetpaint.")
+        self.assertEqual(
+            person1.summary, "Ben Elowitz is co-founder and CEO of Wetpaint.")
         self.assertEqual(person1.city, "null")
         self.assertEqual(person1.companies, "Wetpaint")
         self.assertEqual(person1.role, "CEO")
