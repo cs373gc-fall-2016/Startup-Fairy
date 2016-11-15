@@ -86,9 +86,9 @@ def about():
     return render_template('about.html', alt_title='About')
 
 
-@app.route('/category/<app_category>', methods=['GET'])
+@app.route('/category/<app_category>')
 def category(app_category):
-    print(app_category)
+    print("Attempting to get category %s" % app_category)
     """Render table template"""
     if app_category == 'people':
         data = api_people()
@@ -101,12 +101,14 @@ def category(app_category):
     else:
         print("Category does not exist")
         data = []
-    return render_template('category.html',
-                           alt_title=ALT_NAMES.get(app_category, None),
-                           title=app_category, data=data)
+    print ("Rendering template")
+    return render_template('index.html')
+    # return render_template('category.html',
+    #                        alt_title=ALT_NAMES.get(app_category, None),
+    #                        title=app_category, data=data)
 
 
-@app.route('/category/<app_category>/<entity>', methods=['GET'])
+@app.route('/category/<app_category>/<entity>')
 def details(app_category, entity):
     """
     Serve the an entity's page
@@ -125,6 +127,9 @@ def details(app_category, entity):
     print(data)
     return render_template('details.html', data=json.loads(data), category=app_category)
 
+@app.route('/education')
+def education():
+    return render_template('team_five.html')
 
 @app.route('/api/people', methods=['GET'])
 def api_people(entity=None):
