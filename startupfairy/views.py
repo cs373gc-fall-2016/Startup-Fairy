@@ -13,7 +13,7 @@ from collections import defaultdict
 import string
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@localhost/startupfairydb5"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@postgres/startupfairydb5"
 db.init_app(app)
 
 ALT_NAMES = {
