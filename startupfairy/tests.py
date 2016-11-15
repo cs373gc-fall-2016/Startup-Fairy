@@ -30,6 +30,10 @@ from views import *
 # -----------
 
 class TestCompany(TestCase):
+    """
+    Tests for the methods of the Company model
+    """
+
     # ------------------
     # Setup and Teardown
     # ------------------
@@ -195,6 +199,10 @@ class TestCompany(TestCase):
 # ----------------
 
 class TestFinancialOrg(TestCase):
+    """
+    Tests for the methods of the Financial Organization model
+    """
+    
     # ------------------
     # Setup and Teardown
     # ------------------
@@ -357,6 +365,10 @@ class TestFinancialOrg(TestCase):
 
 
 class TestPerson(TestCase):
+    """
+    Tests for the methods of the Person model
+    """
+    
     # ------------------
     # Setup and Teardown
     # ------------------
@@ -424,16 +436,25 @@ class TestPerson(TestCase):
             person1.logo_url, "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0001/8470/18470v3-max-250x250.jpg")
 
     def test_person_repr_1(self):
+        """
+        Test the representation of an instance of a Person
+        """
         person1 = Person("id1", "name1", "summary1", "city1",
                          "companies1", "role1", "twitter1", "logo_url1")
         self.assertEqual(person1.__repr__(), "<Person 'name1'>")
 
     def test_person_repr_2(self):
+        """
+        Test the representation of an instance of a Person
+        """
         person2 = Person("id2", "name1", "summary2", "city1",
                          "companies2", "role1", "twitter2", "logo_url1")
         self.assertEqual(person2.__repr__(), "<Person 'name1'>")
 
     def test_person_repr_3(self):
+        """
+        Test the representation of an instance of a Person
+        """
         person1 = Person("p:2", "Ben Elowitz", "Ben Elowitz is co-founder and CEO of Wetpaint.",
                          "null", "Wetpaint", "CEO", "elowitz", "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0001/8470/18470v3-max-250x250.jpg")
         self.assertEqual(person1.__repr__(), "<Person 'Ben Elowitz'>")
@@ -488,6 +509,10 @@ class TestPerson(TestCase):
 # --------
 
 class TestCity(TestCase):
+    """
+    Tests for the methods of the City model
+    """
+    
     # ------------------
     # Setup and Teardown
     # ------------------
@@ -550,16 +575,25 @@ class TestCity(TestCase):
         self.assertEqual(city1.people, "Mathias Klein")
 
     def test_city_repr_1(self):
+        """
+        Test the representation of an instance of a City
+        """
         city1 = City("id1", "name1", "state1", "region1",
                      "companies1", "finorgs1", "people1")
         self.assertEqual(city1.__repr__(), "<City 'name1'>")
 
     def test_city_repr_2(self):
+        """
+        Test the representation of an instance of a City
+        """
         city2 = City("id2", "name1", "state2", "region1",
                      "companies2", "finorgs1", "people2")
         self.assertEqual(city2.__repr__(), "<City 'name1'>")
 
     def test_city_repr_3(self):
+        """
+        Test the representation of an instance of a City
+        """
         city1 = City("1", "Seattle", "WA", "Seattle", "Wetpaint",
                      "Vulcan Capital", "Mathias Klein")
         self.assertEqual(city1.__repr__(), "<City 'Seattle'>")
@@ -613,6 +647,10 @@ class TestCity(TestCase):
 
 
 class TestAbout(TestCase):
+    """
+    Tests for the About page
+    """
+    
     # ------------------
     # Setup and Teardown
     # ------------------
@@ -626,8 +664,9 @@ class TestAbout(TestCase):
                                body="Find the best daily deals")
 
     def tearDown(self):
-        # disable afterwards, so that you will have no problems in code that
-        # uses that socket module
+        """
+        Disable afterwards, so that you will have no problems in code that uses that socket module
+        """
         httpretty.disable()
         httpretty.reset()
 

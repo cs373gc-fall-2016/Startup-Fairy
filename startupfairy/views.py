@@ -41,7 +41,7 @@ def format_query(query_string):
         parse the tokens easily. Here we replace the "+"
         characters with spaces, and remove all punctuation.
     '''
-    query_string = query_string.replace("+"," ")
+    query_string = query_string.replace("+", " ")
     translator = str.maketrans({key: None for key in string.punctuation})
     print(query_string)
     return query_string.translate(translator)
@@ -60,7 +60,7 @@ def search(query_string):
     # <"words">: "<words from our query that appear in this model>"
     for word in query_words:
         print(word)
-        word_index = db.session.query(Index).filter_by(token = word).one()
+        word_index = db.session.query(Index).filter_by(token=word).one()
         models = json.loads(word_index.models)
         if models is not None:
             for model in models:
@@ -122,7 +122,7 @@ def details(app_category, entity):
     else:
         print("Category does not exist")
         # data = []
-    print (data)
+    print(data)
     return render_template('details.html', data=json.loads(data), category=app_category)
 
 
