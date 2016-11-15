@@ -11,7 +11,6 @@ import unittest
 #from app import app
 from models import Company, FinancialOrg, Person, City, db
 #from populate_db import *
-import run
 
 from flask_sqlalchemy import SQLAlchemy
 
