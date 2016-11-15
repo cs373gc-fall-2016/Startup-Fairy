@@ -92,6 +92,10 @@ ul.no-indent {
   background: #289eff;
 }
 
+.navbar-form .form-group {
+  vertical-align: top;
+}
+
 .item {
   max-width:100%;
   max-height:600px;
@@ -242,4 +246,10 @@ ul.no-indent {
 
 .btn {
   margin-bottom: 20px;
+}
+
+.btn-nav-search {
+    margin-bottom: 0px;
+    border: none;
+    background-color: #e7e7e7;
 }
