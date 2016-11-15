@@ -5,6 +5,7 @@ Implementation of models of startups and their attributes
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
+
 class Company(db.Model):
     """
     Implementation of Company model and its attributes
@@ -24,7 +25,8 @@ class Company(db.Model):
 
     # def __init__(self, name, summary, people, city, financial_orgs, twitter,
     # website, logo_url):
-    def __init__(self, company_id, name, summary, people, city, financial_orgs, twitter, website, logo_url):
+    def __init__(self, company_id, name, summary, people, city, financial_orgs, twitter, website,
+                 logo_url):
         """
         Set column values
         """
@@ -78,7 +80,8 @@ class FinancialOrg(db.Model):
 
     # def __init__(self, name, summary, city, companies, twitter, website,
     # logo_url):
-    def __init__(self, financial_org_id, name, summary, city, companies, twitter, website, logo_url):
+    def __init__(self, financial_org_id, name, summary, city, companies, twitter, website,
+                 logo_url):
         """
         Set column values
         """
@@ -204,6 +207,7 @@ class City(db.Model):
         dict_rep['financial_orgs'] = self.financial_orgs
         dict_rep['people'] = self.people
         return dict_rep
+
 
 class Index(db.Model):
     '''

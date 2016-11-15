@@ -6,9 +6,9 @@ Tests for methods in models.py, views.py and the About page
 # imports
 # -------
 
+import os
 from unittest import main, TestCase
 import unittest
-#from app import app
 from models import Company, FinancialOrg, Person, City, db
 #from populate_db import *
 
@@ -17,12 +17,11 @@ from flask_sqlalchemy import SQLAlchemy
 import httpretty
 import requests
 
-import os
 import flask
-from views import *
+from views import app, index, about
 
 # initialize database object
-# db = SQLAlchemy()
+db = SQLAlchemy()
 
 
 # -----------
@@ -78,12 +77,18 @@ class TestCompany(TestCase):
         """
 
         example2 = Company("id1", "Wetpaint",
-                           "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers.",
-                           "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
+                           ("Wetpaint is a technology platform company that uses its proprietary"
+                            + " state-of-the-art technology and expertise in social media to build"
+                            + " and monetize audiences for digital publishers."), "person1",
+                           "San Francisco", "Youniversity Ventures", "wetpaint",
+                           "http://wetpaint.com", "logo_url")
 
         self.assertEqual(example2.company_id, "id1")
         self.assertEqual(example2.name, "Wetpaint")
-        self.assertEqual(example2.summary, "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers.")
+        self.assertEqual(example2.summary,
+                         ("Wetpaint is a technology platform company that uses its proprietary"
+                          + " state-of-the-art technology and expertise in social media to build"
+                          + " and monetize audiences for digital publishers."))
         self.assertEqual(example2.people, "person1")
         self.assertEqual(example2.city, "San Francisco")
 
@@ -93,8 +98,11 @@ class TestCompany(TestCase):
         """
 
         example2 = Company("id1", "Wetpaint",
-                           "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers.",
-                           "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
+                           ("Wetpaint is a technology platform company that uses its proprietary"
+                            + " state-of-the-art technology and expertise in social media to build"
+                            + " and monetize audiences for digital publishers."), "person1",
+                           "San Francisco", "Youniversity Ventures", "wetpaint",
+                           "http://wetpaint.com", "logo_url")
 
         self.assertEqual(example2.financial_orgs, "Youniversity Ventures")
         self.assertEqual(example2.twitter, "wetpaint")
@@ -117,8 +125,11 @@ class TestCompany(TestCase):
         """
 
         example2 = Company("id1", "Wetpaint",
-                           "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers.",
-                           "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
+                           ("Wetpaint is a technology platform company that uses its proprietary"
+                            + " state-of-the-art technology and expertise in social media to build"
+                            + " and monetize audiences for digital publishers."), "person1",
+                           "San Francisco", "Youniversity Ventures", "wetpaint",
+                           "http://wetpaint.com", "logo_url")
 
         self.assertEqual(example2.__repr__(), "<Company 'Wetpaint'>")
 
@@ -167,14 +178,20 @@ class TestCompany(TestCase):
         """
 
         example2 = Company("id1", "Wetpaint",
-                           "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers.",
-                           "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
+                           ("Wetpaint is a technology platform company that uses its proprietary"
+                            + " state-of-the-art technology and expertise in social media to build"
+                            + " and monetize audiences for digital publishers."), "person1",
+                           "San Francisco", "Youniversity Ventures", "wetpaint",
+                           "http://wetpaint.com", "logo_url")
+
         dict_rep = example2.dictionary()
 
         self.assertEqual(dict_rep['company_id'], "id1")
         self.assertEqual(dict_rep['name'], "Wetpaint")
-        self.assertEqual(dict_rep[
-                         'summary'], "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers.")
+        self.assertEqual(dict_rep['summary'],
+                         ("Wetpaint is a technology platform company that uses its proprietary"
+                          + " state-of-the-art technology and expertise in social media to build"
+                          + " and monetize audiences for digital publishers."))
         self.assertEqual(dict_rep['people'], "person1")
         self.assertEqual(dict_rep['city'], "San Francisco")
 
@@ -184,8 +201,12 @@ class TestCompany(TestCase):
         """
 
         example2 = Company("id1", "Wetpaint",
-                           "Wetpaint is a technology platform company that uses its proprietary state-of-the-art technology and expertise in social media to build and monetize audiences for digital publishers.",
-                           "person1", "San Francisco", "Youniversity Ventures", "wetpaint", "http://wetpaint.com", "logo_url")
+                           ("Wetpaint is a technology platform company that uses its proprietary"
+                            + " state-of-the-art technology and expertise in social media to build"
+                            + " and monetize audiences for digital publishers."), "person1",
+                           "San Francisco", "Youniversity Ventures", "wetpaint",
+                           "http://wetpaint.com", "logo_url")
+
         dict_rep = example2.dictionary()
 
         self.assertEqual(dict_rep['financial_orgs'], "Youniversity Ventures")
@@ -202,7 +223,7 @@ class TestFinancialOrg(TestCase):
     """
     Tests for the methods of the Financial Organization model
     """
-    
+
     # ------------------
     # Setup and Teardown
     # ------------------
@@ -246,13 +267,18 @@ class TestFinancialOrg(TestCase):
         """
 
         example2 = FinancialOrg("id1", "Founders Fund",
-                                "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.",
-                                "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
+                                ("Founders Fund is a San Francisco based venture capital firm which"
+                                 + " invests at every stage in companies with revolutionary"
+                                 + " technologies."),
+                                "San Francisco", "Space Exploration Technologies", "foundersfund",
+                                "http://www.foundersfund.com", "logo_url")
 
         self.assertEqual(example2.financial_org_id, "id1")
         self.assertEqual(example2.name, "Founders Fund")
-        self.assertEqual(
-            example2.summary, "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.")
+        self.assertEqual(example2.summary,
+                         ("Founders Fund is a San Francisco based venture capital firm which"
+                          + " invests at every stage in companies with revolutionary"
+                          + " technologies."))
         self.assertEqual(example2.city, "San Francisco")
 
     def test_financial_org_init_4(self):
@@ -260,8 +286,11 @@ class TestFinancialOrg(TestCase):
         Test construction of a new company instance
         """
         example2 = FinancialOrg("id1", "Founders Fund",
-                                "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.",
-                                "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
+                                ("Founders Fund is a San Francisco based venture capital firm which"
+                                 + " invests at every stage in companies with revolutionary"
+                                 + " technologies."),
+                                "San Francisco", "Space Exploration Technologies", "foundersfund",
+                                "http://www.foundersfund.com", "logo_url")
 
         self.assertEqual(example2.companies, "Space Exploration Technologies")
         self.assertEqual(example2.twitter, "foundersfund")
@@ -284,8 +313,11 @@ class TestFinancialOrg(TestCase):
         """
 
         example2 = FinancialOrg("id1", "Founders Fund",
-                                "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.",
-                                "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
+                                ("Founders Fund is a San Francisco based venture capital firm which"
+                                 + " invests at every stage in companies with revolutionary"
+                                 + " technologies."),
+                                "San Francisco", "Space Exploration Technologies", "foundersfund",
+                                "http://www.foundersfund.com", "logo_url")
 
         self.assertEqual(example2.__repr__(), "<FinancialOrg 'Founders Fund'>")
 
@@ -333,14 +365,20 @@ class TestFinancialOrg(TestCase):
         """
 
         example2 = FinancialOrg("id1", "Founders Fund",
-                                "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.",
-                                "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
+                                ("Founders Fund is a San Francisco based venture capital firm which"
+                                 + " invests at every stage in companies with revolutionary"
+                                 + " technologies."),
+                                "San Francisco", "Space Exploration Technologies", "foundersfund",
+                                "http://www.foundersfund.com", "logo_url")
+
         dict_rep = example2.dictionary()
 
         self.assertEqual(dict_rep['financial_org_id'], "id1")
         self.assertEqual(dict_rep['name'], "Founders Fund")
-        self.assertEqual(dict_rep[
-                         'summary'], "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.")
+        self.assertEqual(dict_rep['summary'],
+                         ("Founders Fund is a San Francisco based venture capital firm which"
+                          + " invests at every stage in companies with revolutionary"
+                          + " technologies."))
         self.assertEqual(dict_rep['city'], "San Francisco")
 
     def test_financial_org_dictionary_4(self):
@@ -349,12 +387,15 @@ class TestFinancialOrg(TestCase):
         """
 
         example2 = FinancialOrg("id1", "Founders Fund",
-                                "Founders Fund is a San Francisco based venture capital firm which invests at every stage in companies with revolutionary technologies.",
-                                "San Francisco", "Space Exploration Technologies", "foundersfund", "http://www.foundersfund.com", "logo_url")
+                                ("Founders Fund is a San Francisco based venture capital firm which"
+                                 + " invests at every stage in companies with revolutionary"
+                                 + " technologies."),
+                                "San Francisco", "Space Exploration Technologies", "foundersfund",
+                                "http://www.foundersfund.com", "logo_url")
+
         dict_rep = example2.dictionary()
 
-        self.assertEqual(dict_rep['companies'],
-                         "Space Exploration Technologies")
+        self.assertEqual(dict_rep['companies'], "Space Exploration Technologies")
         self.assertEqual(dict_rep['twitter'], "foundersfund")
         self.assertEqual(dict_rep['website'], "http://www.foundersfund.com")
         self.assertEqual(dict_rep['logo_url'], "logo_url")
@@ -368,7 +409,7 @@ class TestPerson(TestCase):
     """
     Tests for the methods of the Person model
     """
-    
+
     # ------------------
     # Setup and Teardown
     # ------------------
@@ -421,19 +462,20 @@ class TestPerson(TestCase):
         Test construction of a Person with more realistic information
         """
         person1 = Person("p:2", "Ben Elowitz", "Ben Elowitz is co-founder and CEO of Wetpaint.",
-                         "null", "Wetpaint", "CEO", "elowitz", "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0001/8470/18470v3-max-250x250.jpg")
+                         "null", "Wetpaint", "CEO", "elowitz",
+                         ("http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/"
+                          + "0001/8470/18470v3-max-250x250.jpg"))
 
         self.assertIsInstance(person1, Person)
         self.assertEqual(person1.person_id, "p:2")
         self.assertEqual(person1.name, "Ben Elowitz")
-        self.assertEqual(
-            person1.summary, "Ben Elowitz is co-founder and CEO of Wetpaint.")
+        self.assertEqual(person1.summary, "Ben Elowitz is co-founder and CEO of Wetpaint.")
         self.assertEqual(person1.city, "null")
         self.assertEqual(person1.companies, "Wetpaint")
         self.assertEqual(person1.role, "CEO")
         self.assertEqual(person1.twitter, "elowitz")
-        self.assertEqual(
-            person1.logo_url, "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0001/8470/18470v3-max-250x250.jpg")
+        self.assertEqual(person1.logo_url, ("http://s3.amazonaws.com/crunchbase_prod_assets/assets"
+                                            + "/images/resized/0001/8470/18470v3-max-250x250.jpg"))
 
     def test_person_repr_1(self):
         """
@@ -456,7 +498,10 @@ class TestPerson(TestCase):
         Test the representation of an instance of a Person
         """
         person1 = Person("p:2", "Ben Elowitz", "Ben Elowitz is co-founder and CEO of Wetpaint.",
-                         "null", "Wetpaint", "CEO", "elowitz", "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0001/8470/18470v3-max-250x250.jpg")
+                         "null", "Wetpaint", "CEO", "elowitz",
+                         ("http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/"
+                          + "0001/8470/18470v3-max-250x250.jpg"))
+
         self.assertEqual(person1.__repr__(), "<Person 'Ben Elowitz'>")
 
     def test_person_dict_1(self):
@@ -468,8 +513,10 @@ class TestPerson(TestCase):
         p1_dict = person1.dictionary()
 
         self.assertIsInstance(p1_dict, dict)
-        self.assertEqual(p1_dict, {"person_id": "id1", "name": "name1", "summary": "summary1", "city": "city1",
-                                   "companies": "companies1", "role": "role1", "twitter": "twitter1", "logo_url": "logo_url1"})
+        self.assertEqual(p1_dict,
+                         {"person_id": "id1", "name": "name1", "summary": "summary1",
+                          "city": "city1", "companies": "companies1", "role": "role1",
+                          "twitter": "twitter1", "logo_url": "logo_url1"})
 
     def test_person_dict_2(self):
         """
@@ -496,12 +543,20 @@ class TestPerson(TestCase):
         Test dictionary of a Person with more realistic information
         """
         person1 = Person("p:2", "Ben Elowitz", "Ben Elowitz is co-founder and CEO of Wetpaint.",
-                         "null", "Wetpaint", "CEO", "elowitz", "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0001/8470/18470v3-max-250x250.jpg")
+                         "null", "Wetpaint", "CEO", "elowitz",
+                         ("http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/"
+                          + "0001/8470/18470v3-max-250x250.jpg"))
+
         p1_dict = person1.dictionary()
 
         self.assertIsInstance(p1_dict, dict)
-        self.assertEqual(p1_dict, {"person_id": "p:2", "name": "Ben Elowitz", "summary": "Ben Elowitz is co-founder and CEO of Wetpaint.",
-                                   "city": "null", "companies": "Wetpaint", "role": "CEO", "twitter": "elowitz", "logo_url": "http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/0001/8470/18470v3-max-250x250.jpg"})
+        self.assertEqual(p1_dict,
+                         {"person_id": "p:2", "name": "Ben Elowitz",
+                          "summary": "Ben Elowitz is co-founder and CEO of Wetpaint.",
+                          "city": "null", "companies": "Wetpaint", "role": "CEO",
+                          "twitter": "elowitz",
+                          "logo_url": ("http://s3.amazonaws.com/crunchbase_prod_assets/assets/"
+                                       + "images/resized/0001/8470/18470v3-max-250x250.jpg")})
 
 
 # --------
@@ -512,7 +567,7 @@ class TestCity(TestCase):
     """
     Tests for the methods of the City model
     """
-    
+
     # ------------------
     # Setup and Teardown
     # ------------------
@@ -607,8 +662,10 @@ class TestCity(TestCase):
         c1_dict = city1.dictionary()
 
         self.assertIsInstance(c1_dict, dict)
-        self.assertEqual(c1_dict, {"city_id": "id1", "name": "name1", "state": "state1", "region": "region1",
-                                   "companies": "companies1", "financial_orgs": "finorgs1", "people": "people1"})
+        self.assertEqual(c1_dict,
+                         {"city_id": "id1", "name": "name1", "state": "state1", "region": "region1",
+                          "companies": "companies1", "financial_orgs": "finorgs1",
+                          "people": "people1"})
 
     def test_city_dict_2(self):
         """
@@ -638,8 +695,10 @@ class TestCity(TestCase):
         c1_dict = city1.dictionary()
 
         self.assertIsInstance(c1_dict, dict)
-        self.assertEqual(c1_dict, {"city_id": "1", "name": "Seattle", "state": "WA", "region": "Seattle",
-                                   "companies": "Wetpaint", "financial_orgs": "Vulcan Capital", "people": "Mathias Klein"})
+        self.assertEqual(c1_dict,
+                         {"city_id": "1", "name": "Seattle", "state": "WA", "region": "Seattle",
+                          "companies": "Wetpaint", "financial_orgs": "Vulcan Capital",
+                          "people": "Mathias Klein"})
 
 # ----
 # About
@@ -650,7 +709,7 @@ class TestAbout(TestCase):
     """
     Tests for the About page
     """
-    
+
     # ------------------
     # Setup and Teardown
     # ------------------
@@ -730,6 +789,7 @@ class TestAbout(TestCase):
 # Test Views.py methods
 # ---
 
+
 class TestViews(TestCase):
 
     def test_index_1(self):
@@ -753,5 +813,5 @@ class TestViews(TestCase):
 # ----
 
 if __name__ == "__main__":
-    unittest.main(verbosity = 2)
+    unittest.main(verbosity=2)
     # main()

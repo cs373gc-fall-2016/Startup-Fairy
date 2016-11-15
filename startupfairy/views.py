@@ -5,15 +5,16 @@ import json
 import subprocess
 # import requests
 from os import listdir
+from collections import defaultdict
+import string
 from flask import Blueprint, Flask
 from flask import render_template, abort, request
 from flask_sqlalchemy import SQLAlchemy
 from models import *
-from collections import defaultdict
-import string
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@postgres/startupfairydb5"
+app.config[
+    "SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@postgres/startupfairydb5"
 db.init_app(app)
 
 ALT_NAMES = {
@@ -23,6 +24,7 @@ ALT_NAMES = {
     'people': 'People'
 }
 
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -31,9 +33,11 @@ def index():
     """
     return render_template('index.html')
 
+
 @app.route('/favicon.ico')
 def favicon():
     return "LOl"
+
 
 def format_query(query_string):
     '''
@@ -45,6 +49,7 @@ def format_query(query_string):
     translator = str.maketrans({key: None for key in string.punctuation})
     print(query_string)
     return query_string.translate(translator)
+
 
 @app.route('/search/<query_string>')
 def search(query_string):
@@ -74,9 +79,11 @@ def search(query_string):
         if query_words.issubset(value["words"]):
             and_model_to_words[key] = value
             # Cast words to list so that we can serialize with JSON.
-            and_model_to_words[key]["words"] = list(and_model_to_words[key]["words"])
+            and_model_to_words[key]["words"] = list(
+                and_model_to_words[key]["words"])
         value["words"] = list(value["words"])
     return json.dumps([and_model_to_words, or_model_to_words])
+
 
 @app.route('/about')
 def about():
@@ -88,8 +95,8 @@ def about():
 
 @app.route('/category/<app_category>')
 def category(app_category):
-    print("Attempting to get category %s" % app_category)
     """Render table template"""
+    print("Attempting to get category %s" % app_category)
     if app_category == 'people':
         data = api_people()
     elif app_category == 'cities':
@@ -101,10 +108,11 @@ def category(app_category):
     else:
         print("Category does not exist")
         data = []
-    print ("Rendering template")
-    return render_template('category.html',
-                           alt_title=ALT_NAMES.get(app_category, None),
-                           title=app_category, data=data)
+    print("Rendering template")
+    return render_template('index.html')
+    # return render_template('category.html',
+    #                        alt_title=ALT_NAMES.get(app_category, None),
+    #                        title=app_category, data=data)
 
 
 @app.route('/category/<app_category>/<entity>')
@@ -126,9 +134,11 @@ def details(app_category, entity):
     print(data)
     return render_template('details.html', data=json.loads(data), category=app_category)
 
+
 @app.route('/education')
 def education():
     return render_template('team_five.html')
+
 
 @app.route('/api/people', methods=['GET'])
 def api_people(entity=None):
@@ -159,7 +169,8 @@ def api_companies(entity=None):
             return json.dumps(list(map(lambda d: d.dictionary(), data)))
         else:
             if entity is not None:
-                data = db.session.query(Company).filter_by(company_id=entity).one()
+                data = db.session.query(Company).filter_by(
+                    company_id=entity).one()
             else:
                 data = db.session.query(Company).filter_by(
                     company_id=company_id).one()
@@ -205,6 +216,7 @@ def api_cities(entity=None):
     except:
         print("Get cities failed")
         abort(404)
+
 
 @app.route('/run_tests')
 def run_tests():
