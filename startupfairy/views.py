@@ -102,10 +102,9 @@ def category(app_category):
         print("Category does not exist")
         data = []
     print ("Rendering template")
-    return render_template('index.html')
-    # return render_template('category.html',
-    #                        alt_title=ALT_NAMES.get(app_category, None),
-    #                        title=app_category, data=data)
+    return render_template('category.html',
+                           alt_title=ALT_NAMES.get(app_category, None),
+                           title=app_category, data=data)
 
 
 @app.route('/category/<app_category>/<entity>')
