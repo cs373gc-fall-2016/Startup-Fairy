@@ -75,7 +75,6 @@ clean:
 	rm -r startupfairy/__pycache__
 
 format:
-	$(AUTOPEP8) -i startupfairy/run.py
 	$(AUTOPEP8) -i startupfairy/models.py
 	$(AUTOPEP8) -i startupfairy/tests.py
 	$(AUTOPEP8) -i startupfairy/views.py
@@ -107,7 +106,6 @@ docs:
 
 pylint: .pylintrc 
 	-$(PYLINT) startupfairy/models.py
-	-$(PYLINT) startupfairy/run.py
 	-$(PYLINT) startupfairy/tests.py
 	-$(PYLINT) startupfairy/views.py
 
