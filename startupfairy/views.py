@@ -9,13 +9,7 @@ from collections import defaultdict
 import string
 from flask import Blueprint, Flask
 from flask import render_template, abort, request
-from flask_sqlalchemy import SQLAlchemy
 from models import *
-
-app = Flask(__name__)
-app.config[
-    "SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@postgres/startupfairydb5"
-db.init_app(app)
 
 ALT_NAMES = {
     'financialorgs': 'Financial Organizations',
@@ -109,10 +103,9 @@ def category(app_category):
         print("Category does not exist")
         data = []
     print("Rendering template")
-    return render_template('index.html')
-    # return render_template('category.html',
-    #                        alt_title=ALT_NAMES.get(app_category, None),
-    #                        title=app_category, data=data)
+    return render_template('category.html',
+                           alt_title=ALT_NAMES.get(app_category, None),
+                           title=app_category, data=data)
 
 
 @app.route('/category/<app_category>/<entity>')

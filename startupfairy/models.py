@@ -1,10 +1,15 @@
 """
 Implementation of models of startups and their attributes
 """
-#from views import db
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
 
+app = Flask(__name__)
+app.config[
+    "SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@postgres/startupfairydb5"
+db = SQLAlchemy(app)
+db.init_app(app)
+db.create_all()
 
 class Company(db.Model):
     """
