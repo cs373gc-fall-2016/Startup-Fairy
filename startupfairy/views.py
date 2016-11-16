@@ -51,8 +51,9 @@ def find():
         obj = 'hello'
     return render_template('results.html', query=query_string, data=obj)
 
-@app.route('/search/<query_string>')
+@app.route('/search/query', methods=['POST'])
 def search(query_string):
+    query_string = request.form.data
     query_string = format_query(query_string)
     query_words = set(query_string.split())
     # For the "and" results.

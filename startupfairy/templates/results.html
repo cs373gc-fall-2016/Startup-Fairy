@@ -5,16 +5,23 @@
   <div class="container addpadd nova">
 
     <script>
-      // $.ajax({
-      // url: "/search/{{query}}",
-      // async: true,
-      // cache: false,
-      // success:
-      // function(result){
-      //   var obj = JSON.parse(result);
-      //   $("replacetext").replaceWith(obj);
-      // }});
-      // todo: get obj!
+      var query = '{{query}}'
+
+      $.ajax({
+      url: "/search/query",
+      type: "POST",
+      data: query,
+      async: true,
+      cache: false,
+      success:
+      function(result){
+        var obj = JSON.parse(result);
+        $("replacetext").replaceWith(obj);
+      }});
+
+      // var results = JSON.parse({data});
+      // $("replacetext").replaceWith({data});
+      // todo: actually learn how to parse that json
     </script>
 
     <!-- Title -->
@@ -26,45 +33,8 @@
     </div>
 
     <!-- Results -->
-    <div id="result_one">
-      <!-- TODO: get result from JSON dump -->
-    </div>
-
-    <div id="result_two">
-      <!-- TODO: get result from JSON dump -->
-    </div>
-
-    <div id="result_three">
-      <!-- TODO: get result from JSON dump -->
-    </div>
-
-    <div id="result_four">
-      <!-- TODO: get result from JSON dump -->
-    </div>
-
-    <div id="result_five">
-      <!-- TODO: get result from JSON dump -->
-    </div>
-
-    <div id="result_six">
-      <!-- TODO: get result from JSON dump -->
-    </div>
-
-    <div id="result_seven">
-      <!-- TODO: get result from JSON dump -->
-    </div>
-
-    <div id="result_eight">
-      <!-- TODO: get result from JSON dump -->
-    </div>
-
-    <div id="result_nine">
-      <!-- TODO: get result from JSON dump -->
-    </div>
-
-    <div id="result_ten">
-      <!-- TODO: get result from JSON dump -->
-    </div>
+    <script type="text/babel" src="{{url_for('static', filename='js/results.babel')}}"></script>
+    <div id="resultsSection"></div>
 
   </div>
 </section>
