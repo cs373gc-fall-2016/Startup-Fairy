@@ -2,7 +2,7 @@
 {% set active_page = category %}
 {% block content %}
   <script type="text/babel">
-    var companies, roles, financialorgs;
+    var companies, roles, financialorgs, people;
     {% if data.companies %}
       companies = JSON.parse({{data.companies|tojson}});
       {% if data.role %}
@@ -14,6 +14,10 @@
     {% endif %}
     {% if data.financial_orgs %}
       financialorgs = JSON.parse({{data.financial_orgs|tojson}});
+    {% endif %}
+
+    {% if data.people %}
+      people = JSON.parse({{data.people|tojson}});
     {% endif %}
 
     var FinancialOrgsList = React.createClass({
@@ -45,6 +49,27 @@
       }
     });
 
+    var PeopleList = React.createClass({
+      render: function() {
+        var listItems = [];
+        for (var i = 0; i < people.length; i++) {
+          var url = "/category/people/" + people[i][1];
+          listItems.push(<li key={people[i][0]}><a href={url}>{people[i][0]}</a></li>);
+        }
+        if (listItems.length == 0) {
+          listItems = "No People";
+        }
+        return <div><h3>People:</h3><ul>{listItems}</ul></div>
+      }
+    });
+
+    var Location = React.createClass({
+      render: function() {
+        // TODO
+        return <p>LOCATION</p>
+      }
+    });
+
     if (document.getElementById('investors-list') != null) {
       ReactDOM.render(
         <FinancialOrgsList />,
@@ -58,6 +83,18 @@
         document.getElementById('companies-list')
       );
     }
+
+    if (document.getElementById('people-list') != null) {
+      ReactDOM.render(
+        <PeopleList />, 
+        document.getElementById('people-list')
+      );
+    }
+    
+    ReactDOM.render(
+      <Location />,
+      document.getElementById('location')
+    );
   </script>
 
   <div class="col-md-8 col-md-offset-2">
@@ -70,16 +107,16 @@
       {% if data.name %}
         <h1>{{ data.name }}</h1>
       {% endif %}
-      {% if data.city %}<p><i>{{ data.city }}</i></p>{% endif %}
       {% if data.website %}<a href="{{ data.website }}">{{ data.website }}</a>{% endif %}
+      <div id="location"></div>
       {% if data.summary %}
         {{ data.summary|safe }}
       {% endif %}
-      {% if data.companies %}<p>Companies:</p>
+      {% if data.companies %}<h3>Companies:</h3>
         <div id="companies-list"></div>
       {% endif %}
       {% if data.companies_invested %}
-        <p>Companies Invested: </p>
+        <h3>Companies Invested In: </h3>
         <div id="companies-list"></div> 
       {% endif %}
       {% if data.investors %}
@@ -87,6 +124,9 @@
       {% endif %}
       {% if data.financial_orgs %}
         <div id="investors-list"></div>
+      {% endif %}
+      {% if data.people %}
+        <div id="people-list"></div>
       {% endif %}
     </div>
   {% if data.twitter %}
