@@ -33,11 +33,9 @@ def index():
     """
     return render_template('index.html')
 
-
 @app.route('/favicon.ico')
 def favicon():
     return "LOl"
-
 
 def format_query(query_string):
     '''
@@ -50,6 +48,14 @@ def format_query(query_string):
     print(query_string)
     return query_string.translate(translator)
 
+@app.route('/search/', methods=['GET'])
+def find():
+    query_string = request.args.get('query')
+    try:
+        obj = search(query_string)
+    except:
+        obj = 'hello'
+    return render_template('results.html', query=query_string, data=obj)
 
 @app.route('/search/<query_string>')
 def search(query_string):

@@ -46,8 +46,16 @@ hr.divider{
   margin: 25px auto 30px;
 }
 
+hr.search{
+  padding: 0;
+  border: none;
+  border-top: solid 5px;
+  text-align: center;
+  margin: 25px auto 30px;
+}
+
 ul.no-indent {
-  list-style-position: inside; 
+  list-style-position: inside;
   padding-left:0;
 }
 
