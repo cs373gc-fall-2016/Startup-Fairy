@@ -135,7 +135,6 @@ def details(app_category, entity):
     parsed_data = json.loads(data)
     if 'summary' in parsed_data.keys() and parsed_data['summary'] is not None:
         parsed_data['summary'] = markdown2.markdown(parsed_data['summary'])
-        # TODO add title
     return render_template('details.html', data=parsed_data, category=app_category)
 
 
@@ -149,8 +148,7 @@ def api_people(entity=None):
     try:
         person_id = request.args.get('id')
         if entity is None and person_id is None:
-            data = db.session.query(Person).all()
-            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+            return get_all_from_category(Person)
         else:
             if entity is not None:
                 data = db.session.query(Person).filter_by(
@@ -169,8 +167,7 @@ def api_companies(entity=None):
     try:
         company_id = request.args.get('id')
         if entity is None and company_id is None:
-            data = db.session.query(Company).all()
-            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+            return get_all_from_category(Company)
         else:
             if entity is not None:
                 data = db.session.query(Company).filter_by(
@@ -189,8 +186,7 @@ def api_financialorgs(entity=None):
     try:
         finorg_id = request.args.get('id')
         if entity is None and finorg_id is None:
-            data = db.session.query(FinancialOrg).all()
-            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+            return get_all_from_category(FinancialOrg)
         else:
             if entity is not None:
                 data = db.session.query(FinancialOrg).filter_by(
@@ -209,8 +205,7 @@ def api_cities(entity=None):
     try:
         city_id = request.args.get('id')
         if entity is None and city_id is None:
-            data = db.session.query(City).all()
-            return json.dumps(list(map(lambda d: d.dictionary(), data)))
+            return get_all_from_category(City)
         else:
             if entity is not None:
                 data = db.session.query(City).filter_by(city_id=entity).one()
@@ -219,8 +214,14 @@ def api_cities(entity=None):
             return json.dumps(data.dictionary())
     except:
         print("Get cities failed")
-        page_not_found()
-        # abort(404)
+        abort(404)
+
+def get_all_from_category(table):
+    """
+    Helper that gets all data from a given table
+    """
+    data = db.session.query(table).all()
+    return json.dumps(list(map(lambda d: d.dictionary(), data)))
 
 @app.errorhandler(404)
 def page_not_found(e):
