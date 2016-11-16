@@ -3,6 +3,7 @@ Serves all the routes for the application
 """
 import json
 import subprocess
+import markdown2
 # import requests
 from os import listdir
 from collections import defaultdict
@@ -131,7 +132,10 @@ def details(app_category, entity):
     else:
         print("Category does not exist")
         data = ""
-    return render_template('details.html', data=json.loads(data), category=app_category)
+    parsed_data = json.loads(data)
+    if len(parsed_data) > 0 and parsed_data['summary'] is not None:
+        parsed_data['summary'] = markdown2.markdown(parsed_data['summary'])
+    return render_template('details.html', data=parsed_data, category=app_category)
 
 
 @app.route('/education')

@@ -13,3 +13,4 @@ coverage
 pylint
 autopep8
 psycopg2
+markdown2

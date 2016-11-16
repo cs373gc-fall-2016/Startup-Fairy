@@ -23,7 +23,10 @@
           var url = "/category/financialorgs/" + financialorgs[i][1];
           listItems.push(<li key={financialorgs[i][0]}><a href={url}>{financialorgs[i][0]}</a></li>);
         }
-        return <ul>{listItems}</ul>
+        if (listItems.length == 0) {
+          listItems = "No Investors"
+        }
+        return <div><h3>Investors: </h3><ul>{listItems}</ul></div>
       }
     });
 
@@ -69,7 +72,9 @@
       {% endif %}
       {% if data.city %}<p><i>{{ data.city }}</i></p>{% endif %}
       {% if data.website %}<a href="{{ data.website }}">{{ data.website }}</a>{% endif %}
-      {% if data.summary %}<p>{{ data.summary }}</p>{% endif %}
+      {% if data.summary %}
+        {{ data.summary|safe }}
+      {% endif %}
       {% if data.companies %}<p>Companies:</p>
         <div id="companies-list"></div>
       {% endif %}
@@ -78,11 +83,9 @@
         <div id="companies-list"></div> 
       {% endif %}
       {% if data.investors %}
-        <p>Investors:</p>
         <div id="investors-list"></div>
       {% endif %}
       {% if data.financial_orgs %}
-        <p>Investors: </p>
         <div id="investors-list"></div>
       {% endif %}
     </div>
