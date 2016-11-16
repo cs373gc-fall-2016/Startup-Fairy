@@ -161,7 +161,6 @@ def api_people(entity=None):
 
 @app.route('/api/companies', methods=['GET'])
 def api_companies(entity=None):
-    print ("INSIDE API")
     try:
         company_id = request.args.get('id')
         if entity is None and company_id is None:
@@ -171,7 +170,6 @@ def api_companies(entity=None):
             if entity is not None:
                 data = db.session.query(Company).filter_by(
                     company_id=entity).one()
-                print (data)
             else:
                 data = db.session.query(Company).filter_by(
                     company_id=company_id).one()

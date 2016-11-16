@@ -2,10 +2,19 @@
 {% set active_page = category %}
 {% block content %}
   <script type="text/babel">
+    var companies, roles, financialorgs;
     {% if data.companies %}
-      var companies = JSON.parse({{data.companies|tojson}});
+      companies = JSON.parse({{data.companies|tojson}});
+      {% if data.role %}
+        roles = JSON.parse({{data.role|tojson}});
+      {% endif %}
     {% endif %}
-    console.log({{data}});
+    {% if data.investors %}
+      financialorgs = JSON.parse({{data.investors|tojson}});
+    {% endif %}
+    {% if data.financial_orgs %}
+      financialorgs = JSON.parse({{data.financial_orgs|tojson}});
+    {% endif %}
 
     var FinancialOrgsList = React.createClass({
       render: function() {
@@ -23,7 +32,11 @@
         var listItems = [];
         for (var i = 0; i < companies.length; i++) {
           var url = "/category/companies/" + companies[i][1];
-          listItems.push(<li key={companies[i][0]}><a href={url}>{companies[i][0]}</a></li>);
+          if (roles != undefined || roles != null) {
+            listItems.push(<li key={companies[i][0]}><a href={url}>{companies[i][0]}</a>, {roles[i]}</li>);
+          } else {
+            listItems.push(<li key={companies[i][0]}><a href={url}>{companies[i][0]}</a></li>);
+          }
         }
         return <ul>{listItems}</ul>
       }

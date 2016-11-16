@@ -40,7 +40,6 @@
         render: function(){
           var name = this.props.data;
           var rowObject = this.props.rowData;
-          console.log(rowObject);
           var customHeaderProps = this.props.metadata.customHeaderComponentProps;
           if (customHeaderProps == undefined || customHeaderProps == null) {
             return <p>{name}</p>
@@ -252,7 +251,6 @@
             // if we hit this case, we need to create a new list
             columns = undefined;
       }
-      console.log(data);
       ReactDOM.render(
         <Griddle results={data} showSettings={false} columns={columns} columnMetadata={columnMetadata}/>,
         document.getElementById('table-content')
