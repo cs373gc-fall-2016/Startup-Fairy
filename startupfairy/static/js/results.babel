@@ -38,6 +38,22 @@ class ResultsList extends React.Component {
   renderResult(i) {
     return <SearchResult />;
   }
+
+  pullData() {
+    var query = 'test';
+
+    $.ajax({
+    url: "/search/query",
+    type: "GET",
+    data: query,
+    async: true,
+    cache: false,
+    success:
+    function(result){
+      console.log(result);
+      var obj = JSON.parse(result);
+    }});
+  }
 }
 
 // ========================================

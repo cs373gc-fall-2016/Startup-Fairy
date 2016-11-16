@@ -4,26 +4,6 @@
 <section id="results">
   <div class="container addpadd nova">
 
-    <script>
-      var query = '{{query}}'
-
-      $.ajax({
-      url: "/search/query",
-      type: "POST",
-      data: query,
-      async: true,
-      cache: false,
-      success:
-      function(result){
-        var obj = JSON.parse(result);
-        $("replacetext").replaceWith(obj);
-      }});
-
-      // var results = JSON.parse({data});
-      // $("replacetext").replaceWith({data});
-      // todo: actually learn how to parse that json
-    </script>
-
     <!-- Title -->
     <div class="row">
       <div class="col-lg-12">
@@ -35,6 +15,8 @@
     <!-- Results -->
     <script type="text/babel" src="{{url_for('static', filename='js/results.babel')}}"></script>
     <div id="resultsSection"></div>
+
+    <h4>{{obj}}</h4>
 
   </div>
 </section>
