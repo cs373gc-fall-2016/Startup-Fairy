@@ -133,8 +133,9 @@ def details(app_category, entity):
         print("Category does not exist")
         data = ""
     parsed_data = json.loads(data)
-    if len(parsed_data) > 0 and parsed_data['summary'] is not None:
+    if 'summary' in parsed_data.keys() and parsed_data['summary'] is not None:
         parsed_data['summary'] = markdown2.markdown(parsed_data['summary'])
+        # TODO add title
     return render_template('details.html', data=parsed_data, category=app_category)
 
 
@@ -218,8 +219,12 @@ def api_cities(entity=None):
             return json.dumps(data.dictionary())
     except:
         print("Get cities failed")
-        abort(404)
+        page_not_found()
+        # abort(404)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html', alt_title=e, error=e)
 
 @app.route('/run_tests')
 def run_tests():
