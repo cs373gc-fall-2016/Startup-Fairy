@@ -1,0 +1,48 @@
+class SearchResult extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      value: false,
+    };
+  }
+
+  render() {
+    return (
+        <div>
+          <h3><a href="/">Page Title</a></h3>
+          <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dui odio, tincidunt nec tortor sed, suscipit aliquet turpis. Suspendisse potenti. Pellentesque cursus maximus lectus. Suspendisse lobortis risus quis erat pretium imperdiet. Vivamus tincidunt placerat dignissim. Duis consequat eleifend turpis a auctor. Donec ac imperdiet orci, sed porta orci. Nam vulputate at lorem eu consequat.</h4>
+        </div>
+    );
+  }
+}
+
+class ResultsList extends React.Component {
+
+  render() {
+    return (
+      <div>
+        {this.renderResult(0)}
+        {this.renderResult(1)}
+        {this.renderResult(2)}
+        {this.renderResult(3)}
+        {this.renderResult(4)}
+        {this.renderResult(5)}
+        {this.renderResult(6)}
+        {this.renderResult(7)}
+        {this.renderResult(8)}
+        {this.renderResult(9)}
+      </div>
+    );
+  }
+
+  renderResult(i) {
+    return <SearchResult />;
+  }
+}
+
+// ========================================
+
+ReactDOM.render(
+  <ResultsList />,
+  document.getElementById('resultsSection')
+);
