@@ -6,8 +6,7 @@
     {% if alt_title %}{{ alt_title }}{% else %}{{ title.capitalize()}} {% endif %}</h1>
     <div id='table-content'></div>
     <script type="text/javascript" src="{{url_for('static', filename='bower_components/griddle-react/build/Griddle.js')}}"></script>
-    <!-- <script type="text/babel" src="{{url_for('static', filename='js/table.js')}}"></script> -->
-     <script type="text/babel">
+    <script type="text/babel">
 
       var data = JSON.parse({{ data|tojson }});
       var category = document.getElementById('category-header').innerHTML.toLowerCase().trim();
@@ -16,11 +15,12 @@
 
       var WebsiteLink = React.createClass({
         render: function(){
-          if (this.props.data === undefined || this.props.data === null) {
+          let link = this.props.data;
+          if (link === undefined || link === null) {
             return <p>No website</p>
 
           }
-          return <a href={this.props.data}>{this.props.data}</a>  
+          return <a href={link}>{link}</a>  
         }
       });
 
@@ -79,21 +79,20 @@
           var listItems = [];
           if (data[0] instanceof Array && category != undefined) {
             var listItems = [];
-            // TODO change back to startupfairy.com when in prod
             if (category == 'financial organizations') {
               category = 'financialorgs';
             }
-            var base_url = "http://localhost/category/" + category + "/";
+            var base_url = "/category/" + category + "/";
             for (var i = 0; i < max; i++) {
               var url = base_url + data[i][1];
               if (data[i][0]!= undefined && data[i][0] != null) {
-                listItems.push(<li><a href={url}>{data[i][0]}</a></li>);
+                listItems.push(<li key={data[i][0].toString()}><a href={url}>{data[i][0]}</a></li>);
               }
             }
           } else {
             for (var i = 0; i < max; i++) {
               if (data[i] != undefined && data[i] != null) {
-                listItems.push(<li>{data[i]}</li>);
+                listItems.push(<li key={data[i][0].toString()}>{data[i]}</li>);
               }
             }
           }
