@@ -8,7 +8,7 @@ class RunButton extends React.Component {
 
   render() {
     return (
-      <div class="nova">
+      <div>
       <button className="btn testButton" onClick={() => this.handleClick()}>
         <h3>{this.state.value ? 'Running...' : 'Run Tests!'}</h3>
       </button></div>
@@ -48,10 +48,6 @@ class Tester extends React.Component {
         {this.renderButton(0)}
       </div>
     );
-  }
-
-  runTest(i) {
-    return <TestResults />;
   }
 
   renderButton(i) {
