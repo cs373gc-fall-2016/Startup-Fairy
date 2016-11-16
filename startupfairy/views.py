@@ -129,8 +129,7 @@ def details(app_category, entity):
         data = api_financialorgs(entity)
     else:
         print("Category does not exist")
-        # data = []
-    print(data)
+        data = ""
     return render_template('details.html', data=json.loads(data), category=app_category)
 
 
@@ -161,6 +160,7 @@ def api_people(entity=None):
 
 @app.route('/api/companies', methods=['GET'])
 def api_companies(entity=None):
+    print ("INSIDE API")
     try:
         company_id = request.args.get('id')
         if entity is None and company_id is None:
@@ -170,6 +170,7 @@ def api_companies(entity=None):
             if entity is not None:
                 data = db.session.query(Company).filter_by(
                     company_id=entity).one()
+                print (data)
             else:
                 data = db.session.query(Company).filter_by(
                     company_id=company_id).one()
