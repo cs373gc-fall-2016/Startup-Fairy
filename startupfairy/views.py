@@ -18,7 +18,6 @@ ALT_NAMES = {
     'people': 'People'
 }
 
-
 @app.route('/')
 @app.route('/index')
 def index():
@@ -45,15 +44,13 @@ def format_query(query_string):
 @app.route('/search/', methods=['GET'])
 def find():
     query_string = request.args.get('query')
-    try:
-        obj = search(query_string)
-    except:
-        obj = 'hello'
+    obj = search(query_string)
     return render_template('results.html', query=query_string, data=obj)
 
-@app.route('/search/query', methods=['POST'])
-def search(query_string):
-    query_string = request.form.data
+@app.route('/search/query', methods=['GET'])
+def search(query_string='test'):
+    # if request.method == 'GET':
+    #     query_string = request.args.get['data']
     query_string = format_query(query_string)
     query_words = set(query_string.split())
     # For the "and" results.
@@ -220,7 +217,8 @@ def api_cities(entity=None):
 
 @app.route('/run_tests')
 def run_tests():
-    output = subprocess.getoutput("python startupfairy/tests_about.py")
+    # newstr = 'python ' + {{url_for(filename='tests_about.py')}}
+    output = subprocess.getoutput("python startupfairy/tests.py")
     return json.dumps({'test_results': str(output)})
 
 if __name__ == '__main__':
