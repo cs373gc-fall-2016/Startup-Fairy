@@ -5,28 +5,44 @@
     <div class="photo-right">
       {% if data.image %}
         <img src="{{ data.image }}" class="user-photo"/>
-      {% else %}
-        <img src="https://cdn2.iconfinder.com/data/icons/metro-ui-dock/512/User_No-Frame.png" class="user-photo" />
       {% endif %}
     </div>
     <div>
       {% if data.name %}
         <h1>{{ data.name }}</h1>
-      {% else %}
-        <h1>Model</h1>
       {% endif %}
       {% if data.city %}<p><i>{{ data.city }}</i></p>{% endif %}
       {% if data.website %}<a href="{{ data.website }}">{{ data.website }}</a>{% endif %}
-      {% if data.companies %}<p>Companies:</p>
-        <ul>
-        {% for company in data.companies %}
-          <li>{{ company }}</li>
-        {% endfor %}
-        </ul>
-      {% endif %}
       {% if data.summary %}<p>{{ data.summary }}</p>{% endif %}
+      <script text="text/babel">
+
+        // TODO if companies need to parse the string first/replace first few characters
+      </script>
+      {% if data.companies %}<p>Companies:</p>
+        <script type="text/babel">
+          var companies = JSON.parse({{data.companies|tojson}});
+
+          var CompaniesList = React.createClass({
+            render: function() {
+              var listItems = [];
+              for (var i = 0; i < companies.length; i++) {
+                // TODO use a proper url
+                var url = "" + companies[i][1];
+                listItems.push(<li key={companies[i][0]}><a href={url}>{companies[i][0]}</a></li>);
+              }
+              return <ul>{listItems}</ul>
+            }
+          });
+
+          ReactDOM.render(
+            <CompaniesList data={companies} />,
+            document.getElementById('companies-list')
+          );
+        </script>
+        <div id="companies-list"></div>
+      {% endif %}
       {% if data.company %}
-        <p>Companies: 
+        <p>Companies:
           <ul>  
           {% for company in data.company %}
               <li>{{ company }}</li>
@@ -57,7 +73,7 @@
       {% endif %}
     </div>
   {% if data.twitter %}
-      <a class="twitter-timeline" href="https://twitter.com/{{data.twitter}}">Tweets by {{data.twitter}}</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <a class="twitter-timeline" href="https://twitter.com/{{data.twitter}}">Tweets by {{data.twitter}}</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   {% endif %}
   </div>
 {% endblock %}

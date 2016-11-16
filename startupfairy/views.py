@@ -122,9 +122,9 @@ def details(app_category, entity):
     if app_category == 'people':
         data = api_people(entity)
     elif app_category == 'cities':
-        data = api_cities()
+        data = api_cities(entity)
     elif app_category == 'companies':
-        data = api_companies()
+        data = api_companies(entity)
     elif app_category == 'financialorgs':
         data = api_financialorgs(entity)
     else:
