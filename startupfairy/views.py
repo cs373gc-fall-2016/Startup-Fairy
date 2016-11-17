@@ -10,6 +10,7 @@ from collections import defaultdict
 import string
 from flask import Blueprint, Flask
 from flask import render_template, abort, request
+from flask_cors import CORS, cross_origin
 from sqlalchemy.exc import SQLAlchemyError
 
 from models import app, db, Company, Person, FinancialOrg, City, Index
@@ -20,6 +21,12 @@ ALT_NAMES = {
     'cities': 'Cities',
     'people': 'People'
 }
+
+CORS(app)
+
+@app.route('/')
+def hello_world():
+    return "I have no idea what I'm doing and am just copying the website's example"
 
 @app.route('/')
 @app.route('/index')

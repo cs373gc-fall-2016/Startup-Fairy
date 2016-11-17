@@ -37,15 +37,37 @@ class TestCompany(TestCase):
     # Setup and Teardown
     # ------------------
 
-    def setUp(self):
-        with app.test_request_context():
-            db.create_all()
+    # def setUp(self):
+    #     with app.test_request_context():
+    #         db.create_all()
 
     # def tearDown(self):
 
     # -------
     # Company
     # -------
+
+    def test_companies_1(self):
+        """
+        only temporary
+        """
+        # example1 = Company("id", "name", "summary", "people",
+        #                    "city", "finorgs", "twitter", "website", "logo")
+        # example3 = Company("id3", "name3", "summary3", "people3",
+        #                    "city3", "finorgs3", "twitter3", "website3", "logo3")
+
+        # db.session.add(example1)
+        # db.session.add(example2)
+        # db.session.commit()
+        # companies = Company.query.all()
+        # self.assertTrue(example1 in companies)
+        # self.assertTrue(example2 in companies)
+        # self.assertEqual(len(companies), 2)
+
+        # also only temporary
+        with app.test_request_context():
+            stuff = db.session.query(Company).all()
+        self.assertEqual(len(stuff), 1000)
 
     def test_company_constructor_1(self):
         """
