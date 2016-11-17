@@ -123,14 +123,18 @@ def parse_cities(collect_ids_pass=False):
         if collect_ids_pass:
             _KNOWN_CITIES.add(name)
         else:
-            people = json.dumps(filter_contains(_KNOWN_PEOPLE, cities_dict['people']))
+            people_list = filter_contains(_KNOWN_PEOPLE, cities_dict['people'])
+            people = json.dumps(people_list)
             region = cities_dict['region']
-            financial_orgs = json.dumps(filter_contains(_KNOWN_FINORGS, cities_dict['financial_orgs']))
-            companies = json.dumps(filter_contains(_KNOWN_COMPANIES, cities_dict['companies']))
+            financial_org_list = filter_contains(_KNOWN_FINORGS, cities_dict['financial_orgs'])
+            financial_orgs = json.dumps(financial_org_list)
+            companies_list = filter_contains(_KNOWN_COMPANIES, cities_dict['companies'])
+            companies = json.dumps(companies_list)
             state = cities_dict['state']
-            city = models.City(str(city_id), name, state, region, companies, financial_orgs, people)
-            city_id += 1
-            cities_list += [city]
+            if (len(companies_list) + len(financial_org_list) + len(people_list)) > 0:
+                city = models.City(str(city_id), name, state, region, companies, financial_orgs, people)
+                city_id += 1
+                cities_list += [city]
     return cities_list
 
 
