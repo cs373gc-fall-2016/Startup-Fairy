@@ -37,7 +37,7 @@ def format_query(query_string):
         parse the tokens easily. Here we replace the "+"
         characters with spaces, and remove all punctuation.
     '''
-    query_string = query_string.replace("+", " ")
+    query_string = query_string.replace("+", " ").lower()
     translator = str.maketrans({key: None for key in string.punctuation})
     print(query_string)
     return query_string.translate(translator)
