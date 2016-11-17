@@ -33,12 +33,10 @@ class TestCompany(TestCase):
     # Setup and Teardown
     # ------------------
 
-    # may not be needed because the work is done elsewhere?
     def setUp(self):
         with app.test_request_context():
             db.create_all()
 
-    # not dropping all right now because the database with real info is being affected; to be changed
     def tearDown(self):
         with app.test_request_context():
             db.session.remove()
@@ -48,9 +46,9 @@ class TestCompany(TestCase):
     # Company
     # -------
 
-    def test_companies_1(self):
+    def test_company_model_1(self):
         """
-        only temporary
+        subject to change
         """
         with app.test_request_context():
             example1 = Company("id", "name", "summary", "people",
@@ -61,7 +59,6 @@ class TestCompany(TestCase):
             companies = db.session.query(Company).all()
             before = len(companies)
 
-            # probably shouldn't actually change the database that has real information for these tests--to be changed
             db.session.add(example1)
             db.session.add(example2)
             db.session.commit()
@@ -266,13 +263,52 @@ class TestFinancialOrg(TestCase):
     # Setup and Teardown
     # ------------------
 
-    # def setUp(self):
+    def setUp(self):
+        with app.test_request_context():
+            db.create_all()
 
-    # def tearDown(self):
+    def tearDown(self):
+        with app.test_request_context():
+            db.session.remove()
+            # db.drop_all()
 
     # ------------
     # FinancialOrg
     # ------------
+
+    def test_financial_org_model_1(self):
+        """
+        subject to change
+        """
+        with app.test_request_context():
+            example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
+                                    "website", "logo")
+            example2 = FinancialOrg("id2", "name2", "summary2", "city2", "companies2", "twitter2",
+                                    "website2", "logo2")
+
+            finorgs = db.session.query(FinancialOrg).all()
+            before = len(finorgs)
+
+            db.session.add(example1)
+            db.session.add(example2)
+            db.session.commit()
+            finorgs = db.session.query(FinancialOrg).all()
+            after = len(finorgs)
+
+            self.assertTrue(example1 in finorgs)
+            self.assertTrue(example2 in finorgs)
+            self.assertEqual(after, before + 2)
+
+            before = after
+            db.session.delete(example1)
+            db.session.delete(example2)
+            db.session.commit()
+            finorgs = db.session.query(FinancialOrg).all()
+            after = len(finorgs)
+
+            self.assertTrue(example1 not in finorgs)
+            self.assertTrue(example2 not in finorgs)
+            self.assertEqual(after, before - 2)
 
     def test_financial_org_init_1(self):
         """
@@ -453,13 +489,52 @@ class TestPerson(TestCase):
     # Setup and Teardown
     # ------------------
 
-    # def setUp(self):
+    def setUp(self):
+        with app.test_request_context():
+            db.create_all()
 
-    # def tearDown(self):
+    def tearDown(self):
+        with app.test_request_context():
+            db.session.remove()
+            # db.drop_all()
 
     # ------
     # Person
     # ------
+
+    def test_person_model_1(self):
+        """
+        subject to change
+        """
+        with app.test_request_context():
+            example1 = Person("id1", "name1", "summary1", "city1",
+                              "companies1", "role1", "twitter1", "logo_url1")
+            example2 = Person("id2", "name2", "summary2", "city2",
+                              "companies2", "role2", "twitter2", "logo_url2")
+
+            people = db.session.query(Person).all()
+            before = len(people)
+
+            db.session.add(example1)
+            db.session.add(example2)
+            db.session.commit()
+            people = db.session.query(Person).all()
+            after = len(people)
+
+            self.assertTrue(example1 in people)
+            self.assertTrue(example2 in people)
+            self.assertEqual(after, before + 2)
+
+            before = after
+            db.session.delete(example1)
+            db.session.delete(example2)
+            db.session.commit()
+            people = db.session.query(Person).all()
+            after = len(people)
+
+            self.assertTrue(example1 not in people)
+            self.assertTrue(example2 not in people)
+            self.assertEqual(after, before - 2)
 
     def test_person_init_1(self):
         """
@@ -612,13 +687,52 @@ class TestCity(TestCase):
     # Setup and Teardown
     # ------------------
 
-    # def setUp(self):
+    def setUp(self):
+        with app.test_request_context():
+            db.create_all()
 
-    # def tearDown(self):
+    def tearDown(self):
+        with app.test_request_context():
+            db.session.remove()
+            # db.drop_all()
 
     # ----
     # City
     # ----
+
+    def test_city_model_1(self):
+        """
+        subject to change
+        """
+        with app.test_request_context():
+            example1 = City("id1", "name1", "state1", "region1",
+                            "companies1", "finorgs1", "people1")
+            example2 = City("id2", "name2", "state2", "region2",
+                            "companies2", "finorgs2", "people2")
+
+            cities = db.session.query(City).all()
+            before = len(cities)
+
+            db.session.add(example1)
+            db.session.add(example2)
+            db.session.commit()
+            cities = db.session.query(City).all()
+            after = len(cities)
+
+            self.assertTrue(example1 in cities)
+            self.assertTrue(example2 in cities)
+            self.assertEqual(after, before + 2)
+
+            before = after
+            db.session.delete(example1)
+            db.session.delete(example2)
+            db.session.commit()
+            cities = db.session.query(City).all()
+            after = len(cities)
+
+            self.assertTrue(example1 not in cities)
+            self.assertTrue(example2 not in cities)
+            self.assertEqual(after, before - 2)
 
     def test_city_init_1(self):
         """
