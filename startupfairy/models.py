@@ -9,7 +9,7 @@ app.config[
     "SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@postgres/startupfairydb5"
 db = SQLAlchemy(app)
 db.init_app(app)
-db.create_all()
+
 
 class Company(db.Model):
     """
