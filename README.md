@@ -4,18 +4,18 @@ IMD 4
 [Apiary Docs](http://docs.startupfairy.apiary.io/)
 [Travis](https://travis-ci.org/cs373gc-fall-2016/Startup-Fairy)
 
-### Setup 
+### Setup
 You'll need
 - [Docker](https://docs.docker.com/engine/installation/mac/)
 - [Docker-compose](https://docs.docker.com/compose/install/)
 
-1. Run `docker-compose up -d`. 
+1. Run `docker-compose up -d`.
 2. Do `docker-compose ps` to see all your availble containers and the status of them.
 3. Once `startupfairy` the app is up and running, run `docker exec -it startupfairy bash`. You'll be inside the `startupfairy` container.
-4. Run `bower install --allow-root` - installs your CSS. 
+4. Run `bower install --allow-root` - installs your CSS.
 5. `cd startupfairy`
 6. `python create_db.py`
-7. `python populate_database.py`
+7. `python populate_db.py`
 
 You will only need to do steps 3 & 4 if you are creating the containers for the first time or if you're missing the `app/static/bower_components` directory.
 
@@ -41,7 +41,7 @@ Same steps as development.
   * Investors
   * Twitter
   * Website
-  
+
 * Financial Org
   * Name
   * Summary
@@ -49,7 +49,7 @@ Same steps as development.
   * Companies invested in
   * Twitter
   * Website
- 
+
 * People
   * Name
   * Bio
@@ -57,11 +57,11 @@ Same steps as development.
   * Company
   * Role
   * Twitter
- 
+
 * City
   * Name
   * State
-  * Country 
+  * Country
   * Companies
   * Financial Orgs
   * People
@@ -69,5 +69,3 @@ Same steps as development.
 ### UML Diagram
 
 http://yuml.me/96b7f61e
-   
-  

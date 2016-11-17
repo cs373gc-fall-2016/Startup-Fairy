@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% set active_page = title %}
 {% block content %}
-  <div class="col-md-10 col-md-offset-1">
-    <h1 id="category-header">
+  <div class="nova col-md-10 col-md-offset-1">
+    <h2 id="category-header">
     {% if alt_title %}{{ alt_title }}{% else %}{{ title.capitalize()}} {% endif %}</h1>
     <div id='table-content'></div>
     <script type="text/javascript" src="{{url_for('static', filename='bower_components/griddle-react/build/Griddle.js')}}"></script>
@@ -20,7 +20,7 @@
             return <p>No website</p>
 
           }
-          return <a href={link}>{link}</a>  
+          return <a href={link}>{link}</a>
         }
       });
 
@@ -143,7 +143,7 @@
             columnMetadata = [
             {
               "columnName": "name",
-              "order": 1, 
+              "order": 1,
               "displayName": "Name",
               "customComponent": EntityLink,
               "customHeaderComponentProps": { link: 'companies/', category: 'companies' }
@@ -160,7 +160,7 @@
               "customComponent": SmallList,
               "customHeaderComponentProps": { link: 'financialorgs/', category: 'financial organizations' }
             }, {
-              "columnName": "people", 
+              "columnName": "people",
               "visible": true,
               "order": 3,
               "displayName": "Notable People",

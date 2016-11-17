@@ -16,9 +16,34 @@ class SearchResult extends React.Component {
   }
 }
 
+class BackPagination extends React.Component {
+  render() {
+    return (
+      <div className="col-sm-6 align-left">
+        <a href="/" className="btn btn-lg btn-blue">
+          <h3>Back</h3>
+        </a>
+      </div>
+    );
+  }
+}
+
+class ForwardPagination extends React.Component {
+  render() {
+    return (
+      <div className="col-sm-6 align-right">
+        <a href="/" className="btn btn-lg btn-red">
+          <h3>Forward</h3>
+        </a>
+      </div>
+    );
+  }
+}
+
 class ResultsList extends React.Component {
 
   render() {
+    this.pullData();
     return (
       <div>
         {this.renderResult(0)}
@@ -31,6 +56,8 @@ class ResultsList extends React.Component {
         {this.renderResult(7)}
         {this.renderResult(8)}
         {this.renderResult(9)}
+        {this.renderBack()}
+        {this.renderForward()}
       </div>
     );
   }
@@ -39,8 +66,24 @@ class ResultsList extends React.Component {
     return <SearchResult />;
   }
 
+  renderBack() {
+    return <BackPagination />;
+  }
+
+  renderForward() {
+    return <ForwardPagination />;
+  }
+
   pullData() {
-    var query = 'test';
+    $.ajax({
+    cache: false,
+    async: true,
+    success:
+    function(result){
+      $("searchresults").text("No results found.");
+    }});
+
+    var query = 'Facebook';
 
     $.ajax({
     url: "/search/query",
@@ -50,8 +93,9 @@ class ResultsList extends React.Component {
     cache: false,
     success:
     function(result){
-      console.log(result);
       var obj = JSON.parse(result);
+      var markers = JSON.stringify(data)
+      $("searchresults").replaceWith(markers);
     }});
   }
 }

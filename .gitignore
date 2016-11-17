@@ -6,3 +6,5 @@ bower_components
 .idea/
 .pylintrc
 *.orig
+
+scratch.txt

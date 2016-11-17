@@ -4,7 +4,7 @@
 <section id="results">
   <div class="container addpadd nova">
 
-    <!-- Title -->
+    <!-- Header -->
     <div class="row">
       <div class="col-lg-12">
         <h2>Showing results for "{{ query }}"</h2>
@@ -12,12 +12,9 @@
       </div>
     </div>
 
-    <!-- Results -->
+    <!-- Results List -->
     <script type="text/babel" src="{{url_for('static', filename='js/results.babel')}}"></script>
-    <div id="resultsSection"></div>
-
-    <!-- <h4>{{obj}}</h4> -->
-
+    <div id="resultsSection"><h3><searchresults></searchresults></h3></div>
 
   </div>
 </section>
