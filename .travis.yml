@@ -25,7 +25,7 @@ before_script:
   - make versions
 
 script:
-  - make test
+  - docker exec -it startupfairy make test
 
 notifications:
   email: false
