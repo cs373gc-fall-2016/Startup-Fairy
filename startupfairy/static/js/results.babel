@@ -30,7 +30,7 @@ class SearchResult extends React.Component {
     //lookup(this.props.value)
 
     var newPageTitle = 'something'
-    this.setState((prevState) => ({pageTitle: prevState.pageTitle + this.props.value}));
+    this.setState((prevState) => ({pageTitle: this.props.value}));
 
     //var description = 'new description here'
     //this.setState((prevState) => ({resultDescription: {description}}));
@@ -122,19 +122,11 @@ class ResultsList extends React.Component {
     //this.setState({startValue: 10});
   }
 
-  populateResults(obj) {
-    console.log(obj);
-      var keyArray0 = Object.keys(obj[0]);
-      var keyArray1 = Object.keys(obj[1]);
-      console.log("keys");
-      console.log(keyArray0);
-      console.log(keyArray1);
-      //this.setState({results0: keyArray0});
-      //this.setState({results1: keyArray1});
-  }
+  componentDidMount() {
+    //todo: write code that pulls data
 
-  pullData() {
     var query = 'Facebook';
+    var queryJSON;
 
     $.ajax({
     url: "/search/query",
@@ -144,10 +136,37 @@ class ResultsList extends React.Component {
     cache: false,
     success:
     function(result){
-      var obj = JSON.parse(result);
-      //This is what I think needs to be called to set the state but can't get it to run
-      //populateResults(obj);
+      var queryJSON = JSON.parse(result);
+      console.log(queryJSON);
     }});
+
+    setTimeout(() => {this.populateResults(queryJSON);} , 10000);
+  }
+
+  pullData(query, obj) {
+    $.ajax({
+    url: "/search/query",
+    type: "GET",
+    data: query,
+    async: true,
+    cache: false,
+    success:
+    function(result){
+      var retval = JSON.parse(result);
+      obj = retval;
+      console.log(queryJSON);
+    }});
+  }
+
+  populateResults(obj) {
+    console.log(obj);
+    var keyArray0 = Object.keys(obj[0]);
+    var keyArray1 = Object.keys(obj[1]);
+    console.log("keys");
+    console.log(keyArray0);
+    console.log(keyArray1);
+    this.setState((prevState) => ({results0: keyArray0}));
+    //this.setState({results1: keyArray1});
   }
 
 }
