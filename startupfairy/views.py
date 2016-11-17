@@ -70,7 +70,7 @@ def search(query_string='test'):
     :return: the json of search results
     """
     # if request.method == 'GET':
-    #     query_string = request.args.get['data']
+        # query_string = request.args.get['data']
     query_string = format_query(query_string)
     query_words = set(query_string.split())
     # For the "and" results.

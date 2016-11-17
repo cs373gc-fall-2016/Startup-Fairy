@@ -1,4 +1,4 @@
-//TODO:
+// TODO:
 // - make pagination work by adding a value to keep track of which page ur on
 // - make links clickable by using the id to populate SearchResult link
 // - make forward/backward communicate with parent (resultlist) by using state
@@ -20,21 +20,9 @@ class BackPagination extends React.Component {
   render() {
     return (
       <div className="pull-left">
-        <a href="/" className="btn btn-lg btn-red">
+        <button className="btn btn-lg btn-red">
           <h3>Prev</h3>
-        </a>
-      </div>
-    );
-  }
-}
-
-class ForwardPagination extends React.Component {
-  render() {
-    return (
-      <div className="pull-right">
-        <a href="/" className="btn btn-lg btn-blue">
-          <h3>Next</h3>
-        </a>
+        </button>
       </div>
     );
   }
@@ -45,13 +33,11 @@ class ResultsList extends React.Component {
     super();
     this.state = {
       startValue: 0,
-      results0: Array(10).fill(null),
-      results1: Array(10).fill(null),
+      results0: ['c:189','p:182','c:189','p:182','c:189','p:182','c:189','p:182','c:189','p:182',],
     };
   }
 
   render() {
-    this.pullData();
     return (
       <div>
         {this.renderResult(0)}
@@ -76,21 +62,21 @@ class ResultsList extends React.Component {
         <br></br>
         <hr className="search"></hr>
         {this.renderBack()}
-        {this.renderForward()}
+        <h3 className="text-center"> Page: {this.state.startValue}</h3>
       </div>
     );
   }
 
   renderResult(i) {
-    return <SearchResult value={i} />;
+    return <SearchResult value={this.state.results0[i]} />;
   }
 
   renderBack() {
     return <BackPagination />;
   }
 
-  renderForward() {
-    return <ForwardPagination />;
+  handleClick() {
+    //this.setState({startValue: 10});
   }
 
   populateResults(obj) {
@@ -100,8 +86,8 @@ class ResultsList extends React.Component {
       console.log("keys");
       console.log(keyArray0);
       console.log(keyArray1);
-      this.setState({results0: keyArray0});
-      this.setState({results1: keyArray1});
+      //this.setState({results0: keyArray0});
+      //this.setState({results1: keyArray1});
   }
 
   pullData() {
