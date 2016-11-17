@@ -34,9 +34,9 @@ class TestCompany(TestCase):
     # ------------------
 
     # may not be needed because the work is done elsewhere?
-    # def setUp(self):
-    #     with app.test_request_context():
-    #         db.create_all()
+    def setUp(self):
+        with app.test_request_context():
+            db.create_all()
 
     # not dropping all right now because the database with real info is being affected; to be changed
     def tearDown(self):
