@@ -8,7 +8,7 @@ postgres:
 
 startupfairy:
   container_name: startupfairy
-  image: addykim/startupfairy:populated-markdown
+  image: addykim/startupfairy:populated
   command: python3 /home/startupfairy/views.py
   volumes: 
     - .:/home
