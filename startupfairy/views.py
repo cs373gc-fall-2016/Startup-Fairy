@@ -25,10 +25,6 @@ ALT_NAMES = {
 CORS(app)
 
 @app.route('/')
-def hello_world():
-    return "I have no idea what I'm doing and am just copying the website's example"
-
-@app.route('/')
 @app.route('/index')
 def index():
     """
