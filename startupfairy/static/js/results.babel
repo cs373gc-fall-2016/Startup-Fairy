@@ -45,7 +45,8 @@ class ResultsList extends React.Component {
     super();
     this.state = {
       startValue: 0,
-      results: Array(10).fill(null),
+      results0: Array(10).fill(null),
+      results1: Array(10).fill(null),
     };
   }
 
@@ -92,6 +93,17 @@ class ResultsList extends React.Component {
     return <ForwardPagination />;
   }
 
+  populateResults(obj) {
+    console.log(obj);
+      var keyArray0 = Object.keys(obj[0]);
+      var keyArray1 = Object.keys(obj[1]);
+      console.log("keys");
+      console.log(keyArray0);
+      console.log(keyArray1);
+      this.setState({results0: keyArray0});
+      this.setState({results1: keyArray1});
+  }
+
   pullData() {
     var query = 'Facebook';
 
@@ -104,9 +116,12 @@ class ResultsList extends React.Component {
     success:
     function(result){
       var obj = JSON.parse(result);
+      //This is what I think needs to be called to set the state but can't get it to run
+      //populateResults(obj);
       $("searchresults").replaceWith("hi");
     }});
   }
+
 }
 
 // ========================================
