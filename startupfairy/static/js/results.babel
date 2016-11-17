@@ -1,3 +1,10 @@
+//TODO:
+// - make pagination work by adding a value to keep track of which page ur on
+// - make links clickable by using the id to populate SearchResult link
+// - make forward/backward communicate with parent (resultlist) by using state
+// - make array to keep search results in 10 increments
+// - make a button to filter search results by and/or
+
 class SearchResult extends React.Component {
   render() {
     return (
@@ -34,6 +41,13 @@ class ForwardPagination extends React.Component {
 }
 
 class ResultsList extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      startValue: 0,
+      results: Array(10).fill(null),
+    };
+  }
 
   render() {
     this.pullData();
@@ -90,17 +104,7 @@ class ResultsList extends React.Component {
     success:
     function(result){
       var obj = JSON.parse(result);
-      $("searchresults").text("hi");
-    }});
-  }
-
-  noResults() {
-    $.ajax({
-    cache: false,
-    async: true,
-    success:
-    function(result){
-      $("searchresults").text("No results found.");
+      $("searchresults").replaceWith("hi");
     }});
   }
 }

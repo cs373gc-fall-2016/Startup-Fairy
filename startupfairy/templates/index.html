@@ -3,7 +3,10 @@
 {% block content %}
 
 <!-- Carousel -->
-<section id="Carousel">
+<!-- need to make this fit in a specified mask -->
+
+<section class="success" id="Carousel">
+  <!--div class="container"-->
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -19,28 +22,28 @@
       <div class="item active nova">
         <a href="category/companies"><img src="http://rivierapartners.com/content/uploads/2015/07/startup-office.jpg" class="carousel-img img-responsive" alt="...">
         <div class="carousel-caption">
-          <bigtext>Companies</bigtext>
+          <h1>Companies</h1>
         </div></a>
       </div>
 
       <div class="item nova">
         <a href="category/people"><img src="http://1u88jj3r4db2x4txp44yqfj1.wpengine.netdna-cdn.com/wp-content/uploads/2015/08/Camp-YC-Group.jpg" class="img-responsive" alt="...">
         <div class="carousel-caption">
-          <bigtext>People</bigtext>
+          <h1>People</h1>
         </div></a>
       </div>
 
       <div class="item nova">
         <a href="category/cities"><img src="http://kaprizhardwoodfloors.com/wp-content/uploads/2015/12/san-francisco.jpg" class="carousel-img img-responsive" alt="...">
         <div class="carousel-caption">
-          <bigtext>Cities</bigtext>
+          <h1>Cities</h1>
         </div></a>
       </div>
 
       <div class="item nova">
         <a href="category/financialorgs"><img src="https://gigaom.com/wp-content/uploads/sites/1/2013/06/wall-street-new-york-stock-exchange.jpg" class="img-responsive" alt="...">
         <div class="carousel-caption">
-          <bigtext>Organizations</bigtext>
+          <h1>Organizations</h1>
         </div></a>
       </div>
 
@@ -58,28 +61,8 @@
     </a>
 
   </div>
+  <!--/div-->
 </section>
 
-<!-- <section id="Nav Buttons">
-  <div class="container">
-    <div class="row button-bar">
-      <div class="col-lg-6 text-center">
-        <a href="category/companies"><h2>Companies</h2></a>
-      </div>
-
-      <div class="col-lg-6 text-center">
-        <a href="category/financialorgs"><h2>Organizations</h2></a>
-      </div>
-
-      <div class="col-lg-6 text-center">
-        <a href="category/people"><h2>People</h2></a>
-      </div>
-
-      <div class="col-lg-6 text-center">
-        <a href="category/cities"><h2>Cities</h2></a>
-      </div>
-    </div>
-
-  </section> -->
   <br>
   {% endblock %}

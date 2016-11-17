@@ -172,14 +172,6 @@ ul.no-indent {
   font-family: proxima-nova, sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 3.2vw;
-  width: 100%;
-}
-
-.nova hugetext {
-  font-family: proxima-nova, sans-serif;
-  font-style: normal;
-  font-weight: 600;
   font-size: 9.2vw;
   width: 100%;
 }
