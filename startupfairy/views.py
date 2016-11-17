@@ -50,7 +50,7 @@ def format_query(query_string):
     print(query_string)
     return query_string.translate(translator)
 
-@app.route('/search/', methods=['GET'])
+@app.route('/find/', methods=['GET'])
 def find():
     """
     a function to searche the database
@@ -63,14 +63,14 @@ def find():
         return render_template('noresults.html', query=query_string)
     return render_template('results.html', query=query_string, data=obj)
 
-@app.route('/search/query', methods=['GET'])
+@app.route('/search/<query_string>', methods=['GET'])
 def search(query_string='test'):
     """
     :param query_string: the string we are querying
     :return: the json of search results
     """
     # if request.method == 'GET':
-        # query_string = request.args.get['data']
+        # query_string = request.args.get['query']
     query_string = format_query(query_string)
     query_words = set(query_string.split())
     # For the "and" results.

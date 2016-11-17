@@ -2,7 +2,6 @@
 // - make pagination work by adding a value to keep track of which page ur on
 // - make links clickable by using the id to populate SearchResult link
 // - make forward/backward communicate with parent (resultlist) by using state
-// - make array to keep search results in 10 increments
 // - make a button to filter search results by and/or
 
 class SearchResult extends React.Component {
@@ -72,6 +71,7 @@ class ResultsList extends React.Component {
     this.state = {
       startValue: 0,
       results0: ['c:1','c:2','c:3','c:4','c:5','c:6','c:7','c:8','c:9','c:10',],
+      results1: Array(10).fill(null),
     };
   }
 
@@ -123,57 +123,43 @@ class ResultsList extends React.Component {
   }
 
   componentDidMount() {
-    //todo: write code that pulls data
-
-    var query = 'Facebook';
-    var queryJSON;
+    var query = "/search/" + this.props.query;
+    var queryJSON = this.props.json;
+    console.log(query);
+    console.log(queryJSON);
 
     $.ajax({
-    url: "/search/query",
-    type: "GET",
-    data: query,
-    async: true,
-    cache: false,
-    success:
-    function(result){
-      var queryJSON = JSON.parse(result);
-      console.log(queryJSON);
-    }});
+      url: query,
+      type: "GET",
+      async: true,
+      cache: false,
+      success:
+      function(result){
+        queryJSON = JSON.parse(result);
+      }});
 
-    setTimeout(() => {this.populateResults(queryJSON);} , 10000);
-  }
+    console.log("got here");
 
-  pullData(query, obj) {
-    $.ajax({
-    url: "/search/query",
-    type: "GET",
-    data: query,
-    async: true,
-    cache: false,
-    success:
-    function(result){
-      var retval = JSON.parse(result);
-      obj = retval;
-      console.log(queryJSON);
-    }});
+    setTimeout(() => {this.populateResults(queryJSON);}, 10000);
   }
 
   populateResults(obj) {
     console.log(obj);
     var keyArray0 = Object.keys(obj[0]);
     var keyArray1 = Object.keys(obj[1]);
-    console.log("keys");
-    console.log(keyArray0);
-    console.log(keyArray1);
     this.setState((prevState) => ({results0: keyArray0}));
-    //this.setState({results1: keyArray1});
+    console.log(this.state.results0);
+    this.setState((prevState) => ({results1: keyArray1}));
+    console.log(this.state.results1);
   }
 
 }
 
 // ========================================
 
+var root = document.getElementById('resultsSection');
+
 ReactDOM.render(
-  <ResultsList />,
-  document.getElementById('resultsSection')
+  <ResultsList {...(root.dataset)} />,
+  root
 );
