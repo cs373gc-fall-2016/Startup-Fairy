@@ -10,7 +10,9 @@ from collections import defaultdict
 import string
 from flask import Blueprint, Flask
 from flask import render_template, abort, request
-from models import *
+from sqlalchemy.exc import SQLAlchemyError
+
+from models import app, db, Company, Person, FinancialOrg, City, Index
 
 ALT_NAMES = {
     'financialorgs': 'Financial Organizations',
@@ -29,7 +31,10 @@ def index():
 
 @app.route('/favicon.ico')
 def favicon():
-    return "LOl"
+    """
+    :return: favicon for the website
+    """
+    return ""
 
 def format_query(query_string):
     '''
@@ -44,15 +49,23 @@ def format_query(query_string):
 
 @app.route('/search/', methods=['GET'])
 def find():
+    """
+    a function to searche the database
+    :return: json object with search results
+    """
     query_string = request.args.get('query')
     try:
         obj = search(query_string)
-    except:
+    except SQLAlchemyError:
         return render_template('noresults.html', query=query_string)
     return render_template('results.html', query=query_string, data=obj)
 
 @app.route('/search/query', methods=['GET'])
 def search(query_string='test'):
+    """
+    :param query_string: the string we are querying
+    :return: the json of search results
+    """
     # if request.method == 'GET':
     #     query_string = request.args.get['data']
     query_string = format_query(query_string)

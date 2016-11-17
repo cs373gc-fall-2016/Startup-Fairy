@@ -1,3 +1,5 @@
+# pylint: disable=R0903
+# pylint: disable=R0913
 """
 Implementation of models of startups and their attributes
 """
