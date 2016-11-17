@@ -3,13 +3,14 @@ from sqlalchemy import create_engine
 import models
 from models import db
 import json
+import os
 
 # engine = create_engine('postgresql://localhost/startup_fairy')
 
 # NOTE: startup_fairy is a database created on my local computer
 # NOTE: pip installed psycopg2
 
-JSON_DUMP_DIR = "static/data/db_dump/"
+JSON_DUMP_DIR = os.path.join(os.path.dirname(__file__), "static/data/db_dump/")
 COMPANIES_FILENAME = "companies.json"
 PEOPLE_FILENAME = "people.json"
 FINORGS_FILENAME = "finorgs.json"

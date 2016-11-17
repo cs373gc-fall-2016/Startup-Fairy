@@ -14,37 +14,37 @@ FILES :=						\
 	README.md 										
 
 ifeq ($(shell uname), Darwin)          # Apple
-    PYTHON   := python3.5
-    PIP      := pip3.5
-    PYLINT   := pylint
-    PYLINTFLAGS := --generated-members=String,Column,query
-    COVERAGE := coverage-3.5
-    PYDOC    := pydoc3.5
-    AUTOPEP8 := autopep8
+	PYTHON   := python3.5
+	PIP      := pip3.5
+	PYLINT   := pylint
+	PYLINTFLAGS := --generated-members=String,Column,query
+	COVERAGE := coverage-3.5
+	PYDOC    := pydoc3.5
+	AUTOPEP8 := autopep8
 else ifeq ($(CI), true)                # Travis CI
-    PYTHON   := python3.5
-    PIP      := pip3.5
-    PYLINT   := pylint
-    PYLINTFLAGS := --generated-members=String,Column,query
-    COVERAGE := coverage-3.5
-    PYDOC    := pydoc
-    AUTOPEP8 := autopep8
+	PYTHON   := python3.5
+	PIP      := pip3.5
+	PYLINT   := pylint
+	PYLINTFLAGS := --generated-members=String,Column,query
+	COVERAGE := coverage-3.5
+	PYDOC    := pydoc
+	AUTOPEP8 := autopep8
 else ifeq ($(shell uname -p), unknown) # Docker
-    PYTHON   := python3.5
-    PIP      := pip3.5
-    PYLINT   := pylint
-    PYLINTFLAGS := --generated-members=String,Column,query
-    COVERAGE := coverage-3.5
-    PYDOC    := pydoc3.5
-    AUTOPEP8 := autopep8
+	PYTHON   := python3.5
+	PIP      := pip3.5
+	PYLINT   := pylint
+	PYLINTFLAGS := --generated-members=String,Column,query
+	COVERAGE := coverage-3.5
+	PYDOC    := pydoc3.5
+	AUTOPEP8 := autopep8
 else                                   # UTCS
-    PYTHON   := python3.5
-    PIP      := pip3.5
-    PYLINT   := pylint3.5
-    PYLINTFLAGS := --generated-members=String,Column,query
-    COVERAGE := coverage-3.5
-    PYDOC    := pydoc3.4
-    AUTOPEP8 := autopep8
+	PYTHON   := python3.5
+	PIP      := pip3.5
+	PYLINT   := pylint3.5
+	PYLINTFLAGS := --generated-members=String,Column,query
+	COVERAGE := coverage-3.5
+	PYDOC    := pydoc3.4
+	AUTOPEP8 := autopep8
 endif
 
 config:
@@ -55,22 +55,22 @@ config:
 
 check:
 	@not_found=0;                                 \
-    for i in $(FILES);                            \
-    do                                            \
-        if [ -e $$i ];                            \
-        then                                      \
-            echo "$$i found";                     \
-        else                                      \
-            echo "$$i NOT FOUND";                 \
-            not_found=`expr "$$not_found" + "1"`; \
-        fi                                        \
-    done;                                         \
-    if [ $$not_found -ne 0 ];                     \
-    then                                          \
-        echo "$$not_found failures";              \
-        exit 1;                                   \
-    fi;                                           \
-    echo "success";
+	for i in $(FILES);                            \
+	do                                            \
+		if [ -e $$i ];                            \
+		then                                      \
+			echo "$$i found";                     \
+		else                                      \
+			echo "$$i NOT FOUND";                 \
+			not_found=`expr "$$not_found" + "1"`; \
+		fi                                        \
+	done;                                         \
+	if [ $$not_found -ne 0 ];                     \
+	then                                          \
+		echo "$$not_found failures";              \
+		exit 1;                                   \
+	fi;                                           \
+	echo "success";
 
 clean:
 	rm -f .coverage
@@ -114,7 +114,15 @@ pylint: .pylintrc
 	-$(PYLINT) startupfairy/views.py
 
 test:	log docs check pylint TestApp
-	
+
+db:
+	$(PYTHON) startupfairy/create_db.py
+	$(PYTHON) startupfairy/populate_db.py
+	$(PYTHON) startupfairy/populate_index.py
+
+dropdb:
+	$(PYTHON) startupfairy/drop_db.py
+
 versions:
 	which make
 	make --version
