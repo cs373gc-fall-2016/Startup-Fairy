@@ -15,6 +15,7 @@ class SearchResult extends React.Component {
   }
 
   render() {
+    console.log("rendering child");
     return (
         <div>
           <h3><a href="{url}">{this.state.pageTitle}</a></h3>
@@ -24,12 +25,15 @@ class SearchResult extends React.Component {
   }
 
   //This function runs when render() is done!
-  componentDidMount() {
+  componentWillReceiveProps() {
+    console.log("updating child...")
     //todo: write code that uses this.props.value and updates this.state
-    //lookup(this.props.value)
+    var resultsArray = this.props.results;
+    var modelId = resultsArray[this.props.value];
 
     var newPageTitle = 'something'
-    this.setState((prevState) => ({pageTitle: this.props.value}));
+    this.setState((prevState) => ({pageTitle: modelId}));
+    this.forceUpdate();
 
     //var description = 'new description here'
     //this.setState((prevState) => ({resultDescription: {description}}));
@@ -75,10 +79,30 @@ class ResultsList extends React.Component {
     };
   }
 
+  componentWillMount() {
+    console.log("mounting...")
+    var query = "/search/" + this.props.query;
+    var queryJSON = this.props.json;
+    console.log(query);
+
+    $.ajax({
+      url: query,
+      type: "GET",
+      async: true,
+      cache: false,
+      success:
+      function(result){
+        queryJSON = JSON.parse(result);
+      }});
+
+    setTimeout(() => {this.populateResults(queryJSON);}, 2000);
+  }
+
   render() {
+    console.log("rendering...")
     return (
       <div>
-        {this.renderResult(0)}
+        <SearchResult results={this.state.results0} value={0+this.state.startValue} />
         <hr></hr>
         {this.renderResult(1)}
         <hr></hr>
@@ -106,7 +130,7 @@ class ResultsList extends React.Component {
   }
 
   renderResult(i) {
-    return <SearchResult value={this.state.results0[i+this.state.startValue]} />;
+    return <SearchResult results={this.state.results0} value={i+this.state.startValue} />;
   }
 
   renderBack() {
@@ -122,27 +146,6 @@ class ResultsList extends React.Component {
     //this.setState({startValue: 10});
   }
 
-  componentDidMount() {
-    var query = "/search/" + this.props.query;
-    var queryJSON = this.props.json;
-    console.log(query);
-    console.log(queryJSON);
-
-    $.ajax({
-      url: query,
-      type: "GET",
-      async: true,
-      cache: false,
-      success:
-      function(result){
-        queryJSON = JSON.parse(result);
-      }});
-
-    console.log("got here");
-
-    setTimeout(() => {this.populateResults(queryJSON);}, 10000);
-  }
-
   populateResults(obj) {
     console.log(obj);
     var keyArray0 = Object.keys(obj[0]);
@@ -151,6 +154,8 @@ class ResultsList extends React.Component {
     console.log(this.state.results0);
     this.setState((prevState) => ({results1: keyArray1}));
     console.log(this.state.results1);
+    this.forceUpdate();
+    console.log("finished update")
   }
 
 }
