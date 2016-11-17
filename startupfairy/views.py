@@ -45,7 +45,10 @@ def format_query(query_string):
 @app.route('/search/', methods=['GET'])
 def find():
     query_string = request.args.get('query')
-    obj = search(query_string)
+    try:
+        obj = search(query_string)
+    except:
+        return render_template('noresults.html', query=query_string)
     return render_template('results.html', query=query_string, data=obj)
 
 @app.route('/search/query', methods=['GET'])

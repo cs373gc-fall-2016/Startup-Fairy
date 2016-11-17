@@ -19,9 +19,9 @@ class SearchResult extends React.Component {
 class BackPagination extends React.Component {
   render() {
     return (
-      <div className="col-sm-6 align-left">
-        <a href="/" className="btn btn-lg btn-blue">
-          <h3>Back</h3>
+      <div className="pull-left">
+        <a href="/" className="btn btn-lg btn-red">
+          <h3>Prev</h3>
         </a>
       </div>
     );
@@ -31,9 +31,9 @@ class BackPagination extends React.Component {
 class ForwardPagination extends React.Component {
   render() {
     return (
-      <div className="col-sm-6 align-right">
-        <a href="/" className="btn btn-lg btn-red">
-          <h3>Forward</h3>
+      <div className="pull-right">
+        <a href="/" className="btn btn-lg btn-blue">
+          <h3>Next</h3>
         </a>
       </div>
     );
@@ -43,19 +43,29 @@ class ForwardPagination extends React.Component {
 class ResultsList extends React.Component {
 
   render() {
-    this.pullData();
     return (
       <div>
         {this.renderResult(0)}
+        <hr></hr>
         {this.renderResult(1)}
+        <hr></hr>
         {this.renderResult(2)}
+        <hr></hr>
         {this.renderResult(3)}
+        <hr></hr>
         {this.renderResult(4)}
+        <hr></hr>
         {this.renderResult(5)}
+        <hr></hr>
         {this.renderResult(6)}
+        <hr></hr>
         {this.renderResult(7)}
+        <hr></hr>
         {this.renderResult(8)}
+        <hr></hr>
         {this.renderResult(9)}
+        <br></br>
+        <hr className="search"></hr>
         {this.renderBack()}
         {this.renderForward()}
       </div>
@@ -75,14 +85,6 @@ class ResultsList extends React.Component {
   }
 
   pullData() {
-    $.ajax({
-    cache: false,
-    async: true,
-    success:
-    function(result){
-      $("searchresults").text("No results found.");
-    }});
-
     var query = 'Facebook';
 
     $.ajax({
@@ -96,6 +98,16 @@ class ResultsList extends React.Component {
       var obj = JSON.parse(result);
       var markers = JSON.stringify(data)
       $("searchresults").replaceWith(markers);
+    }});
+  }
+
+  noResults() {
+    $.ajax({
+    cache: false,
+    async: true,
+    success:
+    function(result){
+      $("searchresults").text("No results found.");
     }});
   }
 }
