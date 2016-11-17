@@ -1,15 +1,8 @@
 class SearchResult extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      value: false,
-    };
-  }
-
   render() {
     return (
         <div>
-          <h3><a href="/">Page Title</a></h3>
+          <h3><a href="/">Result #{this.props.value}</a></h3>
           <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dui odio, tincidunt nec tortor sed, suscipit aliquet turpis. Suspendisse potenti. Pellentesque cursus maximus lectus. Suspendisse lobortis risus quis erat pretium imperdiet. Vivamus tincidunt placerat dignissim. Duis consequat eleifend turpis a auctor. Donec ac imperdiet orci, sed porta orci. Nam vulputate at lorem eu consequat.</h4>
         </div>
     );
@@ -43,6 +36,7 @@ class ForwardPagination extends React.Component {
 class ResultsList extends React.Component {
 
   render() {
+    this.pullData();
     return (
       <div>
         {this.renderResult(0)}
@@ -73,7 +67,7 @@ class ResultsList extends React.Component {
   }
 
   renderResult(i) {
-    return <SearchResult />;
+    return <SearchResult value={i} />;
   }
 
   renderBack() {
@@ -96,8 +90,7 @@ class ResultsList extends React.Component {
     success:
     function(result){
       var obj = JSON.parse(result);
-      var markers = JSON.stringify(data)
-      $("searchresults").replaceWith(markers);
+      $("searchresults").text("hi");
     }});
   }
 
