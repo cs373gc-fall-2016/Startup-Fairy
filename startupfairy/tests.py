@@ -20,10 +20,6 @@ import requests
 import flask
 from views import app, index, about
 
-# initialize database object
-#db = SQLAlchemy()
-
-
 # -----------
 # TestCompany
 # -----------
@@ -37,11 +33,16 @@ class TestCompany(TestCase):
     # Setup and Teardown
     # ------------------
 
+    # may not be needed because the work is done elsewhere?
     # def setUp(self):
     #     with app.test_request_context():
     #         db.create_all()
 
-    # def tearDown(self):
+    # not dropping all right now because the database with real info is being affected; to be changed
+    def tearDown(self):
+        with app.test_request_context():
+            db.session.remove()
+            # db.drop_all()
 
     # -------
     # Company
@@ -51,23 +52,36 @@ class TestCompany(TestCase):
         """
         only temporary
         """
-        # example1 = Company("id", "name", "summary", "people",
-        #                    "city", "finorgs", "twitter", "website", "logo")
-        # example3 = Company("id3", "name3", "summary3", "people3",
-        #                    "city3", "finorgs3", "twitter3", "website3", "logo3")
-
-        # db.session.add(example1)
-        # db.session.add(example2)
-        # db.session.commit()
-        # companies = Company.query.all()
-        # self.assertTrue(example1 in companies)
-        # self.assertTrue(example2 in companies)
-        # self.assertEqual(len(companies), 2)
-
-        # also only temporary
         with app.test_request_context():
-            stuff = db.session.query(Company).all()
-        self.assertEqual(len(stuff), 1000)
+            example1 = Company("id", "name", "summary", "people",
+                               "city", "finorgs", "twitter", "website", "logo")
+            example2 = Company("id2", "name2", "summary2", "people2",
+                               "city2", "finorgs2", "twitter2", "website2", "logo2")
+
+            companies = db.session.query(Company).all()
+            before = len(companies)
+
+            # probably shouldn't actually change the database that has real information for these tests--to be changed
+            db.session.add(example1)
+            db.session.add(example2)
+            db.session.commit()
+            companies = db.session.query(Company).all()
+            after = len(companies)
+
+            self.assertTrue(example1 in companies)
+            self.assertTrue(example2 in companies)
+            self.assertEqual(after, before + 2)
+
+            before = after
+            db.session.delete(example1)
+            db.session.delete(example2)
+            db.session.commit()
+            companies = db.session.query(Company).all()
+            after = len(companies)
+
+            self.assertTrue(example1 not in companies)
+            self.assertTrue(example2 not in companies)
+            self.assertEqual(after, before - 2)
 
     def test_company_constructor_1(self):
         """
