@@ -6,5 +6,6 @@ bower_components
 .idea/
 .pylintrc
 *.orig
+.coverage
 
 scratch.txt
