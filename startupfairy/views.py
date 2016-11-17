@@ -245,7 +245,7 @@ def page_not_found(e):
 
 @app.route('/run_tests')
 def run_tests():
-    output = subprocess.getoutput("python tests.py")
+    output = subprocess.getoutput("python startupfairy/tests.py")
     return json.dumps({'test_results': str(output)})
 
 if __name__ == '__main__':
