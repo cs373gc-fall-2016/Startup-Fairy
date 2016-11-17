@@ -6,14 +6,40 @@
 // - make a button to filter search results by and/or
 
 class SearchResult extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      pageTitle: 'Result #',
+      url: '/about',
+      pageDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dui odio, tincidunt nec tortor sed, suscipit aliquet turpis. Suspendisse potenti. Pellentesque cursus maximus lectus. Suspendisse lobortis risus quis erat pretium imperdiet. Vivamus tincidunt placerat dignissim. Duis consequat eleifend turpis a auctor. Donec ac imperdiet orci, sed porta orci. Nam vulputate at lorem eu consequat',
+    };
+  }
+
   render() {
     return (
         <div>
-          <h3><a href="/">Result #{this.props.value}</a></h3>
-          <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dui odio, tincidunt nec tortor sed, suscipit aliquet turpis. Suspendisse potenti. Pellentesque cursus maximus lectus. Suspendisse lobortis risus quis erat pretium imperdiet. Vivamus tincidunt placerat dignissim. Duis consequat eleifend turpis a auctor. Donec ac imperdiet orci, sed porta orci. Nam vulputate at lorem eu consequat.</h4>
+          <h3><a href="{url}">{this.state.pageTitle}</a></h3>
+          <h4>{this.state.pageDescription}</h4>
         </div>
     );
   }
+
+  //This function runs when render() is done!
+  componentDidMount() {
+    //todo: write code that uses this.props.value and updates this.state
+    //lookup(this.props.value)
+
+    var newPageTitle = 'something'
+    this.setState((prevState) => ({pageTitle: prevState.pageTitle + this.props.value}));
+
+    //var description = 'new description here'
+    //this.setState((prevState) => ({resultDescription: {description}}));
+  }
+
+  lookup(value) {
+    //todo: using the ID, find the correct instance
+  }
+
 }
 
 class BackPagination extends React.Component {
@@ -21,7 +47,19 @@ class BackPagination extends React.Component {
     return (
       <div className="pull-left">
         <button className="btn btn-lg btn-red">
-          <h3>Prev</h3>
+          <h3>Prev Page</h3>
+        </button>
+      </div>
+    );
+  }
+}
+
+class ForwardPagination extends React.Component {
+  render() {
+    return (
+      <div className="pull-right">
+        <button className="btn btn-lg btn-blue">
+          <h3>Next Page</h3>
         </button>
       </div>
     );
@@ -33,7 +71,7 @@ class ResultsList extends React.Component {
     super();
     this.state = {
       startValue: 0,
-      results0: ['c:189','p:182','c:189','p:182','c:189','p:182','c:189','p:182','c:189','p:182',],
+      results0: ['c:1','c:2','c:3','c:4','c:5','c:6','c:7','c:8','c:9','c:10',],
     };
   }
 
@@ -62,17 +100,22 @@ class ResultsList extends React.Component {
         <br></br>
         <hr className="search"></hr>
         {this.renderBack()}
-        <h3 className="text-center"> Page: {this.state.startValue}</h3>
+        {this.renderNext()}
       </div>
     );
   }
 
   renderResult(i) {
-    return <SearchResult value={this.state.results0[i]} />;
+    return <SearchResult value={this.state.results0[i+this.state.startValue]} />;
   }
 
   renderBack() {
     return <BackPagination />;
+    //<h3> Page: {this.state.startValue + 1}</h3>
+  }
+
+  renderNext() {
+    return <ForwardPagination />;
   }
 
   handleClick() {
@@ -104,7 +147,6 @@ class ResultsList extends React.Component {
       var obj = JSON.parse(result);
       //This is what I think needs to be called to set the state but can't get it to run
       //populateResults(obj);
-      $("searchresults").replaceWith("hi");
     }});
   }
 
