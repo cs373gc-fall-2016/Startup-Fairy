@@ -3,11 +3,10 @@ Serves all the routes for the application
 """
 import json
 import subprocess
-import markdown2
-# import requests
 from os import listdir
 from collections import defaultdict
 import string
+import markdown2
 from flask import Blueprint, Flask
 from flask import render_template, abort, request
 from flask_cors import CORS, cross_origin
