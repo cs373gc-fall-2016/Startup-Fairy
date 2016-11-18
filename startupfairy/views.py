@@ -53,7 +53,7 @@ def format_query(query_string):
 @app.route('/find/', methods=['GET'])
 def find():
     """
-    a function to searche the database
+    a function to search the database
     :return: json object with search results
     """
     query_string = request.args.get('query')

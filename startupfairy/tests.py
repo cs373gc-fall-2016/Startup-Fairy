@@ -19,11 +19,6 @@ import requests
 import flask
 from views import app, index, about
 
-# app.config[
-#     "SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@postgres/startupfairydb5"
-# db = SQLAlchemy(app)
-# db.init_app(app)
-
 # -----------
 # TestCompany
 # -----------
@@ -52,7 +47,7 @@ class TestCompany(TestCase):
 
     def test_company_model_1(self):
         """
-        Test adding Company objects to and deleting Company objects from the database
+        Test adding Company objects to and deleting Company objects from the db
         """
         with app.test_request_context():
             example1 = Company("id", "name", "summary", "people",
@@ -60,38 +55,40 @@ class TestCompany(TestCase):
             example2 = Company("id2", "name2", "summary2", "people2",
                                "city2", "finorgs2", "twitter2", "website2", "logo2")
 
-            companies = db.session.query(Company).all()
-            before = len(companies)
+            companies1 = db.session.query(Company).all()
 
             db.session.add(example1)
             db.session.add(example2)
             db.session.commit()
-            companies = db.session.query(Company).all()
-            after = len(companies)
+            companies2 = db.session.query(Company).all()
 
-            self.assertTrue(example1 in companies)
-            self.assertTrue(example2 in companies)
-            self.assertEqual(after, before + 2)
+            self.assertTrue(example1 in companies2)
+            self.assertTrue(example2 in companies2)
+            self.assertEqual(len(companies2), len(companies1) + 2)
 
-            before = after
             db.session.delete(example1)
             db.session.delete(example2)
             db.session.commit()
-            companies = db.session.query(Company).all()
-            after = len(companies)
+            companies3 = db.session.query(Company).all()
 
-            self.assertTrue(example1 not in companies)
-            self.assertTrue(example2 not in companies)
-            self.assertEqual(after, before - 2)
+            self.assertTrue(example1 not in companies3)
+            self.assertTrue(example2 not in companies3)
+            self.assertEqual(len(companies1), len(companies2) - 2)
 
     def test_company_model_2(self):
         """
-        Test querying the database by attribute
+        Test querying the database by attribute using simple keywords
         """
         with app.test_request_context():
-            company = db.session.query(Company).filter_by(name="Wetpaint").first()
-            self.assertEqual(company.city, "Seattle")
-            self.assertEqual(company.twitter, "BachelrWetpaint")
+            example1 = Company("id", "name", "summary", "people",
+                               "city", "finorgs", "twitter", "website", "logo")
+
+            db.session.add(example1)
+            db.session.commit()
+
+            company = db.session.query(Company).filter_by(name="name").first()
+            self.assertEqual(company.city, "city")
+            self.assertEqual(company.twitter, "twitter")
 
     def test_company_constructor_1(self):
         """
@@ -299,38 +296,40 @@ class TestFinancialOrg(TestCase):
             example2 = FinancialOrg("id2", "name2", "summary2", "city2", "companies2", "twitter2",
                                     "website2", "logo2")
 
-            finorgs = db.session.query(FinancialOrg).all()
-            before = len(finorgs)
+            finorgs1 = db.session.query(FinancialOrg).all()
 
             db.session.add(example1)
             db.session.add(example2)
             db.session.commit()
-            finorgs = db.session.query(FinancialOrg).all()
-            after = len(finorgs)
+            finorgs2 = db.session.query(FinancialOrg).all()
 
-            self.assertTrue(example1 in finorgs)
-            self.assertTrue(example2 in finorgs)
-            self.assertEqual(after, before + 2)
+            self.assertTrue(example1 in finorgs2)
+            self.assertTrue(example2 in finorgs2)
+            self.assertEqual(len(finorgs2), len(finorgs1) + 2)
 
-            before = after
             db.session.delete(example1)
             db.session.delete(example2)
             db.session.commit()
-            finorgs = db.session.query(FinancialOrg).all()
-            after = len(finorgs)
+            finorgs3 = db.session.query(FinancialOrg).all()
 
-            self.assertTrue(example1 not in finorgs)
-            self.assertTrue(example2 not in finorgs)
-            self.assertEqual(after, before - 2)
+            self.assertTrue(example1 not in finorgs3)
+            self.assertTrue(example2 not in finorgs3)
+            self.assertEqual(len(finorgs3), len(finorgs2) - 2)
 
     def test_financial_org_model_2(self):
         """
-        Test querying the database by attribute
+        Test querying the database by attribute using simple keywords
         """
         with app.test_request_context():
-            finorg = db.session.query(FinancialOrg).filter_by(name="Greylock Partners").first()
-            self.assertEqual(finorg.city, "Menlo Park")
-            self.assertEqual(finorg.twitter, "greylockvc")
+            example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
+                                    "website", "logo")
+
+            db.session.add(example1)
+            db.session.commit()
+
+            finorg = db.session.query(FinancialOrg).filter_by(name="name").first()
+            self.assertEqual(finorg.city, "city")
+            self.assertEqual(finorg.twitter, "twitter")
 
     def test_financial_org_init_1(self):
         """
@@ -534,38 +533,40 @@ class TestPerson(TestCase):
             example2 = Person("id2", "name2", "summary2", "city2",
                               "companies2", "role2", "twitter2", "logo_url2")
 
-            people = db.session.query(Person).all()
-            before = len(people)
+            people1 = db.session.query(Person).all()
 
             db.session.add(example1)
             db.session.add(example2)
             db.session.commit()
-            people = db.session.query(Person).all()
-            after = len(people)
+            people2 = db.session.query(Person).all()
 
-            self.assertTrue(example1 in people)
-            self.assertTrue(example2 in people)
-            self.assertEqual(after, before + 2)
+            self.assertTrue(example1 in people2)
+            self.assertTrue(example2 in people2)
+            self.assertEqual(len(people2), len(people1) + 2)
 
-            before = after
             db.session.delete(example1)
             db.session.delete(example2)
             db.session.commit()
-            people = db.session.query(Person).all()
-            after = len(people)
+            people3 = db.session.query(Person).all()
 
-            self.assertTrue(example1 not in people)
-            self.assertTrue(example2 not in people)
-            self.assertEqual(after, before - 2)
+            self.assertTrue(example1 not in people3)
+            self.assertTrue(example2 not in people3)
+            self.assertEqual(len(people1), len(people2) - 2)
 
     def test_person_model_2(self):
         """
-        Test querying the database by attribute
+        Test querying the database by attribute using simple keywords
         """
         with app.test_request_context():
-            person = db.session.query(Person).filter_by(name="Ben Elowitz").first()
-            self.assertEqual(person.city, None)
-            self.assertEqual(person.twitter, "elowitz")
+            example1 = Person("id1", "name1", "summary1", "city1",
+                              "companies1", "role1", "twitter1", "logo_url1")
+
+            db.session.add(example1)
+            db.session.commit()
+
+            person = db.session.query(Person).filter_by(name="name1").first()
+            self.assertEqual(person.city, "city1")
+            self.assertEqual(person.twitter, "twitter1")
 
     def test_person_init_1(self):
         """
@@ -741,37 +742,40 @@ class TestCity(TestCase):
             example2 = City("id2", "name2", "state2", "region2",
                             "companies2", "finorgs2", "people2")
 
-            cities = db.session.query(City).all()
-            before = len(cities)
+            cities1 = db.session.query(City).all()
 
             db.session.add(example1)
             db.session.add(example2)
             db.session.commit()
-            cities = db.session.query(City).all()
-            after = len(cities)
+            cities2 = db.session.query(City).all()
 
-            self.assertTrue(example1 in cities)
-            self.assertTrue(example2 in cities)
-            self.assertEqual(after, before + 2)
+            self.assertTrue(example1 in cities2)
+            self.assertTrue(example2 in cities2)
+            self.assertEqual(len(cities2), len(cities1) + 2)
 
-            before = after
             db.session.delete(example1)
             db.session.delete(example2)
             db.session.commit()
-            cities = db.session.query(City).all()
-            after = len(cities)
+            cities3 = db.session.query(City).all()
 
-            self.assertTrue(example1 not in cities)
-            self.assertTrue(example2 not in cities)
-            self.assertEqual(after, before - 2)
+            self.assertTrue(example1 not in cities3)
+            self.assertTrue(example2 not in cities3)
+            self.assertEqual(len(cities1), len(cities2) - 2)
 
     def test_city_model_2(self):
         """
-        Test querying the database by attribute
+        Test querying the database by attribute using simple keywords
         """
         with app.test_request_context():
-            city = db.session.query(City).filter_by(name="Seattle").first()
-            self.assertEqual(city.state, "WA")
+            example1 = City("id1", "name1", "state1", "region1",
+                            "companies1", "finorgs1", "people1")
+
+            db.session.add(example1)
+            db.session.commit()
+
+            city = db.session.query(City).filter_by(name="name1").first()
+            self.assertEqual(city.state, "state1")
+            self.assertEqual(city.region, "region1")
 
     def test_city_init_1(self):
         """
