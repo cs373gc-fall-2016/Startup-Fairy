@@ -90,6 +90,9 @@ class TestCompany(TestCase):
             self.assertEqual(company.city, "city")
             self.assertEqual(company.twitter, "twitter")
 
+            db.session.delete(example1)
+            db.session.commit()
+
     def test_company_constructor_1(self):
         """
         Test construction of a new company instance
@@ -331,6 +334,9 @@ class TestFinancialOrg(TestCase):
             self.assertEqual(finorg.city, "city")
             self.assertEqual(finorg.twitter, "twitter")
 
+            db.session.delete(example1)
+            db.session.commit()
+
     def test_financial_org_init_1(self):
         """
         Test construction of a new company instance
@@ -568,6 +574,9 @@ class TestPerson(TestCase):
             self.assertEqual(person.city, "city1")
             self.assertEqual(person.twitter, "twitter1")
 
+            db.session.delete(example1)
+            db.session.commit()
+
     def test_person_init_1(self):
         """
         Test construction of a Person
@@ -776,6 +785,9 @@ class TestCity(TestCase):
             city = db.session.query(City).filter_by(name="name1").first()
             self.assertEqual(city.state, "state1")
             self.assertEqual(city.region, "region1")
+
+            db.session.delete(example1)
+            db.session.commit()
 
     def test_city_init_1(self):
         """
