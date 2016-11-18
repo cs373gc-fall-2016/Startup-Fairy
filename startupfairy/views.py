@@ -140,7 +140,7 @@ def category(app_category):
 # pylint: disable=too-many-branches
 # we're using them!
 def details(app_category, entity):
-    """Serve the an entity's page"""
+    """Serve an entity's page"""
     if app_category == 'people':
         data = api_people(entity)
     elif app_category == 'cities':

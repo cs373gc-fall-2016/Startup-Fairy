@@ -10,7 +10,7 @@ from models import Company, FinancialOrg, Person, City, db
 import httpretty
 import requests
 
-from views import app, index, about
+from views import app, index, about, category, education, page_not_found
 
 # -----------
 # TestCompany
@@ -914,6 +914,48 @@ class TestViews(TestCase):
 
         with app.test_request_context():
             self.assertEqual(about() is not None, True)
+
+    def test_category_1(self):
+        """Test that category renders properly"""
+
+        with app.test_request_context():
+            self.assertEqual(category('people') is not None, True)
+
+    def test_category_2(self):
+        """Test that category renders properly"""
+
+        with app.test_request_context():
+            self.assertEqual(category('cities') is not None, True)
+
+    def test_category_3(self):
+        """Test that category renders properly"""
+
+        with app.test_request_context():
+            self.assertEqual(category('companies') is not None, True)
+
+    def test_category_4(self):
+        """Test that category renders properly"""
+
+        with app.test_request_context():
+            self.assertEqual(category('financialorgs') is not None, True)
+
+    def test_category_5(self):
+        """Test that category renders properly"""
+
+        with app.test_request_context():
+            self.assertEqual(category('nonexistent_category') is not None, True)
+
+    def test_education_1(self):
+        """Test that education renders properly"""
+
+        with app.test_request_context():
+            self.assertEqual(education() is not None, True)
+
+    def test_page_not_found_1(self):
+        """Test that page_not_found 404 renders properly"""
+
+        with app.test_request_context():
+            self.assertEqual(page_not_found('error') is not None, True)
 
 # ----
 # main
