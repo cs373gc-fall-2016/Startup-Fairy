@@ -126,7 +126,6 @@ def category(app_category):
     else:
         print("Category does not exist")
         data = []
-    print("Rendering template")
     return render_template('category.html',
                            alt_title=ALT_NAMES.get(app_category, None),
                            title=app_category, data=data)
@@ -151,6 +150,20 @@ def details(app_category, entity):
     parsed_data = json.loads(data)
     if 'summary' in parsed_data.keys() and parsed_data['summary'] is not None:
         parsed_data['summary'] = markdown2.markdown(parsed_data['summary'])
+    if app_category == 'cities':
+        parsed_data['is_city']=True
+    else:
+        parsed_data['is_city']=False
+        location_info = {}
+        city_info = json.loads(get_city_by_name(parsed_data['city']))
+        if city_info is not None:
+            if 'state' in city_info.keys():
+                location_info['state'] = city_info['state']
+            if 'region' in city_info.keys():
+                location_info['region'] = city_info['region']
+            if 'city_id' in city_info.keys():
+                location_info['city_id'] = city_info['city_id']
+        parsed_data['location'] = json.dumps(location_info)
     return render_template('details.html', data=parsed_data, category=app_category)
 
 
@@ -215,7 +228,6 @@ def api_financialorgs(entity=None):
         print("Get financial orgs failed")
         abort(404)
 
-
 @app.route('/api/cities', methods=['GET'])
 def api_cities(entity=None):
     try:
@@ -232,6 +244,16 @@ def api_cities(entity=None):
         print("Get cities failed")
         abort(404)
 
+def get_city_by_name(name):
+    """
+    Get city information by name. For internal use
+    """
+    try:
+        data = db.session.query(City).filter_by(name=name).one()
+        return json.dumps(data.dictionary())
+    except:
+        return None
+           
 def get_all_from_category(table):
     """
     Helper that gets all data from a given table

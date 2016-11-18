@@ -65,8 +65,17 @@
 
     var Location = React.createClass({
       render: function() {
-        // TODO
-        return <p>LOCATION</p>
+        let isCity = JSON.parse(this.props.is_city);
+        let data = JSON.parse(this.props.location);
+        let location = this.props.city;
+        if (data.state != undefined || data.state != null) {
+          location = location + ", " + data.state;
+        }
+        if (isCity === true) { 
+          return <div><h1>{location}</h1><h4>{data.region} Region</h4></div>
+        }
+        let url = "/category/cities/" + data.city_id;
+        return <p><a href={url}>{location}</a></p>
       }
     });
 
@@ -91,10 +100,18 @@
       );
     }
     
-    ReactDOM.render(
-      <Location />,
-      document.getElementById('location')
-    );
+    {% if data.city %}
+      ReactDOM.render(
+        <Location is_city="false" city="{{ data.city }}" location="{{ data.location }}" />,
+        document.getElementById('location')
+      );
+    {% else %}
+      // This is a city
+      ReactDOM.render(
+        <Location is_city="true" city="{{ data.name }}" location='{"state": "{{data.state}}", "region": "{{data.region}}"}' />,
+        document.getElementById('location')
+      );
+    {% endif %}
   </script>
 
   <div class="col-md-8 col-md-offset-2">
@@ -104,7 +121,7 @@
       {% endif %}
     </div>
     <div>
-      {% if data.name %}
+      {% if data.name and data.city %}
         <h1>{{ data.name }}</h1>
       {% endif %}
       {% if data.website %}<a href="{{ data.website }}">{{ data.website }}</a>{% endif %}
