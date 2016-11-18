@@ -22,6 +22,7 @@ class SearchResult extends React.Component {
   //This function runs when render() is done!
   componentWillReceiveProps() {
     var resultsArray = this.props.results;
+    console.log(this.props.value);
     var modelId = resultsArray[this.props.value];
     if(!modelId) {
       var nullobj;
@@ -149,17 +150,13 @@ class BackPagination extends React.Component {
       </div>
     );
   }
-
-  handleClick() {
-    this.props.startValue += 10;
-  }
 }
 
 class ForwardPagination extends React.Component {
   render() {
     return (
       <div className="pull-right">
-        <button className="btn btn-lg btn-blue">
+        <button className="btn btn-lg btn-blue" onClick={this.props.onClick}>
           <h3>Next Page</h3>
         </button>
       </div>
@@ -187,6 +184,9 @@ class ResultsList extends React.Component {
       results0: Array(10).fill(null), //"and"
       results1: Array(10).fill(null), //"or"
     };
+
+    this.handleBackClick = this.handleBackClick.bind(this);
+    this.handleNextClick = this.handleNextClick.bind(this);
   }
 
   componentWillMount() {
@@ -230,23 +230,29 @@ class ResultsList extends React.Component {
   }
 
   renderResult(i) {
+    console.log("rendering results again...");
     var query = this.props.query;
-    return <SearchResult results={this.state.results0} query={query} value={i+this.state.startValue} />;
+    var newVal = i+this.state.startValue;
+    return <SearchResult results={this.state.results0} query={query} value={newVal} />;
   }
 
   renderBack() {
-    return <BackPagination onClick={this.handleBackClick} />;
+    var click = this.handleBackClick;
+    return <BackPagination onClick={click} />;
   }
 
   renderNext() {
-    return <ForwardPagination onClick={this.handleNextClick} />;
+    var click = this.handleNextClick;
+    return <ForwardPagination onClick={click} />;
   }
 
   handleBackClick() {
+    console.log("i just got clicked!");
     this.setState((prevState) => ({startValue: (prevState)-10}));
   }
 
   handleNextClick() {
+    console.log("i just got clicked!");
     this.setState((prevState) => ({startValue: (prevState)+10}));
   }
 
