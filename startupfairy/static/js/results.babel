@@ -142,13 +142,25 @@ class ForwardPagination extends React.Component {
   }
 }
 
+class SwitchButton extends React.Component {
+  render() {
+    return (
+      <div className="pull-right">
+        <button className="btn btn-lg btn-blue">
+          <h3>Next Page</h3>
+        </button>
+      </div>
+    );
+  }
+}
+
 class ResultsList extends React.Component {
   constructor() {
     super();
     this.state = {
       startValue: 0,
-      results0: Array(10).fill(null),
-      results1: Array(10).fill(null),
+      results0: Array(10).fill(null), //"and"
+      results1: Array(10).fill(null), //"or"
     };
   }
 
@@ -175,7 +187,7 @@ class ResultsList extends React.Component {
     console.log("rendering...")
     return (
       <div>
-        {this.renderResult(0)}
+        {this.renderResult(startVal+0)}
         {this.renderResult(1)}
         {this.renderResult(2)}
         {this.renderResult(3)}
@@ -198,7 +210,6 @@ class ResultsList extends React.Component {
 
   renderBack() {
     return <BackPagination />;
-    //<h3> Page: {this.state.startValue + 1}</h3>
   }
 
   renderNext() {
