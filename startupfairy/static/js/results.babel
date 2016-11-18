@@ -54,8 +54,8 @@ class SearchResult extends React.Component {
     }
 
     var obj;
-    console.log(id);
-    console.log(cat);
+    // console.log(id);
+    // console.log(cat);
     var functo = this.finishCall;
     var name;
     var summary;
@@ -68,14 +68,14 @@ class SearchResult extends React.Component {
       success:
       function(result){
         obj = JSON.parse(result);
-        console.log(obj);
+        // console.log(obj);
         //functo(obj, name, summary);
       }});
 
 
     setTimeout(() => {
         var name = this.finishCall(obj);
-        console.log(name);
+        // console.log(name);
         this.setState((prevState) => ({pageTitle: name}));
         }, 2000);
 
@@ -83,7 +83,7 @@ class SearchResult extends React.Component {
       var summary = this.finishCallSum(obj);
       this.setState((prevState) => ({pageDescription: summary}));
       var query = this.props.query;
-      console.log(query);
+      // console.log(query);
       var markdowned;
       $.ajax({
         url: '/api/markdown',
@@ -93,7 +93,7 @@ class SearchResult extends React.Component {
         cache: false,
         success:
         function(result) {
-          console.log("DONE");
+          // console.log("DONE");
           markdowned = JSON.parse(result)["result"];
           // console.log(markdowned);
         }});
@@ -167,6 +167,22 @@ class ForwardPagination extends React.Component {
   }
 }
 
+class FilterButton extends React.Component {
+  swap() {
+    let isAnd = this.props.filterFunction.isAnd;
+    if (isAnd) {
+      
+    }
+    let currentState = this.props.filterFunction.isAnd
+
+  }
+  render() {
+    return (
+      <button onClick={this.swap()}>{this.props.text}</button>
+    )
+  }
+}
+
 class SwitchButton extends React.Component {
   render() {
     return (
@@ -182,18 +198,20 @@ class SwitchButton extends React.Component {
 class ResultsList extends React.Component {
   constructor() {
     super();
+    // results0 is and, results1 is or
     this.state = {
       startValue: 0,
-      results0: Array(10).fill(null), //"and"
-      results1: Array(10).fill(null), //"or"
+      results0: Array(10).fill(null),
+      results1: Array(10).fill(null),
+      isAnd: true
     };
   }
 
   componentWillMount() {
-    console.log("mounting...")
+    // console.log("mounting...")
     var query = "/search/" + this.props.query;
     var queryJSON = this.props.json;
-    console.log(query);
+    // console.log(query);
 
     $.ajax({
       url: query,
@@ -209,22 +227,25 @@ class ResultsList extends React.Component {
   }
 
   render() {
-    console.log("rendering...")
+    // console.log("rendering...")
     return (
       <div>
-        {this.renderResult(0)}
-        {this.renderResult(1)}
-        {this.renderResult(2)}
-        {this.renderResult(3)}
-        {this.renderResult(4)}
-        {this.renderResult(5)}
-        {this.renderResult(6)}
-        {this.renderResult(7)}
-        {this.renderResult(8)}
-        {this.renderResult(9)}
-        <hr className="search"></hr>
-        {this.renderBack()}
-        {this.renderNext()}
+        <div>{this.renderAnd()}{this.renderOr()}</div>
+        <div>
+          {this.renderResult(0)}
+          {this.renderResult(1)}
+          {this.renderResult(2)}
+          {this.renderResult(3)}
+          {this.renderResult(4)}
+          {this.renderResult(5)}
+          {this.renderResult(6)}
+          {this.renderResult(7)}
+          {this.renderResult(8)}
+          {this.renderResult(9)}
+          <hr className="search"></hr>
+          {this.renderBack()}
+          {this.renderNext()}
+        </div>
       </div>
     );
   }
@@ -232,6 +253,14 @@ class ResultsList extends React.Component {
   renderResult(i) {
     var query = this.props.query;
     return <SearchResult results={this.state.results0} query={query} value={i+this.state.startValue} />;
+  }
+
+  renderAnd() {
+    return <FilterButton text="and" currentState={this.state.isAnd} filterFunction={this.state} />;
+  }
+
+  renderOr() {
+    return <FilterButton text="or" currentState={this.state.isAnd} filterFunction={this.state} />;
   }
 
   renderBack() {
@@ -251,15 +280,15 @@ class ResultsList extends React.Component {
   }
 
   populateResults(obj) {
-    console.log(obj);
+    // console.log(obj);
     var keyArray0 = Object.keys(obj[0]); //"and"
     var keyArray1 = Object.keys(obj[1]); //"or"
     this.setState((prevState) => ({results0: keyArray0}));
-    console.log(this.state.results0);
+    // console.log(this.state.results0);
     this.setState((prevState) => ({results1: keyArray1}));
-    console.log(this.state.results1);
+    // console.log(this.state.results1);
     this.forceUpdate();
-    console.log("finished update")
+    // console.log("finished update")
   }
 }
 
