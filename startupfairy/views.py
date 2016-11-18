@@ -7,10 +7,12 @@ from collections import defaultdict
 import string
 import os
 import markdown2
+import re
 from flask import render_template, abort, request, send_from_directory
 from flask_cors import CORS
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm.exc import NoResultFound
+
 
 from models import app, db, Company, Person, FinancialOrg, City, Index
 
@@ -31,6 +33,7 @@ def index():
     Serve the home/index page
     """
     return render_template('index.html')
+
 
 @app.route('/favicon.ico')
 def favicon():
@@ -74,7 +77,7 @@ def search(query_string='test'):
     :return: the json of search results
     """
     # if request.method == 'GET':
-        # query_string = request.args.get['query']
+    # query_string = request.args.get['query']
     query_string = format_query(query_string)
     query_words = set(query_string.split())
     # For the "and" results.
@@ -183,6 +186,30 @@ def education():
     return render_template('team_five.html')
 
 
+@app.route('/api/markdown', methods=['GET'])
+def parse_markdown():
+    text = request.args.get('text')
+    if text is None:
+        abort(404)
+    highlight = request.args.get('word')
+    if highlight is not None:
+        text = text.replace(highlight, '**' + highlight + '**')
+    # Anything that isn't a square closing bracket
+    name_regex = "[^]]+"
+    # http:// or https:// followed by anything but a closing paren
+    url_regex = "http[s]?://[^)]+"
+
+    markup_regex = '\[({0})]\(\s*({1})\s*\)'.format(name_regex, url_regex)
+
+    for match in re.findall(markup_regex, text):
+        print(match)
+        print(match[0])
+        print(match[1])
+        text = text.replace("[" + match[0] + "](" + match[1] + ")", match[0])
+    processed = markdown2.markdown(text)
+    return json.dumps({"result": processed})
+
+
 @app.route('/api/people', methods=['GET'])
 def api_people(entity=None):
     """
@@ -254,6 +281,7 @@ def api_financialorgs(entity=None):
         print("Get financial orgs failed")
         abort(404)
 
+
 @app.route('/api/cities', methods=['GET'])
 def api_cities(entity=None):
     """
@@ -275,6 +303,7 @@ def api_cities(entity=None):
         print("Get cities failed")
         abort(404)
 
+
 def get_city_by_name(name):
     """
     Get city information by name. For internal use
@@ -284,6 +313,7 @@ def get_city_by_name(name):
         return json.dumps(data.dictionary())
     except NoResultFound:
         return None
+
 
 def get_all_from_category(table):
     """
@@ -309,6 +339,7 @@ def run_tests():
     """
     output = subprocess.getoutput("python startupfairy/tests.py")
     return json.dumps({'test_results': str(output)})
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=80)

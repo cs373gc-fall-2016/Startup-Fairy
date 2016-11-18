@@ -22,6 +22,7 @@ class SearchResult extends React.Component {
   //This function runs when render() is done!
   componentWillReceiveProps() {
     var resultsArray = this.props.results;
+    console.log(this.props.value);
     var modelId = resultsArray[this.props.value];
     if(!modelId) {
       var nullobj;
@@ -82,7 +83,28 @@ class SearchResult extends React.Component {
     setTimeout(() => {
       var summary = this.finishCallSum(obj);
       this.setState((prevState) => ({pageDescription: summary}));
+      var query = this.props.query;
+      console.log(query);
+      var markdowned;
+      $.ajax({
+        url: '/api/markdown',
+        type: "GET",
+        data: {text:summary, word:query},
+        async: true,
+        cache: false,
+        success:
+        function(result) {
+          console.log("DONE");
+          markdowned = JSON.parse(result)["result"];
+          // console.log(markdowned);
+        }});
+
+      setTimeout(() => {
+        this.setState(function(prevState){
+          return {pageDescription: (<div dangerouslySetInnerHTML={{__html: markdowned}}/>)};
+        });
       }, 2000);
+    }, 2000);
   }
 
   finishCall(modelDict) {
@@ -122,7 +144,7 @@ class BackPagination extends React.Component {
   render() {
     return (
       <div className="pull-left">
-        <button className="btn btn-lg btn-red">
+        <button className="btn btn-lg btn-red" onClick={this.props.onClick}>
           <h3>Prev Page</h3>
         </button>
       </div>
@@ -134,7 +156,7 @@ class ForwardPagination extends React.Component {
   render() {
     return (
       <div className="pull-right">
-        <button className="btn btn-lg btn-blue">
+        <button className="btn btn-lg btn-blue" onClick={this.props.onClick}>
           <h3>Next Page</h3>
         </button>
       </div>
@@ -162,6 +184,9 @@ class ResultsList extends React.Component {
       results0: Array(10).fill(null), //"and"
       results1: Array(10).fill(null), //"or"
     };
+
+    this.handleBackClick = this.handleBackClick.bind(this);
+    this.handleNextClick = this.handleNextClick.bind(this);
   }
 
   componentWillMount() {
@@ -187,7 +212,7 @@ class ResultsList extends React.Component {
     console.log("rendering...")
     return (
       <div>
-        {this.renderResult(startVal+0)}
+        {this.renderResult(0)}
         {this.renderResult(1)}
         {this.renderResult(2)}
         {this.renderResult(3)}
@@ -205,25 +230,36 @@ class ResultsList extends React.Component {
   }
 
   renderResult(i) {
-    return <SearchResult results={this.state.results0} value={i+this.state.startValue} />;
+    console.log("rendering results again...");
+    var query = this.props.query;
+    var newVal = i+this.state.startValue;
+    return <SearchResult results={this.state.results0} query={query} value={newVal} />;
   }
 
   renderBack() {
-    return <BackPagination />;
+    var click = this.handleBackClick;
+    return <BackPagination onClick={click} />;
   }
 
   renderNext() {
-    return <ForwardPagination />;
+    var click = this.handleNextClick;
+    return <ForwardPagination onClick={click} />;
   }
 
-  handleClick() {
-    //this.setState({startValue: 10});
+  handleBackClick() {
+    console.log("i just got clicked!");
+    this.setState((prevState) => ({startValue: (prevState)-10}));
+  }
+
+  handleNextClick() {
+    console.log("i just got clicked!");
+    this.setState((prevState) => ({startValue: (prevState)+10}));
   }
 
   populateResults(obj) {
     console.log(obj);
-    var keyArray0 = Object.keys(obj[0]);
-    var keyArray1 = Object.keys(obj[1]);
+    var keyArray0 = Object.keys(obj[0]); //"and"
+    var keyArray1 = Object.keys(obj[1]); //"or"
     this.setState((prevState) => ({results0: keyArray0}));
     console.log(this.state.results0);
     this.setState((prevState) => ({results1: keyArray1}));
@@ -231,7 +267,6 @@ class ResultsList extends React.Component {
     this.forceUpdate();
     console.log("finished update")
   }
-
 }
 
 // ========================================
