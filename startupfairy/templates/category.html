@@ -2,7 +2,7 @@
 {% set active_page = title %}
 {% block content %}
   <div class="col-md-10 col-md-offset-1">
-    <h2 id="category-header" class="nova">
+    <h3 id="category-header" class="nova">
     {% if alt_title %}{{ alt_title }}{% else %}{{ title.capitalize()}} {% endif %}</h1>
     <div id='table-content'></div>
     <script type="text/javascript" src="{{url_for('static', filename='bower_components/griddle-react/build/Griddle.js')}}"></script>
