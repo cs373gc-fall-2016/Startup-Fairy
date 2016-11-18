@@ -95,14 +95,20 @@ class SearchResult extends React.Component {
         success:
         function(result) {
           console.log("DONE");
-          markdowned = JSON.parse(result)["result"];
+          try {
+            markdowned = JSON.parse(result)["result"];
+          } catch (e) {
+
+          }
           // console.log(markdowned);
         }});
 
       setTimeout(() => {
-        this.setState(function(prevState){
-          return {pageDescription: (<div dangerouslySetInnerHTML={{__html: markdowned}}/>)};
-        });
+        if (markdowned) {
+          this.setState(function (prevState) {
+            return {pageDescription: (<div dangerouslySetInnerHTML={{__html: markdowned}}/>)};
+          });
+        }
       }, 2000);
     }, 2000);
   }
