@@ -10,7 +10,6 @@ import os
 from unittest import main, TestCase
 import unittest
 from models import Company, FinancialOrg, Person, City, db
-#from populate_db import *
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -19,6 +18,11 @@ import requests
 
 import flask
 from views import app, index, about
+
+# app.config[
+#     "SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@postgres/startupfairydb5"
+# db = SQLAlchemy(app)
+# db.init_app(app)
 
 # -----------
 # TestCompany
@@ -48,7 +52,7 @@ class TestCompany(TestCase):
 
     def test_company_model_1(self):
         """
-        subject to change
+        Test adding Company objects to and deleting Company objects from the database
         """
         with app.test_request_context():
             example1 = Company("id", "name", "summary", "people",
@@ -79,6 +83,15 @@ class TestCompany(TestCase):
             self.assertTrue(example1 not in companies)
             self.assertTrue(example2 not in companies)
             self.assertEqual(after, before - 2)
+
+    def test_company_model_2(self):
+        """
+        Test querying the database by attribute
+        """
+        with app.test_request_context():
+            company = db.session.query(Company).filter_by(name="Wetpaint").first()
+            self.assertEqual(company.city, "Seattle")
+            self.assertEqual(company.twitter, "BachelrWetpaint")
 
     def test_company_constructor_1(self):
         """
@@ -278,7 +291,7 @@ class TestFinancialOrg(TestCase):
 
     def test_financial_org_model_1(self):
         """
-        subject to change
+        Test adding FinancialOrg objects to and deleting FinancialOrg objects from the db
         """
         with app.test_request_context():
             example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
@@ -309,6 +322,15 @@ class TestFinancialOrg(TestCase):
             self.assertTrue(example1 not in finorgs)
             self.assertTrue(example2 not in finorgs)
             self.assertEqual(after, before - 2)
+
+    def test_financial_org_model_2(self):
+        """
+        Test querying the database by attribute
+        """
+        with app.test_request_context():
+            finorg = db.session.query(FinancialOrg).filter_by(name="Greylock Partners").first()
+            self.assertEqual(finorg.city, "Menlo Park")
+            self.assertEqual(finorg.twitter, "greylockvc")
 
     def test_financial_org_init_1(self):
         """
@@ -504,7 +526,7 @@ class TestPerson(TestCase):
 
     def test_person_model_1(self):
         """
-        subject to change
+        Test adding Person objects to and deleting Person objects from the db
         """
         with app.test_request_context():
             example1 = Person("id1", "name1", "summary1", "city1",
@@ -535,6 +557,15 @@ class TestPerson(TestCase):
             self.assertTrue(example1 not in people)
             self.assertTrue(example2 not in people)
             self.assertEqual(after, before - 2)
+
+    def test_person_model_2(self):
+        """
+        Test querying the database by attribute
+        """
+        with app.test_request_context():
+            person = db.session.query(Person).filter_by(name="Ben Elowitz").first()
+            self.assertEqual(person.city, None)
+            self.assertEqual(person.twitter, "elowitz")
 
     def test_person_init_1(self):
         """
@@ -702,7 +733,7 @@ class TestCity(TestCase):
 
     def test_city_model_1(self):
         """
-        subject to change
+        Test adding City objects to and deleting City objects from the db
         """
         with app.test_request_context():
             example1 = City("id1", "name1", "state1", "region1",
@@ -733,6 +764,14 @@ class TestCity(TestCase):
             self.assertTrue(example1 not in cities)
             self.assertTrue(example2 not in cities)
             self.assertEqual(after, before - 2)
+
+    def test_city_model_2(self):
+        """
+        Test querying the database by attribute
+        """
+        with app.test_request_context():
+            city = db.session.query(City).filter_by(name="Seattle").first()
+            self.assertEqual(city.state, "WA")
 
     def test_city_init_1(self):
         """
@@ -870,7 +909,7 @@ class TestAbout(TestCase):
 
     def setUp(self):
         """
-        About tests have no db component
+        About tests have no database component
         """
         httpretty.enable()  # enable HTTPretty so that it will monkey patch the socket module
         httpretty.register_uri(httpretty.GET, "http://yipit.com/",
