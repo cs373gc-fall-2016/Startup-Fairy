@@ -122,11 +122,15 @@ class BackPagination extends React.Component {
   render() {
     return (
       <div className="pull-left">
-        <button className="btn btn-lg btn-red">
+        <button className="btn btn-lg btn-red" onClick={this.props.onClick}>
           <h3>Prev Page</h3>
         </button>
       </div>
     );
+  }
+
+  handleClick() {
+    this.props.startValue += 10;
   }
 }
 
@@ -187,7 +191,7 @@ class ResultsList extends React.Component {
     console.log("rendering...")
     return (
       <div>
-        {this.renderResult(startVal+0)}
+        {this.renderResult(0)}
         {this.renderResult(1)}
         {this.renderResult(2)}
         {this.renderResult(3)}
@@ -205,25 +209,30 @@ class ResultsList extends React.Component {
   }
 
   renderResult(i) {
-    return <SearchResult results={this.state.results0} value={i+this.state.startValue} />;
+    var query = this.props.query;
+    return <SearchResult results={this.state.results0} query={query} value={i+this.state.startValue} />;
   }
 
   renderBack() {
-    return <BackPagination />;
+    return <BackPagination onClick={this.handleBackClick} />;
   }
 
   renderNext() {
-    return <ForwardPagination />;
+    return <ForwardPagination onClick={this.handleNextClick} />;
   }
 
-  handleClick() {
-    //this.setState({startValue: 10});
+  handleBackClick() {
+    this.setState((prevState) => ({startValue: (prevState)-10}));
+  }
+
+  handleNextClick() {
+    this.setState((prevState) => ({startValue: (prevState)+10}));
   }
 
   populateResults(obj) {
     console.log(obj);
-    var keyArray0 = Object.keys(obj[0]);
-    var keyArray1 = Object.keys(obj[1]);
+    var keyArray0 = Object.keys(obj[0]); //"and"
+    var keyArray1 = Object.keys(obj[1]); //"or"
     this.setState((prevState) => ({results0: keyArray0}));
     console.log(this.state.results0);
     this.setState((prevState) => ({results1: keyArray1}));
@@ -231,7 +240,6 @@ class ResultsList extends React.Component {
     this.forceUpdate();
     console.log("finished update")
   }
-
 }
 
 // ========================================
