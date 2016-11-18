@@ -48,13 +48,13 @@ class SearchResult extends React.Component {
   getURL(id) {
     var cat = id.charAt(0);
     if (cat == 'p') {
-      return 'startupfairy/category/people/';
+      return '/startupfairy/category/people/';
     } else if (cat == 'f') {
-      return 'startupfairy/category/financialorgs/';
+      return '/startupfairy/category/financialorgs/';
     } else if (cat == 'c') {
-      return 'startupfairy/category/companies/';
+      return '/startupfairy/category/companies/';
     } else {
-      return 'startupfairy/category/cities/';
+      return '/startupfairy/category/cities/';
     }
   }
 
