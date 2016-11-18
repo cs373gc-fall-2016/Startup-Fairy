@@ -16,7 +16,6 @@ class SearchResult extends React.Component {
   }
 
   render() {
-    console.log("rendering child");
     return (
         <div>
           <h3><a href={this.state.url}>{this.state.pageTitle}</a></h3>
@@ -28,24 +27,95 @@ class SearchResult extends React.Component {
 
   //This function runs when render() is done!
   componentWillReceiveProps() {
-    console.log("updating child...")
     var resultsArray = this.props.results;
     var modelId = resultsArray[this.props.value];
     var activeId = resultsArray[this.props.value+1]
-    //TODO: USE MODEL ID TO FIND THE INSTANCE IN DB
-    //TODO: GET THE NAME OF THE MODEL
-    var newTitle;
-    this.setState((prevState) => ({pageTitle: modelId}));
-    //TODO: GET THE DESCRIPTION OF THE MODEL
-    var description;
-    this.setState((prevState) => ({pageDescription: description}));
-    //TODO: GET THE URL OF THE MODEL
     var newURL = this.getURL(modelId) + modelId;
     this.setState((prevState) => ({url: newURL}));
+    var modelDict = this.getObj(modelId);
     this.setState((prevState) => ({active: activeId}));
   }
 
+  // getName(obj) {
+  //   console.log("inside of getname");
+  //   var name = obj['name'];
+  //   console.log(name);
+  //   return name;
+  // }
+
+  // getDescription(obj) {
+  //   console.log("inside of getdesc");
+  //   var summary = obj['summary'];
+  //   console.log(summary);
+  // }
+
+  getObj(id) {
+    var nullobj;
+    if(!id) {
+      return nullobj;
+    }
+    var cat = id.charAt(0);
+    if (cat == 'p') {
+      cat = '/api/people';
+    } else if (cat == 'f') {
+      cat = '/api/financialorgs';
+    } else if (cat == 'c') {
+      cat = '/api/companies';
+    } else {
+      cat = '/api/cities';
+    }
+
+    var obj;
+    console.log(id);
+    console.log(cat);
+    var functo = this.finishCall;
+    var name;
+    var summary;
+    $.ajax({
+      url: cat,
+      type: "GET",
+      data: {id:id},
+      async: true,
+      cache: false,
+      success:
+      function(result){
+        obj = JSON.parse(result);
+        console.log(obj);
+        //functo(obj, name, summary);
+      }});
+
+
+    setTimeout(() => {
+        var name = this.finishCall(obj);
+        console.log(name);
+        this.setState((prevState) => ({pageTitle: name}));
+        }, 2000);
+
+    setTimeout(() => {
+      var summary = this.finishCallSum(obj);
+      this.setState((prevState) => ({pageDescription: summary}));
+      }, 2000);
+  }
+
+  finishCall(modelDict) {
+    if(!modelDict) {
+      return;
+    }
+    return modelDict['name'];
+  }
+
+  finishCallSum(modelDict) {
+    if(!modelDict) {
+      return;
+    }
+    return modelDict['summary'];
+  }
+
   getURL(id) {
+    if(!id) {
+      var obj;
+      return obj;
+    }
     var cat = id.charAt(0);
     if (cat == 'p') {
       return '/category/people/';
@@ -89,7 +159,7 @@ class ResultsList extends React.Component {
     super();
     this.state = {
       startValue: 0,
-      results0: ['c:1','c:2','c:3','c:4','c:5','c:6','c:7','c:8','c:9','c:10',],
+      results0: Array(10).fill(null),
       results1: Array(10).fill(null),
     };
   }
