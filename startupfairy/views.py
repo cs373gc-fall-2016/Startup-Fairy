@@ -3,13 +3,11 @@ Serves all the routes for the application
 """
 import json
 import subprocess
-from os import listdir
 from collections import defaultdict
 import string
 import markdown2
-from flask import Blueprint, Flask
 from flask import render_template, abort, request
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 from sqlalchemy.exc import SQLAlchemyError
 
 from models import app, db, Company, Person, FinancialOrg, City, Index
@@ -22,6 +20,7 @@ ALT_NAMES = {
 }
 
 CORS(app)
+
 
 @app.route('/')
 @app.route('/index')
@@ -38,6 +37,7 @@ def favicon():
     """
     return ""
 
+
 def format_query(query_string):
     '''
         Format the query string for search so that we can
@@ -48,6 +48,7 @@ def format_query(query_string):
     translator = str.maketrans({key: None for key in string.punctuation})
     print(query_string)
     return query_string.translate(translator)
+
 
 @app.route('/find/', methods=['GET'])
 def find():
@@ -61,6 +62,7 @@ def find():
     except SQLAlchemyError:
         return render_template('noresults.html', query=query_string)
     return render_template('results.html', query=query_string, data=obj)
+
 
 @app.route('/search/<query_string>', methods=['GET'])
 def search(query_string='test'):
@@ -124,7 +126,7 @@ def category(app_category):
         data = api_financialorgs()
     else:
         print("Category does not exist")
-        data = []
+        data = ""
     print("Rendering template")
     return render_template('category.html',
                            alt_title=ALT_NAMES.get(app_category, None),
@@ -155,11 +157,19 @@ def details(app_category, entity):
 
 @app.route('/education')
 def education():
+    """
+    a route to visualization of education of IDB5
+    """
     return render_template('team_five.html')
 
 
 @app.route('/api/people', methods=['GET'])
 def api_people(entity=None):
+    """
+    api route for people
+    :param entity: is the id of a person or None
+    :return: json with results or 404
+    """
     try:
         person_id = request.args.get('id')
         if entity is None and person_id is None:
@@ -172,13 +182,18 @@ def api_people(entity=None):
                 data = db.session.query(Person).filter_by(
                     person_id=person_id).one()
             return json.dumps(data.dictionary())
-    except:
+    except SQLAlchemyError:
         print("Get people failed")
         abort(404)
 
 
 @app.route('/api/companies', methods=['GET'])
 def api_companies(entity=None):
+    """
+    api route for companies
+    :param entity: is the id of a company or None
+    :return: json with results or 404
+    """
     try:
         company_id = request.args.get('id')
         if entity is None and company_id is None:
@@ -191,13 +206,18 @@ def api_companies(entity=None):
                 data = db.session.query(Company).filter_by(
                     company_id=company_id).one()
             return json.dumps(data.dictionary())
-    except:
+    except SQLAlchemyError:
         print("Get companies failed")
         abort(404)
 
 
 @app.route('/api/financialorgs', methods=['GET'])
 def api_financialorgs(entity=None):
+    """
+    api route for financial org
+    :param entity: is the id of a financial org or None
+    :return: json with results or 404
+    """
     try:
         finorg_id = request.args.get('id')
         if entity is None and finorg_id is None:
@@ -210,13 +230,18 @@ def api_financialorgs(entity=None):
                 data = db.session.query(FinancialOrg).filter_by(
                     financial_org_id=finorg_id).one()
         return json.dumps(data.dictionary())
-    except:
+    except SQLAlchemyError:
         print("Get financial orgs failed")
         abort(404)
 
 
 @app.route('/api/cities', methods=['GET'])
 def api_cities(entity=None):
+    """
+    api route for cities
+    :param entity: is the id of a city or None
+    :return: json with results or 404
+    """
     try:
         city_id = request.args.get('id')
         if entity is None and city_id is None:
@@ -227,9 +252,10 @@ def api_cities(entity=None):
             else:
                 data = db.session.query(City).filter_by(city_id=city_id).one()
             return json.dumps(data.dictionary())
-    except:
+    except SQLAlchemyError:
         print("Get cities failed")
         abort(404)
+
 
 def get_all_from_category(table):
     """
@@ -238,12 +264,21 @@ def get_all_from_category(table):
     data = db.session.query(table).all()
     return json.dumps(list(map(lambda d: d.dictionary(), data)))
 
+
 @app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html', alt_title=e, error=e)
+def page_not_found(error):
+    """
+    returns a 404 page
+    """
+    return render_template('404.html', alt_title=error, error=error)
+
 
 @app.route('/run_tests')
 def run_tests():
+    """
+    runs the tests and returns the output
+    :return: the json with results
+    """
     output = subprocess.getoutput("python startupfairy/tests.py")
     return json.dumps({'test_results': str(output)})
 
