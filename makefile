@@ -17,7 +17,7 @@ ifeq ($(shell uname), Darwin)          # Apple
 	PYTHON   := python3.5
 	PIP      := pip3.5
 	PYLINT   := pylint
-	PYLINTFLAGS := --generated-members=String,Column,query, add, delete, commit
+	PYLINTFLAGS := --generated-members=String,Column,query,add,delete,commit
 	COVERAGE := coverage-3.5
 	PYDOC    := pydoc3.5
 	AUTOPEP8 := autopep8
@@ -25,7 +25,7 @@ else ifeq ($(CI), true)                # Travis CI
 	PYTHON   := python3.5
 	PIP      := pip3.5
 	PYLINT   := pylint
-	PYLINTFLAGS := --generated-members=String,Column,query
+	PYLINTFLAGS := --generated-members=String,Column,query,add,delete,commit
 	COVERAGE := coverage-3.5
 	PYDOC    := pydoc
 	AUTOPEP8 := autopep8
@@ -33,7 +33,7 @@ else ifeq ($(shell uname -p), unknown) # Docker
 	PYTHON   := python3.5
 	PIP      := pip3.5
 	PYLINT   := pylint
-	PYLINTFLAGS := --generated-members=String,Column,query
+	PYLINTFLAGS := --generated-members=String,Column,query,add,delete,commit
 	COVERAGE := coverage-3.5
 	PYDOC    := pydoc3.5
 	AUTOPEP8 := autopep8
@@ -41,7 +41,7 @@ else                                   # UTCS
 	PYTHON   := python3.5
 	PIP      := pip3.5
 	PYLINT   := pylint3.5
-	PYLINTFLAGS := --generated-members=String,Column,query
+	PYLINTFLAGS := --generated-members=String,Column,query,add,delete,commit
 	COVERAGE := coverage-3.5
 	PYDOC    := pydoc3.4
 	AUTOPEP8 := autopep8

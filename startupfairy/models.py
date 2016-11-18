@@ -30,8 +30,8 @@ class Company(db.Model):
     website = db.Column(db.String)
     logo_url = db.Column(db.String)
 
-    # def __init__(self, name, summary, people, city, financial_orgs, twitter,
-    # website, logo_url):
+    # pylint: disable=too-many-instance-attributes
+    # This model should have nine attributes.
     def __init__(self, company_id, name, summary, people, city, financial_orgs, twitter, website,
                  logo_url):
         """
@@ -85,8 +85,8 @@ class FinancialOrg(db.Model):
     website = db.Column(db.String)
     logo_url = db.Column(db.String)
 
-    # def __init__(self, name, summary, city, companies, twitter, website,
-    # logo_url):
+    # pylint: disable=too-many-instance-attributes
+    # This model should have eight attributes.
     def __init__(self, financial_org_id, name, summary, city, companies, twitter, website,
                  logo_url):
         """
@@ -137,6 +137,8 @@ class Person(db.Model):
     twitter = db.Column(db.String)
     logo_url = db.Column(db.String)
 
+    # pylint: disable=too-many-instance-attributes
+    # This model should have eight attributes.
     def __init__(self, person_id, name, summary, city, companies, role, twitter, logo_url):
         """
         Set column values
