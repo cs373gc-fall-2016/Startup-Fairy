@@ -231,6 +231,7 @@ class ResultsList extends React.Component {
         <hr className="search"></hr>
         {this.renderBack()}
         {this.renderNext()}
+        <h3>{this.state.startValue}</h3>
       </div>
     );
   }
@@ -254,12 +255,12 @@ class ResultsList extends React.Component {
 
   handleBackClick() {
     console.log("i just got clicked!");
-    this.setState((prevState) => ({startValue: (prevState)-10}));
+    this.setState((prevState) => ({startValue: this.state.startValue-10}));
   }
 
   handleNextClick() {
     console.log("i just got clicked!");
-    this.setState((prevState) => ({startValue: (prevState)+10}));
+    this.setState((prevState) => ({startValue: this.state.startValue+10}));
   }
 
   populateResults(obj) {
