@@ -1,9 +1,3 @@
-// TODO:
-// - make pagination work by adding a value to keep track of which page ur on
-// - make links clickable by using the id to populate SearchResult link
-// - make forward/backward communicate with parent (resultlist) by using state
-// - make a button to filter search results by and/or
-
 class SearchResult extends React.Component {
   constructor() {
     super();
@@ -32,22 +26,9 @@ class SearchResult extends React.Component {
     var activeId = resultsArray[this.props.value+1]
     var newURL = this.getURL(modelId) + modelId;
     this.setState((prevState) => ({url: newURL}));
-    var modelDict = this.getObj(modelId);
     this.setState((prevState) => ({active: activeId}));
+    var modelDict = this.getObj(modelId);
   }
-
-  // getName(obj) {
-  //   console.log("inside of getname");
-  //   var name = obj['name'];
-  //   console.log(name);
-  //   return name;
-  // }
-
-  // getDescription(obj) {
-  //   console.log("inside of getdesc");
-  //   var summary = obj['summary'];
-  //   console.log(summary);
-  // }
 
   getObj(id) {
     var nullobj;
