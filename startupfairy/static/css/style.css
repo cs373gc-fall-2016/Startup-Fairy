@@ -13,7 +13,9 @@ a {
 }
 
 footer {
-  color: white;
+  color: black;
+  padding-top: 30px;
+  text-align: center;
 }
 
 footer .footer-col {
