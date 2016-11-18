@@ -155,14 +155,17 @@ def details(app_category, entity):
     else:
         parsed_data['is_city']=False
         location_info = {}
-        city_info = json.loads(get_city_by_name(parsed_data['city']))
+        city_info = get_city_by_name(parsed_data['city'])
         if city_info is not None:
+            city_info = json.loads(city_info)
             if 'state' in city_info.keys():
                 location_info['state'] = city_info['state']
             if 'region' in city_info.keys():
                 location_info['region'] = city_info['region']
             if 'city_id' in city_info.keys():
                 location_info['city_id'] = city_info['city_id']
+        else:
+            parsed_data['city'] = 'No known location'
         parsed_data['location'] = json.dumps(location_info)
     return render_template('details.html', data=parsed_data, category=app_category)
 
