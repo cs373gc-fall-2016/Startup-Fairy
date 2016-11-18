@@ -237,21 +237,20 @@ class ResultsList extends React.Component {
     return (
       <div>
         <div>{this.renderAnd()}{this.renderOr()}</div>
-        <div>
-          {this.renderResult(0)}
-          {this.renderResult(1)}
-          {this.renderResult(2)}
-          {this.renderResult(3)}
-          {this.renderResult(4)}
-          {this.renderResult(5)}
-          {this.renderResult(6)}
-          {this.renderResult(7)}
-          {this.renderResult(8)}
-          {this.renderResult(9)}
-          <hr className="search"></hr>
-          {this.renderBack()}
-          {this.renderNext()}
-        </div>
+        {this.renderResult(0)}
+        {this.renderResult(1)}
+        {this.renderResult(2)}
+        {this.renderResult(3)}
+        {this.renderResult(4)}
+        {this.renderResult(5)}
+        {this.renderResult(6)}
+        {this.renderResult(7)}
+        {this.renderResult(8)}
+        {this.renderResult(9)}
+        <hr className="search"></hr>
+        {this.renderBack()}
+        {this.renderNext()}
+        <h3>{this.state.startValue}</h3>
       </div>
     );
   }
@@ -283,12 +282,12 @@ class ResultsList extends React.Component {
 
   handleBackClick() {
     console.log("i just got clicked!");
-    this.setState((prevState) => ({startValue: (prevState)-10}));
+    this.setState((prevState) => ({startValue: this.state.startValue-10}));
   }
 
   handleNextClick() {
     console.log("i just got clicked!");
-    this.setState((prevState) => ({startValue: (prevState)+10}));
+    this.setState((prevState) => ({startValue: this.state.startValue+10}));
   }
 
   populateResults(obj) {
