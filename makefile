@@ -17,7 +17,7 @@ ifeq ($(shell uname), Darwin)          # Apple
 	PYTHON   := python3.5
 	PIP      := pip3.5
 	PYLINT   := pylint
-	PYLINTFLAGS := --generated-members=String,Column,query
+	PYLINTFLAGS := --generated-members=String,Column,query, add, delete, commit
 	COVERAGE := coverage-3.5
 	PYDOC    := pydoc3.5
 	AUTOPEP8 := autopep8

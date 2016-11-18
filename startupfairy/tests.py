@@ -969,6 +969,7 @@ class TestAbout(TestCase):
                                content_type="application/json")
 
         response = requests.get(link)
+        self.assertEqual(200, response.status_code)
 
         # self.assertIn('Svyatoslav Ilinskiy', httpretty.last_request().body)
         # self.assertIn('Madeline Stager', httpretty.last_request().body)
@@ -984,6 +985,10 @@ class TestAbout(TestCase):
 
 
 class TestViews(TestCase):
+
+    """
+    Test the routing used by the application
+    """
 
     def test_index_1(self):
         """
