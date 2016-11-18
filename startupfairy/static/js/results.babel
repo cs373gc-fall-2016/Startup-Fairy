@@ -82,7 +82,28 @@ class SearchResult extends React.Component {
     setTimeout(() => {
       var summary = this.finishCallSum(obj);
       this.setState((prevState) => ({pageDescription: summary}));
+      var query = this.props.query;
+      console.log(query);
+      var markdowned;
+      $.ajax({
+        url: '/api/markdown',
+        type: "GET",
+        data: {text:summary, word:query},
+        async: true,
+        cache: false,
+        success:
+        function(result) {
+          console.log("DONE");
+          markdowned = JSON.parse(result)["result"];
+          // console.log(markdowned);
+        }});
+
+      setTimeout(() => {
+        this.setState(function(prevState){
+          return {pageDescription: (<div dangerouslySetInnerHTML={{__html: markdowned}}/>)};
+        });
       }, 2000);
+    }, 2000);
   }
 
   finishCall(modelDict) {
