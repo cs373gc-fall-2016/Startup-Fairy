@@ -68,6 +68,11 @@
         let isCity = JSON.parse(this.props.is_city);
         let data = JSON.parse(this.props.location);
         let location = this.props.city;
+        console.log(data);
+        console.log(location);
+        if (location == "No known location") {
+          return <p>No Known Location</p>
+        }
         if (data.state != undefined || data.state != null) {
           location = location + ", " + data.state;
         }

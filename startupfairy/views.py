@@ -157,7 +157,7 @@ def details(app_category, entity):
     else:
         parsed_data['is_city'] = False
         location_info = {}
-        city_info = city_info = get_city_by_name(parsed_data['city'])
+        city_info = get_city_by_name(parsed_data['city'])
         if city_info is not None:
             city_info = json.loads(city_info)
             if 'state' in city_info.keys():
