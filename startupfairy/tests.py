@@ -31,7 +31,6 @@ class TestCompany(TestCase):
     def tearDown(self):
         with app.test_request_context():
             db.session.remove()
-            # db.drop_all()
 
     # -------
     # Company
@@ -250,7 +249,6 @@ class TestFinancialOrg(TestCase):
     def tearDown(self):
         with app.test_request_context():
             db.session.remove()
-            # db.drop_all()
 
     # ------------
     # FinancialOrg
@@ -466,7 +464,6 @@ class TestPerson(TestCase):
     def tearDown(self):
         with app.test_request_context():
             db.session.remove()
-            # db.drop_all()
 
     # ------
     # Person
@@ -665,7 +662,6 @@ class TestCity(TestCase):
     def tearDown(self):
         with app.test_request_context():
             db.session.remove()
-            # db.drop_all()
 
     # ----
     # City
@@ -848,7 +844,7 @@ class TestAbout(TestCase):
                                body="Find the best daily deals")
 
     def tearDown(self):
-        """Disable afterwards, so that you will have no problems in code that uses that socket module"""
+        """Disable afterwards to let other code use that socket module"""
 
         httpretty.disable()
         httpretty.reset()
@@ -927,4 +923,4 @@ class TestViews(TestCase):
 # ----
 
 if __name__ == "__main__":
-    main(verbosity=2)
+    main()

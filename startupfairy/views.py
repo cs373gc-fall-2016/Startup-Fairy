@@ -6,9 +6,10 @@ import subprocess
 from collections import defaultdict
 import string
 import markdown2
-from flask import render_template, abort, request
+from flask import render_template, abort, request, send_from_directory
 from flask_cors import CORS
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.orm.exc import NoResultFound
 
 from models import app, db, Company, Person, FinancialOrg, City, Index
 
@@ -35,7 +36,8 @@ def favicon():
     """
     :return: favicon for the website
     """
-    return ""
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico')
 
 
 def format_query(query_string):
@@ -151,18 +153,21 @@ def details(app_category, entity):
     if 'summary' in parsed_data.keys() and parsed_data['summary'] is not None:
         parsed_data['summary'] = markdown2.markdown(parsed_data['summary'])
     if app_category == 'cities':
-        parsed_data['is_city']=True
+        parsed_data['is_city'] = True
     else:
-        parsed_data['is_city']=False
+        parsed_data['is_city'] = False
         location_info = {}
-        city_info = json.loads(get_city_by_name(parsed_data['city']))
+        city_info = city_info = get_city_by_name(parsed_data['city'])
         if city_info is not None:
+            city_info = json.loads(city_info)
             if 'state' in city_info.keys():
                 location_info['state'] = city_info['state']
             if 'region' in city_info.keys():
                 location_info['region'] = city_info['region']
             if 'city_id' in city_info.keys():
                 location_info['city_id'] = city_info['city_id']
+        else:
+            parsed_data['city'] = 'No known location'
         parsed_data['location'] = json.dumps(location_info)
     return render_template('details.html', data=parsed_data, category=app_category)
 
@@ -274,7 +279,7 @@ def get_city_by_name(name):
     try:
         data = db.session.query(City).filter_by(name=name).one()
         return json.dumps(data.dictionary())
-    except:
+    except NoResultFound:
         return None
 
 def get_all_from_category(table):

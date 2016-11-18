@@ -18,6 +18,8 @@ class Company(db.Model):
     Implementation of Company model and its attributes
     """
 
+    # pylint: disable=too-many-instance-attributes
+    # This model should have nine attributes.
     __tablename__ = "company"
     # set column types
     company_id = db.Column(db.String, primary_key=True)
@@ -30,8 +32,6 @@ class Company(db.Model):
     website = db.Column(db.String)
     logo_url = db.Column(db.String)
 
-    # pylint: disable=too-many-instance-attributes
-    # This model should have nine attributes.
     def __init__(self, company_id, name, summary, people, city, financial_orgs, twitter, website,
                  logo_url):
         """
@@ -74,6 +74,8 @@ class FinancialOrg(db.Model):
     Implementation of Financial Organization model and its attributes
     """
 
+    # pylint: disable=too-many-instance-attributes
+    # This model should have eight attributes.
     __tablename__ = "financial_org"
     # set the column types
     financial_org_id = db.Column(db.String, primary_key=True)
@@ -85,8 +87,6 @@ class FinancialOrg(db.Model):
     website = db.Column(db.String)
     logo_url = db.Column(db.String)
 
-    # pylint: disable=too-many-instance-attributes
-    # This model should have eight attributes.
     def __init__(self, financial_org_id, name, summary, city, companies, twitter, website,
                  logo_url):
         """
@@ -126,6 +126,8 @@ class Person(db.Model):
     Implementation of Person model and its attributes
     """
 
+    # pylint: disable=too-many-instance-attributes
+    # This model should have eight attributes.
     __tablename__ = "person"
     # set the column types
     person_id = db.Column(db.String, primary_key=True)
@@ -137,8 +139,6 @@ class Person(db.Model):
     twitter = db.Column(db.String)
     logo_url = db.Column(db.String)
 
-    # pylint: disable=too-many-instance-attributes
-    # This model should have eight attributes.
     def __init__(self, person_id, name, summary, city, companies, role, twitter, logo_url):
         """
         Set column values
