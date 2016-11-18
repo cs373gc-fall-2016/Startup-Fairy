@@ -1,17 +1,11 @@
-"""
-Tests for methods in models.py, views.py and the About page
-"""
+"""Tests for methods in models.py, views.py and the About page"""
 
 # -------
 # imports
 # -------
 
-import os
 from unittest import main, TestCase
-import unittest
 from models import Company, FinancialOrg, Person, City, db
-
-from flask_sqlalchemy import SQLAlchemy
 
 import httpretty
 import requests
@@ -24,9 +18,7 @@ from views import app, index, about
 # -----------
 
 class TestCompany(TestCase):
-    """
-    Tests for the methods of the Company model
-    """
+    """Tests for the methods of the Company model"""
 
     # ------------------
     # Setup and Teardown
@@ -46,9 +38,8 @@ class TestCompany(TestCase):
     # -------
 
     def test_company_model_1(self):
-        """
-        Test adding Company objects to and deleting Company objects from the db
-        """
+        """Test adding Company objects to and deleting Company objects from the db"""
+
         with app.test_request_context():
             example1 = Company("id", "name", "summary", "people",
                                "city", "finorgs", "twitter", "website", "logo")
@@ -76,9 +67,8 @@ class TestCompany(TestCase):
             self.assertEqual(len(companies1), len(companies2) - 2)
 
     def test_company_model_2(self):
-        """
-        Test querying the database by attribute using simple keywords
-        """
+        """Test querying the database by attribute using simple keywords"""
+
         with app.test_request_context():
             example1 = Company("id", "name", "summary", "people",
                                "city", "finorgs", "twitter", "website", "logo")
@@ -94,9 +84,7 @@ class TestCompany(TestCase):
             db.session.commit()
 
     def test_company_constructor_1(self):
-        """
-        Test construction of a new company instance
-        """
+        """Test construction of a new company instance"""
 
         example1 = Company("id", "name", "summary", "people",
                            "city", "finorgs", "twitter", "website", "logo")
@@ -108,9 +96,8 @@ class TestCompany(TestCase):
         self.assertEqual(example1.city, "city")
 
     def test_company_constructor_2(self):
-        """
-        Test construction of a new company instance
-        """
+        """Test construction of a new company instance"""
+
         example1 = Company("id", "name", "summary", "people",
                            "city", "finorgs", "twitter", "website", "logo")
 
@@ -120,9 +107,7 @@ class TestCompany(TestCase):
         self.assertEqual(example1.logo_url, "logo")
 
     def test_company_constructor_3(self):
-        """
-        Test construction of a new company instance
-        """
+        """Test construction of a new company instance"""
 
         example2 = Company("id1", "Wetpaint",
                            ("Wetpaint is a technology platform company that uses its proprietary"
@@ -141,9 +126,7 @@ class TestCompany(TestCase):
         self.assertEqual(example2.city, "San Francisco")
 
     def test_company_constructor_4(self):
-        """
-        Test construction of a new company instance
-        """
+        """Test construction of a new company instance"""
 
         example2 = Company("id1", "Wetpaint",
                            ("Wetpaint is a technology platform company that uses its proprietary"
@@ -158,9 +141,7 @@ class TestCompany(TestCase):
         self.assertEqual(example2.logo_url, "logo_url")
 
     def test_company_repr_1(self):
-        """
-        Test __repr__ methond of company class
-        """
+        """Test __repr__ methond of company class"""
 
         example1 = Company("id", "name", "summary", "people",
                            "city", "finorgs", "twitter", "website", "logo")
@@ -168,9 +149,7 @@ class TestCompany(TestCase):
         self.assertEqual(example1.__repr__(), "<Company 'name'>")
 
     def test_company_repr_2(self):
-        """
-        Test __repr__ methond of company class
-        """
+        """Test __repr__ methond of company class"""
 
         example2 = Company("id1", "Wetpaint",
                            ("Wetpaint is a technology platform company that uses its proprietary"
@@ -182,9 +161,7 @@ class TestCompany(TestCase):
         self.assertEqual(example2.__repr__(), "<Company 'Wetpaint'>")
 
     def test_company_repr_3(self):
-        """
-        Test __repr__ methond of company class
-        """
+        """Test __repr__ methond of company class"""
 
         example3 = Company("id3", "name3", "summary3", "people3",
                            "city3", "finorgs3", "twitter3", "website3", "logo3")
@@ -192,9 +169,7 @@ class TestCompany(TestCase):
         self.assertEqual(example3.__repr__(), "<Company 'name3'>")
 
     def test_company_dictionary_1(self):
-        """
-        Test dictionary method of company class
-        """
+        """Test dictionary method of company class"""
 
         example1 = Company("id", "name", "summary", "people",
                            "city", "finorgs", "twitter", "website", "logo")
@@ -207,9 +182,7 @@ class TestCompany(TestCase):
         self.assertEqual(dict_rep['city'], "city")
 
     def test_company_dictionary_2(self):
-        """
-        Test dictionary method of company class
-        """
+        """Test dictionary method of company class"""
 
         example1 = Company("id", "name", "summary", "people",
                            "city", "finorgs", "twitter", "website", "logo")
@@ -221,9 +194,7 @@ class TestCompany(TestCase):
         self.assertEqual(dict_rep['logo_url'], "logo")
 
     def test_company_dictionary_3(self):
-        """
-        Test dictionary method of company class
-        """
+        """Test dictionary method of company class"""
 
         example2 = Company("id1", "Wetpaint",
                            ("Wetpaint is a technology platform company that uses its proprietary"
@@ -244,9 +215,7 @@ class TestCompany(TestCase):
         self.assertEqual(dict_rep['city'], "San Francisco")
 
     def test_company_dictionary_4(self):
-        """
-        Test dictionary method of company class
-        """
+        """Test dictionary method of company class"""
 
         example2 = Company("id1", "Wetpaint",
                            ("Wetpaint is a technology platform company that uses its proprietary"
@@ -268,9 +237,7 @@ class TestCompany(TestCase):
 # ----------------
 
 class TestFinancialOrg(TestCase):
-    """
-    Tests for the methods of the Financial Organization model
-    """
+    """Tests for the methods of the Financial Organization model"""
 
     # ------------------
     # Setup and Teardown
@@ -290,9 +257,8 @@ class TestFinancialOrg(TestCase):
     # ------------
 
     def test_financial_org_model_1(self):
-        """
-        Test adding FinancialOrg objects to and deleting FinancialOrg objects from the db
-        """
+        """Test adding FinancialOrg objects to and deleting FinancialOrg objects from the db"""
+
         with app.test_request_context():
             example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
                                     "website", "logo")
@@ -320,9 +286,8 @@ class TestFinancialOrg(TestCase):
             self.assertEqual(len(finorgs3), len(finorgs2) - 2)
 
     def test_financial_org_model_2(self):
-        """
-        Test querying the database by attribute using simple keywords
-        """
+        """Test querying the database by attribute using simple keywords"""
+
         with app.test_request_context():
             example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
                                     "website", "logo")
@@ -338,9 +303,7 @@ class TestFinancialOrg(TestCase):
             db.session.commit()
 
     def test_financial_org_init_1(self):
-        """
-        Test construction of a new company instance
-        """
+        """Test construction of a new company instance"""
 
         example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
                                 "website", "logo")
@@ -351,9 +314,8 @@ class TestFinancialOrg(TestCase):
         self.assertEqual(example1.city, "city")
 
     def test_financial_org_init_2(self):
-        """
-        Test construction of a new company instance
-        """
+        """Test construction of a new company instance"""
+
         example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
                                 "website", "logo")
 
@@ -363,9 +325,7 @@ class TestFinancialOrg(TestCase):
         self.assertEqual(example1.logo_url, "logo")
 
     def test_financial_org_init_3(self):
-        """
-        Test construction of a new company instance
-        """
+        """Test construction of a new company instance"""
 
         example2 = FinancialOrg("id1", "Founders Fund",
                                 ("Founders Fund is a San Francisco based venture capital firm which"
@@ -383,9 +343,8 @@ class TestFinancialOrg(TestCase):
         self.assertEqual(example2.city, "San Francisco")
 
     def test_financial_org_init_4(self):
-        """
-        Test construction of a new company instance
-        """
+        """Test construction of a new company instance"""
+
         example2 = FinancialOrg("id1", "Founders Fund",
                                 ("Founders Fund is a San Francisco based venture capital firm which"
                                  + " invests at every stage in companies with revolutionary"
@@ -399,9 +358,7 @@ class TestFinancialOrg(TestCase):
         self.assertEqual(example2.logo_url, "logo_url")
 
     def test_financial_org_repr_1(self):
-        """
-        Test __repr__ methond of company financial org
-        """
+        """Test __repr__ methond of company financial org"""
 
         example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
                                 "website", "logo")
@@ -409,9 +366,7 @@ class TestFinancialOrg(TestCase):
         self.assertEqual(example1.__repr__(), "<FinancialOrg 'name'>")
 
     def test_financial_org_repr_2(self):
-        """
-        Test __repr__ methond of financial org class
-        """
+        """Test __repr__ methond of financial org class"""
 
         example2 = FinancialOrg("id1", "Founders Fund",
                                 ("Founders Fund is a San Francisco based venture capital firm which"
@@ -423,9 +378,7 @@ class TestFinancialOrg(TestCase):
         self.assertEqual(example2.__repr__(), "<FinancialOrg 'Founders Fund'>")
 
     def test_financial_org_repr_3(self):
-        """
-        Test __repr__ methond of company financial org
-        """
+        """Test __repr__ methond of company financial org"""
 
         example3 = FinancialOrg("id3", "name3", "summary3", "city3", "companies3", "twitter3",
                                 "website", "logo")
@@ -433,9 +386,7 @@ class TestFinancialOrg(TestCase):
         self.assertEqual(example3.__repr__(), "<FinancialOrg 'name3'>")
 
     def test_financial_org_dictionary_1(self):
-        """
-        Test dictionary method of financial org class
-        """
+        """Test dictionary method of financial org class"""
 
         example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
                                 "website", "logo")
@@ -447,9 +398,7 @@ class TestFinancialOrg(TestCase):
         self.assertEqual(dict_rep['city'], "city")
 
     def test_financial_org_dictionary_2(self):
-        """
-        Test dictionary method of company class
-        """
+        """Test dictionary method of company class"""
 
         example1 = FinancialOrg("id", "name", "summary", "city", "companies", "twitter",
                                 "website", "logo")
@@ -461,9 +410,7 @@ class TestFinancialOrg(TestCase):
         self.assertEqual(dict_rep['logo_url'], "logo")
 
     def test_financial_org_dictionary_3(self):
-        """
-        Test dictionary method of financial org class
-        """
+        """Test dictionary method of financial org class"""
 
         example2 = FinancialOrg("id1", "Founders Fund",
                                 ("Founders Fund is a San Francisco based venture capital firm which"
@@ -483,9 +430,7 @@ class TestFinancialOrg(TestCase):
         self.assertEqual(dict_rep['city'], "San Francisco")
 
     def test_financial_org_dictionary_4(self):
-        """
-        Test dictionary method of company class
-        """
+        """Test dictionary method of company class"""
 
         example2 = FinancialOrg("id1", "Founders Fund",
                                 ("Founders Fund is a San Francisco based venture capital firm which"
@@ -508,9 +453,7 @@ class TestFinancialOrg(TestCase):
 
 
 class TestPerson(TestCase):
-    """
-    Tests for the methods of the Person model
-    """
+    """Tests for the methods of the Person model"""
 
     # ------------------
     # Setup and Teardown
@@ -530,9 +473,8 @@ class TestPerson(TestCase):
     # ------
 
     def test_person_model_1(self):
-        """
-        Test adding Person objects to and deleting Person objects from the db
-        """
+        """Test adding Person objects to and deleting Person objects from the db"""
+
         with app.test_request_context():
             example1 = Person("id1", "name1", "summary1", "city1",
                               "companies1", "role1", "twitter1", "logo_url1")
@@ -560,9 +502,8 @@ class TestPerson(TestCase):
             self.assertEqual(len(people1), len(people2) - 2)
 
     def test_person_model_2(self):
-        """
-        Test querying the database by attribute using simple keywords
-        """
+        """Test querying the database by attribute using simple keywords"""
+
         with app.test_request_context():
             example1 = Person("id1", "name1", "summary1", "city1",
                               "companies1", "role1", "twitter1", "logo_url1")
@@ -578,9 +519,8 @@ class TestPerson(TestCase):
             db.session.commit()
 
     def test_person_init_1(self):
-        """
-        Test construction of a Person
-        """
+        """Test construction of a Person"""
+
         person1 = Person("id1", "name1", "summary1", "city1",
                          "companies1", "role1", "twitter1", "logo_url1")
 
@@ -595,9 +535,8 @@ class TestPerson(TestCase):
         self.assertEqual(person1.logo_url, "logo_url1")
 
     def test_person_init_2(self):
-        """
-        Test construction of two instances of Person
-        """
+        """Test construction of two instances of Person"""
+
         person1 = Person("id1", "name1", "summary1", "city1",
                          "companies1", "role1", "twitter1", "logo_url1")
         person2 = Person("id2", "name1", "summary2", "city1",
@@ -613,9 +552,8 @@ class TestPerson(TestCase):
         self.assertEqual(person1.logo_url, person2.logo_url)
 
     def test_person_init_3(self):
-        """
-        Test construction of a Person with more realistic information
-        """
+        """Test construction of a Person with more realistic information"""
+
         person1 = Person("p:2", "Ben Elowitz", "Ben Elowitz is co-founder and CEO of Wetpaint.",
                          "null", "Wetpaint", "CEO", "elowitz",
                          ("http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/"
@@ -634,25 +572,22 @@ class TestPerson(TestCase):
                                             + "/images/resized/0001/8470/18470v3-max-250x250.jpg"))
 
     def test_person_repr_1(self):
-        """
-        Test the representation of an instance of a Person
-        """
+        """Test the representation of an instance of a Person"""
+
         person1 = Person("id1", "name1", "summary1", "city1",
                          "companies1", "role1", "twitter1", "logo_url1")
         self.assertEqual(person1.__repr__(), "<Person 'name1'>")
 
     def test_person_repr_2(self):
-        """
-        Test the representation of an instance of a Person
-        """
+        """Test the representation of an instance of a Person"""
+
         person2 = Person("id2", "name1", "summary2", "city1",
                          "companies2", "role1", "twitter2", "logo_url1")
         self.assertEqual(person2.__repr__(), "<Person 'name1'>")
 
     def test_person_repr_3(self):
-        """
-        Test the representation of an instance of a Person
-        """
+        """Test the representation of an instance of a Person"""
+
         person1 = Person("p:2", "Ben Elowitz", "Ben Elowitz is co-founder and CEO of Wetpaint.",
                          "null", "Wetpaint", "CEO", "elowitz",
                          ("http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/"
@@ -661,9 +596,8 @@ class TestPerson(TestCase):
         self.assertEqual(person1.__repr__(), "<Person 'Ben Elowitz'>")
 
     def test_person_dict_1(self):
-        """
-        Test dictionary of a Person
-        """
+        """Test dictionary of a Person"""
+
         person1 = Person("id1", "name1", "summary1", "city1",
                          "companies1", "role1", "twitter1", "logo_url1")
         p1_dict = person1.dictionary()
@@ -675,9 +609,8 @@ class TestPerson(TestCase):
                           "twitter": "twitter1", "logo_url": "logo_url1"})
 
     def test_person_dict_2(self):
-        """
-        Test dictionaries of two instances of a Person
-        """
+        """Test dictionaries of two instances of a Person"""
+
         person1 = Person("id1", "name1", "summary1", "city1",
                          "companies1", "role1", "twitter1", "logo_url1")
         p1_dict = person1.dictionary()
@@ -695,9 +628,8 @@ class TestPerson(TestCase):
         self.assertEqual(p1_dict["logo_url"], p2_dict["logo_url"])
 
     def test_person_dict_3(self):
-        """
-        Test dictionary of a Person with more realistic information
-        """
+        """Test dictionary of a Person with more realistic information"""
+
         person1 = Person("p:2", "Ben Elowitz", "Ben Elowitz is co-founder and CEO of Wetpaint.",
                          "null", "Wetpaint", "CEO", "elowitz",
                          ("http://s3.amazonaws.com/crunchbase_prod_assets/assets/images/resized/"
@@ -720,9 +652,7 @@ class TestPerson(TestCase):
 # --------
 
 class TestCity(TestCase):
-    """
-    Tests for the methods of the City model
-    """
+    """Tests for the methods of the City model"""
 
     # ------------------
     # Setup and Teardown
@@ -742,9 +672,8 @@ class TestCity(TestCase):
     # ----
 
     def test_city_model_1(self):
-        """
-        Test adding City objects to and deleting City objects from the db
-        """
+        """Test adding City objects to and deleting City objects from the db"""
+
         with app.test_request_context():
             example1 = City("id1", "name1", "state1", "region1",
                             "companies1", "finorgs1", "people1")
@@ -772,9 +701,8 @@ class TestCity(TestCase):
             self.assertEqual(len(cities1), len(cities2) - 2)
 
     def test_city_model_2(self):
-        """
-        Test querying the database by attribute using simple keywords
-        """
+        """Test querying the database by attribute using simple keywords"""
+
         with app.test_request_context():
             example1 = City("id1", "name1", "state1", "region1",
                             "companies1", "finorgs1", "people1")
@@ -790,9 +718,8 @@ class TestCity(TestCase):
             db.session.commit()
 
     def test_city_init_1(self):
-        """
-        Tests construction of a City
-        """
+        """Tests construction of a City"""
+
         city1 = City("id1", "name1", "state1", "region1",
                      "companies1", "finorgs1", "people1")
 
@@ -806,9 +733,8 @@ class TestCity(TestCase):
         self.assertEqual(city1.people, "people1")
 
     def test_city_init_2(self):
-        """
-        Tests construction of two instances of City
-        """
+        """Tests construction of two instances of City"""
+
         city1 = City("id1", "name1", "state1", "region1",
                      "companies1", "finorgs1", "people1")
         city2 = City("id2", "name1", "state2", "region1",
@@ -823,9 +749,8 @@ class TestCity(TestCase):
         self.assertNotEqual(city1.people, city2.people)
 
     def test_city_init_3(self):
-        """
-        Test construction of a City with more realistic information
-        """
+        """Test construction of a City with more realistic information"""
+
         city1 = City("1", "Seattle", "WA", "Seattle", "Wetpaint",
                      "Vulcan Capital", "Mathias Klein")
 
@@ -839,33 +764,29 @@ class TestCity(TestCase):
         self.assertEqual(city1.people, "Mathias Klein")
 
     def test_city_repr_1(self):
-        """
-        Test the representation of an instance of a City
-        """
+        """Test the representation of an instance of a City"""
+
         city1 = City("id1", "name1", "state1", "region1",
                      "companies1", "finorgs1", "people1")
         self.assertEqual(city1.__repr__(), "<City 'name1'>")
 
     def test_city_repr_2(self):
-        """
-        Test the representation of an instance of a City
-        """
+        """Test the representation of an instance of a City"""
+
         city2 = City("id2", "name1", "state2", "region1",
                      "companies2", "finorgs1", "people2")
         self.assertEqual(city2.__repr__(), "<City 'name1'>")
 
     def test_city_repr_3(self):
-        """
-        Test the representation of an instance of a City
-        """
+        """Test the representation of an instance of a City"""
+
         city1 = City("1", "Seattle", "WA", "Seattle", "Wetpaint",
                      "Vulcan Capital", "Mathias Klein")
         self.assertEqual(city1.__repr__(), "<City 'Seattle'>")
 
     def test_city_dict_1(self):
-        """
-        Tests dictionary of a City
-        """
+        """Tests dictionary of a City"""
+
         city1 = City("id1", "name1", "state1", "region1",
                      "companies1", "finorgs1", "people1")
         c1_dict = city1.dictionary()
@@ -877,9 +798,8 @@ class TestCity(TestCase):
                           "people": "people1"})
 
     def test_city_dict_2(self):
-        """
-        Tests dictionaries of two instances of a City
-        """
+        """Tests dictionaries of two instances of a City"""
+
         city1 = City("id1", "name1", "state1", "region1",
                      "companies1", "finorgs1", "people1")
         c1_dict = city1.dictionary()
@@ -896,9 +816,8 @@ class TestCity(TestCase):
         self.assertNotEqual(c1_dict["people"], c2_dict["people"])
 
     def test_city_dict_3(self):
-        """
-        Test dictionary of a City with more realistic information
-        """
+        """Test dictionary of a City with more realistic information"""
+
         city1 = City("1", "Seattle", "WA", "Seattle", "Wetpaint",
                      "Vulcan Capital", "Mathias Klein")
         c1_dict = city1.dictionary()
@@ -909,43 +828,38 @@ class TestCity(TestCase):
                           "companies": "Wetpaint", "financial_orgs": "Vulcan Capital",
                           "people": "Mathias Klein"})
 
-# ----
+# -----
 # About
-# ----
+# -----
 
 
 class TestAbout(TestCase):
-    """
-    Tests for the About page
-    """
+    """Tests for the About page"""
 
     # ------------------
     # Setup and Teardown
     # ------------------
 
     def setUp(self):
-        """
-        About tests have no database component
-        """
+        """About tests have no database component"""
+
         httpretty.enable()  # enable HTTPretty so that it will monkey patch the socket module
         httpretty.register_uri(httpretty.GET, "http://yipit.com/",
                                body="Find the best daily deals")
 
     def tearDown(self):
-        """
-        Disable afterwards, so that you will have no problems in code that uses that socket module
-        """
+        """Disable afterwards, so that you will have no problems in code that uses that socket module"""
+
         httpretty.disable()
         httpretty.reset()
 
-    # ----
+    # -----
     # About
-    # ----
+    # -----
 
     def test_about_from_index(self):
-        """
-        Test traveling from index to about page
-        """
+        """Test traveling from index to about page"""
+
         link = 'http://startupfairy.com/'
         httpretty.register_uri(httpretty.GET, link)
         response = requests.get(link)
@@ -960,9 +874,8 @@ class TestAbout(TestCase):
         #self.assertEqual('', httpretty.last_request().body)
 
     def test_about_from_category(self):
-        """
-        Test traveling from a category page to about page
-        """
+        """Test traveling from a category page to about page"""
+
         link = 'http://startupfairy.com/companies/'
         httpretty.register_uri(httpretty.GET, link)
         response = requests.get(link)
@@ -976,9 +889,8 @@ class TestAbout(TestCase):
         self.assertEqual(200, response.status_code)
 
     def test_about_content(self):
-        """
-        Test for specific content of about page
-        """
+        """Test for specific content of about page"""
+
         link = 'http://startupfairy.com/about'
         httpretty.register_uri(httpretty.GET, link,
                                body='[{"title": "About | Startup Fairy"}]',
@@ -987,37 +899,25 @@ class TestAbout(TestCase):
         response = requests.get(link)
         self.assertEqual(200, response.status_code)
 
-        # self.assertIn('Svyatoslav Ilinskiy', httpretty.last_request().body)
-        # self.assertIn('Madeline Stager', httpretty.last_request().body)
-        # self.assertIn('Addy Kim', httpretty.last_request().body)
-        # self.assertIn('Mark', httpretty.last_request().body)
-        # self.assertIn('Cameron', httpretty.last_request().body)
-        # self.assertIn('Ajmal Khan', httpretty.last_request().body)
-        # self.assertIn('Eugene Ng', httpretty.last_request().body)
-
-# ---
+# ---------------------
 # Test Views.py methods
-# ---
+# ---------------------
 
 
 class TestViews(TestCase):
 
-    """
-    Test the routing used by the application
-    """
+    """Test the routing used by the application"""
 
     def test_index_1(self):
-        """
-        Test that index renders properly
-        """
+        """Test that index renders properly"""
+
         app = flask.Flask(__name__)
         with app.test_request_context():
             self.assertEqual(index() is not None, True)
 
     def test_about_1(self):
-        """
-        Test that about renders properly
-        """
+        """Test that about renders properly"""
+
         app = flask.Flask(__name__)
         with app.test_request_context():
             self.assertEqual(about() is not None, True)
@@ -1027,5 +927,4 @@ class TestViews(TestCase):
 # ----
 
 if __name__ == "__main__":
-    unittest.main(verbosity=2)
-    # main()
+    main(verbosity=2)
