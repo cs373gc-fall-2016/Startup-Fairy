@@ -6,9 +6,13 @@ Implementation of models of startups and their attributes
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+# pylint: disable=invalid-name
+# this name is lowecase 'app' by convention
 app = Flask(__name__)
 app.config[
     "SQLALCHEMY_DATABASE_URI"] = "postgresql://sweteam:sweteamajmal@postgres/startupfairydb5"
+# pylint: disable=invalid-name
+# this name is lowercase 'db' by convention
 db = SQLAlchemy(app)
 db.init_app(app)
 

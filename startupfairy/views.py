@@ -5,6 +5,7 @@ import json
 import subprocess
 from collections import defaultdict
 import string
+import os
 import markdown2
 from flask import render_template, abort, request, send_from_directory
 from flask_cors import CORS
@@ -128,7 +129,7 @@ def category(app_category):
         data = api_financialorgs()
     else:
         print("Category does not exist")
-        data = []
+        data = ""
     print("Rendering template")
     return render_template('category.html',
                            alt_title=ALT_NAMES.get(app_category, None),
@@ -136,6 +137,8 @@ def category(app_category):
 
 
 @app.route('/category/<app_category>/<entity>')
+# pylint: disable=too-many-branches
+# we're using them!
 def details(app_category, entity):
     """Serve the an entity's page"""
     if app_category == 'people':

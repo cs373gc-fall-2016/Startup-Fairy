@@ -10,7 +10,6 @@ from models import Company, FinancialOrg, Person, City, db
 import httpretty
 import requests
 
-import flask
 from views import app, index, about
 
 # -----------
@@ -907,14 +906,12 @@ class TestViews(TestCase):
     def test_index_1(self):
         """Test that index renders properly"""
 
-        app = flask.Flask(__name__)
         with app.test_request_context():
             self.assertEqual(index() is not None, True)
 
     def test_about_1(self):
         """Test that about renders properly"""
 
-        app = flask.Flask(__name__)
         with app.test_request_context():
             self.assertEqual(about() is not None, True)
 
