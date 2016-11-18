@@ -26,9 +26,9 @@
 
       var TwitterLink = React.createClass({
         render: function() {
-          var name = this.props.data;
+          let name = this.props.data;
           if (name !== undefined && name != null) {
-            var url = "http://twitter.com/" + name;
+            let url = "http://twitter.com/" + name;
             return <a href={url}>@{name}</a>
           } else {
             return <p>No twitter</p>
@@ -38,17 +38,17 @@
 
       var EntityLink = React.createClass({
         render: function(){
-          var name = this.props.data;
-          var rowObject = this.props.rowData;
-          var customHeaderProps = this.props.metadata.customHeaderComponentProps;
+          let name = this.props.data;
+          let rowObject = this.props.rowData;
+          let customHeaderProps = this.props.metadata.customHeaderComponentProps;
           if (customHeaderProps == undefined || customHeaderProps == null) {
             return <p>{name}</p>
           }
-          var prependLink = customHeaderProps.link;
+          let prependLink = customHeaderProps.link;
           if (prependLink == undefined || prependLink == null) {
             return <p>{name}</p>
           }
-          var url;
+          let url;
           if (rowObject.person_id) {
             url = prependLink + rowObject.person_id;
           } else if (rowObject.financial_org_id) {
@@ -66,31 +66,31 @@
 
       var SmallList = React.createClass({
         render: function() {
-          var data = JSON.parse(this.props.data);
-          var customHeaderProps = this.props.metadata.customHeaderComponentProps;
+          let data = JSON.parse(this.props.data);
+          let customHeaderProps = this.props.metadata.customHeaderComponentProps;
+          let category;
           if (customHeaderProps != undefined) {
-            var category = customHeaderProps.category;
+            category = customHeaderProps.category;
           }
           if (data.length <= 0) {
             return <p>No {category}</p>
           }
-          var entityArray = [];
-          var max = data.length > 3 ? 3 : data.length;
-          var listItems = [];
+          let entityArray = [];
+          let max = data.length > 3 ? 3 : data.length;
+          let listItems = [];
           if (data[0] instanceof Array && category != undefined) {
-            var listItems = [];
             if (category == 'financial organizations') {
               category = 'financialorgs';
             }
-            var base_url = "/category/" + category + "/";
-            for (var i = 0; i < max; i++) {
-              var url = base_url + data[i][1];
+            let base_url = "/category/" + category + "/";
+            for (let i = 0; i < max; i++) {
+              let url = base_url + data[i][1];
               if (data[i][0]!= undefined && data[i][0] != null) {
                 listItems.push(<li key={data[i][0].toString()}><a href={url}>{data[i][0]}</a></li>);
               }
             }
           } else {
-            for (var i = 0; i < max; i++) {
+            for (let i = 0; i < max; i++) {
               if (data[i] != undefined && data[i] != null) {
                 listItems.push(<li key={data[i][0].toString()}>{data[i]}</li>);
               }
