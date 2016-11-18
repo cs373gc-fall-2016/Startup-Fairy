@@ -9,7 +9,7 @@ class SearchResult extends React.Component {
     super();
     this.state = {
       pageTitle: 'Result #',
-      url: '/about',
+      url: '/startupfairy/',
       active: true,
       pageDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dui odio, tincidunt nec tortor sed, suscipit aliquet turpis. Suspendisse potenti. Pellentesque cursus maximus lectus. Suspendisse lobortis risus quis erat pretium imperdiet. Vivamus tincidunt placerat dignissim. Duis consequat eleifend turpis a auctor. Donec ac imperdiet orci, sed porta orci. Nam vulputate at lorem eu consequat',
     };
@@ -40,13 +40,22 @@ class SearchResult extends React.Component {
     var description;
     this.setState((prevState) => ({pageDescription: description}));
     //TODO: GET THE URL OF THE MODEL
-    var newURL = 'about';
+    var newURL = this.getURL(modelId) + modelId;
     this.setState((prevState) => ({url: newURL}));
     this.setState((prevState) => ({active: activeId}));
   }
 
-  lookup(value) {
-    //todo: using the ID, find the correct instance
+  getURL(id) {
+    var cat = id.charAt(0);
+    if (cat == 'p') {
+      return 'startupfairy/category/people/';
+    } else if (cat == 'f') {
+      return 'startupfairy/category/financialorgs/';
+    } else if (cat == 'c') {
+      return 'startupfairy/category/companies/';
+    } else {
+      return 'startupfairy/category/cities/';
+    }
   }
 
 }
