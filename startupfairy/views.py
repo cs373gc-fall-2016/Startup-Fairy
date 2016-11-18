@@ -7,10 +7,12 @@ from collections import defaultdict
 import string
 import os
 import markdown2
+import re
 from flask import render_template, abort, request, send_from_directory
 from flask_cors import CORS
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm.exc import NoResultFound
+
 
 from models import app, db, Company, Person, FinancialOrg, City, Index
 
@@ -141,7 +143,7 @@ def category(app_category):
 # pylint: disable=too-many-branches
 # we're using them!
 def details(app_category, entity):
-    """Serve the an entity's page"""
+    """Serve an entity's page"""
     if app_category == 'people':
         data = api_people(entity)
     elif app_category == 'cities':
@@ -192,6 +194,18 @@ def parse_markdown():
     highlight = request.args.get('word')
     if highlight is not None:
         text = text.replace(highlight, '**' + highlight + '**')
+    # Anything that isn't a square closing bracket
+    name_regex = "[^]]+"
+    # http:// or https:// followed by anything but a closing paren
+    url_regex = "http[s]?://[^)]+"
+
+    markup_regex = '\[({0})]\(\s*({1})\s*\)'.format(name_regex, url_regex)
+
+    for match in re.findall(markup_regex, text):
+        print(match)
+        print(match[0])
+        print(match[1])
+        text = text.replace("[" + match[0] + "](" + match[1] + ")", match[0])
     processed = markdown2.markdown(text)
     return json.dumps({"result": processed})
 

@@ -22,6 +22,7 @@ class SearchResult extends React.Component {
   //This function runs when render() is done!
   componentWillReceiveProps() {
     var resultsArray = this.props.results;
+    console.log(this.props.value);
     var modelId = resultsArray[this.props.value];
     if(!modelId) {
       var nullobj;
@@ -93,15 +94,21 @@ class SearchResult extends React.Component {
         cache: false,
         success:
         function(result) {
-          // console.log("DONE");
-          markdowned = JSON.parse(result)["result"];
+          console.log("DONE");
+          try {
+            markdowned = JSON.parse(result)["result"];
+          } catch (e) {
+
+          }
           // console.log(markdowned);
         }});
 
       setTimeout(() => {
-        this.setState(function(prevState){
-          return {pageDescription: (<div dangerouslySetInnerHTML={{__html: markdowned}}/>)};
-        });
+        if (markdowned) {
+          this.setState(function (prevState) {
+            return {pageDescription: (<div dangerouslySetInnerHTML={{__html: markdowned}}/>)};
+          });
+        }
       }, 2000);
     }, 2000);
   }
@@ -149,17 +156,13 @@ class BackPagination extends React.Component {
       </div>
     );
   }
-
-  handleClick() {
-    this.props.startValue += 10;
-  }
 }
 
 class ForwardPagination extends React.Component {
   render() {
     return (
       <div className="pull-right">
-        <button className="btn btn-lg btn-blue">
+        <button className="btn btn-lg btn-blue" onClick={this.props.onClick}>
           <h3>Next Page</h3>
         </button>
       </div>
@@ -205,6 +208,9 @@ class ResultsList extends React.Component {
       results1: Array(10).fill(null),
       isAnd: true
     };
+
+    this.handleBackClick = this.handleBackClick.bind(this);
+    this.handleNextClick = this.handleNextClick.bind(this);
   }
 
   componentWillMount() {
@@ -251,8 +257,10 @@ class ResultsList extends React.Component {
   }
 
   renderResult(i) {
+    console.log("rendering results again...");
     var query = this.props.query;
-    return <SearchResult results={this.state.results0} query={query} value={i+this.state.startValue} />;
+    var newVal = i+this.state.startValue;
+    return <SearchResult results={this.state.results0} query={query} value={newVal} />;
   }
 
   renderAnd() {
@@ -264,18 +272,22 @@ class ResultsList extends React.Component {
   }
 
   renderBack() {
-    return <BackPagination onClick={this.handleBackClick} />;
+    var click = this.handleBackClick;
+    return <BackPagination onClick={click} />;
   }
 
   renderNext() {
-    return <ForwardPagination onClick={this.handleNextClick} />;
+    var click = this.handleNextClick;
+    return <ForwardPagination onClick={click} />;
   }
 
   handleBackClick() {
+    console.log("i just got clicked!");
     this.setState((prevState) => ({startValue: (prevState)-10}));
   }
 
   handleNextClick() {
+    console.log("i just got clicked!");
     this.setState((prevState) => ({startValue: (prevState)+10}));
   }
 

@@ -1,60 +1,25 @@
 /usr/local/lib/python3.5/site-packages/flask_sqlalchemy/__init__.py:800: UserWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.
   warnings.warn('SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True to suppress this warning.')
-test_about_content (__main__.TestAbout) ... ok
-test_about_from_category (__main__.TestAbout) ... ok
-test_about_from_index (__main__.TestAbout) ... ok
-test_city_dict_1 (__main__.TestCity) ... ok
-test_city_dict_2 (__main__.TestCity) ... ok
-test_city_dict_3 (__main__.TestCity) ... ok
-test_city_init_1 (__main__.TestCity) ... ok
-test_city_init_2 (__main__.TestCity) ... ok
-test_city_init_3 (__main__.TestCity) ... ok
-test_city_repr_1 (__main__.TestCity) ... ok
-test_city_repr_2 (__main__.TestCity) ... ok
-test_city_repr_3 (__main__.TestCity) ... ok
-test_company_constructor_1 (__main__.TestCompany) ... ok
-test_company_constructor_2 (__main__.TestCompany) ... ok
-test_company_constructor_3 (__main__.TestCompany) ... ok
-test_company_constructor_4 (__main__.TestCompany) ... ok
-test_company_dictionary_1 (__main__.TestCompany) ... ok
-test_company_dictionary_2 (__main__.TestCompany) ... ok
-test_company_dictionary_3 (__main__.TestCompany) ... ok
-test_company_dictionary_4 (__main__.TestCompany) ... ok
-test_company_repr_1 (__main__.TestCompany) ... ok
-test_company_repr_2 (__main__.TestCompany) ... ok
-test_company_repr_3 (__main__.TestCompany) ... ok
-test_financial_org_dictionary_1 (__main__.TestFinancialOrg) ... ok
-test_financial_org_dictionary_2 (__main__.TestFinancialOrg) ... ok
-test_financial_org_dictionary_3 (__main__.TestFinancialOrg) ... ok
-test_financial_org_dictionary_4 (__main__.TestFinancialOrg) ... ok
-test_financial_org_init_1 (__main__.TestFinancialOrg) ... ok
-test_financial_org_init_2 (__main__.TestFinancialOrg) ... ok
-test_financial_org_init_3 (__main__.TestFinancialOrg) ... ok
-test_financial_org_init_4 (__main__.TestFinancialOrg) ... ok
-test_financial_org_repr_1 (__main__.TestFinancialOrg) ... ok
-test_financial_org_repr_2 (__main__.TestFinancialOrg) ... ok
-test_financial_org_repr_3 (__main__.TestFinancialOrg) ... ok
-test_person_dict_1 (__main__.TestPerson) ... ok
-test_person_dict_2 (__main__.TestPerson) ... ok
-test_person_dict_3 (__main__.TestPerson) ... ok
-test_person_init_1 (__main__.TestPerson) ... ok
-test_person_init_2 (__main__.TestPerson) ... ok
-test_person_init_3 (__main__.TestPerson) ... ok
-test_person_repr_1 (__main__.TestPerson) ... ok
-test_person_repr_2 (__main__.TestPerson) ... ok
-test_person_repr_3 (__main__.TestPerson) ... ok
-test_about_1 (__main__.TestViews) ... ok
-test_index_1 (__main__.TestViews) ... ok
-
+............................................................
 ----------------------------------------------------------------------
-Ran 45 tests in 0.715s
+Ran 60 tests in 1.549s
 
 OK
-Name                                Stmts   Miss Branch BrPart  Cover   Missing
--------------------------------------------------------------------------------
-startupfairy/models.py                131      0      0      0   100%
-startupfairy/run.py                    12      1      2      1    86%   18, 17->18
-startupfairy/tests.py                 306      0      2      1    99%   717->exit
-startupfairy/views.py                  97     73     40      0    18%   32, 46-57, 67-79, 84-99, 104-118, 123-138, 143-156, 160-161
--------------------------------------------------------------------------------
-TOTAL                                 546     74     44      2    80%
+Attempting to get category people
+Rendering template
+Attempting to get category cities
+Rendering template
+Attempting to get category companies
+Rendering template
+Attempting to get category financialorgs
+Rendering template
+Attempting to get category nonexistent_category
+Category does not exist
+Rendering template
+Name                                    Stmts   Miss Branch BrPart  Cover   Missing
+-----------------------------------------------------------------------------------
+startupfairy/models.py                    142      2      0      0    99%   235-236
+startupfairy/tests.py                     461      0      2      1    99%   964->exit
+startupfairy/views.py                     168     96     64      6    37%   40, 50-53, 62-67, 78-107, 144-175, 198-207, 222-231, 246-255, 269-276, 282-286, 310-311, 314, 195->198, 219->222, 243->246, 266->269, 293->exit, 313->314
+-----------------------------------------------------------------------------------
+TOTAL                                     771     98     66      7    82%
