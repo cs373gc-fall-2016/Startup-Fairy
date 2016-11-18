@@ -23,6 +23,13 @@ class SearchResult extends React.Component {
   componentWillReceiveProps() {
     var resultsArray = this.props.results;
     var modelId = resultsArray[this.props.value];
+    if(!modelId) {
+      var nullobj;
+      this.setState((prevState) => ({url: '/'}));
+      this.setState((prevState) => ({pageTitle: nullobj}));
+      this.setState((prevState) => ({pageDescription: nullobj}));
+      this.setState((prevState) => ({active: false}));
+    }
     var activeId = resultsArray[this.props.value+1]
     var newURL = this.getURL(modelId) + modelId;
     this.setState((prevState) => ({url: newURL}));
