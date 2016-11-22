@@ -24,6 +24,17 @@
         }
       });
 
+      var CityLink = React.createClass({
+        render: function(){
+          let link = this.props.data;
+          if (link === undefined || link === null) {
+            return <p>No Known Location</p>
+
+          }
+          return <a href={link}>{link}</a>
+        }
+      });
+
       var TwitterLink = React.createClass({
         render: function() {
           let name = this.props.data;
@@ -42,7 +53,11 @@
           let rowObject = this.props.rowData;
           let customHeaderProps = this.props.metadata.customHeaderComponentProps;
           if (customHeaderProps == undefined || customHeaderProps == null) {
-            return <p>{name}</p>
+            if (name){
+              return <p>{name}</p>
+            } else {
+              return <p>{"Unknown"}</p>
+            }
           }
           let prependLink = customHeaderProps.link;
           if (prependLink == undefined || prependLink == null) {
