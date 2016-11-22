@@ -54,6 +54,7 @@ class SearchResult extends React.Component {
       cat = '/api/cities';
     }
 
+    var self = this;
     var obj;
     // console.log(id);
     // console.log(cat);
@@ -69,21 +70,14 @@ class SearchResult extends React.Component {
       success:
       function(result){
         obj = JSON.parse(result);
+        var name = self.finishCall(obj);
+        // console.log(name);
+        self.setState((prevState) => ({pageTitle: name}));
         // console.log(obj);
         //functo(obj, name, summary);
-      }});
-
-
-    setTimeout(() => {
-        var name = this.finishCall(obj);
-        // console.log(name);
-        this.setState((prevState) => ({pageTitle: name}));
-        }, 2000);
-
-    setTimeout(() => {
-      var summary = this.finishCallSum(obj);
-      this.setState((prevState) => ({pageDescription: summary}));
-      var query = this.props.query;
+        var summary = self.finishCallSum(obj);
+      self.setState((prevState) => ({pageDescription: summary}));
+      var query = self.props.query;
       // console.log(query);
       var markdowned;
       $.ajax({
@@ -97,20 +91,16 @@ class SearchResult extends React.Component {
           console.log("DONE");
           try {
             markdowned = JSON.parse(result)["result"];
+            if (markdowned) {
+              self.setState(function (prevState) {
+                return {pageDescription: (<div dangerouslySetInnerHTML={{__html: markdowned}}/>)};
+              });
+            }
           } catch (e) {
 
           }
-          // console.log(markdowned);
         }});
-
-      setTimeout(() => {
-        if (markdowned) {
-          this.setState(function (prevState) {
-            return {pageDescription: (<div dangerouslySetInnerHTML={{__html: markdowned}}/>)};
-          });
-        }
-      }, 2000);
-    }, 2000);
+      }});
   }
 
   finishCall(modelDict) {
