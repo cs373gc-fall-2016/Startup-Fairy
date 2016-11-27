@@ -13,7 +13,13 @@ var width = 960,
     height = 500,
     radius = Math.min(width, height) / 2 - 10;
 
-var data = [1,2,1,3,4,5];
+var data = $.map(jsonObject.results.majors, function (el) {
+  return el.num_students;
+});
+
+
+
+//var data = jsonObject.results.majors;
 
 //var data = d3.range(10).map(Math.random).sort(d3.descending);
 
