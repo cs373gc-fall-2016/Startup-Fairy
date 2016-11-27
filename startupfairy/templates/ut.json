@@ -1,0 +1,181 @@
+var jsonObject = {
+  "results": {
+    "city_id": 470, 
+    "city_name": "Austin", 
+    "cost_to_attend": 17152, 
+    "ethnicities": [
+      {
+        "id": 1, 
+        "name": "Unknown", 
+        "num_students": 190
+      }, 
+      {
+        "id": 3, 
+        "name": "Asian", 
+        "num_students": 7374
+      }, 
+      {
+        "id": 5, 
+        "name": "White", 
+        "num_students": 17912
+      }, 
+      {
+        "id": 7, 
+        "name": "Two Or More", 
+        "num_students": 1346
+      }, 
+      {
+        "id": 9, 
+        "name": "Native Hawaiian Pacific Islander", 
+        "num_students": 54
+      }, 
+      {
+        "id": 11, 
+        "name": "American Indian Alaska Native", 
+        "num_students": 77
+      }, 
+      {
+        "id": 13, 
+        "name": "Hispanic", 
+        "num_students": 8529
+      }, 
+      {
+        "id": 15, 
+        "name": "Black", 
+        "num_students": 1607
+      }, 
+      {
+        "id": 17, 
+        "name": "Non Resident Alien", 
+        "num_students": 1821
+      }
+    ], 
+    "grad_rate": 80, 
+    "id_num": 6085, 
+    "majors": [
+      {
+        "id": 1, 
+        "name": "Public Administration Social Service", 
+        "num_students": 284
+      }, 
+      {
+        "id": 5, 
+        "name": "History", 
+        "num_students": 774
+      }, 
+      {
+        "id": 7, 
+        "name": "Biological", 
+        "num_students": 3152
+      }, 
+      {
+        "id": 13, 
+        "name": "Family Consumer Science", 
+        "num_students": 1393
+      }, 
+      {
+        "id": 15, 
+        "name": "Psychology", 
+        "num_students": 1455
+      }, 
+      {
+        "id": 17, 
+        "name": "Mathematics", 
+        "num_students": 926
+      }, 
+      {
+        "id": 19, 
+        "name": "Architecture", 
+        "num_students": 241
+      }, 
+      {
+        "id": 21, 
+        "name": "Parks Recreation Fitness", 
+        "num_students": 848
+      }, 
+      {
+        "id": 27, 
+        "name": "Language", 
+        "num_students": 805
+      }, 
+      {
+        "id": 33, 
+        "name": "Engineering", 
+        "num_students": 4229
+      }, 
+      {
+        "id": 31, 
+        "name": "Health", 
+        "num_students": 1743
+      }, 
+      {
+        "id": 37, 
+        "name": "Philosophy Religious", 
+        "num_students": 358
+      }, 
+      {
+        "id": 45, 
+        "name": "Visual Performing", 
+        "num_students": 1081
+      }, 
+      {
+        "id": 41, 
+        "name": "Computer", 
+        "num_students": 941
+      }, 
+      {
+        "id": 29, 
+        "name": "Business Marketing", 
+        "num_students": 7385
+      }, 
+      {
+        "id": 49, 
+        "name": "Communication", 
+        "num_students": 4373
+      }, 
+      {
+        "id": 51, 
+        "name": "Multidiscipline", 
+        "num_students": 1731
+      }, 
+      {
+        "id": 53, 
+        "name": "English", 
+        "num_students": 1089
+      }, 
+      {
+        "id": 57, 
+        "name": "Resources", 
+        "num_students": 31
+      }, 
+      {
+        "id": 11, 
+        "name": "Communications Technology", 
+        "num_students": 70
+      }, 
+      {
+        "id": 63, 
+        "name": "Ethnic Cultural Gender", 
+        "num_students": 505
+      }, 
+      {
+        "id": 65, 
+        "name": "Social Science", 
+        "num_students": 4082
+      }, 
+      {
+        "id": 67, 
+        "name": "Humanities", 
+        "num_students": 443
+      }, 
+      {
+        "id": 39, 
+        "name": "Physical Science", 
+        "num_students": 957
+      }
+    ], 
+    "name": "The University of Texas at Austin", 
+    "num_undergrads": 38914, 
+    "public_or_private": "Public"
+  }
+}
