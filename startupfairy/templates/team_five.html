@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<style>
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 960px;
+  height: 500px;
+  position: relative;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+path.slice{
+  stroke-width:2px;
+}
+
+polyline{
+  opacity: .3;
+  stroke: black;
+  stroke-width: 2px;
+  fill: none;
+}
+
+h1{
+  text-align: center;
+}
+
+</style>
+
 <title>University of Texas Colored Pie Chart</title>
-<center><h1> Colored Pie Chart by Number of People in Each Major </h1></center>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+<h1> Colored Pie Chart by Number of People in Each Major </h1>
+
 <body>
+
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" language="javascript" src="ut.json"></script> 
 
 <script>
 
-var width = 960,
-    height = 500,
-    radius = Math.min(width, height) / 2 - 10;
+// var width = 960,
+//     height = 500,
+//     radius = Math.min(width, height) / 2 - 10;
 
 var data = $.map(jsonObject.results.majors, function (el) {
   return el.num_students;
@@ -30,50 +54,53 @@ var dataNames = $.map(jsonObject.results.majors, function (el) {
   return el.name;
 });
 
+
+
 var color = d3.scale.category20();
 
-var arc = d3.svg.arc()
-    .outerRadius(radius);
+// var arc = d3.svg.arc()
+//     .outerRadius(radius);
 
-var pie = d3.layout.pie();
+// var pie = d3.layout.pie();
 
-var svg = d3.select("body").append("svg")
-    .datum(data)
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+// var svg = d3.select("body").append("svg")
+//     .datum(data)
+//     .attr("width", width)
+//     .attr("height", height)
+//   .append("g")
+//     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-    svg.append("g")
-  .attr("class", "slices");
-svg.append("g")
-  .attr("class", "labels");
-svg.append("g")
-  .attr("class", "lines");
+//     svg.append("g")
+//   .attr("class", "slices");
+// svg.append("g")
+//   .attr("class", "labels");
+// svg.append("g")
+//   .attr("class", "lines");
 
-d3.select("body").attr("align","center");
+// d3.select("body").attr("align","center");
 
-    //svg.append("title").text(function(d) { return dataNames[d]});
+//     //svg.append("title").text(function(d) { return dataNames[d]});
 
-var arcs = svg.selectAll("g.arc")
-    .data(pie)
-  .enter().append("g")
-    .attr("class", "arc");
-    //.append("textPath")
-    //.attr("xlink:href", function(d,i) {return "#majorArc_"+i;})
-    //.text(function(d) {return dataNames[d]});
+// var arcs = svg.selectAll("g.arc")
+//     .data(pie)
+//   .enter().append("g")
+//     .attr("class", "arc");
+//   .transition()
+//     .ease("bounce")
+//     .duration(2000)
+//     .attrTween("d", tweenPie)
 
-arcs.append("path")
-    .attr("fill", function(d, i) { return color(i); })
-  .transition()
-    .ease("bounce")
-    .duration(2000)
-    .attrTween("d", tweenPie)
-  .transition()
-    .ease("elastic")
-    .delay(function(d, i) { return 2000 + i * 50; })
-    .duration(750)
-    .attrTween("d", tweenDonut);
+// arcs.append("path")
+//     .attr("fill", function(d, i) { return color(i); })
+//   .transition()
+//     .ease("bounce")
+//     .duration(2000)
+//     .attrTween("d", tweenPie)
+//   .transition()
+//     .ease("elastic")
+//     .delay(function(d, i) { return 2000 + i * 50; })
+//     .duration(750)
+//     .attrTween("d", tweenDonut);
 
 
 
@@ -89,7 +116,86 @@ function tweenDonut(b) {
   return function(t) { return arc(i(t)); };
 }
 
-/* ------- TEXT LABELS -------*/
+var svg = d3.select("body")
+  .append("svg")
+  .append("g")
+
+svg.append("g")
+  .attr("class", "slices");
+svg.append("g")
+  .attr("class", "labels");
+svg.append("g")
+  .attr("class", "lines");
+
+var width = 960,
+    height = 450,
+  radius = Math.min(width, height) / 2;
+
+var pie = d3.layout.pie()
+  .sort(null)
+  .value(function(d) {
+    return d.value;
+  });
+
+var arc = d3.svg.arc()
+  .outerRadius(radius * 0.8)
+  .innerRadius(radius * 0.4);
+
+var outerArc = d3.svg.arc()
+  .innerRadius(radius * 0.9)
+  .outerRadius(radius * 0.9);
+
+ 
+
+svg.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+var key = function(d){ return d.data.label; };
+
+var color = d3.scale.ordinal()
+  .domain(dataNames)
+  .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+function randomData (){
+  var labels = color.domain();
+  return labels.map(function(label){
+    return { label: label, value: Math.random() }
+  });
+}
+
+change(randomData());
+
+function change(data) {
+
+  /* ------- PIE SLICES -------*/
+  var slice = svg.select(".slices").selectAll("path.slice")
+    .data(pie(data), key);
+
+  slice.enter()
+    .insert("path")
+    .style("fill", function(d) { return color(d.data.label); })
+    .attr("class", "slice");
+
+  slice   
+    .transition().duration(1000)
+      .transition()
+    .ease("bounce")
+    .duration(2000)
+    .attrTween("d", tweenPie)
+
+
+    // .attrTween("d", function(d) {
+    //   this._current = this._current || d;
+    //   var interpolate = d3.interpolate(this._current, d);
+    //   this._current = interpolate(0);
+    //   return function(t) {
+    //     return arc(interpolate(t));
+    //   };
+    // })
+
+  slice.exit()
+    .remove();
+
+  /* ------- TEXT LABELS -------*/
 
   var text = svg.select(".labels").selectAll("text")
     .data(pie(data), key);
@@ -153,6 +259,7 @@ function tweenDonut(b) {
   
   polyline.exit()
     .remove();
+};
 
 
 </script>
