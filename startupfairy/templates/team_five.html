@@ -143,8 +143,6 @@ var outerArc = d3.svg.arc()
   .innerRadius(radius * 0.9)
   .outerRadius(radius * 0.9);
 
- 
-
 svg.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 var key = function(d){ return d.data.label; };
@@ -158,8 +156,7 @@ var i = 0;
 function randomData (){
   var labels = color.domain();
   return labels.map(function(label){
-    return { label: label, value: data[i] }
-    i = i + 1;
+    return { label: label, value: data[i++] }
   });
 
 }
