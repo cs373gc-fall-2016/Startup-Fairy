@@ -8,7 +8,6 @@
 
 <script>
 
-
 var width = 960,
     height = 500,
     radius = Math.min(width, height) / 2 - 10;
@@ -17,11 +16,9 @@ var data = $.map(jsonObject.results.majors, function (el) {
   return el.num_students;
 });
 
-
-
-//var data = jsonObject.results.majors;
-
-//var data = d3.range(10).map(Math.random).sort(d3.descending);
+var dataNames = $.map(jsonObject.results.majors, function (el) {
+  return el.name;
+});
 
 var color = d3.scale.category20();
 
@@ -36,6 +33,8 @@ var svg = d3.select("body").append("svg")
     .attr("height", height)
   .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    //svg.append("title").text(function(d) { return dataNames[d]});
 
 var arcs = svg.selectAll("g.arc")
     .data(pie)
