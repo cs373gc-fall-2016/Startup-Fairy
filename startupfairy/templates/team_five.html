@@ -54,8 +54,6 @@ var dataNames = $.map(jsonObject.results.majors, function (el) {
   return el.name;
 });
 
-
-
 var color = d3.scale.category20();
 
 // var arc = d3.svg.arc()
@@ -155,11 +153,15 @@ var color = d3.scale.ordinal()
   .domain(dataNames)
   .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
+var i = 0;
+
 function randomData (){
   var labels = color.domain();
   return labels.map(function(label){
-    return { label: label, value: Math.random() }
+    return { label: label, value: data[i] }
+    i = i + 1;
   });
+
 }
 
 change(randomData());
@@ -181,16 +183,6 @@ function change(data) {
     .ease("bounce")
     .duration(2000)
     .attrTween("d", tweenPie)
-
-
-    // .attrTween("d", function(d) {
-    //   this._current = this._current || d;
-    //   var interpolate = d3.interpolate(this._current, d);
-    //   this._current = interpolate(0);
-    //   return function(t) {
-    //     return arc(interpolate(t));
-    //   };
-    // })
 
   slice.exit()
     .remove();
