@@ -31,14 +31,14 @@ h1{
 
 </style>
 
-<title>University of Texas Colored Pie Chart</title>
-<h1> Colored Pie Chart by Number of People in Each Major </h1>
+<title>Interswellar D3 Visual</title>
+<h1> Colored Pie Chart D3 Visual </h1>
 
 <body>
 
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" language="javascript" src="ut.json"></script> 
+<script type="text/javascript" language="javascript" src="space.json"></script> 
 
 <script>
 
@@ -46,11 +46,11 @@ h1{
 //     height = 500,
 //     radius = Math.min(width, height) / 2 - 10;
 
-var data = $.map(jsonObject.results.majors, function (el) {
-  return el.num_students;
+var data = $.map(jsonObject.objects, function (el) {
+  return el.orbital_period;
 });
 
-var dataNames = $.map(jsonObject.results.majors, function (el) {
+var dataNames = $.map(jsonObject.objects, function (el) {
   return el.name;
 });
 
