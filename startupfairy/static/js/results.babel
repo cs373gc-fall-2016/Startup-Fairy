@@ -22,7 +22,7 @@ class SearchResult extends React.Component {
   //This function runs when render() is done!
   componentWillReceiveProps() {
     var resultsArray = this.props.results;
-    console.log(this.props.value);
+    //console.log(this.props.value);
     var modelId = resultsArray[this.props.value];
     if(!modelId) {
       var nullobj;
@@ -54,6 +54,7 @@ class SearchResult extends React.Component {
       cat = '/api/cities';
     }
 
+    var self = this;
     var obj;
     // console.log(id);
     // console.log(cat);
@@ -69,21 +70,14 @@ class SearchResult extends React.Component {
       success:
       function(result){
         obj = JSON.parse(result);
+        var name = self.finishCall(obj);
+        // console.log(name);
+        self.setState((prevState) => ({pageTitle: name}));
         // console.log(obj);
         //functo(obj, name, summary);
-      }});
-
-
-    setTimeout(() => {
-        var name = this.finishCall(obj);
-        // console.log(name);
-        this.setState((prevState) => ({pageTitle: name}));
-        }, 2000);
-
-    setTimeout(() => {
-      var summary = this.finishCallSum(obj);
-      this.setState((prevState) => ({pageDescription: summary}));
-      var query = this.props.query;
+        var summary = self.finishCallSum(obj);
+      self.setState((prevState) => ({pageDescription: summary}));
+      var query = self.props.query;
       // console.log(query);
       var markdowned;
       $.ajax({
@@ -97,20 +91,16 @@ class SearchResult extends React.Component {
           console.log("DONE");
           try {
             markdowned = JSON.parse(result)["result"];
+            if (markdowned) {
+              self.setState(function (prevState) {
+                return {pageDescription: (<div dangerouslySetInnerHTML={{__html: markdowned}}/>)};
+              });
+            }
           } catch (e) {
 
           }
-          // console.log(markdowned);
         }});
-
-      setTimeout(() => {
-        if (markdowned) {
-          this.setState(function (prevState) {
-            return {pageDescription: (<div dangerouslySetInnerHTML={{__html: markdowned}}/>)};
-          });
-        }
-      }, 2000);
-    }, 2000);
+      }});
   }
 
   finishCall(modelDict) {
@@ -149,7 +139,7 @@ class SearchResult extends React.Component {
 class BackPagination extends React.Component {
   render() {
     return (
-      <div className="pull-left">
+      <div className="col-sm-4">
         <button className="btn btn-lg btn-red" onClick={this.props.onClick}>
           <h3>Prev Page</h3>
         </button>
@@ -170,54 +160,52 @@ class ForwardPagination extends React.Component {
   }
 }
 
-class FilterButton extends React.Component {
-  swap() {
-    let isAnd = this.props.filterFunction.isAnd;
-    if (isAnd) {
-      
-    }
-    let currentState = this.props.filterFunction.isAnd
-
-  }
-  render() {
-    return (
-      <button onClick={this.swap()}>{this.props.text}</button>
-    )
-  }
-}
-
 class SwitchButton extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      andor: true,
+    };
+  }
+
   render() {
     return (
-      <div className="pull-right">
-        <button className="btn btn-lg btn-blue">
-          <h3>Next Page</h3>
+      <div className="col-sm-4 align-center">
+        <button className="btn btn-lg btn-green" onClick={() => this.handleClick()}>
+          <h3>View results with {this.state.andor ? 'any' : 'all'} search terms.</h3>
         </button>
       </div>
     );
   }
+
+  handleClick() {
+    console.log("it's handled");
+    console.log(this.state.andor);
+    var curVal = (!this.state.andor);
+    this.setState((prevState) => ({andor: curVal}));
+    console.log("it's already handled");
+    this.props.onClick();
+  }
 }
+
 
 class ResultsList extends React.Component {
   constructor() {
     super();
-    // results0 is and, results1 is or
     this.state = {
       startValue: 0,
-      results0: Array(10).fill(null),
-      results1: Array(10).fill(null),
-      isAnd: true
+      results0: Array(10).fill(null), //and results
+      results1: Array(10).fill(null), //or results
     };
 
     this.handleBackClick = this.handleBackClick.bind(this);
     this.handleNextClick = this.handleNextClick.bind(this);
+    this.handleSwitchClick = this.handleSwitchClick.bind(this);
   }
 
   componentWillMount() {
-    // console.log("mounting...")
     var query = "/search/" + this.props.query;
     var queryJSON = this.props.json;
-    // console.log(query);
 
     $.ajax({
       url: query,
@@ -233,10 +221,8 @@ class ResultsList extends React.Component {
   }
 
   render() {
-    // console.log("rendering...")
     return (
       <div>
-        <div>{this.renderAnd()}{this.renderOr()}</div>
         {this.renderResult(0)}
         {this.renderResult(1)}
         {this.renderResult(2)}
@@ -249,25 +235,21 @@ class ResultsList extends React.Component {
         {this.renderResult(9)}
         <hr className="search"></hr>
         {this.renderBack()}
+        {this.renderSwitch()}
         {this.renderNext()}
-        <h3>{this.state.startValue}</h3>
       </div>
     );
   }
 
   renderResult(i) {
-    console.log("rendering results again...");
     var query = this.props.query;
     var newVal = i+this.state.startValue;
     return <SearchResult results={this.state.results0} query={query} value={newVal} />;
   }
 
-  renderAnd() {
-    return <FilterButton text="and" currentState={this.state.isAnd} filterFunction={this.state} />;
-  }
-
-  renderOr() {
-    return <FilterButton text="or" currentState={this.state.isAnd} filterFunction={this.state} />;
+  renderSwitch() {
+    var click = this.handleSwitchClick;
+    return <SwitchButton onClick={click} />
   }
 
   renderBack() {
@@ -288,6 +270,14 @@ class ResultsList extends React.Component {
   handleNextClick() {
     console.log("i just got clicked!");
     this.setState((prevState) => ({startValue: this.state.startValue+10}));
+  }
+
+  handleSwitchClick() {
+    console.log("i just got clicked!");
+    var temp = this.state.results0;
+    var temp2 = this.state.results1;
+    this.setState((prevState) => ({results0: temp2}));
+    this.setState((prevState) => ({results1: temp}));
   }
 
   populateResults(obj) {
