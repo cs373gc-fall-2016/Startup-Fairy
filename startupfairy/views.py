@@ -178,7 +178,7 @@ def details(app_category, entity):
     return render_template('details.html', data=parsed_data, category=app_category)
 
 
-@app.route('/education')
+@app.route('/space')
 def education():
     """
     a route to visualization of education of IDB5

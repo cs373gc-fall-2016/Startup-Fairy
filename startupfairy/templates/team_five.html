@@ -1,44 +1,12 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  width: 960px;
-  height: 500px;
-  position: relative;
-}
-
-svg {
-  width: 100%;
-  height: 100%;
-}
-
-path.slice{
-  stroke-width:2px;
-}
-
-polyline{
-  opacity: .3;
-  stroke: black;
-  stroke-width: 2px;
-  fill: none;
-}
-
-h1{
-  text-align: center;
-}
-
-</style>
-
-<title>Interswellar D3 Visual</title>
-<h1> Colored Pie Chart D3 Visual </h1>
-
-<body>
-
+{% extends "base.html" %}
+{% set active_page = "space" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/d3.css') }}" type="text/css"/>
+<h1>Interswellar D3 Visual</h1>
+<div id="d3-body"></div>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" language="javascript" src="space.json"></script> 
+<script src="{{ url_for('static', filename='data/space.json') }}"></script>
 
 <script>
 
@@ -114,7 +82,7 @@ function tweenDonut(b) {
   return function(t) { return arc(i(t)); };
 }
 
-var svg = d3.select("body")
+var svg = d3.select("#d3-body")
   .append("svg")
   .append("g")
 
@@ -262,3 +230,4 @@ function change(data) {
 
 
 </script>
+{% endblock %}
